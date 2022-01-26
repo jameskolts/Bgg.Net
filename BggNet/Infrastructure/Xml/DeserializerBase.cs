@@ -2,60 +2,164 @@
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Versions;
 using Bgg.Net.Common.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using Version = Bgg.Net.Common.Models.Versions.Version;
 
 namespace Bgg.Net.Common.Infrastructure.Xml
 {
+    /// <summary>
+    /// Abstract base class implementing common Deserialization functions.
+    /// </summary>
     public abstract class DeserializerBase
     {
         protected readonly string _rootXpath;
 
+        /// <summary>
+        /// Constructs a new instance of <see cref="DeserializerBase"/>.
+        /// </summary>
+        /// <param name="rootXpath">The root xpath string.</param>
         public DeserializerBase(string rootXpath)
         {
             _rootXpath = rootXpath;
         }
 
         /// <summary>
-        /// Used to set a string property thats value matches to the innertext of an xml node.
+        /// Deserializes the Poll objects from the given XmlNodeList.
         /// </summary>
-        /// <param name="obj">The object to set the properties of.</param>
-        /// <param name="propertyName">The property name.</param>
-        /// <param name="root">The root xmlelement.</param>
-        protected void SetStringProperty(object obj, string propertyName, XmlElement root)
+        /// <param name="pollNodes">The <see cref="XmlNodeList"/> of polls.</param>
+        /// <returns>A <see cref="List{Poll}"/> containing the Polls.</returns>
+        protected List<Poll> DeserializePolls(XmlNodeList pollNodes)
         {
-            var node = root.SelectSingleNode($"{_rootXpath}/{propertyName.ToLower()}");
-            if (node != null)
+            var polls = new List<Poll>();
+
+            if (pollNodes != null)
             {
-                obj.GetType().GetProperty(propertyName.FirstCharToUpper()).SetValue(obj, node.InnerText);
+                foreach (XmlNode pollNode in pollNodes)
+                {
+                    var poll = new Poll
+                    {
+                        Name = pollNode.Attributes.GetNamedItem("name")?.Value,
+                        Title = pollNode.Attributes.GetNamedItem("title")?.Value,
+                        TotalVotes = pollNode.Attributes.GetNamedItem("totalvotes")?.Value.ToNullableInt(),
+                        Results = DeserializePollResultsList(pollNode.ChildNodes)
+                    };
+
+                    polls.Add(poll);
+                }
             }
+
+            return polls.Any() ? polls : null;
         }
 
         /// <summary>
-        /// Used to set an int? property that's value comes from a single attribute.
+        /// Deserializes the PollResults objects from the given XmlNodeList.
         /// </summary>
-        /// <param name="thing">The thing to set the properties of.</param>
-        /// <param name="propertyName">The property name.</param>
-        /// <param name="root">The root xmlelement.</param>
-        protected void SetIntAttribute(Thing thing, string propertyName, XmlElement root)
+        /// <param name="xmlNodeList">The <see cref="XmlNodeList"/> of PollResults.</param>
+        /// <returns>A <see cref="List{PollResults}"/> containing the <see cref="PollResults"/>.</returns>
+        protected List<PollResults> DeserializePollResultsList(XmlNodeList xmlNodeList)
         {
-            var node = root.SelectSingleNode($"{_rootXpath}/{propertyName.ToLower()}");
-            if (node != null)
+            List<PollResults> pollResultsList = new List<PollResults>();
+
+            if (xmlNodeList != null)
             {
-                thing.GetType().GetProperty(propertyName.FirstCharToUpper()).SetValue(thing, node.Attributes[0]?.Value.ToNullableInt());
+                foreach (XmlNode resultsListNode in xmlNodeList)
+                {
+                    var pollResults = new PollResults
+                    {
+                        NumPlayers = resultsListNode.Attributes?.GetNamedItem("numplayers")?.Value.ToNullableInt(),
+                        Results = DeserializePollResultList(resultsListNode.ChildNodes)
+                    };
+
+                    pollResultsList.Add(pollResults);
+                }
             }
+
+            return pollResultsList.Any() ? pollResultsList : null;
         }
 
         /// <summary>
-        /// Given the <see cref="XmlNodeList"/> of links, deserializes the values into a list of objects.
+        /// Deserializes the PollResults objects from the given XmlNodeList.
+        /// </summary>
+        /// <param name="xmlNodeList">The <see cref="XmlNodeList"/> of PollResult.</param>
+        /// <returns>A <see cref="List{PollResult}"/> containing the <see cref="PollResult"/>.</returns>
+        protected List<PollResult> DeserializePollResultList(XmlNodeList xmlNodeList)
+        {
+            var pollResultList = new List<PollResult>();
+
+            if (xmlNodeList != null)
+            {
+                foreach (XmlNode pollResultNode in xmlNodeList)
+                {
+                    var pollResult = new PollResult
+                    {
+                        Value = pollResultNode.Attributes?.GetNamedItem("value")?.Value,
+                        NumVotes = pollResultNode.Attributes?.GetNamedItem("numvotes")?.Value.ToNullableInt()
+                    };
+
+                    pollResultList.Add(pollResult);
+                }
+            }
+
+            return pollResultList.Any() ? pollResultList : null;
+        }
+
+        /// <summary>
+        /// Deserializes the innerText of a given node.
+        /// </summary>
+        /// <param name="node">The <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>The <see cref="string"/> value of the inner text.</returns>
+        protected string DeserializeStringInnerText(XmlNode node)
+        {
+            if (node != null)
+            {
+                return node.InnerText;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Deserializes the attribute value of a given node.
+        /// </summary>
+        /// <param name="propertyName">The attribute to deserialize.</param>
+        /// <param name="node">The <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>The <see cref="string"/> value of the attribute.</returns>
+        protected string DeserializeStringAttribute(string propertyName, XmlNode node)
+        {
+            if (node != null)
+            {
+                return node.Attributes.GetNamedItem(propertyName)?.Value;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Deserializes the attribute value of a given node.
+        /// </summary>
+        /// <param name="propertyName">The attribute to deserialize.</param>
+        /// <param name="node">The <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>The <see cref="int"/> value of the attribute.</returns>
+        protected int? DeserializeIntAttribute(string propertyName, XmlNode node)
+        {
+            if (node != null)
+            {
+                if (node.Name != propertyName)
+                {
+                    node = node.SelectSingleNode(propertyName);
+                }
+
+                return node.Attributes.GetNamedItem(propertyName)?.Value.ToNullableInt();
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Deserializes the Links of a given node.
         /// </summary>
         /// <param name="nodeList">The <see cref="XmlNodeList"/> of links.</param>
-        /// <returns>A <see cref="List{Link}"/> containing the deserialized objects.</returns>
+        /// <returns>A <see cref="List{Link}"/> containing the deserialized <see cref="Link"/>.</returns>
         protected List<Link> DeserializeLink(XmlNodeList nodeList)
         {
             var links = new List<Link>();
@@ -80,11 +184,15 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             return links.Any() ? links : null;
         }
 
-        protected List<BggName> DeserializeBggNames(XmlElement root)
+        /// <summary>
+        /// Deserializes the Names of a given node.
+        /// </summary>
+        /// <param name="nodes">The <see cref="XmlNodeList"/> of names.</param>
+        /// <returns>A <see cref="List{BggName}"/> containing the deserialized <see cref="BggName"/>.</returns>
+        protected List<BggName> DeserializeBggNames(XmlNodeList nodes)
         {
             var names = new List<BggName>();
 
-            var nodes = root.SelectNodes($"{_rootXpath}/name");
             if (nodes != null)
             {
                 foreach (XmlNode nameNode in nodes)
@@ -103,17 +211,21 @@ namespace Bgg.Net.Common.Infrastructure.Xml
                 }
             }
 
-            return names;
+            return names.Any() ? names : null;
         }
 
-        protected List<Version> DeserializeVersions(XmlElement root)
+        /// <summary>
+        /// Deserializes the Versions of a given node.
+        /// </summary>
+        /// <param name="node">The <see cref="XmlNode"/> of versions.</param>
+        /// <returns>A <see cref="List{Version}"/> containing the deserialized <see cref="Version"/>.</returns>
+        protected List<Version> DeserializeVersions(XmlNode node)
         {
             var versions = new List<Version>();
 
-            var node = root.SelectSingleNode($"{_rootXpath}/versions");
             if (node != null)
             {
-                foreach (XmlElement item in node.ChildNodes)
+                foreach (XmlNode item in node.ChildNodes)
                 {
                     var version = DeserializeVersion(item);
 
@@ -124,10 +236,15 @@ namespace Bgg.Net.Common.Infrastructure.Xml
                 }
             }
 
-            return versions;
+            return versions.Any() ? versions : null;
         }
 
-        protected Version DeserializeVersion(XmlElement item)
+        /// <summary>
+        /// Determines the type of version to deserialize and processis it accordingly.
+        /// </summary>
+        /// <param name="item">The item to deserialize.</param>
+        /// <returns>A <see cref="Version"/> object.</returns>
+        private Version DeserializeVersion(XmlNode item)
         {
             var versionType = item.Attributes.GetNamedItem("type")?.Value.ToVersionType();
 
@@ -140,6 +257,11 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             }
         }
 
+        /// <summary>
+        /// Deserializes a boardgameversion from the given node.
+        /// </summary>
+        /// <param name="item">The node to deserialize.</param>
+        /// <returns>A <see cref="BoardGameVersion"/> object.</returns>
         protected BoardGameVersion DeserializeBoardGameVersion(XmlNode item)
         {
             var version = new BoardGameVersion()
@@ -152,58 +274,73 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             {
                 if (child.Name == "thumbnail")
                 {
-                    version.Thumbnail = child.InnerText;
+                    version.Thumbnail = DeserializeStringInnerText(child);
+                    continue;
                 }
 
                 if (child.Name == "image")
                 {
-                    version.Image = child.InnerText;
+                    version.Image = DeserializeStringInnerText(child);
+                    continue;
                 }
 
                 if (child.Name == "link")
                 {
                     version.Links = DeserializeLink(child.SelectNodes("link"));
+                    continue;
                 }
 
                 if (child.Name == "name")
                 {
-                    version.Name = DeserializeBggNames((XmlElement)child);
+                    version.Name = DeserializeBggNames(child.SelectNodes("name"));
+                    continue;
                 }
 
                 if (child.Name == "yearpublished")
                 {
-                    version.YearPublished = child.Attributes[0]?.Value.ToNullableInt();
+                    version.YearPublished = DeserializeIntAttribute("yearpublished", child);
+                    continue;
                 }
 
                 if (child.Name == "productcode")
                 {
-                    version.ProductCode = child.Attributes[0]?.Value;
+                    version.ProductCode = DeserializeStringAttribute("productcode", child);
+                    continue;
                 }
 
                 if (child.Name == "width")
                 {
                     version.Width = child.Attributes[0]?.Value.ToNullableDouble();
+                    continue;
                 }
 
                 if (child.Name == "length")
                 {
                     version.Length = child.Attributes[0]?.Value.ToNullableDouble();
+                    continue;
                 }
 
                 if (child.Name == "depth")
                 {
                     version.Depth = child.Attributes[0]?.Value.ToNullableDouble();
+                    continue;
                 }
 
                 if (child.Name == "weight")
                 {
                     version.Weight = child.Attributes[0]?.Value.ToNullableDouble();
+                    continue;
                 }
             }
 
             return version;
         }
 
+        /// <summary>
+        /// Deserializes comments given an XmlNode.
+        /// </summary>
+        /// <param name="node">The <see cref="XmlNode"/> of the comment.</param>
+        /// <returns>A <see cref="Comments"/> object.</returns>
         protected Comments DeserializeComments(XmlNode node)
         {
             Comments comments = null;
@@ -221,6 +358,11 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             return comments;
         }
 
+        /// <summary>
+        /// Deserializes the list of comment given an XmlNode.
+        /// </summary>
+        /// <param name="node">The <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>A <see cref="List{T}"/> of <see cref="Comment"/>.</returns>
         protected List<Comment> DeserializeCommentList(XmlNode node)
         {
             var commentList = new List<Comment>();
@@ -243,6 +385,11 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             return commentList.Any() ? commentList : null;
         }
 
+        /// <summary>
+        /// Deserializes a list of listings given an XmlNode.
+        /// </summary>
+        /// <param name="node">The <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>A <see cref="List{T}"/> of <see cref="Listing"/>.</returns>
         protected List<Listing> DeserializeMarketplaceListings(XmlNode node)
         {
             var marketplaceListings = new List<Listing>();
@@ -263,6 +410,11 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             return marketplaceListings.Any() ? marketplaceListings : null;
         }
 
+        /// <summary>
+        /// Deserializes a listing given an XmlNode.
+        /// </summary>
+        /// <param name="node">The <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>A <see cref="Listing"/>.</returns>
         protected Listing DeserializeListing(XmlNode node)
         {
             Listing listing = null;

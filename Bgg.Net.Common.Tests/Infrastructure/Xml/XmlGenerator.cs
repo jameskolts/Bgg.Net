@@ -1,5 +1,6 @@
 ﻿using System.Xml;
 using System.IO;
+using System;
 
 namespace Bgg.Net.Common.Tests.Infrastructure.Xml
 {   
@@ -22,7 +23,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             }
             else
             {
-                throw new System.Exception("Unable to generate test XML");
+                throw new Exception("Unable to generate test XML");
             }
         }
 
