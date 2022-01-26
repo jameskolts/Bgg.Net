@@ -51,14 +51,17 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             }
         }
 
-        protected List<Link> DeserializeLink(XmlElement root)
+        /// <summary>
+        /// Given the <see cref="XmlNodeList"/> of links, deserializes the values into a list of objects.
+        /// </summary>
+        /// <param name="nodeList">The <see cref="XmlNodeList"/> of links.</param>
+        /// <returns>A <see cref="List{Link}"/> containing the deserialized objects.</returns>
+        protected List<Link> DeserializeLink(XmlNodeList nodeList)
         {
             var links = new List<Link>();
-
-            var nodes = root.SelectNodes($"{_rootXpath}/link");
-            if (nodes != null)
+            if (nodeList != null)
             {
-                foreach (XmlNode node in nodes)
+                foreach (XmlNode node in nodeList)
                 {
                     var link = new Link
                     {
@@ -67,7 +70,6 @@ namespace Bgg.Net.Common.Infrastructure.Xml
                         Value = node.Attributes.GetNamedItem("value")?.Value
                     };
 
-
                     if (link.Id.HasValue || !string.IsNullOrWhiteSpace(link.Type) || !string.IsNullOrWhiteSpace(link.Value))
                     {
                         links.Add(link);
@@ -75,7 +77,7 @@ namespace Bgg.Net.Common.Infrastructure.Xml
                 }
             }
 
-            return links;
+            return links.Any() ? links : null;
         }
 
         protected List<BggName> DeserializeBggNames(XmlElement root)
@@ -160,7 +162,7 @@ namespace Bgg.Net.Common.Infrastructure.Xml
 
                 if (child.Name == "link")
                 {
-                    version.Links = DeserializeLink((XmlElement)child);
+                    version.Links = DeserializeLink(child.SelectNodes("link"));
                 }
 
                 if (child.Name == "name")

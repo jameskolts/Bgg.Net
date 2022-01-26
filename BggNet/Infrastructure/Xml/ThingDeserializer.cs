@@ -46,7 +46,7 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             SetIntAttribute(thing, "minAge", root);
             thing.Name = DeserializeBggNames(root);
             SetPoll(thing, root);
-            thing.Link = DeserializeLink(root);
+            thing.Link = DeserializeLink(root.SelectNodes($"{_rootXpath}/link"));
             thing.Versions = DeserializeVersions(root);
             thing.Comments = DeserializeComments(root.SelectSingleNode($"{_rootXpath}/comments"));
             thing.MarketplaceListing = DeserializeMarketplaceListings(root.SelectSingleNode($"{_rootXpath}/marketplacelistings"));

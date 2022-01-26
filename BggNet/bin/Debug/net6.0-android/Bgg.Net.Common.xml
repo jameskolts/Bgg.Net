@@ -46,7 +46,7 @@
             <summary>
             Used to set a string property thats value matches to the innertext of an xml node.
             </summary>
-            <param name="thing">The object to set the properties of.</param>
+            <param name="obj">The object to set the properties of.</param>
             <param name="propertyName">The property name.</param>
             <param name="root">The root xmlelement.</param>
         </member>
@@ -57,6 +57,13 @@
             <param name="thing">The thing to set the properties of.</param>
             <param name="propertyName">The property name.</param>
             <param name="root">The root xmlelement.</param>
+        </member>
+        <member name="M:Bgg.Net.Common.Infrastructure.Xml.DeserializerBase.DeserializeLink(System.Xml.XmlNodeList)">
+            <summary>
+            Given the <see cref="T:System.Xml.XmlNodeList"/> of links, deserializes the values into a list of objects.
+            </summary>
+            <param name="nodeList">The <see cref="T:System.Xml.XmlNodeList"/> of links.</param>
+            <returns>A <see cref="T:System.Collections.Generic.List`1"/> containing the deserialized objects.</returns>
         </member>
         <member name="M:Bgg.Net.Common.Infrastructure.Xml.IBggDeserializer.Deserialize(System.String)">
             <summary>

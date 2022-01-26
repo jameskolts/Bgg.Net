@@ -33,31 +33,441 @@
           "build/netstandard1.0/Microsoft.CodeCoverage.targets": {}
         }
       },
-      "Microsoft.CSharp/4.0.1": {
+      "Microsoft.Extensions.Configuration/6.0.2-mauipre.1.22054.8": {
         "type": "package",
         "dependencies": {
-          "System.Collections": "4.0.11",
-          "System.Diagnostics.Debug": "4.0.11",
-          "System.Dynamic.Runtime": "4.0.11",
-          "System.Globalization": "4.0.11",
-          "System.Linq": "4.1.0",
-          "System.Linq.Expressions": "4.1.0",
-          "System.ObjectModel": "4.0.12",
-          "System.Reflection": "4.1.0",
-          "System.Reflection.Extensions": "4.0.1",
-          "System.Reflection.Primitives": "4.0.1",
-          "System.Reflection.TypeExtensions": "4.1.0",
-          "System.Resources.ResourceManager": "4.0.1",
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Extensions": "4.1.0",
-          "System.Runtime.InteropServices": "4.1.0",
-          "System.Threading": "4.0.11"
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Primitives": "6.0.2-mauipre.1.22054.8"
         },
         "compile": {
-          "ref/netstandard1.0/Microsoft.CSharp.dll": {}
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.3/Microsoft.CSharp.dll": {}
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.Abstractions/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.Binder/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.CommandLine/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.CommandLine.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.CommandLine.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.EnvironmentVariables/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.EnvironmentVariables.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.EnvironmentVariables.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.FileExtensions/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.FileProviders.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.FileProviders.Physical": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Primitives": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.FileExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.FileExtensions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.Json/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Configuration.FileExtensions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.FileProviders.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "System.Text.Json": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Extensions.Configuration.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Extensions.Configuration.Json.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.UserSecrets/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Configuration.Json": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.FileProviders.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.FileProviders.Physical": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.UserSecrets.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.UserSecrets.dll": {}
+        },
+        "build": {
+          "build/netstandard2.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/net6.0/Microsoft.Extensions.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.DependencyInjection.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Abstractions/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/net6.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Physical/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.FileProviders.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.FileSystemGlobbing": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Primitives": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/net6.0/Microsoft.Extensions.FileProviders.Physical.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.FileProviders.Physical.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "Microsoft.Extensions.FileSystemGlobbing/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Microsoft.Extensions.FileSystemGlobbing.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.FileSystemGlobbing.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Hosting/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Configuration.Binder": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Configuration.CommandLine": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Configuration.EnvironmentVariables": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Configuration.FileExtensions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Configuration.Json": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Configuration.UserSecrets": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.DependencyInjection": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.FileProviders.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.FileProviders.Physical": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Hosting.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging.Configuration": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging.Console": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging.Debug": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging.EventLog": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging.EventSource": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Options": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/net6.0/Microsoft.Extensions.Hosting.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Hosting.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Hosting.Abstractions/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.FileProviders.Abstractions": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Extensions.Hosting.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Extensions.Hosting.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Logging/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Options": "6.0.2-mauipre.1.22054.8",
+          "System.Diagnostics.DiagnosticSource": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Extensions.Logging.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Extensions.Logging.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Abstractions/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Configuration/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Configuration.Binder": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Options": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.Configuration.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.Configuration.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Console/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging.Configuration": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Options": "6.0.2-mauipre.1.22054.8",
+          "System.Text.Json": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/net6.0/Microsoft.Extensions.Logging.Console.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Logging.Console.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Debug/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.Debug.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.Debug.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.EventLog/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Options": "6.0.2-mauipre.1.22054.8",
+          "System.Diagnostics.EventLog": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.EventLog.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.EventLog.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.EventSource/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Options": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Primitives": "6.0.2-mauipre.1.22054.8",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.2-mauipre.1.22054.8",
+          "System.Text.Json": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/net6.0/Microsoft.Extensions.Logging.EventSource.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Logging.EventSource.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Options/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Primitives": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Extensions.Options.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Extensions.Options.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Options.ConfigurationExtensions/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Configuration.Binder": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Options": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Primitives": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Primitives/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/net6.0/Microsoft.Extensions.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Primitives.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "Microsoft.Maui.Controls.Build.Tasks/6.0.200-preview.12.2441": {
+        "type": "package",
+        "build": {
+          "build/_._": {}
+        }
+      },
+      "Microsoft.Maui.Dependencies/6.0.200-preview.12.2441": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Maui.Graphics": "6.0.200-preview.12.852"
+        }
+      },
+      "Microsoft.Maui.Extensions/6.0.200-preview.12.2441": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.DependencyInjection": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Hosting": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Hosting.Abstractions": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging": "6.0.2-mauipre.1.22054.8",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.2-mauipre.1.22054.8"
+        }
+      },
+      "Microsoft.Maui.Graphics/6.0.200-preview.12.852": {
+        "type": "package",
+        "dependencies": {
+          "System.Numerics.Vectors": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Graphics.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Graphics.dll": {}
+        }
+      },
+      "Microsoft.Maui.Resizetizer.Sdk/6.0.200-preview.12.2441": {
+        "type": "package",
+        "build": {
+          "build/_._": {}
         }
       },
       "Microsoft.NET.Test.Sdk/16.11.0": {
@@ -429,37 +839,13 @@
           "System.Xml.XDocument": "4.3.0"
         }
       },
-      "Newtonsoft.Json/9.0.1": {
+      "Newtonsoft.Json/13.0.1": {
         "type": "package",
-        "dependencies": {
-          "Microsoft.CSharp": "4.0.1",
-          "System.Collections": "4.0.11",
-          "System.Diagnostics.Debug": "4.0.11",
-          "System.Dynamic.Runtime": "4.0.11",
-          "System.Globalization": "4.0.11",
-          "System.IO": "4.1.0",
-          "System.Linq": "4.1.0",
-          "System.Linq.Expressions": "4.1.0",
-          "System.ObjectModel": "4.0.12",
-          "System.Reflection": "4.1.0",
-          "System.Reflection.Extensions": "4.0.1",
-          "System.Resources.ResourceManager": "4.0.1",
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Extensions": "4.1.0",
-          "System.Runtime.Serialization.Primitives": "4.1.1",
-          "System.Text.Encoding": "4.0.11",
-          "System.Text.Encoding.Extensions": "4.0.11",
-          "System.Text.RegularExpressions": "4.1.0",
-          "System.Threading": "4.0.11",
-          "System.Threading.Tasks": "4.0.11",
-          "System.Xml.ReaderWriter": "4.0.11",
-          "System.Xml.XDocument": "4.0.11"
-        },
         "compile": {
-          "lib/netstandard1.0/Newtonsoft.Json.dll": {}
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.0/Newtonsoft.Json.dll": {}
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
       "NuGet.Frameworks/5.0.0": {
@@ -738,20 +1124,41 @@
           "ref/netstandard1.3/System.Diagnostics.Debug.dll": {}
         }
       },
-      "System.Diagnostics.DiagnosticSource/4.3.0": {
+      "System.Diagnostics.DiagnosticSource/6.0.2-mauipre.1.22054.8": {
         "type": "package",
         "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Diagnostics.Tracing": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Threading": "4.3.0"
+          "System.Runtime.CompilerServices.Unsafe": "6.0.2-mauipre.1.22054.8"
         },
         "compile": {
-          "lib/netstandard1.3/_._": {}
+          "lib/net6.0/System.Diagnostics.DiagnosticSource.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
+          "lib/net6.0/System.Diagnostics.DiagnosticSource.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.Diagnostics.EventLog/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/System.Diagnostics.EventLog.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/System.Diagnostics.EventLog.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net6.0/System.Diagnostics.EventLog.Messages.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          },
+          "runtimes/win/lib/net6.0/System.Diagnostics.EventLog.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.Diagnostics.TextWriterTraceListener/4.3.0": {
@@ -818,32 +1225,6 @@
         },
         "compile": {
           "ref/netstandard1.5/System.Diagnostics.Tracing.dll": {}
-        }
-      },
-      "System.Dynamic.Runtime/4.0.11": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "4.0.11",
-          "System.Diagnostics.Debug": "4.0.11",
-          "System.Globalization": "4.0.11",
-          "System.Linq": "4.1.0",
-          "System.Linq.Expressions": "4.1.0",
-          "System.ObjectModel": "4.0.12",
-          "System.Reflection": "4.1.0",
-          "System.Reflection.Emit": "4.0.1",
-          "System.Reflection.Emit.ILGeneration": "4.0.1",
-          "System.Reflection.Primitives": "4.0.1",
-          "System.Reflection.TypeExtensions": "4.1.0",
-          "System.Resources.ResourceManager": "4.0.1",
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Extensions": "4.1.0",
-          "System.Threading": "4.0.11"
-        },
-        "compile": {
-          "ref/netstandard1.3/System.Dynamic.Runtime.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/System.Dynamic.Runtime.dll": {}
         }
       },
       "System.Globalization/4.3.0": {
@@ -1101,6 +1482,15 @@
           "ref/netstandard1.3/System.Net.Sockets.dll": {}
         }
       },
+      "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/_._": {}
+        }
+      },
       "System.ObjectModel/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1243,6 +1633,18 @@
           "ref/netstandard1.5/System.Runtime.dll": {}
         }
       },
+      "System.Runtime.CompilerServices.Unsafe/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
       "System.Runtime.Extensions/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1320,19 +1722,6 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Runtime.Numerics.dll": {}
-        }
-      },
-      "System.Runtime.Serialization.Primitives/4.1.1": {
-        "type": "package",
-        "dependencies": {
-          "System.Resources.ResourceManager": "4.0.1",
-          "System.Runtime": "4.1.0"
-        },
-        "compile": {
-          "ref/netstandard1.3/System.Runtime.Serialization.Primitives.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/System.Runtime.Serialization.Primitives.dll": {}
         }
       },
       "System.Security.Cryptography.Algorithms/4.3.0": {
@@ -1590,6 +1979,43 @@
           "ref/netstandard1.3/System.Text.Encoding.Extensions.dll": {}
         }
       },
+      "System.Text.Encodings.Web/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/net6.0/System.Text.Encodings.Web.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/System.Text.Encodings.Web.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll": {
+            "assetType": "runtime",
+            "rid": "browser"
+          }
+        }
+      },
+      "System.Text.Json/6.0.2-mauipre.1.22054.8": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.2-mauipre.1.22054.8",
+          "System.Text.Encodings.Web": "6.0.2-mauipre.1.22054.8"
+        },
+        "compile": {
+          "lib/net6.0/System.Text.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/System.Text.Json.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
       "System.Text.RegularExpressions/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1698,6 +2124,23 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
+        }
+      },
+      "Bgg.Net.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.Maui.Controls.Build.Tasks": "6.0.200-preview.12.2441",
+          "Microsoft.Maui.Dependencies": "6.0.200-preview.12.2441",
+          "Microsoft.Maui.Extensions": "6.0.200-preview.12.2441",
+          "Microsoft.Maui.Resizetizer.Sdk": "6.0.200-preview.12.2441",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "compile": {
+          "bin/placeholder/Bgg.Net.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Bgg.Net.Common.dll": {}
         }
       }
     }
@@ -1847,62 +2290,724 @@
         "microsoft.codecoverage.nuspec"
       ]
     },
-    "Microsoft.CSharp/4.0.1": {
-      "sha512": "17h8b5mXa87XYKrrVqdgZ38JefSUqLChUQpXgSnpzsM0nDOhE40FTeNWOJ/YmySGV6tG6T8+hjz6vxbknHJr6A==",
+    "Microsoft.Extensions.Configuration/6.0.2-mauipre.1.22054.8": {
+      "sha512": "r31wRMI9ceMihv6FAQ0LPl7JI8JvoOnPjhu2kB2/jBekfF7Yxl7zd4dvaCoXJVwtRQujEyoh2my4OtviBmbGGg==",
       "type": "package",
-      "path": "microsoft.csharp/4.0.1",
+      "path": "microsoft.extensions.configuration/6.0.2-mauipre.1.22054.8",
       "files": [
         ".nupkg.metadata",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/netcore50/Microsoft.CSharp.dll",
-        "lib/netstandard1.3/Microsoft.CSharp.dll",
-        "lib/portable-net45+win8+wp8+wpa81/_._",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "microsoft.csharp.4.0.1.nupkg.sha512",
-        "microsoft.csharp.nuspec",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/netcore50/Microsoft.CSharp.dll",
-        "ref/netcore50/Microsoft.CSharp.xml",
-        "ref/netcore50/de/Microsoft.CSharp.xml",
-        "ref/netcore50/es/Microsoft.CSharp.xml",
-        "ref/netcore50/fr/Microsoft.CSharp.xml",
-        "ref/netcore50/it/Microsoft.CSharp.xml",
-        "ref/netcore50/ja/Microsoft.CSharp.xml",
-        "ref/netcore50/ko/Microsoft.CSharp.xml",
-        "ref/netcore50/ru/Microsoft.CSharp.xml",
-        "ref/netcore50/zh-hans/Microsoft.CSharp.xml",
-        "ref/netcore50/zh-hant/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/Microsoft.CSharp.dll",
-        "ref/netstandard1.0/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/de/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/es/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/fr/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/it/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/ja/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/ko/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/ru/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/zh-hans/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/zh-hant/Microsoft.CSharp.xml",
-        "ref/portable-net45+win8+wp8+wpa81/_._",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._"
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Configuration.dll",
+        "lib/net461/Microsoft.Extensions.Configuration.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.xml",
+        "microsoft.extensions.configuration.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.configuration.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Configuration.Abstractions/6.0.2-mauipre.1.22054.8": {
+      "sha512": "pkCZm4uUT46AOct3trvxYkh/L7wKsnFZZXsJXlM36rf6CHboXeENanOBN7chxDUKvA2a8Ejx9ojOE7FPHmoi4A==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration.abstractions/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "lib/net461/Microsoft.Extensions.Configuration.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.xml",
+        "microsoft.extensions.configuration.abstractions.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.configuration.abstractions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Configuration.Binder/6.0.2-mauipre.1.22054.8": {
+      "sha512": "SpipikruG3PE6sk5xn/fh54o2cuMkWlQbHhoixG424/kyPLdsgjN1sRm6Vmo5E+MRckR9+k+2gysGj+aLu0Bwg==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration.binder/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Configuration.Binder.dll",
+        "lib/net461/Microsoft.Extensions.Configuration.Binder.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.xml",
+        "microsoft.extensions.configuration.binder.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.configuration.binder.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Configuration.CommandLine/6.0.2-mauipre.1.22054.8": {
+      "sha512": "9qg07l3Ev4R6VFVZ5pfZ9tznXY7FaPPT8+7XmMiB12VLnBoHtWp+pSNFY/K6wumpOr3T+szJGJiK86aVBv1Y2A==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration.commandline/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Configuration.CommandLine.dll",
+        "lib/net461/Microsoft.Extensions.Configuration.CommandLine.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.CommandLine.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.CommandLine.xml",
+        "microsoft.extensions.configuration.commandline.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.configuration.commandline.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Configuration.EnvironmentVariables/6.0.2-mauipre.1.22054.8": {
+      "sha512": "CiEny664+9WztL3QHQ3ZR3sL9Qyl3BdMoBK4f/uCM/KagoZpOPsE7PGMM9k7n2bx/RzwgBlmjgLdltRDtKeDyA==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration.environmentvariables/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Configuration.EnvironmentVariables.dll",
+        "lib/net461/Microsoft.Extensions.Configuration.EnvironmentVariables.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.EnvironmentVariables.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.EnvironmentVariables.xml",
+        "microsoft.extensions.configuration.environmentvariables.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.configuration.environmentvariables.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Configuration.FileExtensions/6.0.2-mauipre.1.22054.8": {
+      "sha512": "egKcPtcph4hvZC+Oe/G1gwDd9t/vp0VqvZsvj0RlnaemXkFpEfHQ0cCwKe1YUmhIn+1CAzwB7qxIgjMF++jb5w==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration.fileextensions/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Configuration.FileExtensions.dll",
+        "lib/net461/Microsoft.Extensions.Configuration.FileExtensions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.FileExtensions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.FileExtensions.xml",
+        "microsoft.extensions.configuration.fileextensions.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.configuration.fileextensions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Configuration.Json/6.0.2-mauipre.1.22054.8": {
+      "sha512": "5hTaVkqHfCqfnMCHF4gj6wyzcnUAs9TgGYqITjxDQYGonlC3Li2vd+Iaw6CsDHTd7PErHtUotbfJhF1UxEUcTg==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration.json/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Configuration.Json.dll",
+        "lib/net461/Microsoft.Extensions.Configuration.Json.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Json.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Json.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.Configuration.Json.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.Configuration.Json.xml",
+        "microsoft.extensions.configuration.json.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.configuration.json.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Configuration.UserSecrets/6.0.2-mauipre.1.22054.8": {
+      "sha512": "7cnsgoGnQYbwRBIFJecD6VIJvoN/4MgaDy8hpZTyiN/zdBTcyFhRmKB+as3x7MYG94E1XdlHZle6d1rEAu/YrQ==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration.usersecrets/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "build/netstandard2.0/Microsoft.Extensions.Configuration.UserSecrets.props",
+        "build/netstandard2.0/Microsoft.Extensions.Configuration.UserSecrets.targets",
+        "lib/net461/Microsoft.Extensions.Configuration.UserSecrets.dll",
+        "lib/net461/Microsoft.Extensions.Configuration.UserSecrets.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.UserSecrets.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.UserSecrets.xml",
+        "microsoft.extensions.configuration.usersecrets.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.configuration.usersecrets.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.DependencyInjection/6.0.2-mauipre.1.22054.8": {
+      "sha512": "Mq9h3HkBMSl1h3wWKvMkU/yuYvn0gaf15Fslvp2g87qRzgJLjTb4ItczX6TZOa9M7IcBNoBNgbKY2EdGZyj4TQ==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencyinjection/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/net461/Microsoft.Extensions.DependencyInjection.xml",
+        "lib/net6.0/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/net6.0/Microsoft.Extensions.DependencyInjection.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.xml",
+        "microsoft.extensions.dependencyinjection.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/6.0.2-mauipre.1.22054.8": {
+      "sha512": "8XFtUtvSvsxB/mwebHvO+mrH3Iuk0w/rHu+7juHTfsYv9mtZkS3U3NY8zP25czF6L41HlbrfWeF/u4npFByq1w==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net461/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "microsoft.extensions.dependencyinjection.abstractions.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.FileProviders.Abstractions/6.0.2-mauipre.1.22054.8": {
+      "sha512": "SwMOEGD9lCeyz9MsgATALIgMDd2qzonGdbdYZBl/ItgyvpfoibSLi/HmRDE4w/AGCb8BMJRhlTdwYzpoCmJTpw==",
+      "type": "package",
+      "path": "microsoft.extensions.fileproviders.abstractions/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.FileProviders.Abstractions.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/Microsoft.Extensions.FileProviders.Abstractions.dll",
+        "lib/net461/Microsoft.Extensions.FileProviders.Abstractions.xml",
+        "lib/net6.0/Microsoft.Extensions.FileProviders.Abstractions.dll",
+        "lib/net6.0/Microsoft.Extensions.FileProviders.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.xml",
+        "microsoft.extensions.fileproviders.abstractions.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.fileproviders.abstractions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.FileProviders.Physical/6.0.2-mauipre.1.22054.8": {
+      "sha512": "+tSOpKQmC1RyXYZV3q2NJxYVV6D3EV8MNX9VQaoi2xpcfiQZ9st6QWQby0XM9Ivrsw69ZC8tmiTPYB8LrqC6Ww==",
+      "type": "package",
+      "path": "microsoft.extensions.fileproviders.physical/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.FileProviders.Physical.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/Microsoft.Extensions.FileProviders.Physical.dll",
+        "lib/net461/Microsoft.Extensions.FileProviders.Physical.xml",
+        "lib/net6.0/Microsoft.Extensions.FileProviders.Physical.dll",
+        "lib/net6.0/Microsoft.Extensions.FileProviders.Physical.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Physical.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Physical.xml",
+        "microsoft.extensions.fileproviders.physical.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.fileproviders.physical.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.FileSystemGlobbing/6.0.2-mauipre.1.22054.8": {
+      "sha512": "BbWIisgkZn8oucvygfCHhViAlmPZJ1HXgZt5q6uqu0Yz1shi9o7jNa5NtFEzzx+iomx6hTk1j/jpHH7KW+5qXA==",
+      "type": "package",
+      "path": "microsoft.extensions.filesystemglobbing/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.FileSystemGlobbing.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/Microsoft.Extensions.FileSystemGlobbing.dll",
+        "lib/net461/Microsoft.Extensions.FileSystemGlobbing.xml",
+        "lib/net6.0/Microsoft.Extensions.FileSystemGlobbing.dll",
+        "lib/net6.0/Microsoft.Extensions.FileSystemGlobbing.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.FileSystemGlobbing.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.FileSystemGlobbing.xml",
+        "microsoft.extensions.filesystemglobbing.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.filesystemglobbing.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Hosting/6.0.2-mauipre.1.22054.8": {
+      "sha512": "b7Ms7krFX3OWlOu7NLpfhXFo7HdHZlTsWzXKoAfaWUCq+2cavPiA3vKR5TiKpzaUWEc+qifYO8tmSJMo/XRfsw==",
+      "type": "package",
+      "path": "microsoft.extensions.hosting/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Hosting.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/Microsoft.Extensions.Hosting.dll",
+        "lib/net461/Microsoft.Extensions.Hosting.xml",
+        "lib/net6.0/Microsoft.Extensions.Hosting.dll",
+        "lib/net6.0/Microsoft.Extensions.Hosting.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Hosting.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Hosting.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.Hosting.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.Hosting.xml",
+        "microsoft.extensions.hosting.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.hosting.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Hosting.Abstractions/6.0.2-mauipre.1.22054.8": {
+      "sha512": "twwYTIkt/NQH+crrrnSGgjg+I1zU08Uyzp6O44KfzQ0dIcFhpYGT3HG+Khj7snzjtmDw1WF1aFWAPi+NYdv6Vg==",
+      "type": "package",
+      "path": "microsoft.extensions.hosting.abstractions/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Hosting.Abstractions.dll",
+        "lib/net461/Microsoft.Extensions.Hosting.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Hosting.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Hosting.Abstractions.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.Hosting.Abstractions.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.Hosting.Abstractions.xml",
+        "microsoft.extensions.hosting.abstractions.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.hosting.abstractions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Logging/6.0.2-mauipre.1.22054.8": {
+      "sha512": "LHT1ID+gGHTteXK8ytbjxSjgaQJEb7jFxgxxAvZyHK6OiOeAGd8twSoTOCmfmc5oQ2EzfSS0OE0RusvdIW7blg==",
+      "type": "package",
+      "path": "microsoft.extensions.logging/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Logging.dll",
+        "lib/net461/Microsoft.Extensions.Logging.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.Logging.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.Logging.xml",
+        "microsoft.extensions.logging.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.logging.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Logging.Abstractions/6.0.2-mauipre.1.22054.8": {
+      "sha512": "dWsLeAdq7w4CSpxmee2/Czukxx9zJ+TK5D+nBF0/DEtqOE42NjQGVbJ+UUt0aFCxfJpxv4dt6mCDqIuE5hre5A==",
+      "type": "package",
+      "path": "microsoft.extensions.logging.abstractions/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "analyzers/dotnet/roslyn3.11/cs/Microsoft.Extensions.Logging.Generators.dll",
+        "analyzers/dotnet/roslyn3.11/cs/cs/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/de/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/es/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/fr/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/it/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ja/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ko/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/pl/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/pt-BR/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ru/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/tr/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/zh-Hans/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/zh-Hant/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/Microsoft.Extensions.Logging.Generators.dll",
+        "analyzers/dotnet/roslyn4.0/cs/cs/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/de/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/es/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/fr/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/it/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ja/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ko/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/pl/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/pt-BR/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ru/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/tr/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/zh-Hans/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/zh-Hant/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "build/Microsoft.Extensions.Logging.Abstractions.targets",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Logging.Abstractions.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/Microsoft.Extensions.Logging.Abstractions.dll",
+        "lib/net461/Microsoft.Extensions.Logging.Abstractions.xml",
+        "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll",
+        "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
+        "microsoft.extensions.logging.abstractions.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Logging.Configuration/6.0.2-mauipre.1.22054.8": {
+      "sha512": "yE0Ejzf2hYC/oAji4hjvLbPMoyb/F5xuKTFYMeSnStS6zpcFQzfViciGsQIVpvsy7gftqwGEaU12MCSadGXcaQ==",
+      "type": "package",
+      "path": "microsoft.extensions.logging.configuration/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Logging.Configuration.dll",
+        "lib/net461/Microsoft.Extensions.Logging.Configuration.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Configuration.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Configuration.xml",
+        "microsoft.extensions.logging.configuration.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.logging.configuration.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Logging.Console/6.0.2-mauipre.1.22054.8": {
+      "sha512": "KliFBF8Dssg0sMBVo0M3UXtruJodUWD/HMju9LXycUAHorhd0fdDvo2IyVz+4JhGuMDQpZg4oyl1yFOYxkXEUA==",
+      "type": "package",
+      "path": "microsoft.extensions.logging.console/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Logging.Console.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/Microsoft.Extensions.Logging.Console.dll",
+        "lib/net461/Microsoft.Extensions.Logging.Console.xml",
+        "lib/net6.0/Microsoft.Extensions.Logging.Console.dll",
+        "lib/net6.0/Microsoft.Extensions.Logging.Console.xml",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Logging.Console.dll",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Logging.Console.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Console.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Console.xml",
+        "microsoft.extensions.logging.console.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.logging.console.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Logging.Debug/6.0.2-mauipre.1.22054.8": {
+      "sha512": "LUIlIgaIswOLewstHD1xvxZ1qTKCh/crKNSwIWQqAXzKOWbg/vzO/Su+D2HL/bAgahUgsum02Y+RFb9ZzI9zRg==",
+      "type": "package",
+      "path": "microsoft.extensions.logging.debug/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Logging.Debug.dll",
+        "lib/net461/Microsoft.Extensions.Logging.Debug.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Debug.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Debug.xml",
+        "microsoft.extensions.logging.debug.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.logging.debug.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Logging.EventLog/6.0.2-mauipre.1.22054.8": {
+      "sha512": "dd5JjiCpkQJeEBupAQICf9Q3w5TMQHTnpRHnM+E8CqLBEqXWVuVUHWfwhIYsNTNcveYTv+Jf/J0Xhs8iR5UQQw==",
+      "type": "package",
+      "path": "microsoft.extensions.logging.eventlog/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Logging.EventLog.dll",
+        "lib/net461/Microsoft.Extensions.Logging.EventLog.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.EventLog.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.EventLog.xml",
+        "microsoft.extensions.logging.eventlog.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.logging.eventlog.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Logging.EventSource/6.0.2-mauipre.1.22054.8": {
+      "sha512": "Do4k4QRiChn4COckadDJXB39XC0owt4VhDk9HyYgqCb1qTJQ5BnNTvFy1/DUzBN6FJtWIcaDK2abAoIM2D01Zw==",
+      "type": "package",
+      "path": "microsoft.extensions.logging.eventsource/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Logging.EventSource.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/Microsoft.Extensions.Logging.EventSource.dll",
+        "lib/net461/Microsoft.Extensions.Logging.EventSource.xml",
+        "lib/net6.0/Microsoft.Extensions.Logging.EventSource.dll",
+        "lib/net6.0/Microsoft.Extensions.Logging.EventSource.xml",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Logging.EventSource.dll",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Logging.EventSource.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.EventSource.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.EventSource.xml",
+        "microsoft.extensions.logging.eventsource.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.logging.eventsource.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Options/6.0.2-mauipre.1.22054.8": {
+      "sha512": "5OhJf4x+tu37UzJkv0Fu1wJoE5W3UsW8DSoNeSfo73W3KiI8KymIitOr/r/RN1AK0y69sD01l9u5kwqQm2T/og==",
+      "type": "package",
+      "path": "microsoft.extensions.options/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Options.dll",
+        "lib/net461/Microsoft.Extensions.Options.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Options.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Options.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.Options.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.Options.xml",
+        "microsoft.extensions.options.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.options.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Options.ConfigurationExtensions/6.0.2-mauipre.1.22054.8": {
+      "sha512": "WQUCoV7VN14Hqh5eqpcaiZwnMINHY5bYcXtfMotH8HqMtIctQhOMloSw4DgwTAejxbYMktTRuqImFJSqk2UaEQ==",
+      "type": "package",
+      "path": "microsoft.extensions.options.configurationextensions/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+        "lib/net461/Microsoft.Extensions.Options.ConfigurationExtensions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.xml",
+        "microsoft.extensions.options.configurationextensions.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.options.configurationextensions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Primitives/6.0.2-mauipre.1.22054.8": {
+      "sha512": "lVtYpBd21BXlclaAX6rMoJIbjojo069vlqhKHxhQs9tVeHnHB7sVj91LchF9xAG0xDbUsFujy8xqOTELYuXm5w==",
+      "type": "package",
+      "path": "microsoft.extensions.primitives/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Primitives.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/Microsoft.Extensions.Primitives.dll",
+        "lib/net461/Microsoft.Extensions.Primitives.xml",
+        "lib/net6.0/Microsoft.Extensions.Primitives.dll",
+        "lib/net6.0/Microsoft.Extensions.Primitives.xml",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Primitives.dll",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Primitives.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
+        "microsoft.extensions.primitives.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "microsoft.extensions.primitives.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Maui.Controls.Build.Tasks/6.0.200-preview.12.2441": {
+      "sha512": "Y3I6SYTvzNjbwJg5/GNuSTPtJYEOl0aGUu2T1pJ9SfWJe+I8C943lfbewmtz2jRC+1Hr7QS3iP5TTlqxFpWfPg==",
+      "type": "package",
+      "path": "microsoft.maui.controls.build.tasks/6.0.200-preview.12.2441",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Microsoft.Maui.Controls.Build.Tasks.dll",
+        "build/Microsoft.Maui.Controls.Build.Tasks.pdb",
+        "build/Microsoft.Maui.Controls.Build.Tasks.props",
+        "build/Microsoft.Maui.Controls.Build.Tasks.targets",
+        "build/Microsoft.Maui.Controls.SourceGen.dll",
+        "build/Microsoft.Maui.Controls.SourceGen.pdb",
+        "build/Microsoft.Maui.Controls.Xaml.dll",
+        "build/Microsoft.Maui.Controls.Xaml.pdb",
+        "build/Microsoft.Maui.Controls.dll",
+        "build/Microsoft.Maui.Controls.pdb",
+        "build/Microsoft.Maui.Graphics.dll",
+        "build/Microsoft.Maui.Graphics.pdb",
+        "build/Microsoft.Maui.dll",
+        "build/Microsoft.Maui.pdb",
+        "build/Mono.Cecil.Mdb.dll",
+        "build/Mono.Cecil.Mdb.pdb",
+        "build/Mono.Cecil.Pdb.dll",
+        "build/Mono.Cecil.Pdb.pdb",
+        "build/Mono.Cecil.Rocks.dll",
+        "build/Mono.Cecil.Rocks.pdb",
+        "build/Mono.Cecil.dll",
+        "build/Mono.Cecil.pdb",
+        "build/System.CodeDom.dll",
+        "build/cs/Microsoft.Maui.Controls.Build.Tasks.resources.dll",
+        "build/de/Microsoft.Maui.Controls.Build.Tasks.resources.dll",
+        "build/es/Microsoft.Maui.Controls.Build.Tasks.resources.dll",
+        "build/fr/Microsoft.Maui.Controls.Build.Tasks.resources.dll",
+        "build/it/Microsoft.Maui.Controls.Build.Tasks.resources.dll",
+        "build/ja/Microsoft.Maui.Controls.Build.Tasks.resources.dll",
+        "build/ko/Microsoft.Maui.Controls.Build.Tasks.resources.dll",
+        "build/maui.aotprofile",
+        "build/pl/Microsoft.Maui.Controls.Build.Tasks.resources.dll",
+        "build/pt-BR/Microsoft.Maui.Controls.Build.Tasks.resources.dll",
+        "build/ru/Microsoft.Maui.Controls.Build.Tasks.resources.dll",
+        "build/tr/Microsoft.Maui.Controls.Build.Tasks.resources.dll",
+        "build/zh-Hans/Microsoft.Maui.Controls.Build.Tasks.resources.dll",
+        "build/zh-Hant/Microsoft.Maui.Controls.Build.Tasks.resources.dll",
+        "microsoft.maui.controls.build.tasks.6.0.200-preview.12.2441.nupkg.sha512",
+        "microsoft.maui.controls.build.tasks.nuspec"
+      ]
+    },
+    "Microsoft.Maui.Dependencies/6.0.200-preview.12.2441": {
+      "sha512": "1ifiwKdruTLZLQ7qGMHVHe+grnG/M53J19tOYSziKc6+wq0W6wMswQaz10owciyU8QoHHlTTHVU1duUmhPUz8g==",
+      "type": "package",
+      "path": "microsoft.maui.dependencies/6.0.200-preview.12.2441",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "microsoft.maui.dependencies.6.0.200-preview.12.2441.nupkg.sha512",
+        "microsoft.maui.dependencies.nuspec"
+      ]
+    },
+    "Microsoft.Maui.Extensions/6.0.200-preview.12.2441": {
+      "sha512": "K0mXaDQC6t6Nm7tmDw0+qOUjiZSHzKdmIcAl0D2D1AJIP6X6uJVidEyy6+OYA5e1w4RY035CWbpV9qhBZ9KIMg==",
+      "type": "package",
+      "path": "microsoft.maui.extensions/6.0.200-preview.12.2441",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "microsoft.maui.extensions.6.0.200-preview.12.2441.nupkg.sha512",
+        "microsoft.maui.extensions.nuspec"
+      ]
+    },
+    "Microsoft.Maui.Graphics/6.0.200-preview.12.852": {
+      "sha512": "mw6h+V25XuXraM4LP5nfVieQ+POpusWuNtce2Ob+T2Qkf6NoEMVjcfZgFjZnrnW3lpT4LwkSBCz1G4pIWzhaCQ==",
+      "type": "package",
+      "path": "microsoft.maui.graphics/6.0.200-preview.12.852",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid10.0/Microsoft.Maui.Graphics.dll",
+        "lib/monoandroid10.0/Microsoft.Maui.Graphics.pdb",
+        "lib/net6.0-android30.0/Microsoft.Maui.Graphics.dll",
+        "lib/net6.0-android30.0/Microsoft.Maui.Graphics.pdb",
+        "lib/net6.0-ios13.6/Microsoft.Maui.Graphics.dll",
+        "lib/net6.0-ios13.6/Microsoft.Maui.Graphics.pdb",
+        "lib/net6.0-maccatalyst13.5/Microsoft.Maui.Graphics.dll",
+        "lib/net6.0-maccatalyst13.5/Microsoft.Maui.Graphics.pdb",
+        "lib/net6.0-tizen6.5/Microsoft.Maui.Graphics.dll",
+        "lib/net6.0-tizen6.5/Microsoft.Maui.Graphics.pdb",
+        "lib/net6.0-windows10.0.18362/Microsoft.Maui.Graphics.dll",
+        "lib/net6.0-windows10.0.18362/Microsoft.Maui.Graphics.pdb",
+        "lib/netstandard2.0/Microsoft.Maui.Graphics.dll",
+        "lib/netstandard2.0/Microsoft.Maui.Graphics.pdb",
+        "lib/netstandard2.1/Microsoft.Maui.Graphics.dll",
+        "lib/netstandard2.1/Microsoft.Maui.Graphics.pdb",
+        "lib/tizen40/Microsoft.Maui.Graphics.dll",
+        "lib/tizen40/Microsoft.Maui.Graphics.pdb",
+        "lib/xamarin.ios10/Microsoft.Maui.Graphics.dll",
+        "lib/xamarin.ios10/Microsoft.Maui.Graphics.pdb",
+        "lib/xamarin.mac20/Microsoft.Maui.Graphics.dll",
+        "lib/xamarin.mac20/Microsoft.Maui.Graphics.pdb",
+        "microsoft.maui.graphics.6.0.200-preview.12.852.nupkg.sha512",
+        "microsoft.maui.graphics.nuspec"
+      ]
+    },
+    "Microsoft.Maui.Resizetizer.Sdk/6.0.200-preview.12.2441": {
+      "sha512": "vFNSwZPWZTowwrEV99VdxUHZVoH5ZgIygC7jOHYyNHcb1BvG3gK6E0apFuV93kI+HQiv7usM+hK6yN2RhUWdtg==",
+      "type": "package",
+      "path": "microsoft.maui.resizetizer.sdk/6.0.200-preview.12.2441",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Fizzler.dll",
+        "build/HarfBuzzSharp.dll",
+        "build/HarfBuzzSharp.pdb",
+        "build/Microsoft.Maui.Resizetizer.Sdk.targets",
+        "build/Microsoft.Maui.Resizetizer.dll",
+        "build/Microsoft.Maui.Resizetizer.pdb",
+        "build/Newtonsoft.Json.dll",
+        "build/SkiaSharp.HarfBuzz.dll",
+        "build/SkiaSharp.HarfBuzz.pdb",
+        "build/SkiaSharp.dll",
+        "build/SkiaSharp.pdb",
+        "build/Svg.Custom.dll",
+        "build/Svg.Custom.pdb",
+        "build/Svg.Picture.dll",
+        "build/Svg.Picture.pdb",
+        "build/Svg.Skia.dll",
+        "build/Svg2VectorDrawable.Net.dll",
+        "build/Svg2VectorDrawable.Net.pdb",
+        "build/System.Buffers.dll",
+        "build/System.IO.UnmanagedMemoryStream.dll",
+        "build/System.Memory.dll",
+        "build/System.Numerics.Vectors.dll",
+        "build/System.ObjectModel.dll",
+        "build/System.Runtime.CompilerServices.Unsafe.dll",
+        "build/arm/libHarfBuzzSharp.so",
+        "build/arm/libSkiaSharp.so",
+        "build/arm64/libHarfBuzzSharp.dll",
+        "build/arm64/libHarfBuzzSharp.so",
+        "build/arm64/libSkiaSharp.dll",
+        "build/arm64/libSkiaSharp.so",
+        "build/libHarfBuzzSharp.dylib",
+        "build/libSkiaSharp.dylib",
+        "build/musl-x64/libHarfBuzzSharp.so",
+        "build/musl-x64/libSkiaSharp.so",
+        "build/x64/libHarfBuzzSharp.dll",
+        "build/x64/libHarfBuzzSharp.so",
+        "build/x64/libSkiaSharp.dll",
+        "build/x64/libSkiaSharp.so",
+        "build/x86/libHarfBuzzSharp.dll",
+        "build/x86/libSkiaSharp.dll",
+        "microsoft.maui.resizetizer.sdk.6.0.200-preview.12.2441.nupkg.sha512",
+        "microsoft.maui.resizetizer.sdk.nuspec"
       ]
     },
     "Microsoft.NET.Test.Sdk/16.11.0": {
@@ -2780,13 +3885,14 @@
         "netstandard.library.nuspec"
       ]
     },
-    "Newtonsoft.Json/9.0.1": {
-      "sha512": "U82mHQSKaIk+lpSVCbWYKNavmNH1i5xrExDEquU1i6I5pV6UMOqRnJRSlKO3cMPfcpp0RgDY+8jUXHdQ4IfXvw==",
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
       "type": "package",
-      "path": "newtonsoft.json/9.0.1",
-      "hasTools": true,
+      "path": "newtonsoft.json/13.0.1",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
         "lib/net35/Newtonsoft.Json.dll",
@@ -2797,13 +3903,13 @@
         "lib/net45/Newtonsoft.Json.xml",
         "lib/netstandard1.0/Newtonsoft.Json.dll",
         "lib/netstandard1.0/Newtonsoft.Json.xml",
-        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
-        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.9.0.1.nupkg.sha512",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec",
-        "tools/install.ps1"
+        "packageIcon.png"
       ]
     },
     "NuGet.Frameworks/5.0.0": {
@@ -3361,24 +4467,60 @@
         "system.diagnostics.debug.nuspec"
       ]
     },
-    "System.Diagnostics.DiagnosticSource/4.3.0": {
-      "sha512": "tD6kosZnTAGdrEa0tZSuFyunMbt/5KYDnHdndJYGqZoNy00XVXyACd5d6KnE1YgYv3ne2CjtAfNXo/fwEhnKUA==",
+    "System.Diagnostics.DiagnosticSource/6.0.2-mauipre.1.22054.8": {
+      "sha512": "h/x34gS4wkGPY4Gk/Mloyi8s6wNYvLEP0h/FPSgbP64RG6y925gHVOhZ1LMMbtTjljQbIXI7QU/XsqSbmWCKIA==",
       "type": "package",
-      "path": "system.diagnostics.diagnosticsource/4.3.0",
+      "path": "system.diagnostics.diagnosticsource/6.0.2-mauipre.1.22054.8",
       "files": [
         ".nupkg.metadata",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/net46/System.Diagnostics.DiagnosticSource.dll",
-        "lib/net46/System.Diagnostics.DiagnosticSource.xml",
-        "lib/netstandard1.1/System.Diagnostics.DiagnosticSource.dll",
-        "lib/netstandard1.1/System.Diagnostics.DiagnosticSource.xml",
-        "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll",
-        "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.xml",
-        "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.dll",
-        "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.xml",
-        "system.diagnostics.diagnosticsource.4.3.0.nupkg.sha512",
-        "system.diagnostics.diagnosticsource.nuspec"
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Diagnostics.DiagnosticSource.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net461/System.Diagnostics.DiagnosticSource.xml",
+        "lib/net5.0/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net5.0/System.Diagnostics.DiagnosticSource.xml",
+        "lib/net6.0/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net6.0/System.Diagnostics.DiagnosticSource.xml",
+        "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.dll",
+        "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.xml",
+        "system.diagnostics.diagnosticsource.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "system.diagnostics.diagnosticsource.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Diagnostics.EventLog/6.0.2-mauipre.1.22054.8": {
+      "sha512": "lce7HNbWheowhQmjgxr/JN2RRPHx4Sk2aC/MbkT8A4aYH70NUV4karBRzhFCNDhkPdvZhFMoh8z09Ww4m+FZjQ==",
+      "type": "package",
+      "path": "system.diagnostics.eventlog/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Diagnostics.EventLog.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Diagnostics.EventLog.dll",
+        "lib/net461/System.Diagnostics.EventLog.xml",
+        "lib/net6.0/System.Diagnostics.EventLog.dll",
+        "lib/net6.0/System.Diagnostics.EventLog.xml",
+        "lib/netcoreapp3.1/System.Diagnostics.EventLog.dll",
+        "lib/netcoreapp3.1/System.Diagnostics.EventLog.xml",
+        "lib/netstandard2.0/System.Diagnostics.EventLog.dll",
+        "lib/netstandard2.0/System.Diagnostics.EventLog.xml",
+        "runtimes/win/lib/net6.0/System.Diagnostics.EventLog.Messages.dll",
+        "runtimes/win/lib/net6.0/System.Diagnostics.EventLog.dll",
+        "runtimes/win/lib/net6.0/System.Diagnostics.EventLog.xml",
+        "runtimes/win/lib/netcoreapp3.1/System.Diagnostics.EventLog.Messages.dll",
+        "runtimes/win/lib/netcoreapp3.1/System.Diagnostics.EventLog.dll",
+        "runtimes/win/lib/netcoreapp3.1/System.Diagnostics.EventLog.xml",
+        "system.diagnostics.eventlog.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "system.diagnostics.eventlog.nuspec",
+        "useSharedDesignerContext.txt"
       ]
     },
     "System.Diagnostics.TextWriterTraceListener/4.3.0": {
@@ -3604,76 +4746,6 @@
         "ref/xamarinwatchos10/_._",
         "system.diagnostics.tracing.4.3.0.nupkg.sha512",
         "system.diagnostics.tracing.nuspec"
-      ]
-    },
-    "System.Dynamic.Runtime/4.0.11": {
-      "sha512": "db34f6LHYM0U0JpE+sOmjar27BnqTVkbLJhgfwMpTdgTigG/Hna3m2MYVwnFzGGKnEJk2UXFuoVTr8WUbU91/A==",
-      "type": "package",
-      "path": "system.dynamic.runtime/4.0.11",
-      "files": [
-        ".nupkg.metadata",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/netcore50/System.Dynamic.Runtime.dll",
-        "lib/netstandard1.3/System.Dynamic.Runtime.dll",
-        "lib/portable-net45+win8+wp8+wpa81/_._",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/netcore50/System.Dynamic.Runtime.dll",
-        "ref/netcore50/System.Dynamic.Runtime.xml",
-        "ref/netcore50/de/System.Dynamic.Runtime.xml",
-        "ref/netcore50/es/System.Dynamic.Runtime.xml",
-        "ref/netcore50/fr/System.Dynamic.Runtime.xml",
-        "ref/netcore50/it/System.Dynamic.Runtime.xml",
-        "ref/netcore50/ja/System.Dynamic.Runtime.xml",
-        "ref/netcore50/ko/System.Dynamic.Runtime.xml",
-        "ref/netcore50/ru/System.Dynamic.Runtime.xml",
-        "ref/netcore50/zh-hans/System.Dynamic.Runtime.xml",
-        "ref/netcore50/zh-hant/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.0/System.Dynamic.Runtime.dll",
-        "ref/netstandard1.0/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.0/de/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.0/es/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.0/fr/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.0/it/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.0/ja/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.0/ko/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.0/ru/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.0/zh-hans/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.0/zh-hant/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.3/System.Dynamic.Runtime.dll",
-        "ref/netstandard1.3/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.3/de/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.3/es/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.3/fr/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.3/it/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.3/ja/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.3/ko/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.3/ru/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.3/zh-hans/System.Dynamic.Runtime.xml",
-        "ref/netstandard1.3/zh-hant/System.Dynamic.Runtime.xml",
-        "ref/portable-net45+win8+wp8+wpa81/_._",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "runtimes/aot/lib/netcore50/System.Dynamic.Runtime.dll",
-        "system.dynamic.runtime.4.0.11.nupkg.sha512",
-        "system.dynamic.runtime.nuspec"
       ]
     },
     "System.Globalization/4.3.0": {
@@ -4435,6 +5507,53 @@
         "system.net.sockets.nuspec"
       ]
     },
+    "System.Numerics.Vectors/4.5.0": {
+      "sha512": "QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
+      "type": "package",
+      "path": "system.numerics.vectors/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Numerics.Vectors.dll",
+        "lib/net46/System.Numerics.Vectors.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.0/System.Numerics.Vectors.dll",
+        "lib/netstandard1.0/System.Numerics.Vectors.xml",
+        "lib/netstandard2.0/System.Numerics.Vectors.dll",
+        "lib/netstandard2.0/System.Numerics.Vectors.xml",
+        "lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.dll",
+        "lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.xml",
+        "lib/uap10.0.16299/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/System.Numerics.Vectors.dll",
+        "ref/net45/System.Numerics.Vectors.xml",
+        "ref/net46/System.Numerics.Vectors.dll",
+        "ref/net46/System.Numerics.Vectors.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.0/System.Numerics.Vectors.dll",
+        "ref/netstandard1.0/System.Numerics.Vectors.xml",
+        "ref/netstandard2.0/System.Numerics.Vectors.dll",
+        "ref/netstandard2.0/System.Numerics.Vectors.xml",
+        "ref/uap10.0.16299/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.numerics.vectors.4.5.0.nupkg.sha512",
+        "system.numerics.vectors.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.ObjectModel/4.3.0": {
       "sha512": "bdX+80eKv9bN6K4N+d77OankKHGn6CH711a6fcOpMQu2Fckp/Ft4L/kW9WznHpyR0NRAvJutzOMHNNlBGvxQzQ==",
       "type": "package",
@@ -5044,6 +6163,31 @@
         "system.runtime.nuspec"
       ]
     },
+    "System.Runtime.CompilerServices.Unsafe/6.0.2-mauipre.1.22054.8": {
+      "sha512": "/xD4/PF6icn6aQJQy43rg7SIa/VJ7OFlt5eQ7ceVpwW4fMVXWZC3F5jW5NkEee8XEpIq1mjE/KAi8xfSPP+9Ig==",
+      "type": "package",
+      "path": "system.runtime.compilerservices.unsafe/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "system.runtime.compilerservices.unsafe.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "System.Runtime.Extensions/4.3.0": {
       "sha512": "guW0uK0fn5fcJJ1tJVXYd7/1h5F+pea1r7FLSOz/f8vPEqbR2ZAknuRDvTQ8PzAilDveOxNjSfr0CHfIQfFk8g==",
       "type": "package",
@@ -5341,78 +6485,6 @@
         "ref/xamarinwatchos10/_._",
         "system.runtime.numerics.4.3.0.nupkg.sha512",
         "system.runtime.numerics.nuspec"
-      ]
-    },
-    "System.Runtime.Serialization.Primitives/4.1.1": {
-      "sha512": "HZ6Du5QrTG8MNJbf4e4qMO3JRAkIboGT5Fk804uZtg3Gq516S7hAqTm2UZKUHa7/6HUGdVy3AqMQKbns06G/cg==",
-      "type": "package",
-      "path": "system.runtime.serialization.primitives/4.1.1",
-      "files": [
-        ".nupkg.metadata",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/net46/System.Runtime.Serialization.Primitives.dll",
-        "lib/netcore50/System.Runtime.Serialization.Primitives.dll",
-        "lib/netstandard1.3/System.Runtime.Serialization.Primitives.dll",
-        "lib/portable-net45+win8+wp8+wpa81/_._",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/net46/System.Runtime.Serialization.Primitives.dll",
-        "ref/netcore50/System.Runtime.Serialization.Primitives.dll",
-        "ref/netcore50/System.Runtime.Serialization.Primitives.xml",
-        "ref/netcore50/de/System.Runtime.Serialization.Primitives.xml",
-        "ref/netcore50/es/System.Runtime.Serialization.Primitives.xml",
-        "ref/netcore50/fr/System.Runtime.Serialization.Primitives.xml",
-        "ref/netcore50/it/System.Runtime.Serialization.Primitives.xml",
-        "ref/netcore50/ja/System.Runtime.Serialization.Primitives.xml",
-        "ref/netcore50/ko/System.Runtime.Serialization.Primitives.xml",
-        "ref/netcore50/ru/System.Runtime.Serialization.Primitives.xml",
-        "ref/netcore50/zh-hans/System.Runtime.Serialization.Primitives.xml",
-        "ref/netcore50/zh-hant/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.0/System.Runtime.Serialization.Primitives.dll",
-        "ref/netstandard1.0/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.0/de/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.0/es/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.0/fr/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.0/it/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.0/ja/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.0/ko/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.0/ru/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.0/zh-hans/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.0/zh-hant/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.3/System.Runtime.Serialization.Primitives.dll",
-        "ref/netstandard1.3/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.3/de/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.3/es/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.3/fr/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.3/it/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.3/ja/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.3/ko/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.3/ru/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.3/zh-hans/System.Runtime.Serialization.Primitives.xml",
-        "ref/netstandard1.3/zh-hant/System.Runtime.Serialization.Primitives.xml",
-        "ref/portable-net45+win8+wp8+wpa81/_._",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "runtimes/aot/lib/netcore50/System.Runtime.Serialization.Primitives.dll",
-        "system.runtime.serialization.primitives.4.1.1.nupkg.sha512",
-        "system.runtime.serialization.primitives.nuspec"
       ]
     },
     "System.Security.Cryptography.Algorithms/4.3.0": {
@@ -5829,6 +6901,87 @@
         "ref/xamarinwatchos10/_._",
         "system.text.encoding.extensions.4.3.0.nupkg.sha512",
         "system.text.encoding.extensions.nuspec"
+      ]
+    },
+    "System.Text.Encodings.Web/6.0.2-mauipre.1.22054.8": {
+      "sha512": "7UFDdgfSYnzMSk3irYYhBLLkJEfpENeRi2rPzWlEn4D6OIlTfg/FRXxhl8TdfGR2XvmKXYeIoIGiGn72SJhk1Q==",
+      "type": "package",
+      "path": "system.text.encodings.web/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Text.Encodings.Web.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Text.Encodings.Web.dll",
+        "lib/net461/System.Text.Encodings.Web.xml",
+        "lib/net6.0/System.Text.Encodings.Web.dll",
+        "lib/net6.0/System.Text.Encodings.Web.xml",
+        "lib/netcoreapp3.1/System.Text.Encodings.Web.dll",
+        "lib/netcoreapp3.1/System.Text.Encodings.Web.xml",
+        "lib/netstandard2.0/System.Text.Encodings.Web.dll",
+        "lib/netstandard2.0/System.Text.Encodings.Web.xml",
+        "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll",
+        "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.xml",
+        "system.text.encodings.web.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "system.text.encodings.web.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Text.Json/6.0.2-mauipre.1.22054.8": {
+      "sha512": "22clqJXfIB0IYFR1fgRyxCOSerglHTFOxvIqnlL8KtcxfLB1uWTZu78G2yADwLU9syDIMOEUg0VJO4FUodqnDA==",
+      "type": "package",
+      "path": "system.text.json/6.0.2-mauipre.1.22054.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "analyzers/dotnet/roslyn3.11/cs/System.Text.Json.SourceGeneration.dll",
+        "analyzers/dotnet/roslyn3.11/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/de/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/es/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/fr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/it/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ja/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ko/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/pl/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ru/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/System.Text.Json.SourceGeneration.dll",
+        "analyzers/dotnet/roslyn4.0/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/de/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/es/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/fr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/it/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ja/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ko/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/pl/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ru/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
+        "build/System.Text.Json.targets",
+        "buildTransitive/netcoreapp2.0/System.Text.Json.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Text.Json.dll",
+        "lib/net461/System.Text.Json.xml",
+        "lib/net6.0/System.Text.Json.dll",
+        "lib/net6.0/System.Text.Json.xml",
+        "lib/netcoreapp3.1/System.Text.Json.dll",
+        "lib/netcoreapp3.1/System.Text.Json.xml",
+        "lib/netstandard2.0/System.Text.Json.dll",
+        "lib/netstandard2.0/System.Text.Json.xml",
+        "system.text.json.6.0.2-mauipre.1.22054.8.nupkg.sha512",
+        "system.text.json.nuspec",
+        "useSharedDesignerContext.txt"
       ]
     },
     "System.Text.RegularExpressions/4.3.0": {
@@ -6260,10 +7413,16 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "Bgg.Net.Common/1.0.0": {
+      "type": "project",
+      "path": "../BggNet/Bgg.Net.Common.csproj",
+      "msbuildProject": "../BggNet/Bgg.Net.Common.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Bgg.Net.Common >= 1.0.0",
       "FluentAssertions >= 6.4.0",
       "MSTest.TestAdapter >= 2.2.7",
       "MSTest.TestFramework >= 2.2.7",
@@ -6305,7 +7464,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\jkolt\\source\\repos\\BggNet\\BggNet\\Bgg.Net.Common.csproj": {
+              "projectPath": "C:\\Users\\jkolt\\source\\repos\\BggNet\\BggNet\\Bgg.Net.Common.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
