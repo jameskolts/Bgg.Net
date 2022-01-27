@@ -1,5 +1,7 @@
 ﻿using Bgg.Net.Common.Infrastructure.Extensions;
 using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Models.Polls;
+using Bgg.Net.Common.Models.Polls.PollResults;
 using Bgg.Net.Common.Models.Versions;
 using Bgg.Net.Common.Types;
 using System.Xml;
@@ -36,15 +38,12 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             {
                 foreach (XmlNode pollNode in pollNodes)
                 {
-                    var poll = new Poll
-                    {
-                        Name = pollNode.Attributes.GetNamedItem("name")?.Value,
-                        Title = pollNode.Attributes.GetNamedItem("title")?.Value,
-                        TotalVotes = pollNode.Attributes.GetNamedItem("totalvotes")?.Value.ToNullableInt(),
-                        Results = DeserializePollResultsList(pollNode.ChildNodes)
-                    };
+                    var poll = DeserializePoll(pollNode);
 
-                    polls.Add(poll);
+                    if (poll != null)
+                    {
+                        polls.Add(poll);
+                    }
                 }
             }
 
@@ -52,37 +51,144 @@ namespace Bgg.Net.Common.Infrastructure.Xml
         }
 
         /// <summary>
-        /// Deserializes the PollResults objects from the given XmlNodeList.
+        /// Deserializes a poll of any type from the given poll XmlNode.
         /// </summary>
-        /// <param name="xmlNodeList">The <see cref="XmlNodeList"/> of PollResults.</param>
-        /// <returns>A <see cref="List{PollResults}"/> containing the <see cref="PollResults"/>.</returns>
-        protected List<PollResults> DeserializePollResultsList(XmlNodeList xmlNodeList)
+        /// <param name="pollNode">The poll <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>A <see cref="Poll"/> of the correct type.</returns>
+        protected Poll DeserializePoll(XmlNode pollNode)
         {
-            List<PollResults> pollResultsList = new List<PollResults>();
-
-            if (xmlNodeList != null)
+            if (pollNode != null && !string.IsNullOrWhiteSpace(pollNode.Name))
             {
-                foreach (XmlNode resultsListNode in xmlNodeList)
+                switch (pollNode.Attributes.GetNamedItem("name").Value)
                 {
-                    var pollResults = new PollResults
-                    {
-                        NumPlayers = resultsListNode.Attributes?.GetNamedItem("numplayers")?.Value.ToNullableInt(),
-                        Results = DeserializePollResultList(resultsListNode.ChildNodes)
-                    };
-
-                    pollResultsList.Add(pollResults);
+                    case "suggested_numplayers":
+                        return DeserializePlayerCountPoll(pollNode);
+                    case "suggested_playerage":
+                        return DeserializePlayerAgePoll(pollNode);
+                    case "language_dependence":
+                        return DeserializeLanguagePoll(pollNode);
                 }
             }
 
-            return pollResultsList.Any() ? pollResultsList : null;
+            return null;
         }
 
+        /// <summary>
+        /// Deserializes a LanguageDependencePoll from a given poll XmlNodeList.
+        /// </summary>
+        /// <param name="pollNode">The <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>A <see cref="LanguageDependencePoll"/> with the deserialized data.</returns>
+        protected LanguageDependencePoll DeserializeLanguagePoll(XmlNode pollNode)
+        {
+            LanguageDependencePoll languagePoll = null;
+
+            if (pollNode != null)
+            {
+                languagePoll = new LanguageDependencePoll();
+
+                if (pollNode.ChildNodes.Count != 1)
+                {
+                    new XmlException("Invalid xml encountered while deserializing LanguageDependencePoll.");
+                }
+
+                foreach (XmlNode node in pollNode.ChildNodes[0])
+                {
+                    var pollResult = new LanguageResult
+                    {
+                        Value = node.Attributes?.GetNamedItem("value")?.Value,
+                        NumVotes = node.Attributes?.GetNamedItem("numvotes")?.Value.ToNullableInt(),
+                        Level = node.Attributes?.GetNamedItem("level")?.Value.ToNullableInt()
+                    };
+
+                    languagePoll.Results.Add(pollResult);
+                }
+
+                languagePoll.Name = pollNode.Attributes.GetNamedItem("name")?.Value;
+                languagePoll.Title = pollNode.Attributes.GetNamedItem("title")?.Value;
+                languagePoll.TotalVotes = pollNode.Attributes.GetNamedItem("totalvotes")?.Value.ToNullableInt();
+            }
+
+            return languagePoll;
+        }
+
+        /// <summary>
+        /// Deserializes a PlayerAgePoll from a given poll XmlNodeList.
+        /// </summary>
+        /// <param name="pollNode">The <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>A <see cref="PlayerAgePoll"/> with the deserialized data.</returns>
+        protected PlayerAgePoll DeserializePlayerAgePoll(XmlNode pollNode)
+        {
+            PlayerAgePoll playerAgePoll = null;
+
+            if (pollNode != null)
+            {
+                playerAgePoll = new PlayerAgePoll();
+
+                if (pollNode.ChildNodes.Count != 1)
+                {
+                    throw new XmlException("Invalid xml encountered while deserializing playeragepoll.");
+                }
+
+                foreach (XmlNode node in pollNode.ChildNodes[0])
+                {
+                    var pollResult = new PollResult
+                    {
+                        Value = node.Attributes?.GetNamedItem("value")?.Value,
+                        NumVotes = node.Attributes?.GetNamedItem("numvotes")?.Value.ToNullableInt()
+                    };
+
+                    playerAgePoll.Results.Add(pollResult);
+                }
+
+                playerAgePoll.Name = pollNode.Attributes.GetNamedItem("name")?.Value;
+                playerAgePoll.Title = pollNode.Attributes.GetNamedItem("title")?.Value;
+                playerAgePoll.TotalVotes = pollNode.Attributes.GetNamedItem("totalvotes")?.Value.ToNullableInt();
+            }
+
+            return playerAgePoll;
+        }
+
+        /// <summary>
+        /// Deserializes a PlayerCountPoll from a given poll XmlNodeList.
+        /// </summary>
+        /// <param name="pollNode">The <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>A <see cref="PlayerCountPoll"/> with the deserialized data.</returns>
+        protected PlayerCountPoll DeserializePlayerCountPoll(XmlNode pollNode)
+        {
+            PlayerCountPoll playerCountPoll = null;
+            var resultsNodes = pollNode.ChildNodes;
+
+            if (resultsNodes != null)
+            {
+                playerCountPoll = new PlayerCountPoll();
+
+                foreach (XmlNode node in resultsNodes)
+                {
+                    var playerCountResult = new PlayerCountResult
+                    {
+                        NumPlayers = node.Attributes?.GetNamedItem("numplayers")?.Value.ToNullableInt(),
+                        Results = DeserializePollResultList(node.ChildNodes)
+                    };
+
+                    if (playerCountResult.NumPlayers != null || playerCountResult.Results.Any())
+                    {
+                        playerCountPoll.Results.Add(playerCountResult);
+                    }
+                }
+
+                playerCountPoll.Name = pollNode.Attributes.GetNamedItem("name")?.Value;
+                playerCountPoll.Title = pollNode.Attributes.GetNamedItem("title")?.Value;
+                playerCountPoll.TotalVotes = pollNode.Attributes.GetNamedItem("totalvotes")?.Value.ToNullableInt();
+            }
+
+            return playerCountPoll;
+        }
         /// <summary>
         /// Deserializes the PollResults objects from the given XmlNodeList.
         /// </summary>
         /// <param name="xmlNodeList">The <see cref="XmlNodeList"/> of PollResult.</param>
         /// <returns>A <see cref="List{PollResult}"/> containing the <see cref="PollResult"/>.</returns>
-        protected List<PollResult> DeserializePollResultList(XmlNodeList xmlNodeList)
+        private List<PollResult> DeserializePollResultList(XmlNodeList xmlNodeList)
         {
             var pollResultList = new List<PollResult>();
 

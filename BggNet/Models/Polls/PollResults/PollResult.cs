@@ -1,10 +1,10 @@
-﻿namespace Bgg.Net.Common.Models
+﻿namespace Bgg.Net.Common.Models.Polls.PollResults
 {
     /// <summary>
-    /// The individual poll results.
+    /// The poll result.
     /// </summary>
     public class PollResult
-    {      
+    {
         /// <summary>
         /// The string value.
         /// </summary>

@@ -1,12 +1,12 @@
-﻿namespace Bgg.Net.Common.Models
+﻿namespace Bgg.Net.Common.Models.Polls
 {
     /// <summary>
-    /// Represents a Poll from BGG.
+    /// The base type for Poll objects.
     /// </summary>
     public class Poll
     {
         /// <summary>
-        /// The Name of the poll.
+        /// The name of the poll.
         /// </summary>
         public string Name { get; set; }
 
@@ -16,13 +16,8 @@
         public string Title { get; set; }
 
         /// <summary>
-        /// The total Number of votes for this poll.
+        /// The Total number of votes in this poll.
         /// </summary>
         public int? TotalVotes { get; set; }
-
-        /// <summary>
-        /// The list of poll results.
-        /// </summary>
-        public List<PollResults> Results { get; set; } = new List<PollResults>();
     }
 }

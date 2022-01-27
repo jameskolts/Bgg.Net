@@ -1,4 +1,5 @@
 ﻿using Version = Bgg.Net.Common.Models.Versions.Version;
+using Bgg.Net.Common.Models.Polls;
 
 namespace Bgg.Net.Common.Models
 {

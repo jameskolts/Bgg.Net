@@ -13,7 +13,11 @@ namespace Bgg.Net.Common.Infrastructure.Xml
         {
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Deserializes the given xml.
+        /// </summary>
+        /// <param name="xml">Thing string to deserialize.</param>
+        /// <returns>A <see cref="Thing"/> object from the deserialized xml.</returns>
         public BggBase Deserialize(string xml)
         {
             var document = new XmlDocument();
@@ -25,7 +29,7 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             {
                 Type = DeserializeStringAttribute("type", root.SelectSingleNode(_rootXpath)),
                 Id = DeserializeIntAttribute("id", root.SelectSingleNode(_rootXpath)),
-                YearPublished = DeserializeIntAttribute("description", root),
+                YearPublished = DeserializeIntAttribute("yearpublished", root),
                 MinPlayers = DeserializeIntAttribute("minplayers", root),
                 MaxPlayers = DeserializeIntAttribute("maxplayers", root),
                 PlayingTime = DeserializeIntAttribute("playingtime", root),
