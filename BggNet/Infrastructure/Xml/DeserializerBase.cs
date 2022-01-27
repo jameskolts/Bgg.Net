@@ -350,13 +350,11 @@ namespace Bgg.Net.Common.Infrastructure.Xml
         {
             var versionType = item.Attributes.GetNamedItem("type")?.Value.ToVersionType();
 
-            switch (versionType)
+            return versionType switch
             {
-                case VersionType.BoardGame:
-                    return DeserializeBoardGameVersion(item);
-                default:
-                    return null;
-            }
+                VersionType.BoardGame => DeserializeBoardGameVersion(item),
+                _ => null,
+            };
         }
 
         /// <summary>
@@ -366,76 +364,21 @@ namespace Bgg.Net.Common.Infrastructure.Xml
         /// <returns>A <see cref="BoardGameVersion"/> object.</returns>
         protected BoardGameVersion DeserializeBoardGameVersion(XmlNode item)
         {
-            var version = new BoardGameVersion()
+            return new BoardGameVersion()
             {
                 Type = VersionType.BoardGame,
-                Id = item.Attributes.GetNamedItem("id")?.Value.ToNullableInt()
+                Id = item.Attributes.GetNamedItem("id")?.Value.ToNullableInt(),
+                Links = DeserializeLink(item.SelectNodes("link")),
+                Name = DeserializeBggNames(item.SelectNodes("name")),
+                Thumbnail = DeserializeStringInnerText(item.SelectSingleNode("thumbnail")),
+                Image = DeserializeStringInnerText(item.SelectSingleNode("image")),
+                YearPublished = DeserializeIntAttribute("value", item.SelectSingleNode("yearpublished")),
+                ProductCode = DeserializeStringAttribute("value", item.SelectSingleNode("productcode")),
+                Width = item.SelectSingleNode("width").Attributes[0]?.Value.ToNullableDouble(),
+                Length = item.SelectSingleNode("length").Attributes[0]?.Value.ToNullableDouble(),
+                Depth = item.SelectSingleNode("depth").Attributes[0]?.Value.ToNullableDouble(),
+                Weight = item.SelectSingleNode("weight").Attributes[0]?.Value.ToNullableDouble()
             };
-
-            foreach (XmlNode child in item.ChildNodes)
-            {
-                if (child.Name == "thumbnail")
-                {
-                    version.Thumbnail = DeserializeStringInnerText(child);
-                    continue;
-                }
-
-                if (child.Name == "image")
-                {
-                    version.Image = DeserializeStringInnerText(child);
-                    continue;
-                }
-
-                if (child.Name == "link")
-                {
-                    version.Links = DeserializeLink(child.SelectNodes("link"));
-                    continue;
-                }
-
-                if (child.Name == "name")
-                {
-                    version.Name = DeserializeBggNames(child.SelectNodes("name"));
-                    continue;
-                }
-
-                if (child.Name == "yearpublished")
-                {
-                    version.YearPublished = DeserializeIntAttribute("yearpublished", child);
-                    continue;
-                }
-
-                if (child.Name == "productcode")
-                {
-                    version.ProductCode = DeserializeStringAttribute("productcode", child);
-                    continue;
-                }
-
-                if (child.Name == "width")
-                {
-                    version.Width = child.Attributes[0]?.Value.ToNullableDouble();
-                    continue;
-                }
-
-                if (child.Name == "length")
-                {
-                    version.Length = child.Attributes[0]?.Value.ToNullableDouble();
-                    continue;
-                }
-
-                if (child.Name == "depth")
-                {
-                    version.Depth = child.Attributes[0]?.Value.ToNullableDouble();
-                    continue;
-                }
-
-                if (child.Name == "weight")
-                {
-                    version.Weight = child.Attributes[0]?.Value.ToNullableDouble();
-                    continue;
-                }
-            }
-
-            return version;
         }
 
         /// <summary>
