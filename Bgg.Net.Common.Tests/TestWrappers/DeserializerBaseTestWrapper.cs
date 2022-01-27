@@ -19,5 +19,20 @@ namespace Bgg.Net.Common.Tests.TestWrappers
         {
             return base.DeserializePolls(nodeList);
         }
+
+        public new string DeserializeStringInnerText(XmlNode node)
+        {
+            return base.DeserializeStringInnerText(node);
+        }
+
+        public new string DeserializeStringAttribute(string propertyName, XmlNode node)
+        {
+            return base.DeserializeStringAttribute(propertyName, node);
+        }
+
+        public new int? DeserializeIntAttribute(string propertyName, XmlNode node)
+        {
+            return base.DeserializeIntAttribute(propertyName, node);
+        }
     }
 }

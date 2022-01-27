@@ -1,18 +1,12 @@
-﻿using Bgg.Net.Common.Infrastructure.Xml;
-using Bgg.Net.Common.Models;
+﻿using Bgg.Net.Common.Models.Polls;
 using Bgg.Net.Common.Tests.TestWrappers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using FluentAssertions;
-using Bgg.Net.Common.Models.Polls;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
+using System.Xml;
 
 namespace Bgg.Net.Common.Tests.Infrastructure.Xml
-{   
+{
 
     [TestClass]
 #pragma warning disable CS8604 // Possible null reference argument.
@@ -159,7 +153,129 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
 
             //Assert
             result.Should().BeNull();
-        }        
+        }
+
+        [TestMethod]
+        public void DeserializeStringInnerText_Null()
+        {
+            //Act
+            var result = deserializer.DeserializeStringInnerText(null);
+
+            //Assert
+            result.Should().BeNull();
+        }
+
+        [TestMethod]
+        public void DeserializeStringInnerText_Success()
+        {
+            //Arrange
+            var node = root.SelectSingleNode($"{_rootXpath}/description");
+
+            //Act
+            var result = deserializer.DeserializeStringInnerText(node);
+
+            //Assert
+            result.Should().StartWith("Die Macher is a game about seven sequential political races in different regions of Germany.");
+        }
+
+        [TestMethod]
+        public void DeserializeStringAttribute_NullProperty()
+        {
+            //Arrange
+            var node = root.SelectSingleNode($"{_rootXpath}");
+
+            //Act
+            var result = deserializer.DeserializeStringAttribute(null, node);
+
+            //Assert
+            result.Should().BeNull();
+        }
+
+        [TestMethod]
+        public void DeserializeStringAttribute_WhitespaceProperty()
+        {
+            //Arrange
+            var node = root.SelectSingleNode($"{_rootXpath}");
+
+            //Act
+            var result = deserializer.DeserializeStringAttribute(" ", node);
+
+            //Assert
+            result.Should().BeNull();
+        }
+
+        [TestMethod]
+        public void DeserializeStringAttribute_NullNode()
+        {
+            //Act
+            var result = deserializer.DeserializeStringAttribute("type", null);
+
+            //Assert
+            result.Should().BeNull();
+        }
+
+        [TestMethod]
+        public void DeserializeStringAttribute_Success()
+        {
+            //Arrange
+            var node = root.SelectSingleNode($"{_rootXpath}");
+
+            //Act
+            var result = deserializer.DeserializeStringAttribute("type", node);
+
+            //Assert
+            result.Should().Be("boardgame");
+        }
+
+        [TestMethod]
+        public void DeserializeIntAttribute_WrongProperty()
+        {
+            //Arrange
+            var node = root.SelectSingleNode($"{_rootXpath}");
+
+            //Act
+            var result = deserializer.DeserializeIntAttribute("type", node);
+
+            //Assert
+            result.Should().BeNull();
+        }
+
+        [TestMethod]
+        public void DeserializeIntAttribute_WhitespaceProperty()
+        {
+            //Arrange
+            var node = root.SelectSingleNode($"{_rootXpath}");
+
+            //Act
+            var result = deserializer.DeserializeIntAttribute(" ", node);
+
+            //Assert
+            result.Should().BeNull();
+        }
+
+        [TestMethod]
+        public void DeserializeIntAttribute_NullNode()
+        {
+            //Act
+            var result = deserializer.DeserializeIntAttribute("id", null);
+
+            //Assert
+            result.Should().BeNull();
+        }
+
+        [TestMethod]
+        public void DeserializeIntAttribute_Success()
+        {
+            //Arrange
+            var node = root.SelectSingleNode($"{_rootXpath}");
+
+            //Act
+            var result = deserializer.DeserializeIntAttribute("id", node);
+
+            //Assert
+            result.Should().Be(1);
+        }
+
     }
 #pragma warning restore CS8604 // Possible null reference argument.
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.

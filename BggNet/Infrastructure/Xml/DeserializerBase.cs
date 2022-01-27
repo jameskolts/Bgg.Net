@@ -183,6 +183,7 @@ namespace Bgg.Net.Common.Infrastructure.Xml
 
             return playerCountPoll;
         }
+        
         /// <summary>
         /// Deserializes the PollResults objects from the given XmlNodeList.
         /// </summary>
@@ -250,11 +251,6 @@ namespace Bgg.Net.Common.Infrastructure.Xml
         {
             if (node != null)
             {
-                if (node.Name != propertyName)
-                {
-                    node = node.SelectSingleNode(propertyName);
-                }
-
                 return node.Attributes.GetNamedItem(propertyName)?.Value.ToNullableInt();
             }
 
