@@ -34,5 +34,10 @@ namespace Bgg.Net.Common.Tests.TestWrappers
         {
             return base.DeserializeIntAttribute(propertyName, node);
         }
+
+        public new List<BggName> DeserializeBggNames(XmlNodeList nodes)
+        {
+            return base.DeserializeBggNames(nodes);
+        }
     }
 }

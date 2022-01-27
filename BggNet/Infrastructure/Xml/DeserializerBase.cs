@@ -302,7 +302,7 @@ namespace Bgg.Net.Common.Infrastructure.Xml
                     var name = new BggName
                     {
                         Type = nameNode.Attributes.GetNamedItem("type")?.Value,
-                        SortIndex = nameNode.Attributes.GetNamedItem("sortIndex")?.Value.ToNullableInt(),
+                        SortIndex = nameNode.Attributes.GetNamedItem("sortindex")?.Value.ToNullableInt(),
                         Value = nameNode.Attributes.GetNamedItem("value")?.Value
                     };
 

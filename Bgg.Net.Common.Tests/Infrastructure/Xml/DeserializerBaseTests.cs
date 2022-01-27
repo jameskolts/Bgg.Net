@@ -276,6 +276,39 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             result.Should().Be(1);
         }
 
+        [TestMethod]
+        public void DeserializeBggNames_Success()
+        {
+            //Arrange
+            var nodes = root.SelectNodes($"{_rootXpath}/name");
+
+            //Act
+            var result = deserializer.DeserializeBggNames(nodes);
+
+            //Assert
+            result.Count.Should().Be(3);
+            result[0].Type.Should().Be("primary");
+            result[0].SortIndex.Should().Be(5);
+            result[0].Value.Should().Be("Die Macher");
+            result[1].Type.Should().Be("alternate");
+            result[1].Value.Should().NotBeNullOrWhiteSpace();
+            result[1].SortIndex.Should().Be(1);
+            result[2].Type.Should().Be("alternate");
+            result[2].Value.Should().NotBeNullOrWhiteSpace();
+            result[2].SortIndex.Should().Be(1);
+        }
+
+        [TestMethod]
+        public void DeserializeBggNames_Null()
+        {
+            //Act
+            var result = deserializer.DeserializeBggNames(null);
+
+            //Assert
+            result.Should().BeNull();
+        }
+
+
     }
 #pragma warning restore CS8604 // Possible null reference argument.
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
