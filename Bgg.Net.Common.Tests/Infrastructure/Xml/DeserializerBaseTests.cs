@@ -32,7 +32,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             var nodeList = root.SelectNodes($"{_rootXpath}/link");
 
             //Act
-            var result = deserializer.DeseralizeLink(nodeList);
+            var result = deserializer.DeserializeLink(nodeList);
 
             //Assert
             result.Should().NotBeNullOrEmpty();
@@ -52,7 +52,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
         public void DeserializeLink_Null()
         {
             //Act
-            var result = deserializer.DeseralizeLink(null);
+            var result = deserializer.DeserializeLink(null);
 
             //Assert
             result.Should().BeNull();
@@ -373,6 +373,65 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             secondVersion.Weight.Should().Be(0);
         }
 
+        [TestMethod]
+        public void DeserializeComments_Success()
+        {
+            //Arrange
+            var node = root.SelectSingleNode($"{_rootXpath}/comments");
+
+            //Act
+            var result = deserializer.DeserializeComments(node);
+
+            //Assert
+            result.Should().NotBeNull();
+            result.Page.Should().Be(1);
+            result.TotalItems.Should().Be(2018);
+            result.Comment.Count.Should().Be(100);
+            result.Comment[0].UserName.Should().Be(".JcK.");
+            result.Comment[0].Rating.Should().Be(9);
+            result.Comment[0].Value.Should().StartWith("Die Macher is one of the very few long games that I");
+        }
+
+        [TestMethod]
+        public void DeserializeComments_Null()
+        {
+            //Act
+            var result = deserializer.DeserializeComments(null);
+
+            //Assert
+            result.Should().BeNull();
+        }
+
+        [TestMethod]
+        public void DeserializeMarketplaceListings_Success()
+        {
+            //Arrange
+            var node = root.SelectSingleNode($"{_rootXpath}/marketplacelistings");
+
+            //Act
+            var result = deserializer.DeserializeMarketplaceListings(node);
+
+            //Assert
+            result.Should().NotBeNull();
+            result.Count.Should().Be(53);
+            result[0].ListDate.Should().Be(new System.DateTime(2015, 3, 18,7,45,57));
+            result[0].Price.Currency.Should().Be("GBP");
+            result[0].Price.Value.Should().Be(75);
+            result[0].Condition.Should().Be("verygood");
+            result[0].Notes.Should().Be("Shipping costs paid by buyer");
+            result[0].Link.Href.Should().Be("https://boardgamegeek.com/geekmarket/product/718811");
+            result[0].Link.Title.Should().Be("marketlisting");
+        }
+
+        [TestMethod]
+        public void DeserializeMarketplacelistings_Null()
+        {
+            //Act
+            var result = deserializer.DeserializeMarketplaceListings(null);
+
+            //Assert
+            result.Should().BeNull();
+        }
     }
 #pragma warning restore CS8604 // Possible null reference argument.
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.

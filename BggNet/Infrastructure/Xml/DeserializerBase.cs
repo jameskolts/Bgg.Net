@@ -4,6 +4,7 @@ using Bgg.Net.Common.Models.Polls;
 using Bgg.Net.Common.Models.Polls.PollResults;
 using Bgg.Net.Common.Models.Versions;
 using Bgg.Net.Common.Types;
+using System.Diagnostics;
 using System.Xml;
 using Version = Bgg.Net.Common.Models.Versions.Version;
 
@@ -408,7 +409,7 @@ namespace Bgg.Net.Common.Infrastructure.Xml
         /// </summary>
         /// <param name="node">The <see cref="XmlNode"/> to deserialize.</param>
         /// <returns>A <see cref="List{T}"/> of <see cref="Comment"/>.</returns>
-        protected List<Comment> DeserializeCommentList(XmlNode node)
+        private List<Comment> DeserializeCommentList(XmlNode node)
         {
             var commentList = new List<Comment>();
 
@@ -470,33 +471,31 @@ namespace Bgg.Net.Common.Infrastructure.Xml
 
                 foreach (XmlNode childNode in node.ChildNodes)
                 {
-                    if (childNode.Name == "listdate")
+                    switch (childNode.Name)
                     {
-                        listing.ListDate = childNode.Value.ToNullabeDateTime();
-                    }
-                    else if (childNode.Name == "price")
-                    {
-                        listing.Price = new Price
-                        {
-                            Currency = childNode.Attributes.GetNamedItem("currency")?.Value,
-                            Value = childNode.Attributes.GetNamedItem("value")?.Value.ToNullableDouble()
-                        };
-                    }
-                    else if (childNode.Name == "condition")
-                    {
-                        listing.Condition = childNode.Value;
-                    }
-                    else if (childNode.Name == "notes")
-                    {
-                        listing.Notes = childNode.Value;
-                    }
-                    else if (childNode.Name == "link")
-                    {
-                        listing.Link = new ListingLink
-                        {
-                            Href = childNode.Attributes.GetNamedItem("href")?.Value,
-                            Title = childNode.Attributes.GetNamedItem("title")?.Value,
-                        };
+                        case "listdate":
+                            listing.ListDate = childNode.Attributes.GetNamedItem("value").Value.ToNullabeDateTime();
+                            break;
+                        case "price":
+                            listing.Price = new Price
+                            {
+                                Currency = childNode.Attributes.GetNamedItem("currency")?.Value,
+                                Value = childNode.Attributes.GetNamedItem("value")?.Value.ToNullableDouble()
+                            };
+                            break;
+                        case "condition":
+                            listing.Condition = childNode.Attributes.GetNamedItem("value")?.Value;
+                            break;
+                        case "notes":
+                            listing.Notes = childNode.Attributes.GetNamedItem("value")?.Value;
+                            break;
+                        case "link":
+                            listing.Link = new ListingLink
+                            {
+                                Href = childNode.Attributes.GetNamedItem("href")?.Value,
+                                Title = childNode.Attributes.GetNamedItem("title")?.Value,
+                            };
+                            break;
                     }
                 }
             }
