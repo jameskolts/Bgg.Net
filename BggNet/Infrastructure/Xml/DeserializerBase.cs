@@ -528,6 +528,11 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             return listing;
         }
 
+        /// <summary>
+        /// Deserializes videos given an xml node.
+        /// </summary>
+        /// <param name="node">The <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>The deserialized <see cref="Videos"/>.</returns>
         protected Videos DeserializeVideos(XmlNode node)
         {
             Videos videos = null;
@@ -551,6 +556,11 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             return videos;
         }
 
+        /// <summary>
+        /// Deserializes a video given an xml node.
+        /// </summary>
+        /// <param name="node">The <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>The deserialized <see cref="Video"/>.</returns>
         protected Video DeserializeVideo(XmlNode node)
         {
             Video video = null;
@@ -573,6 +583,11 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             return video;
         }
 
+        /// <summary>
+        /// Deserializes Statistics given an xml node.
+        /// </summary>
+        /// <param name="node">The <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>The deserialized <see cref="Statistics"/>.</returns>
         protected Statistics DeserializeStatistics(XmlNode node)
         {
             Statistics statistics = null;
@@ -589,6 +604,11 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             return statistics;
         }
 
+        /// <summary>
+        /// Deserializes Ratings given an xml node.
+        /// </summary>
+        /// <param name="node">The <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>The deserialized <see cref="Ratings"/>.</returns>
         protected Ratings DeserializeRatings(XmlNode node)
         {
             Ratings ratings = null;
@@ -616,6 +636,11 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             return ratings;
         }
 
+        /// <summary>
+        /// Deserializes rankings given an xml node.
+        /// </summary>
+        /// <param name="node">The <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>A <see cref="List{T}"/> of <see cref="Rank"/>.</returns>
         protected List<Rank> DeserializeRanks(XmlNode node)
         {
             List<Rank> ranks = null;
@@ -635,6 +660,11 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             return ranks;
         }
 
+        /// <summary>
+        /// Deserializes a rankgiven an xml node.
+        /// </summary>
+        /// <param name="node">The <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>The deserialized <see cref="Rank"/>.</returns>
         protected Rank DeserializeRank(XmlNode node)
         {
             return new Rank
