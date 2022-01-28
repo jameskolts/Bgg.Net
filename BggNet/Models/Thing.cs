@@ -3,6 +3,9 @@ using Bgg.Net.Common.Models.Polls;
 
 namespace Bgg.Net.Common.Models
 {
+    /// <summary>
+    /// Represents a "Thing" from the board game geek XmlApi2
+    /// </summary>
     public class Thing : BggBase
     {
         public int? Id { get; set; }
@@ -43,6 +46,10 @@ namespace Bgg.Net.Common.Models
         public Comments Comments { get; set; }
 
         public List<Listing> MarketplaceListing { get; set; } = new List<Listing>();
+
+        public Videos Videos { get; set; }
+
+        public Statistics Statistics { get; set; }
     }
 }
 

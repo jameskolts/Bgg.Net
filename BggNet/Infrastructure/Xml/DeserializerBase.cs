@@ -4,7 +4,6 @@ using Bgg.Net.Common.Models.Polls;
 using Bgg.Net.Common.Models.Polls.PollResults;
 using Bgg.Net.Common.Models.Versions;
 using Bgg.Net.Common.Types;
-using System.Diagnostics;
 using System.Xml;
 using Version = Bgg.Net.Common.Models.Versions.Version;
 
@@ -236,7 +235,7 @@ namespace Bgg.Net.Common.Infrastructure.Xml
         {
             if (node != null)
             {
-                return node.Attributes.GetNamedItem(propertyName)?.Value;
+                return node.Attributes?.GetNamedItem(propertyName)?.Value;
             }
 
             return null;
@@ -245,14 +244,40 @@ namespace Bgg.Net.Common.Infrastructure.Xml
         /// <summary>
         /// Deserializes the attribute value of a given node.
         /// </summary>
-        /// <param name="propertyName">The attribute to deserialize.</param>
+        /// <param name="attributeName">The attribute to deserialize.</param>
         /// <param name="node">The <see cref="XmlNode"/> to deserialize.</param>
         /// <returns>The <see cref="int"/> value of the attribute.</returns>
-        protected int? DeserializeIntAttribute(string propertyName, XmlNode node)
+        protected int? DeserializeIntAttribute(string attributeName, XmlNode node)
         {
             if (node != null)
             {
-                return node.Attributes.GetNamedItem(propertyName)?.Value.ToNullableInt();
+                return node.Attributes?.GetNamedItem(attributeName)?.Value.ToNullableInt();
+            }
+
+            return null;
+        }
+
+        protected double? DeserializeDoubleAttribute(string attributeName, XmlNode node)
+        {
+            if (node != null)
+            {
+                return node.Attributes?.GetNamedItem(attributeName)?.Value.ToNullableDouble();
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Deserializes the attribute value of a given node.
+        /// </summary>
+        /// <param name="attributeName">The attribute to deserialize.</param>
+        /// <param name="node">The <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>The <see cref="int"/> value of the attribute.</returns>
+        protected long? DeserializeLongAttribute(string attributeName, XmlNode node)
+        {
+            if (node != null)
+            {
+                return node.Attributes?.GetNamedItem(attributeName)?.Value.ToNullableLong();
             }
 
             return null;
@@ -474,7 +499,7 @@ namespace Bgg.Net.Common.Infrastructure.Xml
                     switch (childNode.Name)
                     {
                         case "listdate":
-                            listing.ListDate = childNode.Attributes.GetNamedItem("value").Value.ToNullabeDateTime();
+                            listing.ListDate = childNode.Attributes.GetNamedItem("value").Value.ToNullableDateTime();
                             break;
                         case "price":
                             listing.Price = new Price
@@ -501,6 +526,126 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             }
 
             return listing;
+        }
+
+        protected Videos DeserializeVideos(XmlNode node)
+        {
+            Videos videos = null;
+
+            if (node != null)
+            {
+                videos = new Videos();
+                videos.Total = node.Attributes.GetNamedItem("total")?.Value.ToNullableInt();
+
+                foreach (XmlNode videoNode in node.ChildNodes)
+                {
+                    var video = DeserializeVideo(videoNode);
+
+                    if (video != null)
+                    {
+                        videos.Video.Add(video);
+                    }
+                }
+            }
+
+            return videos;
+        }
+
+        protected Video DeserializeVideo(XmlNode node)
+        {
+            Video video = null;
+
+            if (node != null)
+            {
+                video = new Video
+                {
+                    Id = DeserializeIntAttribute("id", node),
+                    Title = DeserializeStringAttribute("title", node),
+                    Category = DeserializeStringAttribute("category", node),
+                    Language = DeserializeStringAttribute("language", node),
+                    Link = DeserializeStringAttribute("link", node),
+                    UserName = DeserializeStringAttribute("username", node),
+                    UserId = DeserializeLongAttribute("userid", node),
+                    PostDate = node.Attributes.GetNamedItem("postdate")?.Value.ToNullableDateTimeOffset()
+                };
+            }
+
+            return video;
+        }
+
+        protected Statistics DeserializeStatistics(XmlNode node)
+        {
+            Statistics statistics = null;
+
+            if (node != null)
+            {
+                statistics = new Statistics
+                {
+                    Page = DeserializeIntAttribute("page", node),
+                    Ratings = DeserializeRatings(node.ChildNodes[0])
+                };
+            }
+
+            return statistics;
+        }
+
+        protected Ratings DeserializeRatings(XmlNode node)
+        {
+            Ratings ratings = null;
+
+            if (node != null)
+            {
+                ratings = new Ratings
+                {
+                    UsersRated = DeserializeLongAttribute("value", node.SelectSingleNode("usersrated")),
+                    Average = DeserializeDoubleAttribute("value", node.SelectSingleNode("average")),
+                    BayesAverage = DeserializeDoubleAttribute("value", node.SelectSingleNode("bayesaverage")),
+                    Ranks = DeserializeRanks(node.SelectSingleNode("ranks")),
+                    StdDeviation = DeserializeDoubleAttribute("value", node.SelectSingleNode("stddev")),
+                    Median = DeserializeDoubleAttribute("value", node.SelectSingleNode("median")),
+                    Owned = DeserializeLongAttribute("value", node.SelectSingleNode("owned")),
+                    Wishing = DeserializeLongAttribute("value", node.SelectSingleNode("wishing")),
+                    Trading = DeserializeLongAttribute("value", node.SelectSingleNode("trading")),
+                    Wanting = DeserializeLongAttribute("value", node.SelectSingleNode("wanting")),
+                    NumComments = DeserializeLongAttribute("value", node.SelectSingleNode("numcomments")),
+                    NumWeights = DeserializeLongAttribute("value", node.SelectSingleNode("numweights")),
+                    AverageWeights = DeserializeDoubleAttribute("value", node.SelectSingleNode("averageweight"))
+                };
+            }
+
+            return ratings;
+        }
+
+        protected List<Rank> DeserializeRanks(XmlNode node)
+        {
+            List<Rank> ranks = null;
+
+            if (node != null)
+            {
+                ranks = new List<Rank>();
+
+                foreach (XmlNode child in node.ChildNodes)
+                {
+                    var rank = DeserializeRank(child); 
+
+                    ranks.Add(rank);
+                }  
+            }
+
+            return ranks;
+        }
+
+        protected Rank DeserializeRank(XmlNode node)
+        {
+            return new Rank
+            {
+                Type = DeserializeStringAttribute("type", node),
+                Id = DeserializeLongAttribute("id", node),
+                Name = DeserializeStringAttribute("name", node),
+                FriendlyName = DeserializeStringAttribute("friendlyname", node),
+                Value = DeserializeLongAttribute("value", node),
+                BayesAverage = DeserializeDoubleAttribute("bayesaverage", node)
+            };
         }
     }
 }

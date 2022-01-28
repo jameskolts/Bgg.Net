@@ -20,6 +20,11 @@ namespace Bgg.Net.Common.Infrastructure.Xml
         /// <returns>A <see cref="Thing"/> object from the deserialized xml.</returns>
         public BggBase Deserialize(string xml)
         {
+            if (string.IsNullOrWhiteSpace(xml))
+            {
+                return null;
+            }
+
             var document = new XmlDocument();
 
             document.LoadXml(xml);
@@ -29,13 +34,13 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             {
                 Type = DeserializeStringAttribute("type", root.SelectSingleNode(_rootXpath)),
                 Id = DeserializeIntAttribute("id", root.SelectSingleNode(_rootXpath)),
-                YearPublished = DeserializeIntAttribute("yearpublished", root),
-                MinPlayers = DeserializeIntAttribute("minplayers", root),
-                MaxPlayers = DeserializeIntAttribute("maxplayers", root),
-                PlayingTime = DeserializeIntAttribute("playingtime", root),
-                MinPlayTime = DeserializeIntAttribute("minplaytime", root),
-                MaxPlayTime = DeserializeIntAttribute("maxplaytime", root),
-                MinAge = DeserializeIntAttribute("minage", root),
+                YearPublished = DeserializeIntAttribute("value", root.SelectSingleNode($"{_rootXpath}/yearpublished")),
+                MinPlayers = DeserializeIntAttribute("value", root.SelectSingleNode($"{_rootXpath}/minplayers")),
+                MaxPlayers = DeserializeIntAttribute("value", root.SelectSingleNode($"{_rootXpath}/maxplayers")),
+                PlayingTime = DeserializeIntAttribute("value", root.SelectSingleNode($"{_rootXpath}/playingtime")),
+                MinPlayTime = DeserializeIntAttribute("value", root.SelectSingleNode($"{_rootXpath}/minplaytime")),
+                MaxPlayTime = DeserializeIntAttribute("value", root.SelectSingleNode($"{_rootXpath}/maxplaytime")),
+                MinAge = DeserializeIntAttribute("value", root.SelectSingleNode($"{_rootXpath}/minage")),
                 Poll = DeserializePolls(root.SelectNodes($"{_rootXpath}/poll")),
                 Name = DeserializeBggNames(root.SelectNodes($"{_rootXpath}/name")),
                 Thumbnail = DeserializeStringInnerText(root.SelectSingleNode($"{_rootXpath}/thumbnail")),
@@ -44,8 +49,11 @@ namespace Bgg.Net.Common.Infrastructure.Xml
                 Link = DeserializeLink(root.SelectNodes($"{_rootXpath}/link")),
                 Versions = DeserializeVersions(root.SelectSingleNode($"{_rootXpath}/versions")),
                 Comments = DeserializeComments(root.SelectSingleNode($"{_rootXpath}/comments")),
-                MarketplaceListing = DeserializeMarketplaceListings(root.SelectSingleNode($"{_rootXpath}/marketplacelistings"))
+                MarketplaceListing = DeserializeMarketplaceListings(root.SelectSingleNode($"{_rootXpath}/marketplacelistings")),
+                Videos = DeserializeVideos(root.SelectSingleNode($"{_rootXpath}/videos"))
             };
+
+            //TODO: Add Videos, statistics
 
             return thing;
         }

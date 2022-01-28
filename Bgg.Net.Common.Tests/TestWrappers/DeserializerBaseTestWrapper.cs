@@ -11,7 +11,7 @@ namespace Bgg.Net.Common.Tests.TestWrappers
     {
         public DeserializerBaseTestWrapper(string rootpath) : base(rootpath) { }
 
-        public List<Link> DeserializeLink(XmlNodeList nodeList)
+        public new List<Link> DeserializeLink(XmlNodeList nodeList)
         {
             return base.DeserializeLink(nodeList);
         }
@@ -54,6 +54,16 @@ namespace Bgg.Net.Common.Tests.TestWrappers
         public new List<Listing> DeserializeMarketplaceListings(XmlNode node)
         {
             return base.DeserializeMarketplaceListings(node);
+        }
+
+        public new Videos DeserializeVideos(XmlNode node)
+        {
+            return base.DeserializeVideos(node);
+        }
+
+        public new Statistics DeserializeStatistics(XmlNode node)
+        {
+            return base.DeserializeStatistics(node);
         }
     }
 }

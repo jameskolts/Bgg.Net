@@ -6,6 +6,7 @@ using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using System.Xml;
+using System;
 
 namespace Bgg.Net.Common.Tests.Infrastructure.Xml
 {
@@ -414,7 +415,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             //Assert
             result.Should().NotBeNull();
             result.Count.Should().Be(53);
-            result[0].ListDate.Should().Be(new System.DateTime(2015, 3, 18,7,45,57));
+            result[0].ListDate.Should().Be(new DateTime(2015, 3, 18,7,45,57));
             result[0].Price.Currency.Should().Be("GBP");
             result[0].Price.Value.Should().Be(75);
             result[0].Condition.Should().Be("verygood");
@@ -428,6 +429,83 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
         {
             //Act
             var result = deserializer.DeserializeMarketplaceListings(null);
+
+            //Assert
+            result.Should().BeNull();
+        }
+
+        [TestMethod]
+        public void DeserializeVideos_Success()
+        {
+            //Arrange
+            var node = root.SelectSingleNode($"{_rootXpath}/videos");
+
+            //Act
+            var result = deserializer.DeserializeVideos(node);
+
+            //Assert
+            result.Should().NotBeNull();
+            result.Total.Should().Be(31);
+            result.Video.Count.Should().Be(15);
+            result.Video[0].Id.Should().Be(331304);
+            result.Video[0].Title.Should().Be("Die Macher Learn to Play");
+            result.Video[0].Category.Should().Be("instructional");
+            result.Video[0].Language.Should().Be("English");
+            result.Video[0].Link.Should().Be("http://www.youtube.com/watch?v=fg1IiX41UKs");
+            result.Video[0].UserId.Should().Be(1054024);
+            result.Video[0].UserName.Should().Be("PieLoGic");
+            result.Video[0].PostDate.Should().Be(DateTimeOffset.Parse("2021-06-26T17:38:47-05:00"));
+        }
+
+        [TestMethod]
+        public void DeserializeVideos_Null()
+        {
+            //Act
+            var result = deserializer.DeserializeVideos(null);
+
+            //Assert
+            result.Should().BeNull();
+        }
+
+        [TestMethod]
+        public void DeserializeStatistics_Success()
+        {
+            //Arrange
+            var node = root.SelectSingleNode($"{_rootXpath}/statistics");
+
+            //Act
+            var result = deserializer.DeserializeStatistics(node);
+
+            //Assert
+            result.Should().NotBeNull();
+            result.Page.Should().Be(1);
+            result.Ratings.Should().NotBeNull();
+            result.Ratings.UsersRated.Should().Be(5381);
+            result.Ratings.Average.Should().Be(7.61485);
+            result.Ratings.BayesAverage.Should().Be(7.10199);
+            result.Ratings.Ranks.Count.Should().Be(2);
+            result.Ratings.Ranks[0].Type.Should().Be("subtype");
+            result.Ratings.Ranks[0].Id.Should().Be(1);
+            result.Ratings.Ranks[0].Name.Should().Be("boardgame");
+            result.Ratings.Ranks[0].FriendlyName.Should().Be("Board Game Rank");
+            result.Ratings.Ranks[0].Value.Should().Be(323);
+            result.Ratings.Ranks[0].BayesAverage.Should().Be(7.10199);
+            result.Ratings.StdDeviation.Should().Be(1.57893);
+            result.Ratings.Median.Should().Be(0);
+            result.Ratings.Owned.Should().Be(7546);
+            result.Ratings.Trading.Should().Be(250);
+            result.Ratings.Wanting.Should().Be(506);
+            result.Ratings.Wishing.Should().Be(2064);
+            result.Ratings.NumComments.Should().Be(2018);
+            result.Ratings.NumWeights.Should().Be(761);
+            result.Ratings.AverageWeights.Should().Be(4.3206);
+        }
+
+        [TestMethod]
+        public void DeserializeStatistics_Null()
+        {
+            //Act
+            var result = deserializer.DeserializeStatistics(null);
 
             //Assert
             result.Should().BeNull();

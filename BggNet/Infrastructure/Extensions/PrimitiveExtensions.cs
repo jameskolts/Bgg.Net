@@ -22,9 +22,29 @@
             return null;
         }
 
-        public static DateTime? ToNullabeDateTime(this string s)
+        public static long? ToNullableLong(this string s)
+        {
+            if (long.TryParse(s, out long i))
+            {
+                return i;
+            }
+
+            return null;
+        }
+
+        public static DateTime? ToNullableDateTime(this string s)
         {
             if (DateTime.TryParse(s, out DateTime i))
+            {
+                return i;
+            }
+
+            return null;
+        }
+
+        public static DateTimeOffset? ToNullableDateTimeOffset(this string s)
+        {
+            if (DateTimeOffset.TryParse(s, out DateTimeOffset i))
             {
                 return i;
             }
