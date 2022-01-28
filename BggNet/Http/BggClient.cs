@@ -1,30 +1,37 @@
 ﻿namespace Bgg.Net.Common.Http
 {
-    public class BggClient : HttpClient
+    public class BggClient : IHttpClient
     {
+        HttpClient httpClient;
 
         /// <summary>
         /// Constructs a new instance of the BggClient with a default path.
         /// </summary>
         public BggClient()
         {
-            BaseAddress = new Uri(Constants.BGG_PATH);
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(Constants.BGG_PATH);
+        }             
+
+        public Task<HttpResponseMessage> DeleteAsync(string url)
+        {
+            return httpClient.DeleteAsync(url);
+        }
+                
+        public Task<HttpResponseMessage> GetAsync(string url)
+        {
+            return httpClient.GetAsync(url);
         }
 
-        /// <summary>
-        /// Constructs a new instance of the BggClient with the given base address.
-        /// </summary>
-        public BggClient(string baseAddress)
+        public Task<HttpResponseMessage> PostAsync(string url, HttpContent content)
         {
-            BaseAddress = new Uri(baseAddress);
+            return httpClient.PostAsync(url, content);
         }
+                
 
-        /// <summary>
-        /// Constructs a new instance of the BggClient with the given base address.
-        /// </summary>
-        public BggClient(Uri baseUri)
+        public Task<HttpResponseMessage> PutAsync(string url, HttpContent content)
         {
-            BaseAddress = baseUri;
+            return httpClient.PutAsync(url, content);
         }
     }
 }

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Bgg.Net.Common.Infrastructure.Extensions;
+﻿using Bgg.Net.Common.Infrastructure.Extensions;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Bgg.Net.Common.Tests.Infrastructure.Extensions
 {

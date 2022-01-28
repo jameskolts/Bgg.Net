@@ -8,13 +8,13 @@ namespace Bgg.Net.Common.Resources.Things
 {
     public class ThingHandler : IThingHandler
     {
-        private readonly BggClient _client;
+        private readonly IHttpClient _client;
         private readonly ILogger _logger;
         private readonly IThingDeserializer _deserializer;
 
-        public ThingHandler(BggClient bggClient, ILogger logger)
+        public ThingHandler(IHttpClient httpClient, ILogger logger)
         {
-            _client = bggClient;
+            _client = httpClient;
             _logger = logger;
             _deserializer = new ThingDeserializer("//items/item", logger);
         }
