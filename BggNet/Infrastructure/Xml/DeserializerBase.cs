@@ -4,6 +4,7 @@ using Bgg.Net.Common.Models.Polls;
 using Bgg.Net.Common.Models.Polls.PollResults;
 using Bgg.Net.Common.Models.Versions;
 using Bgg.Net.Common.Types;
+using Microsoft.Extensions.Logging;
 using System.Xml;
 using Version = Bgg.Net.Common.Models.Versions.Version;
 
@@ -15,14 +16,17 @@ namespace Bgg.Net.Common.Infrastructure.Xml
     public abstract class DeserializerBase
     {
         protected readonly string _rootXpath;
+        protected readonly ILogger _logger;
+
 
         /// <summary>
         /// Constructs a new instance of <see cref="DeserializerBase"/>.
         /// </summary>
         /// <param name="rootXpath">The root xpath string.</param>
-        public DeserializerBase(string rootXpath)
+        public DeserializerBase(string rootXpath, ILogger logger)
         {
             _rootXpath = rootXpath;
+            _logger = logger;
         }
 
         /// <summary>
@@ -594,6 +598,11 @@ namespace Bgg.Net.Common.Infrastructure.Xml
 
             if (node != null)
             {
+                if (node.ChildNodes.Count != 1)
+                {
+                    throw new XmlException("Invalid xml encountered while deserializing Statistic.");
+                }
+
                 statistics = new Statistics
                 {
                     Page = DeserializeIntAttribute("page", node),

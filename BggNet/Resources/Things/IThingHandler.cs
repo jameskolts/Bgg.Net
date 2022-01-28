@@ -27,6 +27,6 @@ namespace Bgg.Net.Common.Resources.Things
         /// </summary>
         /// <param name="extensions">The parameters to use.</param>
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Thing"/>.</returns>
-        Task<BggResult<Thing>> GetThingsExtensible(List<Extension> extensions);
+        Task<BggResult<Thing>> GetThingsExtensible(Extension extensions);
     }
 }

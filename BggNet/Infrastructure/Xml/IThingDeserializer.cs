@@ -2,13 +2,13 @@
 
 namespace Bgg.Net.Common.Infrastructure.Xml
 {
-    public interface IBggDeserializer
+    public interface IThingDeserializer
     {
         /// <summary>
         /// Deserializes the given xml.
         /// </summary>
         /// <param name="xml">Thing string to deserialize.</param>
-        /// <returns>An object of type BggBase.</returns>
-        BggBase Deserialize(string xml);
+        /// <returns>An object of type <see cref="Thing"/>.</returns>
+        Thing Deserialize(string xml);
     }
 }

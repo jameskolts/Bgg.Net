@@ -6,12 +6,17 @@ namespace Bgg.Net.Common.Infrastructure
     public class BggResult<T>
         where T : BggBase
     {
-        public List<T> Items { get; set; }
+        public List<T> Items { get; set; } = new List<T>();
 
         public List<string> Errors { get; set; } = new List<string>();
 
         public bool IsSuccessful { get; set; }
 
         public HttpStatusCode HttpResponseCode { get; set; }
+
+        public static BggResult<T> BuildResult(HttpResponseMessage responseMessage)
+        {            
+            return null;
+        }
     }
 }

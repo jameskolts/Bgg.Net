@@ -3,10 +3,10 @@ using Bgg.Net.Common.Resources.Things;
 
 Console.WriteLine("Hello, Bgg.Net!");
 
-var handler = new ThingHandler(new Bgg.Net.Common.Http.BggClient());
+//var handler = new ThingHandler(new Bgg.Net.Common.Http.BggClient(), new I);
 
-var result = await handler.GetThingById(1);
+//var result = await handler.GetThingById(1);
 
-Console.WriteLine(result.ToString());
+//Console.WriteLine(result.ToString());
 Console.WriteLine("Press any key to exit");
 Console.ReadKey();

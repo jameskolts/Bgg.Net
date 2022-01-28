@@ -1,24 +1,20 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
-using Bgg.Net.Common.Infrastructure.Xml;
-using System.Xml;
+﻿using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
+using FluentAssertions;
+using Microsoft.Extensions.Logging;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace Bgg.Net.Common.Tests.Infrastructure.Xml
 {
     [TestClass]
     public class ThingDeserializerTests
     {
-        private readonly IBggDeserializer deserializer;
+        private readonly IThingDeserializer deserializer;
 
         public ThingDeserializerTests()
         {
-            deserializer = new ThingDeserializer("//items/item");
+            deserializer = new ThingDeserializer("//items/item", Mock.Of<ILogger>());
         }
 
         [TestMethod]

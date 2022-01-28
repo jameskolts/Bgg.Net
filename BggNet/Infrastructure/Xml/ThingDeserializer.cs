@@ -1,4 +1,5 @@
 ﻿using Bgg.Net.Common.Models;
+using Microsoft.Extensions.Logging;
 using System.Xml;
 
 namespace Bgg.Net.Common.Infrastructure.Xml
@@ -6,10 +7,10 @@ namespace Bgg.Net.Common.Infrastructure.Xml
     /// <summary>
     /// Deserializes objects of type <seealso cref="Thing"/>.
     /// </summary>
-    public class ThingDeserializer : DeserializerBase, IBggDeserializer
+    public class ThingDeserializer : DeserializerBase, IThingDeserializer
     {
-        public ThingDeserializer(string rootXpath)
-            : base(rootXpath)
+        public ThingDeserializer(string rootXpath, ILogger logger)
+            : base(rootXpath, logger)
         {
         }
 
@@ -18,7 +19,7 @@ namespace Bgg.Net.Common.Infrastructure.Xml
         /// </summary>
         /// <param name="xml">Thing string to deserialize.</param>
         /// <returns>A <see cref="Thing"/> object from the deserialized xml.</returns>
-        public BggBase Deserialize(string xml)
+        public Thing Deserialize(string xml)
         {
             if (string.IsNullOrWhiteSpace(xml))
             {

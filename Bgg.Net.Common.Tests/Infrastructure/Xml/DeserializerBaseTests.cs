@@ -7,6 +7,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using System.Xml;
 using System;
+using Moq;
+using Microsoft.Extensions.Logging;
 
 namespace Bgg.Net.Common.Tests.Infrastructure.Xml
 {
@@ -22,7 +24,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
 
         public DeserializerBaseTests()
         {
-            deserializer = new DeserializerBaseTestWrapper("//items/item");
+            deserializer = new DeserializerBaseTestWrapper(_rootXpath, Mock.Of<ILogger>());
             root = XmlGenerator.GenerateThingXmlElement();
         }
 
