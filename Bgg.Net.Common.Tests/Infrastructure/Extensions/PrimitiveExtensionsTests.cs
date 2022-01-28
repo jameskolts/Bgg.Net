@@ -42,7 +42,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Extensions
         public void ToNullableInt_Null()
         {
             //Arrange 
-            string s = null;
+            string? s = null;
 
             //Act
             var result = s.ToNullableInt();
@@ -85,7 +85,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Extensions
         public void ToNullableDouble_Null()
         {
             //Arrange 
-            string s = null;
+            string? s = null;
 
             //Act
             var result = s.ToNullableDouble();
@@ -128,7 +128,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Extensions
         public void ToNullableLong_Null()
         {
             //Arrange 
-            string s = null;
+            string? s = null;
 
             //Act
             var result = s.ToNullableLong();
@@ -171,7 +171,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Extensions
         public void ToNullableDateTime_Null()
         {
             //Arrange 
-            string s = null;
+            string? s = null;
 
             //Act
             var result = s.ToNullableDateTime();
@@ -214,7 +214,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Extensions
         public void ToNullableDateTimeOffset_Null()
         {
             //Arrange 
-            string s = null;
+            string? s = null;
 
             //Act
             var result = s.ToNullableDateTimeOffset();

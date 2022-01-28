@@ -12,11 +12,11 @@ namespace Bgg.Net.Common.Resources.Things
         private readonly ILogger _logger;
         private readonly IThingDeserializer _deserializer;
 
-        public ThingHandler(IHttpClient httpClient, ILogger logger)
+        public ThingHandler(IHttpClient httpClient, ILogger logger, IThingDeserializer deserializer)
         {
             _client = httpClient;
             _logger = logger;
-            _deserializer = new ThingDeserializer("//items/item", logger);
+            _deserializer = deserializer;
         }
 
         public async Task<BggResult<Thing>> GetThingById(int id)
@@ -54,7 +54,11 @@ namespace Bgg.Net.Common.Resources.Things
             try
             {
                 var thingResponse = _deserializer.Deserialize(responseString);
-                bggResult.Items.Add(thingResponse);
+
+                if (thingResponse != null)
+                {
+                    bggResult.Items.Add(thingResponse);
+                }
             }
             catch (Exception exception)
             {

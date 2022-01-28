@@ -1,13 +1,14 @@
 ﻿using Bgg.Net.Common.Http;
-using Bgg.Net.Common.Tests.Infrastructure.Xml;
+using Bgg.Net.Common.Infrastructure.Xml;
+using Bgg.Net.Common.Models;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System;
+using Microsoft.Extensions.Logging;
+using Bgg.Net.Common.Tests.Infrastructure.Xml;
 
 namespace Bgg.Net.Common.Tests.Resources
 {
@@ -16,12 +17,12 @@ namespace Bgg.Net.Common.Tests.Resources
     /// </summary>
     public abstract class HandlerTestBase
     {
-        public Mock<IHttpClient> MockSuccessfulHttpClient()
+        public Mock<IHttpClient> MockHttpClientGet(string content, HttpStatusCode statusCode)
         {
             var responseMessage = new HttpResponseMessage
             {
-                StatusCode = HttpStatusCode.OK,
-                Content = new StringContent(XmlGenerator.GenerateBoardGameXmlString()),
+                StatusCode = statusCode,
+                Content = new StringContent(content),
             };
 
             var bggclientMock = new Mock<IHttpClient>();
@@ -29,6 +30,29 @@ namespace Bgg.Net.Common.Tests.Resources
                 .Returns(Task.FromResult(responseMessage));
 
             return bggclientMock;
+        }
+
+        public Mock<IThingDeserializer> MockIThingDeserializer(bool? returnsNull = false, Exception? exception = null)
+        {
+            var deserializerMock = new Mock<IThingDeserializer>();
+
+            if (exception != null)
+            {
+                deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
+                    .Throws(exception);
+            }
+            else if (returnsNull.HasValue && returnsNull.Value == true)
+            {
+                deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
+                    .Returns((Thing)null);
+            }
+            else
+            {
+                deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
+                    .Returns(new ThingDeserializer("//items/item", Mock.Of<ILogger>()).Deserialize(XmlGenerator.GenerateBoardGameXmlString()));
+            }
+
+            return deserializerMock;
         }
     }
 }
