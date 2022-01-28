@@ -51,10 +51,9 @@ namespace Bgg.Net.Common.Infrastructure.Xml
                 Versions = DeserializeVersions(root.SelectSingleNode($"{_rootXpath}/versions")),
                 Comments = DeserializeComments(root.SelectSingleNode($"{_rootXpath}/comments")),
                 MarketplaceListing = DeserializeMarketplaceListings(root.SelectSingleNode($"{_rootXpath}/marketplacelistings")),
-                Videos = DeserializeVideos(root.SelectSingleNode($"{_rootXpath}/videos"))
+                Videos = DeserializeVideos(root.SelectSingleNode($"{_rootXpath}/videos")),
+                Statistics = DeserializeStatistics(root.SelectSingleNode($"{_rootXpath}/statistics"))
             };
-
-            //TODO: Add Videos, statistics
 
             return thing;
         }

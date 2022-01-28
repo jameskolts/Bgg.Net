@@ -1,14 +1,13 @@
 ﻿using Bgg.Net.Common.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Tests.Infrastructure.Xml;
+using Microsoft.Extensions.Logging;
 using Moq;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Xml;
-using System;
-using Microsoft.Extensions.Logging;
-using Bgg.Net.Common.Tests.Infrastructure.Xml;
 
 namespace Bgg.Net.Common.Tests.Resources
 {
