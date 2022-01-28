@@ -16,13 +16,6 @@ namespace Bgg.Net.Common.Resources.Things
         Task<BggResult<Thing>> GetThingById(int id);
 
         /// <summary>
-        /// Searches for a thing by name.
-        /// </summary>
-        /// <param name="name">The name to search by.</param>
-        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Thing"/>.</returns>
-        Task<BggResult<Thing>> SearchByName(string name);
-
-        /// <summary>
         /// Gets a thing given extensible parameters. 
         /// </summary>
         /// <param name="extensions">The parameters to use.</param>

@@ -3,12 +3,12 @@ using Bgg.Net.Common.Models.Versions;
 using Bgg.Net.Common.Tests.TestWrappers;
 using Bgg.Net.Common.Types;
 using FluentAssertions;
+using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using System;
 using System.Linq;
 using System.Xml;
-using System;
-using Moq;
-using Microsoft.Extensions.Logging;
 
 namespace Bgg.Net.Common.Tests.Infrastructure.Xml
 {

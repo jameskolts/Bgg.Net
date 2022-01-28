@@ -46,11 +46,6 @@ namespace Bgg.Net.Common.Resources.Things
             return await BuildBggResult(httpResponseMessage);
         }
 
-        public Task<BggResult<Thing>> SearchByName(string name)
-        {
-            throw new NotImplementedException();
-        }
-
         private async Task<BggResult<Thing>> BuildBggResult(HttpResponseMessage httpResponse)
         {
             var responseString = await httpResponse.Content.ReadAsStringAsync();
