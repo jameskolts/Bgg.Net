@@ -6,12 +6,21 @@ using Microsoft.Extensions.Logging;
 
 namespace Bgg.Net.Common.Resources.Things
 {
+    /// <summary>
+    /// Handles Thing requests to the BGG API.
+    /// </summary>
     public class ThingHandler : IThingHandler
     {
         private readonly IHttpClient _client;
         private readonly ILogger _logger;
         private readonly IThingDeserializer _deserializer;
 
+        /// <summary>
+        /// Creates an instance of <see cref="ThingHandler"/>.
+        /// </summary>
+        /// <param name="httpClient">The httpClient.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="deserializer">The deserializer.</param>
         public ThingHandler(IHttpClient httpClient, ILogger logger, IThingDeserializer deserializer)
         {
             _client = httpClient;
@@ -19,6 +28,11 @@ namespace Bgg.Net.Common.Resources.Things
             _deserializer = deserializer;
         }
 
+        /// <summary>
+        /// Gets a Thing by id.
+        /// </summary>
+        /// <param name="id">The id of the thing to retrieve.</param>
+        /// <returns>A <see cref="BggResult{T}"/> containing the <see cref="Thing"/>.</returns>
         public async Task<BggResult<Thing>> GetThingById(int id)
         {
             _logger.LogInformation("GetThingById : {id}", id);
@@ -28,11 +42,17 @@ namespace Bgg.Net.Common.Resources.Things
             return await BuildBggResult(httpResponseMessage);
         }
 
-        public async Task<BggResult<Thing>> GetThingsExtensible(Extension extensions)
+        /// <summary>
+        /// Gets a Thing by extensible parameters to allow support for additional query parameters.
+        /// </summary>
+        /// <param name="extension">The extension containing the query paramters.</param>
+        /// <returns>A <see cref="BggResult{T}"/> containing the <see cref="Thing"/>.</returns>
+        /// <exception cref="NotSupportedException"></exception>
+        public async Task<BggResult<Thing>> GetThingsExtensible(Extension extension)
         {
-            _logger.LogInformation("GetThingsExtensible : {extensions}", extensions);
+            _logger.LogInformation("GetThingsExtensible : {extensions}", extension);
 
-            foreach (var kvp in extensions.Value)
+            foreach (var kvp in extension.Value)
             {
                 if (!Constants.SupportedQueryParameters.Contains(kvp.Key))
                 {
@@ -40,7 +60,7 @@ namespace Bgg.Net.Common.Resources.Things
                 }
             }
 
-            string queryString = "thing?" + string.Join("&", extensions.Value.Select(x => x.Key + "=" + x.Value));
+            string queryString = "thing?" + string.Join("&", extension.Value.Select(x => x.Key + "=" + x.Value));
             var httpResponseMessage = await _client.GetAsync(queryString);
 
             return await BuildBggResult(httpResponseMessage);
