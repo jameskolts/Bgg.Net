@@ -1,5 +1,5 @@
 ﻿using Bgg.Net.Common.Models;
-using Microsoft.Extensions.Logging;
+using Serilog;
 using System.Xml;
 
 namespace Bgg.Net.Common.Infrastructure.Xml

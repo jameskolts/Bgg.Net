@@ -4,7 +4,7 @@ using Bgg.Net.Common.Models.Polls;
 using Bgg.Net.Common.Models.Polls.PollResults;
 using Bgg.Net.Common.Models.Versions;
 using Bgg.Net.Common.Types;
-using Microsoft.Extensions.Logging;
+using Serilog;
 using System.Xml;
 using Version = Bgg.Net.Common.Models.Versions.Version;
 

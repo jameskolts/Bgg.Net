@@ -1,8 +1,9 @@
 ﻿namespace Bgg.Net.Common.Http
 {
-    public class BggClient : IHttpClient
+    public class BggClient : IHttpClient, IDisposable
     {
         HttpClient httpClient;
+        private bool disposed;
 
         /// <summary>
         /// Constructs a new instance of the BggClient with a default path.
@@ -35,6 +36,25 @@
         public Task<HttpResponseMessage> PutAsync(string url, HttpContent content)
         {
             return httpClient.PutAsync(url, content);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    httpClient.Dispose();
+                }
+
+                disposed = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

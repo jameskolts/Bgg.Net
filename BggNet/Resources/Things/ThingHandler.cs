@@ -2,7 +2,7 @@
 using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
-using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace Bgg.Net.Common.Resources.Things
 {
@@ -35,7 +35,7 @@ namespace Bgg.Net.Common.Resources.Things
         /// <returns>A <see cref="BggResult{T}"/> containing the <see cref="Thing"/>.</returns>
         public async Task<BggResult<Thing>> GetThingById(int id)
         {
-            _logger.LogInformation("GetThingById : {id}", id);
+            _logger.Information("GetThingById : {id}", id);
 
             var httpResponseMessage = await _client.GetAsync($"thing?id={id}");
 
@@ -50,7 +50,7 @@ namespace Bgg.Net.Common.Resources.Things
         /// <exception cref="NotSupportedException"></exception>
         public async Task<BggResult<Thing>> GetThingsExtensible(Extension extension)
         {
-            _logger.LogInformation("GetThingsExtensible : {extensions}", extension);
+            _logger.Information("GetThingsExtensible : {extensions}", extension.ToString());
 
             foreach (var kvp in extension.Value)
             {
@@ -83,7 +83,7 @@ namespace Bgg.Net.Common.Resources.Things
             catch (Exception exception)
             {
                 var errorString = $"Error during deserialization. {exception.Message}";
-                _logger.LogError(exception, errorString);
+                _logger.Error(exception, errorString);
                 bggResult.Errors.Add(errorString);
             }
 

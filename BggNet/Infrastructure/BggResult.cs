@@ -1,4 +1,5 @@
 ﻿using Bgg.Net.Common.Models;
+using Newtonsoft.Json;
 using System.Net;
 
 namespace Bgg.Net.Common.Infrastructure
@@ -13,5 +14,10 @@ namespace Bgg.Net.Common.Infrastructure
         public bool IsSuccessful { get; set; }
 
         public HttpStatusCode HttpResponseCode { get; set; }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

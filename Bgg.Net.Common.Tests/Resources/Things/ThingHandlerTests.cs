@@ -1,15 +1,14 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Resources.Things;
-using Bgg.Net.Common.Tests.Infrastructure;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
 using FluentAssertions;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace Bgg.Net.Common.Tests.Resources.Things
 {
