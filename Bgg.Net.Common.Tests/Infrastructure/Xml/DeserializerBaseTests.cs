@@ -3,7 +3,7 @@ using Bgg.Net.Common.Models.Versions;
 using Bgg.Net.Common.Tests.TestWrappers;
 using Bgg.Net.Common.Types;
 using FluentAssertions;
-using Microsoft.Extensions.Logging;
+using Serilog;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
@@ -24,7 +24,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
 
         public DeserializerBaseTests()
         {
-            deserializer = new DeserializerBaseTestWrapper(_rootXpath, Mock.Of<ILogger>());
+            deserializer = new DeserializerBaseTestWrapper(Mock.Of<ILogger>());
             root = XmlGenerator.GenerateThingXmlElement();
         }
 

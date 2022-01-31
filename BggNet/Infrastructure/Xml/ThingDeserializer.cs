@@ -9,53 +9,81 @@ namespace Bgg.Net.Common.Infrastructure.Xml
     /// </summary>
     public class ThingDeserializer : DeserializerBase, IThingDeserializer
     {
-        public ThingDeserializer(string rootXpath, ILogger logger)
-            : base(rootXpath, logger)
+        /// <summary>
+        /// Creates a new instance of <see cref="ThingDeserializer"/>.
+        /// </summary>
+        /// <param name="logger">The logging instance.</param>
+        public ThingDeserializer(ILogger logger)
+            : base(logger)
         {
         }
 
-        /// <summary>
-        /// Deserializes the given xml.
-        /// </summary>
-        /// <param name="xml">Thing string to deserialize.</param>
-        /// <returns>A <see cref="Thing"/> object from the deserialized xml.</returns>
-        public Thing Deserialize(string xml)
+        /// <inheritdoc/>
+        public List<Thing> Deserialize(string xml)
         {
             if (string.IsNullOrWhiteSpace(xml))
             {
                 return null;
             }
 
+            var things = new List<Thing>();
             var document = new XmlDocument();
 
             document.LoadXml(xml);
             var root = document.DocumentElement;
 
-            var thing = new Thing
+            foreach (XmlNode itemNode in root.ChildNodes)
             {
-                Type = DeserializeStringAttribute("type", root.SelectSingleNode(_rootXpath)),
-                Id = DeserializeIntAttribute("id", root.SelectSingleNode(_rootXpath)),
-                YearPublished = DeserializeIntAttribute("value", root.SelectSingleNode($"{_rootXpath}/yearpublished")),
-                MinPlayers = DeserializeIntAttribute("value", root.SelectSingleNode($"{_rootXpath}/minplayers")),
-                MaxPlayers = DeserializeIntAttribute("value", root.SelectSingleNode($"{_rootXpath}/maxplayers")),
-                PlayingTime = DeserializeIntAttribute("value", root.SelectSingleNode($"{_rootXpath}/playingtime")),
-                MinPlayTime = DeserializeIntAttribute("value", root.SelectSingleNode($"{_rootXpath}/minplaytime")),
-                MaxPlayTime = DeserializeIntAttribute("value", root.SelectSingleNode($"{_rootXpath}/maxplaytime")),
-                MinAge = DeserializeIntAttribute("value", root.SelectSingleNode($"{_rootXpath}/minage")),
-                Poll = DeserializePolls(root.SelectNodes($"{_rootXpath}/poll")),
-                Name = DeserializeBggNames(root.SelectNodes($"{_rootXpath}/name")),
-                Thumbnail = DeserializeStringInnerText(root.SelectSingleNode($"{_rootXpath}/thumbnail")),
-                Image = DeserializeStringInnerText(root.SelectSingleNode($"{_rootXpath}/image")),
-                Description = DeserializeStringInnerText(root.SelectSingleNode($"{_rootXpath}/description")),
-                Link = DeserializeLink(root.SelectNodes($"{_rootXpath}/link")),
-                Versions = DeserializeVersions(root.SelectSingleNode($"{_rootXpath}/versions")),
-                Comments = DeserializeComments(root.SelectSingleNode($"{_rootXpath}/comments")),
-                MarketplaceListing = DeserializeMarketplaceListings(root.SelectSingleNode($"{_rootXpath}/marketplacelistings")),
-                Videos = DeserializeVideos(root.SelectSingleNode($"{_rootXpath}/videos")),
-                Statistics = DeserializeStatistics(root.SelectSingleNode($"{_rootXpath}/statistics"))
+                var item = DeserializeThing(itemNode);
+
+                if (item != null)
+                {
+                    things.Add(item);
+                }
+            }
+
+            return things.Any() ? things : null;
+        }
+
+        private Thing DeserializeThing(XmlNode itemNode)
+        {
+            var item = new Thing
+            {
+                Type = DeserializeStringAttribute("type", itemNode),
+                Id = DeserializeIntAttribute("id", itemNode),
+                YearPublished = DeserializeIntAttribute("value", itemNode.SelectSingleNode("yearpublished")),
+                MinPlayers = DeserializeIntAttribute("value", itemNode.SelectSingleNode("minplayers")),
+                MaxPlayers = DeserializeIntAttribute("value", itemNode.SelectSingleNode("maxplayers")),
+                PlayingTime = DeserializeIntAttribute("value", itemNode.SelectSingleNode("playingtime")),
+                MinPlayTime = DeserializeIntAttribute("value", itemNode.SelectSingleNode("minplaytime")),
+                MaxPlayTime = DeserializeIntAttribute("value", itemNode.SelectSingleNode("maxplaytime")),
+                MinAge = DeserializeIntAttribute("value", itemNode.SelectSingleNode("minage")),
+                Poll = DeserializePolls(itemNode.SelectNodes("poll")),
+                Name = DeserializeBggNames(itemNode.SelectNodes("name")),
+                Thumbnail = DeserializeStringInnerText(itemNode.SelectSingleNode("thumbnail")),
+                Image = DeserializeStringInnerText(itemNode.SelectSingleNode("image")),
+                Description = DeserializeStringInnerText(itemNode.SelectSingleNode("description")),
+                Link = DeserializeLink(itemNode.SelectNodes("link")),
+                Versions = DeserializeVersions(itemNode.SelectSingleNode("versions")),
+                Comments = DeserializeComments(itemNode.SelectSingleNode("comments")),
+                MarketplaceListing = DeserializeMarketplaceListings(itemNode.SelectSingleNode("marketplacelistings")),
+                Videos = DeserializeVideos(itemNode.SelectSingleNode("videos")),
+                Statistics = DeserializeStatistics(itemNode.SelectSingleNode("statistics"))
             };
 
-            return thing;
+            if (item != null &&
+                    (!string.IsNullOrWhiteSpace(item.Type) || item.Id.HasValue || item.YearPublished.HasValue ||
+                    item.MinPlayers.HasValue || item.MaxPlayers.HasValue || item.PlayingTime.HasValue ||
+                    item.MinPlayTime.HasValue || item.MaxPlayTime.HasValue || item.MinAge.HasValue ||
+                    item.Poll.Any() || item.Name.Any() || !string.IsNullOrWhiteSpace(item.Thumbnail) ||
+                    !string.IsNullOrWhiteSpace(item.Image) || !string.IsNullOrWhiteSpace(item.Description) ||
+                    item.Link.Any() || item.Versions.Any() || item.Comments != null || item.MarketplaceListing.Any() ||
+                    item.Videos != null || item.Statistics != null))
+            {
+                return item;
+            }
+
+            return null;
         }
     }
 }

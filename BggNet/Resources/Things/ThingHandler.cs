@@ -42,6 +42,17 @@ namespace Bgg.Net.Common.Resources.Things
             return await BuildBggResult(httpResponseMessage);
         }
 
+        public async Task<BggResult<Thing>> GetThingsById(List<int> ids)
+        {
+            _logger.Information("GetThingById : {id}", ids);
+
+            var queryString = $"thing?id=" + string.Join(',', ids);
+
+            var httpResponseMessage = await _client.GetAsync(queryString);
+
+            return await BuildBggResult(httpResponseMessage);
+        }
+
         /// <summary>
         /// Gets a Thing by extensible parameters to allow support for additional query parameters.
         /// </summary>
@@ -73,12 +84,7 @@ namespace Bgg.Net.Common.Resources.Things
 
             try
             {
-                var thingResponse = _deserializer.Deserialize(responseString);
-
-                if (thingResponse != null)
-                {
-                    bggResult.Items.Add(thingResponse);
-                }
+                bggResult.Items = _deserializer.Deserialize(responseString);
             }
             catch (Exception exception)
             {

@@ -15,17 +15,15 @@ namespace Bgg.Net.Common.Infrastructure.Xml
     /// </summary>
     public abstract class DeserializerBase
     {
-        protected readonly string _rootXpath;
         protected readonly ILogger _logger;
 
 
         /// <summary>
         /// Constructs a new instance of <see cref="DeserializerBase"/>.
         /// </summary>
-        /// <param name="rootXpath">The root xpath string.</param>
-        public DeserializerBase(string rootXpath, ILogger logger)
+        /// <param name="logger">The logging instance.</param>
+        public DeserializerBase(ILogger logger)
         {
-            _rootXpath = rootXpath;
             _logger = logger;
         }
 
@@ -92,7 +90,7 @@ namespace Bgg.Net.Common.Infrastructure.Xml
 
                 if (pollNode.ChildNodes.Count != 1)
                 {
-                    new XmlException("Invalid xml encountered while deserializing LanguageDependencePoll.");
+                    throw new XmlException("Invalid xml encountered while deserializing LanguageDependencePoll.");
                 }
 
                 foreach (XmlNode node in pollNode.ChildNodes[0])

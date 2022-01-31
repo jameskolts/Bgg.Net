@@ -2,7 +2,7 @@
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Polls;
 using Bgg.Net.Common.Models.Versions;
-using Microsoft.Extensions.Logging;
+using Serilog;
 using System.Collections.Generic;
 using System.Xml;
 
@@ -10,7 +10,7 @@ namespace Bgg.Net.Common.Tests.TestWrappers
 {
     public class DeserializerBaseTestWrapper : DeserializerBase
     {
-        public DeserializerBaseTestWrapper(string rootpath, ILogger logger) : base(rootpath, logger) { }
+        public DeserializerBaseTestWrapper(ILogger logger) : base(logger) { }
 
         public new List<Link> DeserializeLink(XmlNodeList nodeList)
         {

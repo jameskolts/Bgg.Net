@@ -2,12 +2,13 @@
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
-using Microsoft.Extensions.Logging;
+using Serilog;
 using Moq;
 using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Bgg.Net.Common.Tests.Resources
 {
@@ -43,12 +44,12 @@ namespace Bgg.Net.Common.Tests.Resources
             else if (returnsNull.HasValue && returnsNull.Value == true)
             {
                 deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
-                    .Returns((Thing)null);
+                    .Returns((List<Thing>)null);
             }
             else
             {
                 deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
-                    .Returns(new ThingDeserializer("//items/item", Mock.Of<ILogger>()).Deserialize(XmlGenerator.GenerateBoardGameXmlString()));
+                    .Returns(new ThingDeserializer(Mock.Of<ILogger>()).Deserialize(XmlGenerator.GenerateBoardGameXmlString()));
             }
 
             return deserializerMock;

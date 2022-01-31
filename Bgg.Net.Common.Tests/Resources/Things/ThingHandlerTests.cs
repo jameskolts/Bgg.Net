@@ -2,7 +2,7 @@
 using Bgg.Net.Common.Resources.Things;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
 using FluentAssertions;
-using Microsoft.Extensions.Logging;
+using Serilog;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;

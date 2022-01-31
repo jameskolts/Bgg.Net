@@ -10,6 +10,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
     public static class XmlGenerator
     {
         private const string BoardGameFilePath = "C:\\Users\\jkolt\\source\\repos\\BggNet\\Bgg.Net.Common.Tests\\TestFiles\\BoardGameXml.xml";
+        private const string MultipleItemFilePath = "C:\\Users\\jkolt\\source\\repos\\BggNet\\Bgg.Net.Common.Tests\\TestFiles\\MultipleItemXml.xml";
 
         public static XmlElement GenerateThingXmlElement()
         {
@@ -30,6 +31,11 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
         public static string GenerateBoardGameXmlString()
         {
             return File.ReadAllText(BoardGameFilePath);
+        }
+
+        public static string GenerateMultipleItemXmlString()
+        {
+            return File.ReadAllText(MultipleItemFilePath);
         }
     }
 }
