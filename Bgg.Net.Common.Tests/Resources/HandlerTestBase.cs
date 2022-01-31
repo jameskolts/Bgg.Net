@@ -32,7 +32,14 @@ namespace Bgg.Net.Common.Tests.Resources
             return bggclientMock;
         }
 
-        public Mock<IThingDeserializer> MockIThingDeserializer(bool? returnsNull = false, Exception? exception = null)
+        /// <summary>
+        /// Mocks a Thing Deserializer and it's response.
+        /// </summary>
+        /// <param name="resultString">The xmlString to parse and return as the mocked result. </param>
+        /// <param name="returnsNull">If the deserializer should return null.</param>
+        /// <param name="exception">The exception the deserializer should throw.</param>
+        /// <returns></returns>
+        public Mock<IThingDeserializer> MockIThingDeserializer(string? resultString = null, bool? returnsNull = false, Exception? exception = null)
         {
             var deserializerMock = new Mock<IThingDeserializer>();
 
@@ -48,8 +55,16 @@ namespace Bgg.Net.Common.Tests.Resources
             }
             else
             {
-                deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
-                    .Returns(new ThingDeserializer(Mock.Of<ILogger>()).Deserialize(XmlGenerator.GenerateBoardGameXmlString()));
+                if (string.IsNullOrEmpty(resultString))
+                {
+                    deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
+                        .Returns(new ThingDeserializer(Mock.Of<ILogger>()).Deserialize(XmlGenerator.GenerateBoardGameXmlString()));
+                }
+                else
+                {
+                    deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
+                        .Returns(new ThingDeserializer(Mock.Of<ILogger>()).Deserialize(resultString));
+                }
             }
 
             return deserializerMock;

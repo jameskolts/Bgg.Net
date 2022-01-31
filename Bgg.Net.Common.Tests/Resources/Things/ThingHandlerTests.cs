@@ -19,6 +19,26 @@ namespace Bgg.Net.Common.Tests.Resources.Things
         private IThingHandler? _handler;
 
         [TestMethod]
+        public async Task GetThingsById_Success()
+        {
+            //Arrange
+            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateMultipleItemXmlString(), HttpStatusCode.OK);
+
+            _handler = new ThingHandler(
+                httpClientMock.Object,
+                Mock.Of<ILogger>(),
+                MockIThingDeserializer(XmlGenerator.GenerateMultipleItemXmlString()).Object);
+
+            //Act
+            var result = await _handler.GetThingsById(new List<int> { 1, 2 });
+
+            //Assert
+            httpClientMock.Verify(x => x.GetAsync("thing?id=1,2"), Times.Once());
+            result.Should().NotBeNull();
+            result.Items.Count.Should().Be(2);
+        }
+
+        [TestMethod]
         public async Task GetThingById_Success()
         {
             //Arrange
@@ -45,7 +65,7 @@ namespace Bgg.Net.Common.Tests.Resources.Things
             _handler = new ThingHandler(
                 MockHttpClientGet(" ", HttpStatusCode.NotFound).Object, 
                 Mock.Of<ILogger>(),
-                MockIThingDeserializer(true).Object);
+                MockIThingDeserializer(null, true).Object);
 
             //Act
             var result = await _handler.GetThingById(1);
@@ -64,7 +84,7 @@ namespace Bgg.Net.Common.Tests.Resources.Things
             _handler = new ThingHandler(
                 MockHttpClientGet(" ", HttpStatusCode.OK).Object,
                 Mock.Of<ILogger>(),
-                MockIThingDeserializer(null, new Exception("exception")).Object);
+                MockIThingDeserializer(null, null, new Exception("exception")).Object);
 
             //Act
             var result = await _handler.GetThingById(1);

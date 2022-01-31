@@ -16,6 +16,13 @@ namespace Bgg.Net.Common.Resources.Things
         Task<BggResult<Thing>> GetThingById(int id);
 
         /// <summary>
+        /// Gets multiple things by the given ids.
+        /// </summary>
+        /// <param name="ids">the id's of the things to retrieve.</param>
+        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Thing"/>.</returns>
+        Task<BggResult<Thing>> GetThingsById(List<int> ids);
+
+        /// <summary>
         /// Gets a thing given extensible parameters. 
         /// </summary>
         /// <param name="extensions">The parameters to use.</param>
