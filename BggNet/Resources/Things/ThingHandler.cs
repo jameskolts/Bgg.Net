@@ -42,6 +42,11 @@ namespace Bgg.Net.Common.Resources.Things
             return await BuildBggResult(httpResponseMessage);
         }
 
+        /// <summary>
+        /// Gets multiple things by id, given a list of id's.
+        /// </summary>
+        /// <param name="ids">The Id's to retrieve.</param>
+        /// <returns>A <see cref="BggResult{T}"/> containing the <see cref="Thing"/>s.</returns>
         public async Task<BggResult<Thing>> GetThingsById(List<int> ids)
         {
             _logger.Information("GetThingById : {id}", ids);
@@ -70,8 +75,7 @@ namespace Bgg.Net.Common.Resources.Things
                     throw new NotSupportedException($"'{kvp.Key}' parameter is not supported.");
                 }
             }
-
-            string queryString = "thing?" + string.Join("&", extension.Value.Select(x => x.Key + "=" + x.Value));
+            string queryString = "thing?" + string.Join("&", extension.Value.Select(x => x.Key + "=" + string.Join(',', x.Value)));
             var httpResponseMessage = await _client.GetAsync(queryString);
 
             return await BuildBggResult(httpResponseMessage);

@@ -13,18 +13,18 @@ Console.WriteLine("Hello, Bgg.Net!");
 
 using (var client = new BggClient())
 {
-    var handler = new ThingHandler(client, Log.Logger, new ThingDeserializer("//items/item", Log.Logger));
+    var handler = new ThingHandler(client, Log.Logger, new ThingDeserializer(Log.Logger));
     var result = await handler.GetThingById(25);
 
     Log.Logger.Information(result.ToString());
 
     var extension = new Extension
     {
-        Value = new Dictionary<string, int>
+        Value = new Dictionary<string, List<int>>
         {
-            { "id", 1 },
-            { "versions", 1 },
-            { "padParameter", 1}
+            { "id", new List<int> { 1 } },
+            { "versions", new List<int> { 1 } },
+            { "padParameter", new List<int> { 1 }}
         }
     };
 

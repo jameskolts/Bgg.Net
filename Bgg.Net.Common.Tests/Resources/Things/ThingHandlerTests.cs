@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using Bgg.Net.Common.Http;
 
 namespace Bgg.Net.Common.Tests.Resources.Things
 {
@@ -86,9 +87,9 @@ namespace Bgg.Net.Common.Tests.Resources.Things
 
             var extension = new Extension
             {
-                Value = new Dictionary<string, int>
+                Value = new Dictionary<string, List<int>>
                 {
-                    { "id", 1 }
+                    { "id", new List<int> { 1 } }
                 }
             };
 
@@ -114,10 +115,10 @@ namespace Bgg.Net.Common.Tests.Resources.Things
 
             var extension = new Extension
             {
-                Value = new Dictionary<string, int>
+                Value = new Dictionary<string, List<int>>
                 {
-                    { "id", 1 },
-                    { "versions", 1 }
+                    { "id", new List<int> { 1 } },
+                    { "versions", new List<int> { 1 }}
                 }
             };
 
@@ -133,6 +134,38 @@ namespace Bgg.Net.Common.Tests.Resources.Things
         }
 
         [TestMethod]
+        public async Task GetThingsExtensible_MultipleParams_Repeating()
+        {
+            //Arrange
+            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateBoardGameXmlString(), HttpStatusCode.OK);
+
+            _handler = new ThingHandler(
+                httpClientMock.Object,
+                Mock.Of<ILogger>(),
+                MockIThingDeserializer().Object);
+
+            var extension = new Extension
+            {
+                Value = new Dictionary<string, List<int>>
+                {
+                    { "id", new List<int> { 1,2,3 } },
+                    { "versions", new List<int> { 1 } },
+                }
+            };
+
+            //Act
+            var result = await _handler.GetThingsExtensible(extension);
+
+            //Assert
+            result.IsSuccessful.Should().BeTrue();
+            result.Errors.Should().BeNullOrEmpty();
+            result.Items.Count.Should().Be(1);
+            result.Items[0].Type.Should().Be("boardgame");
+            result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
+            httpClientMock.Verify(x => x.GetAsync("thing?id=1,2,3&versions=1"), Times.Once());
+        }
+
+        [TestMethod]
         public async Task GetThingsExtensible_BadParameter()
         {
             //Arrange
@@ -143,10 +176,10 @@ namespace Bgg.Net.Common.Tests.Resources.Things
 
             var extension = new Extension
             {
-                Value = new Dictionary<string, int>
+                Value = new Dictionary<string, List<int>>
                 {
-                    { "id", 1 },
-                    { "badparameter", 1 }
+                    { "id", new List<int> { 1 } },
+                    { "badparameter", new List<int> { 1 } }
                 }
             };
 
