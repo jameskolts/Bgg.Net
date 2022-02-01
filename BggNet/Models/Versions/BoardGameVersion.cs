@@ -1,5 +1,8 @@
 ﻿namespace Bgg.Net.Common.Models.Versions
 {
+    /// <summary>
+    /// Represents the board game version from BGG.
+    /// </summary>
     public class BoardGameVersion : Version
     {
         public List<BggName> Name { get; set; }

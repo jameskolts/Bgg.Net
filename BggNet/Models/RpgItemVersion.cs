@@ -1,5 +1,8 @@
 ﻿namespace Bgg.Net.Common.Models
 {
+    /// <summary>
+    /// Represents the version of an rpg item on BGG.
+    /// </summary>
     public class RpgItemVersion
     {
         public string Name { get; set; }

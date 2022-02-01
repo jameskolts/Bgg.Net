@@ -2,6 +2,9 @@
 
 namespace Bgg.Net.Common.Models.Versions
 {
+    /// <summary>
+    /// The base class for versions represents in BGG.
+    /// </summary>
     public class Version
     {
         public VersionType? Type { get; set; }
