@@ -1,5 +1,8 @@
 ﻿namespace Bgg.Net.Common.Models.Versions
 {
+    /// <summary>
+    /// A video game version as represented in BGG.
+    /// </summary>
     public class VideoGameVersion : Version
     {
         public string Name { get; set; }
