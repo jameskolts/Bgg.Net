@@ -2,14 +2,13 @@
 using Bgg.Net.Common.Resources.Things;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
 using FluentAssertions;
-using Serilog;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using Bgg.Net.Common.Http;
 
 namespace Bgg.Net.Common.Tests.Resources.Things
 {
@@ -204,10 +203,13 @@ namespace Bgg.Net.Common.Tests.Resources.Things
             };
 
             //Act
-            Func<Task> f = async () => await _handler.GetThingsExtensible(extension);
+            var result = await _handler.GetThingsExtensible(extension);
 
             //Assert
-            await f.Should().ThrowAsync<NotSupportedException>().WithMessage("'badparameter' parameter is not supported.");
+            result.Should().NotBeNull();
+            result.IsSuccessful.Should().BeFalse();
+            result.Errors.Should().Contain("'badparameter' parameter is not supported.");
+            result.Items.Should().BeNullOrEmpty();
         }
     }
 }

@@ -70,7 +70,7 @@ namespace Bgg.Net.Common.Resources.Things
 
             foreach (var kvp in extension.Value)
             {
-                if (!Constants.SupportedQueryParameters.Contains(kvp.Key))
+                if (!Constants.SupportedThingQueryParameters.Contains(kvp.Key))
                 {
                     string errorMessage = $"'{kvp.Key}' parameter is not supported.";
                     _logger.Error(errorMessage);

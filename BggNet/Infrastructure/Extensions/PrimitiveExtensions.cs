@@ -51,5 +51,18 @@
 
             return null;
         }
+
+        public static bool? ToNullableBool(this string s)
+        {
+            switch (s?.ToLower())
+            {
+                case "true":
+                    return true;
+                case "false":
+                    return false;
+                default:
+                    return null;
+            }
+        }
     }
 }

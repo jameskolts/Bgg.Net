@@ -8,7 +8,7 @@ namespace Bgg.Net.Common
         public const string RPGGEEK_PATH = "https://www.rpggeek.com/xmlapi2/";
         public const string VIDEOGAMEGEEK_PATH = "https://www.videogamegeek.com/xmlapi2/";
 
-        public static ReadOnlyCollection<string> SupportedQueryParameters { get; } = new ReadOnlyCollection<string>(
+        public static ReadOnlyCollection<string> SupportedThingQueryParameters { get; } = new ReadOnlyCollection<string>(
             new string[]
             {
                 "id",
@@ -21,6 +21,13 @@ namespace Bgg.Net.Common
                 "ratingcomments",
                 "page",
                 "pagesize" 
+            });
+
+        public static ReadOnlyCollection<string> SupportedFamilyQueryParameters { get; } = new ReadOnlyCollection<string>(
+            new string[]
+            {
+                "id",
+                "type"
             });
     }
 }

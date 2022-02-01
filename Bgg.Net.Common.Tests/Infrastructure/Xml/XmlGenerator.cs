@@ -11,6 +11,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
     {
         private const string BoardGameFilePath = "C:\\Users\\jkolt\\source\\repos\\BggNet\\Bgg.Net.Common.Tests\\TestFiles\\BoardGameXml.xml";
         private const string MultipleItemFilePath = "C:\\Users\\jkolt\\source\\repos\\BggNet\\Bgg.Net.Common.Tests\\TestFiles\\MultipleItemXml.xml";
+        private const string FamilyFilePath = "C:\\Users\\jkolt\\source\\repos\\BggNet\\Bgg.Net.Common.Tests\\TestFiles\\FamilyXml.xml";
 
         public static XmlElement GenerateThingXmlElement()
         {
@@ -36,6 +37,11 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
         public static string GenerateMultipleItemXmlString()
         {
             return File.ReadAllText(MultipleItemFilePath);
+        }
+
+        public static string GenerateFamilyXmlString()
+        {
+            return File.ReadAllText(FamilyFilePath);
         }
     }
 }

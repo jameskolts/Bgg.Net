@@ -2,6 +2,7 @@
 using Bgg.Net.Common.Http;
 using Bgg.Net.Common.Infrastructure.IOC;
 using Bgg.Net.Common.Infrastructure.Xml;
+using Bgg.Net.Common.Resources.Families;
 using Bgg.Net.Common.Resources.Things;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -79,6 +80,40 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
             objFromClass.Should().NotBeNull();
             objFromClass.Should().BeAssignableTo<ThingDeserializer>();
             objFromClass?.GetType().Name.Should().Be("ThingDeserializer");
+        }
+
+        [TestMethod]
+        public void FamilyDeserializer_Resolve()
+        {
+            // Arrange/Act
+            var objFromInterface = scope?.Resolve<IFamilyDeserializer>();
+            var objFromClass = scope?.Resolve<FamilyDeserializer>();
+
+            //Assert
+            objFromInterface.Should().NotBeNull();
+            objFromInterface.Should().BeAssignableTo<FamilyDeserializer>();
+            objFromInterface?.GetType().Name.Should().Be("FamilyDeserializer");
+
+            objFromClass.Should().NotBeNull();
+            objFromClass.Should().BeAssignableTo<FamilyDeserializer>();
+            objFromClass?.GetType().Name.Should().Be("FamilyDeserializer");
+        }
+
+        [TestMethod]
+        public void FamilyHandler_Resolve()
+        {
+            // Arrange/Act
+            var objFromInterface = scope?.Resolve<IFamilyHandler>();
+            var objFromClass = scope?.Resolve<FamilyHandler>();
+
+            //Assert
+            objFromInterface.Should().NotBeNull();
+            objFromInterface.Should().BeAssignableTo<FamilyHandler>();
+            objFromInterface?.GetType().Name.Should().Be("FamilyHandler");
+
+            objFromClass.Should().NotBeNull();
+            objFromClass.Should().BeAssignableTo<FamilyHandler>();
+            objFromClass?.GetType().Name.Should().Be("FamilyHandler");
         }
     }
 }

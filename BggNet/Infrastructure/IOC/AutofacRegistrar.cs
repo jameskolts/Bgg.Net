@@ -1,9 +1,10 @@
 ﻿using Autofac;
 using Bgg.Net.Common.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
+using Bgg.Net.Common.Resources.Families;
 using Bgg.Net.Common.Resources.Things;
-using IContainer = Autofac.IContainer;
 using Serilog;
+using IContainer = Autofac.IContainer;
 
 namespace Bgg.Net.Common.Infrastructure.IOC
 {
@@ -25,6 +26,8 @@ namespace Bgg.Net.Common.Infrastructure.IOC
             builder.RegisterType<BggClient>().As<IHttpClient>().AsSelf();
             builder.RegisterType<ThingDeserializer>().As<IThingDeserializer>().AsSelf();
             builder.RegisterType<ThingHandler>().As<IThingHandler>().AsSelf();
+            builder.RegisterType<FamilyDeserializer>().As<IFamilyDeserializer>().AsSelf();
+            builder.RegisterType<FamilyHandler>().As<IFamilyHandler>().AsSelf();
 
             Container = builder.Build();
         }

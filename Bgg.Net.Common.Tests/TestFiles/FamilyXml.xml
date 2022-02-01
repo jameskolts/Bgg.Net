@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<items termsofuse="https://boardgamegeek.com/xmlapi/termsofuse">
+	<item type="boardgamefamily" id="4">
+		<thumbnail>https://cf.geekdo-images.com/TeW2-Qo-yWwe19v-RaUnLQ__thumb/img/jTctkjj7ajx3Jhd0OBe4nPz5K9Q=/fit-in/200x150/filters:strip_icc()/pic680679.jpg</thumbnail>
+		<image>https://cf.geekdo-images.com/TeW2-Qo-yWwe19v-RaUnLQ__original/img/4U5hid4FIsZUoRZlIJCYQRLvY-I=/0x0/filters:format(jpeg)/pic680679.jpg</image>
+		<name type="primary" sortindex="1" value="Series: The Chicken Family of Zoch" />
+		<name type="alternate" sortindex="1" value="Series: Chicken World" />
+		<name type="alternate" sortindex="1" value="Series: Die Hühnerfamilie von Zoch" />
+		<name type="alternate" sortindex="1" value="Series: Jakkie &amp; Bak Collectie" />
+		<description>The Chicken Family of Zoch (Die H&amp;uuml;hnerfamilie von Zoch), aka. &amp;quot;Chicken World&amp;quot;, is a family of games initially published by Zoch Verlag. In case of Get the Goods and Match of the Penguins these were initially published with a different theme but they were re-themed to fit the Chicken family by Zoch.&amp;#10;&amp;#10;</description>
+		<link type="boardgamefamily" id="3507" value="By Golly!" inbound="true"/>
+		<link type="boardgamefamily" id="3570" value="Chicken Cha Cha Cha" inbound="true"/>
+		<link type="boardgamefamily" id="5106" value="Chicken Cha Cha Cha: Duckling Dancin'" inbound="true"/>
+		<link type="boardgamefamily" id="32465" value="Didi Dotter" inbound="true"/>
+		<link type="boardgamefamily" id="247" value="Gloria Picktoria" inbound="true"/>
+		<link type="boardgamefamily" id="348870" value="Heckmeck am Karteneck" inbound="true"/>
+		<link type="boardgamefamily" id="66798" value="Heckmeck Barbecue" inbound="true"/>
+		<link type="boardgamefamily" id="245200" value="Heckmeck Deluxe" inbound="true"/>
+		<link type="boardgamefamily" id="181614" value="Heckmeck Extrawurm" inbound="true"/>
+		<link type="boardgamefamily" id="66797" value="Heckmeck Junior" inbound="true"/>
+		<link type="boardgamefamily" id="6979" value="Match of the Penguins" inbound="true"/>
+		<link type="boardgamefamily" id="33212" value="Maxi Zicke Zacke Hühnerkacke" inbound="true"/>
+		<link type="boardgamefamily" id="2569" value="Pick Picknic" inbound="true"/>
+		<link type="boardgamefamily" id="15818" value="Pickomino" inbound="true"/>
+		<link type="boardgamefamily" id="37400" value="Sushizock im Gockelwok" inbound="true"/>
+		<link type="boardgamefamily" id="148530" value="Zicke &amp; Zacke: Ran an die Federn" inbound="true"/>
+		<link type="boardgamefamily" id="91653" value="Zicke Zacke" inbound="true"/>
+		<link type="boardgamefamily" id="153444" value="Zicke Zacke Ei Ei Ei" inbound="true"/>
+	</item>
+	<item type="boardgamefamily" id="5">
+		<thumbnail>https://cf.geekdo-images.com/2LfqB2o51JoTm8m6c72g3Q__thumb/img/D7eL4TyOcp-XNtUX9uMSAFakv0Q=/fit-in/200x150/filters:strip_icc()/pic727970.jpg</thumbnail>
+		<image>https://cf.geekdo-images.com/2LfqB2o51JoTm8m6c72g3Q__original/img/heFjsaG5k_54w4tjK3p75BNoLd8=/0x0/filters:format(jpeg)/pic727970.jpg</image>
+		<name type="primary" sortindex="1" value="Game: Bohnanza" />
+		<description>The Bohnanza family of games includes a series of very similar games, as well as several thematically related games, and plenty of expansions.  For chronological details, see the Bohnanza series wiki page.&amp;#10;&amp;#10;</description>
+		<link type="boardgamefamily" id="980" value="Al Cabohne" inbound="true"/>
+		<link type="boardgamefamily" id="35589" value="Auf der schwäb'schen Eisenbohn" inbound="true"/>
+		<link type="boardgamefamily" id="4395" value="Bean Trader" inbound="true"/>
+		<link type="boardgamefamily" id="103186" value="Bohn Camillo" inbound="true"/>
+		<link type="boardgamefamily" id="16178" value="Bohn Hansa: Die Städtemehrheiten" inbound="true"/>
+		<link type="boardgamefamily" id="128412" value="Bohn to Be Wild!" inbound="true"/>
+		<link type="boardgamefamily" id="285164" value="Bohna Nostra" inbound="true"/>
+		<link type="boardgamefamily" id="11" value="Bohnanza" inbound="true"/>
+		<link type="boardgamefamily" id="261341" value="Bohnanza (with Erdnüsse)" inbound="true"/>
+		<link type="boardgamefamily" id="467" value="Bohnanza Erweiterungs-Set" inbound="true"/>
+		<link type="boardgamefamily" id="1494" value="Bohnanza Erweiterungs-Set (Revised Edition)" inbound="true"/>
+		<link type="boardgamefamily" id="81100" value="Bohnanza Fun &amp; Easy" inbound="true"/>
+		<link type="boardgamefamily" id="168452" value="Bohnanza Schnupperspiel" inbound="true"/>
+		<link type="boardgamefamily" id="217261" value="Bohnanza: 20 Jahre" inbound="true"/>
+		<link type="boardgamefamily" id="351605" value="Bohnanza: 25 Jahre-Edition" inbound="true"/>
+		<link type="boardgamefamily" id="14118" value="Bohnanza: Amigo Bohnentaler" inbound="true"/>
+		<link type="boardgamefamily" id="189272" value="Bohnanza: Bean Market" inbound="true"/>
+		<link type="boardgamefamily" id="174239" value="Bohnanza: Bohnaparte &amp; High Bohn" inbound="true"/>
+		<link type="boardgamefamily" id="43237" value="Bohnanza: Das Fanbuch" inbound="true"/>
+		<link type="boardgamefamily" id="216664" value="Bohnanza: Die Jokerbohnen" inbound="true"/>
+		<link type="boardgamefamily" id="168421" value="Bohnanza: Ladies &amp; Gangsters" inbound="true"/>
+		<link type="boardgamefamily" id="168425" value="Bohnanza: Princes &amp; Pirates" inbound="true"/>
+		<link type="boardgamefamily" id="35428" value="Bohnanza: Spiderbeans" inbound="true"/>
+		<link type="boardgamefamily" id="205867" value="Bohnanza: The Duel" inbound="true"/>
+		<link type="boardgamefamily" id="6264" value="Bohnaparte" inbound="true"/>
+		<link type="boardgamefamily" id="59416" value="Bohnedikt" inbound="true"/>
+		<link type="boardgamefamily" id="205687" value="Bohnedikt (2016 Edition)" inbound="true"/>
+		<link type="boardgamefamily" id="21631" value="Bohnkick" inbound="true"/>
+		<link type="boardgamefamily" id="31419" value="Bohnröschen" inbound="true"/>
+		<link type="boardgamefamily" id="8174" value="Dschingis Bohn" inbound="true"/>
+		<link type="boardgamefamily" id="313649" value="Excalibohn" inbound="true"/>
+		<link type="boardgamefamily" id="111734" value="Fasolki: Rozszerzenie" inbound="true"/>
+		<link type="boardgamefamily" id="913" value="High Bohn" inbound="true"/>
+		<link type="boardgamefamily" id="12677" value="High Bohn Plus" inbound="true"/>
+		<link type="boardgamefamily" id="18793" value="High Bohn: Bohnenduell um 12 Uhr mittags" inbound="true"/>
+		<link type="boardgamefamily" id="453" value="La Isla Bohnitâ" inbound="true"/>
+		<link type="boardgamefamily" id="25973" value="Kannibohne" inbound="true"/>
+		<link type="boardgamefamily" id="4377" value="Ladybohn" inbound="true"/>
+		<link type="boardgamefamily" id="26946" value="Ladybohn: Manche mögen's heiss!" inbound="true"/>
+		<link type="boardgamefamily" id="86012" value="Ladybohn: Manche mögen's heiss! – Mutterböhnchen" inbound="true"/>
+		<link type="boardgamefamily" id="243505" value="Marco Bohno" inbound="true"/>
+		<link type="boardgamefamily" id="2571" value="Mutabohn" inbound="true"/>
+		<link type="boardgamefamily" id="171419" value="My First Bohnanza" inbound="true"/>
+		<link type="boardgamefamily" id="20136" value="Rabohnzel" inbound="true"/>
+		<link type="boardgamefamily" id="148000" value="Sissi!: Die Bohnenkaiserin" inbound="true"/>
+		<link type="boardgamefamily" id="222" value="Space Beans" inbound="true"/>
+		<link type="boardgamefamily" id="13474" value="Telebohn" inbound="true"/>
+		<link type="boardgamefamily" id="138703" value="Wendy Pferdebasar" inbound="true"/>
+		<link type="boardgamefamily" id="111148" value="Würfel Bohnanza" inbound="true"/>
+	</item>
+</items>

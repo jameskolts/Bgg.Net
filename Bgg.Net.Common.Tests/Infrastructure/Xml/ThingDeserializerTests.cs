@@ -1,9 +1,8 @@
 ﻿using Bgg.Net.Common.Infrastructure.Xml;
-using Bgg.Net.Common.Models;
 using FluentAssertions;
-using Serilog;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Serilog;
 using System;
 
 namespace Bgg.Net.Common.Tests.Infrastructure.Xml
@@ -24,6 +23,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             //Act
             var result = deserializer.Deserialize(XmlGenerator.GenerateBoardGameXmlString());
 
+            //Assert
             result.Should().NotBeNullOrEmpty();
             result.Count.Should().Be(1);
             result[0].Id.Should().Be(1);

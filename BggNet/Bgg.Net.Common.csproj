@@ -20,7 +20,6 @@
 	  <Folder Include="Platforms\iOS\" />
 	  <Folder Include="Platforms\MacCatalyst\" />
 	  <Folder Include="Platforms\Windows\" />
-	  <Folder Include="Resources\Family\" />
 	  <Folder Include="Resources\ForumList\" />
 	  <Folder Include="Resources\Forums\" />
 	  <Folder Include="Resources\Guilds\" />

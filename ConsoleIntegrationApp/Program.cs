@@ -3,6 +3,7 @@ using Autofac;
 using Bgg.Net.Common.Http;
 using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.IOC;
+using Bgg.Net.Common.Resources.Families;
 using Bgg.Net.Common.Resources.Things;
 using Serilog;
 
@@ -13,12 +14,14 @@ AutofacRegistrar.BuildContainer();
 
 using (var scope = AutofacRegistrar.Container.BeginLifetimeScope())
 {
+    var logger = scope.Resolve<ILogger>();
+
     var client = scope.Resolve<IHttpClient>();
     var handler = scope.Resolve<IThingHandler>();
 
+    logger.Information("---Things---");
     var result = await handler.GetThingById(25);
-
-    Log.Logger.Information("Success: " + result.IsSuccessful.ToString());
+    logger.Information("Success: " + result.IsSuccessful);
 
     var extension = new Extension
     {
@@ -31,7 +34,21 @@ using (var scope = AutofacRegistrar.Container.BeginLifetimeScope())
     };
 
     result = await handler.GetThingsExtensible(extension);
-    Log.Logger.Information("Success: " + result.IsSuccessful.ToString());
+    logger.Information("Success: " + result.IsSuccessful);
+
+    logger.Information("---Families---");
+    var familyHandler = scope.Resolve<IFamilyHandler>();
+    var family = await familyHandler.GetFamilyById(1);
+    logger.Information("Success: " + family.IsSuccessful);
+    family = await familyHandler.GetFamilyByIds(new List<int> { 1, 2, 3 });
+    logger.Information("Success: " + family.IsSuccessful);
+    family = await familyHandler.GetFamilyByIdsAndType(new List<int> { 1, 2, 3 }, new List<Bgg.Net.Common.Types.FamilyType> { Bgg.Net.Common.Types.FamilyType.BoardGameFamily});
+    logger.Information("Success: " + family.IsSuccessful);
+    family = await familyHandler.GetFamilyByIdsAndType(new List<int> { 1, 2, 3 }, new List<Bgg.Net.Common.Types.FamilyType> { Bgg.Net.Common.Types.FamilyType.BoardGameFamily });
+    logger.Information("Success: " + family.IsSuccessful);
+    family = await familyHandler.GetFamilyExtensible(new Extension { Value = new Dictionary<string, List<int>> { { "id", new List<int> { 1 } } } });
+    logger.Information("Success: " + family.IsSuccessful);
+
 }
 
 Console.WriteLine("Press any key to exit");

@@ -69,5 +69,36 @@ namespace Bgg.Net.Common.Tests.Resources
 
             return deserializerMock;
         }
+
+        public Mock<IFamilyDeserializer> MockIFamilyDeserializer(string? resultString = null, bool? returnsNull = false, Exception? exception = null)
+        {
+            var deserializerMock = new Mock<IFamilyDeserializer>();
+
+            if (exception != null)
+            {
+                deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
+                    .Throws(exception);
+            }
+            else if (returnsNull.HasValue && returnsNull.Value == true)
+            {
+                deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
+                    .Returns((List<Family>)null);
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(resultString))
+                {
+                    deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
+                        .Returns(new FamilyDeserializer(Mock.Of<ILogger>()).Deserialize(XmlGenerator.GenerateFamilyXmlString()));
+                }
+                else
+                {
+                    deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
+                        .Returns(new FamilyDeserializer(Mock.Of<ILogger>()).Deserialize(resultString));
+                }
+            }
+
+            return deserializerMock;
+        }
     }
 }

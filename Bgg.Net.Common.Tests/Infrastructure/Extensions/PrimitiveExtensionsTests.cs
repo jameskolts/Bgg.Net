@@ -222,5 +222,49 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Extensions
             //Assert
             result.Should().BeNull();
         }
+
+        [TestMethod]
+        public void ToNullableBool_True()
+        {
+            //Act
+            var result = "True".ToNullableBool();
+
+            //Assert
+            result.Should().BeTrue();
+        }
+
+        [TestMethod]
+        public void ToNullableBool_False()
+        {
+            //Act
+            var result = "False".ToNullableBool();
+
+            //Assert
+            result.Should().BeFalse();
+        }
+
+        [TestMethod]
+        public void ToNullableBool_Null()
+        {
+            string? s = null;
+
+            //Act
+            var result = s.ToNullableBool();
+
+            //Assert
+            result.Should().BeNull();
+        }
+
+        [TestMethod]
+        public void ToNullableBool_Whitespacel()
+        {
+            string? s = " ";
+
+            //Act
+            var result = s.ToNullableBool();
+
+            //Assert
+            result.Should().BeNull();
+        }
     }
 }
