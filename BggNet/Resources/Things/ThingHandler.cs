@@ -72,9 +72,17 @@ namespace Bgg.Net.Common.Resources.Things
             {
                 if (!Constants.SupportedQueryParameters.Contains(kvp.Key))
                 {
-                    throw new NotSupportedException($"'{kvp.Key}' parameter is not supported.");
+                    string errorMessage = $"'{kvp.Key}' parameter is not supported.";
+                    _logger.Error(errorMessage);
+
+                    return new BggResult<Thing>
+                    {
+                        IsSuccessful = false,
+                        Errors = new List<string> { errorMessage }
+                    };
                 }
             }
+
             string queryString = "thing?" + string.Join("&", extension.Value.Select(x => x.Key + "=" + string.Join(',', x.Value)));
             var httpResponseMessage = await _client.GetAsync(queryString);
 

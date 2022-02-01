@@ -2,7 +2,7 @@
 {
     public class BggClient : IHttpClient, IDisposable
     {
-        HttpClient httpClient;
+        readonly HttpClient httpClient;
         private bool disposed;
 
         /// <summary>
@@ -10,8 +10,10 @@
         /// </summary>
         public BggClient()
         {
-            httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri(Constants.BGG_PATH);
+            httpClient = new HttpClient
+            {
+                BaseAddress = new Uri(Constants.BGG_PATH)
+            };
         }
 
         /// <inheritdoc cref="HttpClient.DeleteAsync(string?)"/>
