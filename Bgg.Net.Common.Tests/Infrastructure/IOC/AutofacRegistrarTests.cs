@@ -16,7 +16,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
         private ILifetimeScope? scope;
                
         [TestInitialize]
-        public void init()
+        public void Init()
         {
             container = AutofacRegistrar.BuildContainer();
             scope = container.BeginLifetimeScope();

@@ -1,4 +1,6 @@
-﻿namespace Bgg.Net.Common.Models
+﻿using Bgg.Net.Common.Models.Links;
+
+namespace Bgg.Net.Common.Models
 {
     /// <summary>
     /// Represents a listing of an item for sale on BGG.

@@ -1,5 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure.Extensions;
 using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Models.Links;
 using Bgg.Net.Common.Models.Polls;
 using Bgg.Net.Common.Models.Polls.PollResults;
 using Bgg.Net.Common.Models.Versions;

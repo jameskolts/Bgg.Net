@@ -1,4 +1,4 @@
-﻿namespace Bgg.Net.Common.Models
+﻿namespace Bgg.Net.Common.Models.Links
 {
     /// <summary>
     /// Represents a link to a listing in BGG.
