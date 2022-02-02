@@ -10,9 +10,7 @@ namespace Bgg.Net.Common.Infrastructure.IOC
 {
     public class AutofacRegistrar
     {
-        public static IContainer Container { get; private set; }
-
-        public static void BuildContainer()
+        public static IContainer BuildContainer()
         {
             var builder = new ContainerBuilder();
 
@@ -29,7 +27,7 @@ namespace Bgg.Net.Common.Infrastructure.IOC
             builder.RegisterType<FamilyDeserializer>().As<IFamilyDeserializer>().AsSelf();
             builder.RegisterType<FamilyHandler>().As<IFamilyHandler>().AsSelf();
 
-            Container = builder.Build();
+            return builder.Build();
         }
     }
 }

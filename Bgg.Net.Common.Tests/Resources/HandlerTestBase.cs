@@ -50,8 +50,12 @@ namespace Bgg.Net.Common.Tests.Resources
             }
             else if (returnsNull.HasValue && returnsNull.Value == true)
             {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
                 deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
                     .Returns((List<Thing>)null);
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
             }
             else
             {
@@ -81,8 +85,12 @@ namespace Bgg.Net.Common.Tests.Resources
             }
             else if (returnsNull.HasValue && returnsNull.Value == true)
             {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
                 deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
                     .Returns((List<Family>)null);
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
             }
             else
             {

@@ -10,9 +10,7 @@ using Serilog;
 
 Console.WriteLine("Hello, Bgg.Net!");
 
-AutofacRegistrar.BuildContainer();
-
-using (var scope = AutofacRegistrar.Container.BeginLifetimeScope())
+using (var scope = AutofacRegistrar.BuildContainer().BeginLifetimeScope())
 {
     var logger = scope.Resolve<ILogger>();
 

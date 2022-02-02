@@ -12,23 +12,21 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
     [TestClass]
     public class AutofacRegistrarTests
     {
+        private IContainer? container;
         private ILifetimeScope? scope;
-        
-        public AutofacRegistrarTests()
-        {
-            AutofacRegistrar.BuildContainer();
-        }
-
+               
         [TestInitialize]
         public void init()
         {
-            scope = AutofacRegistrar.Container.BeginLifetimeScope();
+            container = AutofacRegistrar.BuildContainer();
+            scope = container.BeginLifetimeScope();
         }
 
         [TestCleanup]
         public void Cleanup()
         {
             scope?.Dispose();
+            container?.Dispose();
         }
 
         [TestMethod]
