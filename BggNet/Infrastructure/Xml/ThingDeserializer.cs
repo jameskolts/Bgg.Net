@@ -1,4 +1,5 @@
-﻿using Bgg.Net.Common.Models;
+﻿using Bgg.Net.Common.Infrastructure.Xml.Interfaces;
+using Bgg.Net.Common.Models;
 using Serilog;
 using System.Xml;
 
@@ -43,7 +44,7 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             }
 
             return things.Any() ? things : null;
-        }
+        }       
 
         private Thing DeserializeThing(XmlNode itemNode)
         {

@@ -18,7 +18,6 @@ namespace Bgg.Net.Common.Infrastructure.Xml
     {
         protected readonly ILogger _logger;
 
-
         /// <summary>
         /// Constructs a new instance of <see cref="DeserializerBase"/>.
         /// </summary>
@@ -26,6 +25,19 @@ namespace Bgg.Net.Common.Infrastructure.Xml
         public DeserializerBase(ILogger logger)
         {
             _logger = logger;
+        }
+
+        protected XmlElement GetRoot(string xml)
+        {
+            if (string.IsNullOrWhiteSpace(xml))
+            {
+                return null;
+            }
+
+            var document = new XmlDocument();
+            document.LoadXml(xml);
+
+            return document.DocumentElement;
         }
 
         /// <summary>
@@ -260,6 +272,12 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             return null;
         }
 
+        /// <summary>
+        /// Deserializes the attribute value of a given node.
+        /// </summary>
+        /// <param name="attributeName">The attribute to deserialize.</param>
+        /// <param name="node">The <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>The <see cref="double"/> value of the attribute.</returns>
         protected double? DeserializeDoubleAttribute(string attributeName, XmlNode node)
         {
             if (node != null)
@@ -281,6 +299,22 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             if (node != null)
             {
                 return node.Attributes?.GetNamedItem(attributeName)?.Value.ToNullableLong();
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Deserializes the attribute value of a given node.
+        /// </summary>
+        /// <param name="attributeName">The attribute to deserialize.</param>
+        /// <param name="node">The <see cref="XmlNode"/> to deserialize.</param>
+        /// <returns>The <see cref="DateTimeOffset"/> value of the attribute.</returns>
+        protected DateTimeOffset? DeserializeDtoAttribute(string attributeName, XmlNode node)
+        {
+            if (node != null)
+            {
+                return node.Attributes?.GetNamedItem(attributeName)?.Value.ToNullableDateTimeOffset();
             }
 
             return null;

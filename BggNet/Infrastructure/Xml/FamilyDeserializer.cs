@@ -1,5 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure.Extensions;
 using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Infrastructure.Xml.Interfaces;
 using Bgg.Net.Common.Models.Links;
 using Serilog;
 using System.Xml;
@@ -12,9 +13,9 @@ namespace Bgg.Net.Common.Infrastructure.Xml
     public class FamilyDeserializer : DeserializerBase, IFamilyDeserializer
     {
         /// <summary>
-        /// Creates a new isntance of <see cref="FamilyDeserializer"/>.
+        /// Creates a new instance of <see cref="FamilyDeserializer"/>.
         /// </summary>
-        /// <param name="logger"></param>
+        /// <param name="logger">The logging instance.</param>
         public FamilyDeserializer(ILogger logger) : base(logger)
         {
         }

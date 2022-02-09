@@ -10,11 +10,11 @@
     {
         public long? Id { get; set; }
 
+        public string Subject { get; set; }
+
         public int? NumArticles { get; set; }
 
-        public string Link { get; set; }
-
-        public string Subject { get; set; }
+        public string Link { get; set; }        
 
         public List<Article> Articles { get; set; } = new List<Article>();
     }

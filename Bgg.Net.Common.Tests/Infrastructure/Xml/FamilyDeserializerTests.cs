@@ -1,4 +1,5 @@
 ﻿using Bgg.Net.Common.Infrastructure.Xml;
+using Bgg.Net.Common.Infrastructure.Xml.Interfaces;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

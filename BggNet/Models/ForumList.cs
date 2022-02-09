@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Bgg.Net.Common.Models
+﻿namespace Bgg.Net.Common.Models
 {
+    /// <summary>
+    /// Represents a ForumList from the BGG API.
+    /// </summary>
     public class ForumList
     {
         public int? Id { get; set; }

@@ -1,6 +1,6 @@
 ﻿using Bgg.Net.Common.Models;
 
-namespace Bgg.Net.Common.Infrastructure.Xml
+namespace Bgg.Net.Common.Infrastructure.Xml.Interfaces
 {
     public interface IFamilyDeserializer
     {

@@ -17,5 +17,7 @@
         public string Author { get; set; }
 
         public DateTimeOffset? PostDate { get; set; }
+
+        public DateTimeOffset? LastPostDate { get; set; }
     }
 }

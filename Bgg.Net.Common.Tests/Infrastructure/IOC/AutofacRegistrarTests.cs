@@ -2,6 +2,7 @@
 using Bgg.Net.Common.Http;
 using Bgg.Net.Common.Infrastructure.IOC;
 using Bgg.Net.Common.Infrastructure.Xml;
+using Bgg.Net.Common.Infrastructure.Xml.Interfaces;
 using Bgg.Net.Common.Resources.Families;
 using Bgg.Net.Common.Resources.Things;
 using FluentAssertions;
@@ -112,6 +113,57 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
             objFromClass.Should().NotBeNull();
             objFromClass.Should().BeAssignableTo<FamilyHandler>();
             objFromClass?.GetType().Name.Should().Be("FamilyHandler");
+        }
+
+        [TestMethod]
+        public void ThreadDeserializer_Resolve()
+        {
+            // Arrange/Act
+            var objFromInterface = scope?.Resolve<IThreadDeserializer>();
+            var objFromClass = scope?.Resolve<ThreadDeserializer>();
+
+            //Assert
+            objFromInterface.Should().NotBeNull();
+            objFromInterface.Should().BeAssignableTo<ThreadDeserializer>();
+            objFromInterface?.GetType().Name.Should().Be("ThreadDeserializer");
+
+            objFromClass.Should().NotBeNull();
+            objFromClass.Should().BeAssignableTo<ThreadDeserializer>();
+            objFromClass?.GetType().Name.Should().Be("ThreadDeserializer");
+        }
+
+        [TestMethod]
+        public void ForumDeserializer_Resolve()
+        {
+            // Arrange/Act
+            var objFromInterface = scope?.Resolve<IForumDeserializer>();
+            var objFromClass = scope?.Resolve<ForumDeserializer>();
+
+            //Assert
+            objFromInterface.Should().NotBeNull();
+            objFromInterface.Should().BeAssignableTo<ForumDeserializer>();
+            objFromInterface?.GetType().Name.Should().Be("ForumDeserializer");
+
+            objFromClass.Should().NotBeNull();
+            objFromClass.Should().BeAssignableTo<ForumDeserializer>();
+            objFromClass?.GetType().Name.Should().Be("ForumDeserializer");
+        }
+
+        [TestMethod]
+        public void ForumListDeserializer_Resolve()
+        {
+            // Arrange/Act
+            var objFromInterface = scope?.Resolve<IForumListDeserializer>();
+            var objFromClass = scope?.Resolve<ForumListDeserializer>();
+
+            //Assert
+            objFromInterface.Should().NotBeNull();
+            objFromInterface.Should().BeAssignableTo<ForumListDeserializer>();
+            objFromInterface?.GetType().Name.Should().Be("ForumListDeserializer");
+
+            objFromClass.Should().NotBeNull();
+            objFromClass.Should().BeAssignableTo<ForumListDeserializer>();
+            objFromClass?.GetType().Name.Should().Be("ForumListDeserializer");
         }
     }
 }

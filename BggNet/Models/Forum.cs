@@ -11,9 +11,13 @@
 
         public int? NumThreads { get; set; }
 
-        public DateTime? LastPostDate { get; set; }
+        public int? NumPosts { get; set; }
+
+        public DateTimeOffset? LastPostDate { get; set; }
 
         public bool? NoPosting { get; set; }
+
+        public string Description { get; set; }
 
         /// <summary>
         /// The summary of the threads associated with this Forum.
