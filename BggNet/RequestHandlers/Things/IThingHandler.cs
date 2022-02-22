@@ -1,7 +1,7 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Models;
 
-namespace Bgg.Net.Common.Resources.Things
+namespace Bgg.Net.Common.RequestHandlers.Things
 {
     /// <summary>
     /// Public interface that handles Thing queries.

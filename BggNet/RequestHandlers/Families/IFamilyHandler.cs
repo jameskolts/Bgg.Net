@@ -2,7 +2,7 @@
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Types;
 
-namespace Bgg.Net.Common.Resources.Families
+namespace Bgg.Net.Common.RequestHandlers.Families
 {
     /// <summary>
     /// Public interface for family queries.

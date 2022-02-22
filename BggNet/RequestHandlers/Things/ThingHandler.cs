@@ -4,7 +4,7 @@ using Bgg.Net.Common.Infrastructure.Xml.Interfaces;
 using Bgg.Net.Common.Models;
 using Serilog;
 
-namespace Bgg.Net.Common.Resources.Things
+namespace Bgg.Net.Common.RequestHandlers.Things
 {
     /// <summary>
     /// Handles Thing requests to the BGG API.

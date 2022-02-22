@@ -5,7 +5,7 @@ using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Types;
 using Serilog;
 
-namespace Bgg.Net.Common.Resources.Families
+namespace Bgg.Net.Common.RequestHandlers.Families
 {
     /// <summary>
     /// Handles Family requests to the BGG API

@@ -1,5 +1,5 @@
 ﻿using Bgg.Net.Common.Infrastructure;
-using Bgg.Net.Common.Resources.Families;
+using Bgg.Net.Common.RequestHandlers.Families;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
 using Bgg.Net.Common.Types;
 using FluentAssertions;

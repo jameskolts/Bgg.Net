@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bgg.Net.Common", "BggNet\Bg
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleIntegrationApp", "ConsoleIntegrationApp\ConsoleIntegrationApp.csproj", "{C8020D39-C473-423F-9241-B440D657FE2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bgg.Net.Common.Tests", "Bgg.Net.Common.Tests\Bgg.Net.Common.Tests.csproj", "{258B79F1-C77D-401C-BD0C-B2A8E1E336F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bgg.Net.Common.Tests", "Bgg.Net.Common.Tests\Bgg.Net.Common.Tests.csproj", "{258B79F1-C77D-401C-BD0C-B2A8E1E336F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

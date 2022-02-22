@@ -21,7 +21,7 @@ namespace Bgg.Net.Common.Infrastructure.Xml
         {
             _forumDeserializer = forumDeserializer;
         }
-
+               
         /// <inheritdoc/>
         ForumList IForumListDeserializer.Deserialize(string xml)
         {

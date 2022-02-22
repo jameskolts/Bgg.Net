@@ -1,5 +1,5 @@
 ﻿using Bgg.Net.Common.Infrastructure;
-using Bgg.Net.Common.Resources.Things;
+using Bgg.Net.Common.RequestHandlers.Things;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
