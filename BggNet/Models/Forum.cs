@@ -10,13 +10,12 @@ namespace Bgg.Net.Common.Models
     [XmlRoot("forum", Namespace = "", IsNullable = false)]
     [ExcludeFromCodeCoverage]
     public partial class Forum : BggBase
-    {
-        [XmlArray("threads")]
-        [XmlArrayItem("thread")]
-        public ForumThread[] Threads { get; set; }
-                
+    {                  
         [XmlAttribute("id")]
         public long Id { get; set; }
+
+        [XmlAttribute("groupid")]
+        public long GroupId { get; set; }
 
         [XmlAttribute("title")]
         public string Title { get; set; }
@@ -35,5 +34,12 @@ namespace Bgg.Net.Common.Models
 
         [XmlAttribute("termsofuse")]
         public string TermsOfUse { get; set; }
+
+        [XmlAttribute("description")]
+        public string Description { get; set; } 
+
+        [XmlArray("threads")]
+        [XmlArrayItem("thread")]
+        public ForumThread[] Threads { get; set; }
     }
 }

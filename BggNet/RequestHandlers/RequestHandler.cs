@@ -33,7 +33,7 @@ namespace Bgg.Net.Common.RequestHandlers
         /// Will deserialize the httpResponse objects content to populate the result.
         /// </summary>
         /// <typeparam name="T">The type to deserialize to.</typeparam>
-        /// <param name="httpResponse">The <see cref="HttpResponseMessage"/ to deserialize.></param>
+        /// <param name="httpResponse">The <see cref="HttpResponseMessage"/ to deserialize.</param>
         /// <returnsThe <see cref="BggResult{T}"/> populated from the httpResponse.</returns>
         protected async Task<BggResult<T>> BuildBggResult<T>(HttpResponseMessage httpResponse)
             where T : BggBase

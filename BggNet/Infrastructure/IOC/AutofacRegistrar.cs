@@ -25,6 +25,7 @@ namespace Bgg.Net.Common.Infrastructure.IOC
             }).SingleInstance();
 
             builder.RegisterType<BggClient>().As<IHttpClient>().AsSelf();
+            builder.RegisterType<BggDeserializer>().As<IBggDeserializer>().AsSelf();
             builder.RegisterType<ThingDeserializer>().As<IThingDeserializer>().AsSelf();
             builder.RegisterType<ThingHandler>().As<IThingHandler>().AsSelf();
             builder.RegisterType<FamilyDeserializer>().As<IFamilyDeserializer>().AsSelf();
@@ -33,7 +34,6 @@ namespace Bgg.Net.Common.Infrastructure.IOC
             builder.RegisterType<ForumDeserializer>().As<IForumDeserializer>().AsSelf();
             builder.RegisterType<ForumListDeserializer>().As<IForumListDeserializer>().AsSelf();
             builder.RegisterType<ForumListHandler>().As<IForumListHandler>().AsSelf();
-            builder.RegisterType<BggDeserializer>().As<IBggDeserializer>().AsSelf();
             builder.RegisterType<ForumHandler>().As<IForumHandler>().AsSelf();
 
             return builder.Build();

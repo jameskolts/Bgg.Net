@@ -1,23 +1,30 @@
-﻿namespace Bgg.Net.Common.Models
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Xml;
+using System.Xml.Serialization;
+
+namespace Bgg.Net.Common.Models
 {
     /// <summary>
-    /// Represents a ForumList from the BGG API.
+    /// Represents a ForumList from the BGG API
     /// </summary>
-    public class ForumList : BggBase
+    [Serializable()]
+    [DesignerCategory("code")]
+    [XmlType(AnonymousType = true)]
+    [XmlRoot("forums", Namespace = "", IsNullable = false)]
+    [ExcludeFromCodeCoverage]
+    public partial class ForumList : BggBase
     {
-        /// <summary>
-        /// The Id.
-        /// </summary>
-        public int? Id { get; set; }
+        [XmlElement("forum")]
+        public Forum[] Forums { get; set; }
 
-        /// <summary>
-        /// The Type.
-        /// </summary>
+        [XmlAttribute("type")]
         public string Type { get; set; }
 
-        /// <summary>
-        /// The List of Forums.
-        /// </summary>
-        public List<Forum> Forums { get; set; } = new List<Forum>();
+        [XmlAttribute("id")]
+        public long Id { get; set; }
+
+        [XmlAttribute("termsofuse")]
+        public string TermsOfUse { get; set; }
     }
 }

@@ -37,12 +37,12 @@ namespace Bgg.Net.Common.Infrastructure.Xml
 
             var forumList = new ForumList
             {
-                Id = root.Attributes["id"]?.Value.ToNullableInt(),
-                Type = root.Attributes["type"]?.Value,
-                Forums = _forumDeserializer.Deserialize(root.ToString())
+                //Id = root.Attributes["id"]?.Value.ToNullableInt(),
+                //Type = root.Attributes["type"]?.Value,
+                //Forums = _forumDeserializer.Deserialize(root.ToString())
             };
 
-            if (!(forumList.Id.HasValue || !string.IsNullOrWhiteSpace(forumList.Type) || forumList.Forums.Any()))
+            if (!(/*forumList.Id.HasValue ||*/ !string.IsNullOrWhiteSpace(forumList.Type) || forumList.Forums.Any()))
             {
                 return null;
             }

@@ -16,23 +16,17 @@ namespace Bgg.Net.Common.RequestHandlers.ForumsList
     /// <summary>
     /// Handles ForumList requests to the BGG API.
     /// </summary>
-    public class ForumListHandler : IForumListHandler
+    public class ForumListHandler : RequestHandler, IForumListHandler
     {
-        private readonly IHttpClient _client;
-        private readonly ILogger _logger;
-        private readonly IForumListDeserializer _deserializer;
-
         /// <summary>
         /// Creates an instance of <see cref="ForumListHandler"/>.
         /// </summary>
         /// <param name="httpClient">The httpClient.</param>
         /// <param name="logger">The logger.</param>
         /// <param name="deserializer">The deserializer.</param>
-        public ForumListHandler(IHttpClient httpClient, ILogger logger, IForumListDeserializer deserializer)
+        public ForumListHandler(IHttpClient httpClient, ILogger logger, IBggDeserializer deserializer)
+            : base(deserializer, logger, httpClient)
         {
-            _client = httpClient;
-            _logger = logger;
-            _deserializer = deserializer;
         }
 
         public async Task<BggResult<ForumList>> GetForumListByIdAndType(long id, ForumListType type)
@@ -41,31 +35,9 @@ namespace Bgg.Net.Common.RequestHandlers.ForumsList
 
             var queryString = $"forumlist?id={id}&type={type.ToString().ToLower()}";
 
-            var httpResponseMessage = await _client.GetAsync(queryString);
+            var httpResponseMessage = await _httpClient.GetAsync(queryString);
 
-            return await BuildBggResult(httpResponseMessage);
-        }
-
-        private async Task<BggResult<ForumList>> BuildBggResult(HttpResponseMessage httpResponse)
-        {
-            var responseString = await httpResponse.Content.ReadAsStringAsync();
-            var bggResult = new BggResult<ForumList>();
-
-            try
-            {
-                bggResult.Items.Add(_deserializer.Deserialize(responseString));
-            }
-            catch (Exception exception)
-            {
-                var errorString = $"Error during deserialization. {exception.Message}";
-                _logger.Error(exception, errorString);
-                bggResult.Errors.Add(errorString);
-            }
-
-            bggResult.IsSuccessful = httpResponse.IsSuccessStatusCode && !bggResult.Errors.Any();
-            bggResult.HttpResponseCode = httpResponse.StatusCode;
-
-            return bggResult;
+            return await BuildBggResult<ForumList>(httpResponseMessage);
         }
     }
 }
