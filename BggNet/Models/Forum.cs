@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
 
 namespace Bgg.Net.Common.Models
@@ -7,6 +8,7 @@ namespace Bgg.Net.Common.Models
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     [XmlRoot("forum", Namespace = "", IsNullable = false)]
+    [ExcludeFromCodeCoverage]
     public partial class Forum : BggBase
     {
         [XmlArray("threads")]

@@ -29,5 +29,16 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
 
             return await BuildBggResult<Forum>(httpResponseMessage);
         }
+
+        public async Task<BggResult<Forum>> GetForumByIdAndPage(long id, int page)
+        {
+            _logger.Information("GetForumByIdAndPage : {id}, {page}", id, page);
+
+            var queryString = $"forum?id={id}&page={page}";
+
+            var httpResponseMessage = await _httpClient.GetAsync(queryString);
+
+            return await BuildBggResult<Forum>(httpResponseMessage);
+        }
     }
 }
