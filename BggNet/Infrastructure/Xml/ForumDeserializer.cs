@@ -57,14 +57,14 @@ namespace Bgg.Net.Common.Infrastructure.Xml
 
             var forum = new Forum
             {
-                Id = DeserializeIntAttribute("id", forumNode),
-                Title = DeserializeStringAttribute("title", forumNode),
-                NoPosting = forumNode.Attributes["nopositing"]?.Value.ToNullableBool(),
-                Description = DeserializeStringAttribute("description", forumNode),
-                NumThreads = DeserializeIntAttribute("numthreads", forumNode),
-                NumPosts = DeserializeIntAttribute("numposts", forumNode),
-                LastPostDate = DeserializeDtoAttribute("lastpostdate", forumNode),
-                Threads = _threadDeserializer.DeserializeThreadSummaries(root.ToString())
+                //Id = DeserializeIntAttribute("id", forumNode),
+                //Title = DeserializeStringAttribute("title", forumNode),
+                //NoPosting = forumNode.Attributes["nopositing"]?.Value.ToNullableBool(),
+                ////Description = DeserializeStringAttribute("description", forumNode),
+                //NumThreads = DeserializeIntAttribute("numthreads", forumNode),
+                //NumPosts = DeserializeIntAttribute("numposts", forumNode),
+                //LastPostDate = DeserializeDtoAttribute("lastpostdate", forumNode),
+                ////Threads = _threadDeserializer.DeserializeThreadSummaries(root.ToString())
             };
 
             return forum;

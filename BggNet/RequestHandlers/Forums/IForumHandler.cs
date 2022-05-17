@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Infrastructure;
 
 namespace Bgg.Net.Common.RequestHandlers.Forums
 {
-    internal class IForumHandler
+    public interface IForumHandler
     {
+        Task<BggResult<Forum>> GetForumById(long id);
     }
 }

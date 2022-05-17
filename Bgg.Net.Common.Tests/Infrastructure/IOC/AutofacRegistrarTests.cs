@@ -4,8 +4,9 @@ using Bgg.Net.Common.Infrastructure.IOC;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Infrastructure.Xml.Interfaces;
 using Bgg.Net.Common.RequestHandlers.Families;
-using Bgg.Net.Common.RequestHandlers.Things;
+using Bgg.Net.Common.RequestHandlers.Forums;
 using Bgg.Net.Common.RequestHandlers.ForumsList;
+using Bgg.Net.Common.RequestHandlers.Things;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -177,11 +178,28 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
             //Assert
             objFromInterface.Should().NotBeNull();
             objFromInterface.Should().BeAssignableTo<ForumListHandler>();
-            objFromInterface?.GetType().Name.Should().Be("ForumListDHandler");
+            objFromInterface?.GetType().Name.Should().Be("ForumListHandler");
 
             objFromClass.Should().NotBeNull();
-            objFromClass.Should().BeAssignableTo<ForumListDeserializer>();
+            objFromClass.Should().BeAssignableTo<ForumListHandler>();
             objFromClass?.GetType().Name.Should().Be("ForumListHandler");
+        }
+
+        [TestMethod]
+        public void ForumHandler_Resolve()
+        {
+            // Arrange/Act
+            var objFromInterface = scope?.Resolve<IForumHandler>();
+            var objFromClass = scope?.Resolve<ForumHandler>();
+
+            //Assert
+            objFromInterface.Should().NotBeNull();
+            objFromInterface.Should().BeAssignableTo<ForumHandler>();
+            objFromInterface?.GetType().Name.Should().Be("ForumHandler");
+
+            objFromClass.Should().NotBeNull();
+            objFromClass.Should().BeAssignableTo<ForumHandler>();
+            objFromClass?.GetType().Name.Should().Be("ForumHandler");
         }
     }
 }

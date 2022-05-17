@@ -1,30 +1,37 @@
-﻿namespace Bgg.Net.Common.Models
+﻿using System.ComponentModel;
+using System.Xml.Serialization;
+
+namespace Bgg.Net.Common.Models
 {
-    /// <summary>
-    /// Represents a forum from the BGG API.
-    /// </summary>
-    public class Forum
+    [Serializable()]
+    [DesignerCategory("code")]
+    [XmlType(AnonymousType = true)]
+    [XmlRoot("forum", Namespace = "", IsNullable = false)]
+    public partial class Forum : BggBase
     {
-        public long? Id { get; set; }
+        [XmlArray("threads")]
+        [XmlArrayItem("thread")]
+        public ForumThread[] Threads { get; set; }
+                
+        [XmlAttribute("id")]
+        public long Id { get; set; }
 
+        [XmlAttribute("title")]
         public string Title { get; set; }
+                
+        [XmlAttribute("numthreads")]
+        public long NumThreads { get; set; }
 
-        public int? NumThreads { get; set; }
+        [XmlAttribute("numposts")]
+        public long NumPosts { get; set; }  
 
-        public int? NumPosts { get; set; }
+        [XmlAttribute("lastpostdate")]
+        public string LastPostDate { get; set; }
+                
+        [XmlAttribute("noposting")]
+        public bool NoPosting { get; set; }
 
-        public DateTimeOffset? LastPostDate { get; set; }
-
-        public bool? NoPosting { get; set; }
-
-        public string Description { get; set; }
-
-        /// <summary>
-        /// The summary of the threads associated with this Forum.
-        /// </summary>
-        /// <remarks>
-        /// Will not be populated from forums retrieved from ForumList API calls.
-        /// </remarks>
-        public List<ThreadSummary> Threads { get; set; } = new List<ThreadSummary>();
+        [XmlAttribute("termsofuse")]
+        public string TermsOfUse { get; set; }
     }
 }

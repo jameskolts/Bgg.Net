@@ -5,6 +5,7 @@ using Bgg.Net.Common.Infrastructure.Xml.Interfaces;
 using Bgg.Net.Common.RequestHandlers.Families;
 using Bgg.Net.Common.RequestHandlers.Things;
 using Bgg.Net.Common.RequestHandlers.ForumsList;
+using Bgg.Net.Common.RequestHandlers.Forums;
 using Serilog;
 using IContainer = Autofac.IContainer;
 
@@ -32,6 +33,8 @@ namespace Bgg.Net.Common.Infrastructure.IOC
             builder.RegisterType<ForumDeserializer>().As<IForumDeserializer>().AsSelf();
             builder.RegisterType<ForumListDeserializer>().As<IForumListDeserializer>().AsSelf();
             builder.RegisterType<ForumListHandler>().As<IForumListHandler>().AsSelf();
+            builder.RegisterType<BggDeserializer>().As<IBggDeserializer>().AsSelf();
+            builder.RegisterType<ForumHandler>().As<IForumHandler>().AsSelf();
 
             return builder.Build();
         }

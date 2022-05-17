@@ -6,6 +6,7 @@ using Bgg.Net.Common.Infrastructure.IOC;
 using Bgg.Net.Common.RequestHandlers.Families;
 using Bgg.Net.Common.RequestHandlers.ForumsList;
 using Bgg.Net.Common.RequestHandlers.Things;
+using Bgg.Net.Common.RequestHandlers.Forums;
 using Serilog;
 
 
@@ -51,6 +52,10 @@ using (var scope = AutofacRegistrar.BuildContainer().BeginLifetimeScope())
     var forumListHandler = scope.Resolve<ForumListHandler>();
     var forumList = await forumListHandler.GetForumListByIdAndType(1, Bgg.Net.Common.Types.ForumListType.Thing);
     logger.Information("Success: " + forumList.IsSuccessful);
+
+    var forumHandler = scope.Resolve<ForumHandler>();
+    var forum = await forumHandler.GetForumById(3);
+    logger.Information("Success: " + forum.IsSuccessful);
 
 }
 

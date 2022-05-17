@@ -7,7 +7,7 @@ namespace Bgg.Net.Common.Infrastructure.Xml.Interfaces
         T Deserialize<T>(string xml)
             where T : BggBase;
 
-        List<T> DeserializeList<T>(string xml)
-            where T : BggBase;
+        //List<T> DeserializeList<T>(string xml)
+        //    where T : BggBase;
     }
 }
