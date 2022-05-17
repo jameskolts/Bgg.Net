@@ -7,7 +7,7 @@ namespace Bgg.Net.Common.Infrastructure
     public class BggResult<T>
         where T : BggBase
     {
-        public List<T> Items { get; set; } = new List<T>();
+        public T Item { get; set; }
 
         public List<string> Errors { get; set; } = new List<string>();
 

@@ -29,4 +29,8 @@
     <ProjectReference Include="..\BggNet\Bgg.Net.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\Things\" />
+  </ItemGroup>
+
 </Project>

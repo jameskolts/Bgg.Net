@@ -23,8 +23,5 @@ namespace Bgg.Net.Common.Models
 
         [XmlAttribute("id")]
         public long Id { get; set; }
-
-        [XmlAttribute("termsofuse")]
-        public string TermsOfUse { get; set; }
     }
 }

@@ -28,28 +28,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             root = XmlGenerator.GenerateThingXmlElement();
         }
 
-        [TestMethod]
-        public void DeserializeLink_Success()
-        {
-            //Arrange
-            var nodeList = root.SelectNodes($"{_rootXpath}/link");
-
-            //Act
-            var result = deserializer.DeserializeLink(nodeList);
-
-            //Assert
-            result.Should().NotBeNullOrEmpty();
-            result.Count.Should().Be(23);
-            result[0].Type.Should().Be("boardgamecategory");
-            result[0].Id.Should().Be(1021);
-            result[0].Value.Should().Be("Economic");
-            result[1].Type.Should().Be("boardgamecategory");
-            result[1].Id.Should().Be(1026);
-            result[1].Value.Should().Be("Negotiation");
-            result[2].Type.Should().Be("boardgamecategory");
-            result[2].Id.Should().Be(1001);
-            result[2].Value.Should().Be("Political");
-        }
+       
 
         [TestMethod]
         public void DeserializeLink_Null()
@@ -282,28 +261,6 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
         }
 
         [TestMethod]
-        public void DeserializeBggNames_Success()
-        {
-            //Arrange
-            var nodes = root.SelectNodes($"{_rootXpath}/name");
-
-            //Act
-            var result = deserializer.DeserializeBggNames(nodes);
-
-            //Assert
-            result.Count.Should().Be(3);
-            result[0].Type.Should().Be("primary");
-            result[0].SortIndex.Should().Be(5);
-            result[0].Value.Should().Be("Die Macher");
-            result[1].Type.Should().Be("alternate");
-            result[1].Value.Should().NotBeNullOrWhiteSpace();
-            result[1].SortIndex.Should().Be(1);
-            result[2].Type.Should().Be("alternate");
-            result[2].Value.Should().NotBeNullOrWhiteSpace();
-            result[2].SortIndex.Should().Be(1);
-        }
-
-        [TestMethod]
         public void DeserializeBggNames_Null()
         {
             //Act
@@ -322,60 +279,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             //Assert
             result.Should().BeNull();
         }
-
-        [TestMethod]
-        public void DeserializeVersion_Success()
-        {
-            //Arrange
-            var node = root.SelectSingleNode($"{_rootXpath}/versions");
-
-            //Act
-            var result = deserializer.DeserializeVersions(node);
-
-            //Assert
-            result.Should().NotBeNullOrEmpty();
-            result.Count.Should().Be(8);
-
-            result[0].Should().BeAssignableTo<BoardGameVersion>();
-            var firstVersion = result[0] as BoardGameVersion;
-            Assert.IsNotNull(firstVersion);
-
-            firstVersion.Type.Should().Be(VersionType.BoardGame);
-            firstVersion.Id.Should().Be(456543);
-            firstVersion.Thumbnail.Should().Be("https://cf.geekdo-images.com/0bTB2RY9SP54L5Ua1l174A__thumb/img/LQtHKp9cFcT-Np632hh_02dtH28=/fit-in/200x150/filters:strip_icc()/pic4814244.jpg");
-            firstVersion.Image.Should().Be("https://cf.geekdo-images.com/0bTB2RY9SP54L5Ua1l174A__original/img/z0GNyPQ69Sg6pds22vmGXUfhnEM=/0x0/filters:format(jpeg)/pic4814244.jpg");
-            firstVersion.Links.Count.Should().Be(3);
-            firstVersion.Links[0].Type.Should().Be("boardgameversion");
-            firstVersion.Links[0].Id.Should().Be(1);
-            firstVersion.Links[0].Value.Should().Be("Die Macher");
-            firstVersion.Links[1].Type.Should().Be("boardgamepublisher");
-            firstVersion.Links[1].Id.Should().Be(8147);
-            firstVersion.Links[1].Value.Should().Be("YOKA Games");
-            firstVersion.Links[2].Value.Should().Be("Chinese");
-            firstVersion.Links[2].Type.Should().Be("language");
-            firstVersion.Links[2].Id.Should().Be(2181);
-            firstVersion.Name.Count.Should().Be(1);
-            firstVersion.Name[0].Type.Should().Be("primary");
-            firstVersion.Name[0].SortIndex.Should().Be(1);
-            firstVersion.Name[0].Value.Should().Be("Chinese edition");
-            firstVersion.YearPublished.Should().Be(2019);
-            firstVersion.ProductCode.Should().BeNullOrWhiteSpace();
-            firstVersion.Width.Should().Be(0);
-            firstVersion.Length.Should().Be(0);
-            firstVersion.Depth.Should().Be(0);
-            firstVersion.Weight.Should().Be(0);
-
-            result[1].Should().BeAssignableTo<BoardGameVersion>();
-            var secondVersion = result[1] as BoardGameVersion;
-            Assert.IsNotNull(secondVersion);
-
-            secondVersion.Name.Count.Should().Be(1);
-            secondVersion.Name[0].Value.Should().Be("German-only first edition");
-            secondVersion.Length.Should().Be(12.5);
-            secondVersion.Depth.Should().Be(2);
-            secondVersion.Weight.Should().Be(0);
-        }
-
+              
         [TestMethod]
         public void DeserializeComments_Success()
         {

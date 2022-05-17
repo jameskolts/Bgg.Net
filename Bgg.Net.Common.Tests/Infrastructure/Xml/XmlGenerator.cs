@@ -3,7 +3,7 @@ using System.IO;
 using System;
 
 namespace Bgg.Net.Common.Tests.Infrastructure.Xml
-{   
+{
     /// <summary>
     /// Test Class to aid in generating of XmlStrings and parsing them to XmlElements.
     /// </summary>
@@ -23,10 +23,8 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             {
                 return document.DocumentElement;
             }
-            else
-            {
-                throw new Exception("Unable to generate test XML");
-            }
+
+            throw new Exception("Unable to generate test XML");
         }
 
         public static string GenerateBoardGameXmlString()

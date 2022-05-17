@@ -96,7 +96,7 @@ namespace Bgg.Net.Common.RequestHandlers.Things
 
             try
             {
-                bggResult.Items = _deserializer.Deserialize(responseString);
+                //bggResult.Items = _deserializer.Deserialize(responseString);
             }
             catch (Exception exception)
             {

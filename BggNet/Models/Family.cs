@@ -1,24 +1,45 @@
 ﻿using Bgg.Net.Common.Models.Links;
+using System.Xml;
+using System;
+using System.Xml.Serialization;
+using System.ComponentModel;
 
 namespace Bgg.Net.Common.Models
 {
-    /// <summary>
-    /// Represents a family item from bgg.
-    /// </summary>
-    public class Family : BggBase
+    [Serializable()]
+    [DesignerCategory("code")]
+    [XmlType(AnonymousType = true)]
+    [XmlRoot("items", Namespace = "", IsNullable = false)]
+    public partial class FamilyList : BggBase
     {
-        public int? Id { get; set; } 
+        [XmlElement("item")]
+        public List<Family> Families { get; set; }
+    }
 
-        public string Type { get; set; }
+    [Serializable()]
+    [DesignerCategory("code")]
+    [XmlType("item", AnonymousType = true)]
+    public partial class Family
+    {
+        [XmlAttribute("id")]
+        public long Id { get; set; }
 
+        [XmlElement("thumbnail")]
         public string Thumbnail { get; set; }
 
+        [XmlElement("image")]
         public string Image { get; set; }
 
-        public List<BggName> Name { get; set; } = new List<BggName>();
+        [XmlElement("name")]
+        public BggName Name { get; set; }
 
+        [XmlElement("description")]
         public string Description { get; set; }
 
-        public List<FamilyLink> Link { get; set; } = new List<FamilyLink>();
+        [XmlElement("link")]
+        public List<FamilyLink> Links { get; set; } = new List<FamilyLink>();
+
+        [XmlAttribute("type")]
+        public string Type { get; set; }
     }
 }

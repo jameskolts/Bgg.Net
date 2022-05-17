@@ -32,9 +32,6 @@ namespace Bgg.Net.Common.Models
         [XmlAttribute("noposting")]
         public bool NoPosting { get; set; }
 
-        [XmlAttribute("termsofuse")]
-        public string TermsOfUse { get; set; }
-
         [XmlAttribute("description")]
         public string Description { get; set; } 
 

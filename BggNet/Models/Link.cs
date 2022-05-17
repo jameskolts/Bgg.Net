@@ -1,23 +1,33 @@
-﻿namespace Bgg.Net.Common.Models
+﻿using System.ComponentModel;
+using System.Xml;
+using System.Xml.Serialization;
+
+namespace Bgg.Net.Common.Models
 {
     /// <summary>
     /// A link to a related item.
     /// </summary>
+    [Serializable()]
+    [DesignerCategory("code")]
+    [XmlType("link", AnonymousType = true)]
     public class Link
     {
         /// <summary>
         /// The type of the link.
         /// </summary>
+        [XmlAttribute("type")]
         public string Type { get; set; }
 
         /// <summary>
         /// The id of the linked item.
         /// </summary>
-        public int? Id { get; set; }
+        [XmlAttribute("id")]
+        public long Id { get; set; }
 
         /// <summary>
         /// The value.
         /// </summary>
+        [XmlAttribute("value")]
         public string Value { get; set; }
     }
 }

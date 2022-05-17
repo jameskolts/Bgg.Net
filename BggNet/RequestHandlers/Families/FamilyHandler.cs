@@ -10,55 +10,49 @@ namespace Bgg.Net.Common.RequestHandlers.Families
     /// <summary>
     /// Handles Family requests to the BGG API
     /// </summary>
-    public class FamilyHandler : IFamilyHandler
+    public class FamilyHandler : RequestHandler, IFamilyHandler
     {
-        private readonly IHttpClient _client;
-        private readonly ILogger _logger;
-        private readonly IFamilyDeserializer _deserializer;
-
-        public FamilyHandler(IHttpClient client, ILogger logger, IFamilyDeserializer deserializer)
+        public FamilyHandler(IHttpClient client, ILogger logger, IBggDeserializer deserializer)
+            : base(deserializer, logger, client)
         {
-            _client = client;
-            _logger = logger;
-            _deserializer = deserializer;
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<Family>> GetFamilyById(int id)
+        public async Task<BggResult<FamilyList>> GetFamilyById(int id)
         {
             _logger.Information("GetFamilyById : {id}", id);
 
-            var httpResponseMessage = await _client.GetAsync($"family?id={id}");
+            var httpResponseMessage = await _httpClient.GetAsync($"family?id={id}");
 
-            return await BuildBggResult(httpResponseMessage);
+            return await BuildBggResult<FamilyList>(httpResponseMessage);
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<Family>> GetFamilyByIds(List<int> ids)
+        public async Task<BggResult<FamilyList>> GetFamilyByIds(List<int> ids)
         {
             _logger.Information("GetFamilyByIds : {id}", ids);
 
             var queryString = $"family?id=" + string.Join(',', ids);
 
-            var httpResponseMessage = await _client.GetAsync(queryString);
+            var httpResponseMessage = await _httpClient.GetAsync(queryString);
 
-            return await BuildBggResult(httpResponseMessage);
+            return await BuildBggResult<FamilyList>(httpResponseMessage);
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<Family>> GetFamilyByIdsAndType(List<int> ids, List<FamilyType> types)
+        public async Task<BggResult<FamilyList>> GetFamilyByIdsAndType(List<int> ids, List<FamilyType> types)
         {
             _logger.Information("GetFamilyByIdsAndType : {id}, {types}", ids, types);
 
             var queryString = $"family?id={string.Join(',', ids)}&type={string.Join(',', types).ToLower()}";
 
-            var httpResponseMessage = await _client.GetAsync(queryString);
+            var httpResponseMessage = await _httpClient.GetAsync(queryString);
 
-            return await BuildBggResult(httpResponseMessage);
+            return await BuildBggResult<FamilyList>(httpResponseMessage);
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<Family>> GetFamilyExtensible(Extension extension)
+        public async Task<BggResult<FamilyList>> GetFamilyExtensible(Extension extension)
         {
             _logger.Information("GetFamilyExtensible : {extensions}", extension);
 
@@ -69,7 +63,7 @@ namespace Bgg.Net.Common.RequestHandlers.Families
                     string errorMessage = $"'{kvp.Key}' parameter is not supported.";
                     _logger.Error(errorMessage);
 
-                    return new BggResult<Family>
+                    return new BggResult<FamilyList>
                     {
                         IsSuccessful = false,
                         Errors = new List<string> { errorMessage }
@@ -78,31 +72,9 @@ namespace Bgg.Net.Common.RequestHandlers.Families
             }
 
             string queryString = "family?" + string.Join("&", extension.Value.Select(x => x.Key + "=" + string.Join(',', x.Value)));
-            var httpResponseMessage = await _client.GetAsync(queryString);
+            var httpResponseMessage = await _httpClient.GetAsync(queryString);
 
-            return await BuildBggResult(httpResponseMessage);
-        }
-
-        private async Task<BggResult<Family>> BuildBggResult(HttpResponseMessage httpResponse)
-        {
-            var responseString = await httpResponse.Content.ReadAsStringAsync();
-            var bggResult = new BggResult<Family>();
-
-            try
-            {
-                bggResult.Items = _deserializer.Deserialize(responseString);
-            }
-            catch (Exception exception)
-            {
-                var errorString = $"Error during deserialization. {exception.Message}";
-                _logger.Error(exception, errorString);
-                bggResult.Errors.Add(errorString);
-            }
-
-            bggResult.IsSuccessful = httpResponse.IsSuccessStatusCode && !bggResult.Errors.Any();
-            bggResult.HttpResponseCode = httpResponse.StatusCode;
-
-            return bggResult;
+            return await BuildBggResult<FamilyList>(httpResponseMessage);
         }
     }
 }

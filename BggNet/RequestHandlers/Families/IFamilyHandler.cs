@@ -13,29 +13,29 @@ namespace Bgg.Net.Common.RequestHandlers.Families
         /// Gets a family by the given id.
         /// </summary>
         /// <param name="id">The id to retrieve.</param>
-        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Family"/>.</returns>
-        Task<BggResult<Family>> GetFamilyById(int id);
+        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="FamilyList"/>.</returns>
+        Task<BggResult<FamilyList>> GetFamilyById(int id);
 
         /// <summary>
         /// Gets multiple families by the given ids.
         /// </summary>
         /// <param name="ids">The ids to retrieve.</param>
-        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Family"/>.</returns>
-        Task<BggResult<Family>> GetFamilyByIds(List<int> ids);
+        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="FamilyList"/>.</returns>
+        Task<BggResult<FamilyList>> GetFamilyByIds(List<int> ids);
 
         /// <summary>
         /// Gets multiple families by the given ids, filtered by type.
         /// </summary>
         /// <param name="ids">The ids to retrieve.</param>
         /// <param name="types">The types to retrieve</param>
-        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Family"/>.</returns>
-        Task<BggResult<Family>> GetFamilyByIdsAndType(List<int> ids, List<FamilyType> types);
+        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="FamilyList"/>.</returns>
+        Task<BggResult<FamilyList>> GetFamilyByIdsAndType(List<int> ids, List<FamilyType> types);
 
         /// <summary>
         /// Gets a family given extensible parameters. 
         /// </summary>
         /// <param name="extension">The parameters to use.</param>
-        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Family"/>.</returns>
-        Task<BggResult<Family>> GetFamilyExtensible(Extension extension);
+        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="FamilyList"/>.</returns>
+        Task<BggResult<FamilyList>> GetFamilyExtensible(Extension extension);
     }
 }

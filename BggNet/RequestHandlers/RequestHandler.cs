@@ -43,7 +43,7 @@ namespace Bgg.Net.Common.RequestHandlers
             try
             {
                 var responseString = await httpResponse.Content.ReadAsStringAsync();
-                bggResult.Items.Add(_bggDeserializer.Deserialize<T>(responseString));
+                bggResult.Item = _bggDeserializer.Deserialize<T>(responseString);
             }
             catch (Exception exception)
             {

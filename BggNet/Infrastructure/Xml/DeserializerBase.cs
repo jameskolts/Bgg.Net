@@ -334,15 +334,15 @@ namespace Bgg.Net.Common.Infrastructure.Xml
                 {
                     var link = new Link
                     {
-                        Id = node.Attributes.GetNamedItem("id")?.Value.ToNullableInt(),
-                        Type = node.Attributes.GetNamedItem("type")?.Value,
-                        Value = node.Attributes.GetNamedItem("value")?.Value
+                        //Id = node.Attributes.GetNamedItem("id")?.Value.ToNullableInt(),
+                        //Type = node.Attributes.GetNamedItem("type")?.Value,
+                        //Value = node.Attributes.GetNamedItem("value")?.Value
                     };
 
-                    if (link.Id.HasValue || !string.IsNullOrWhiteSpace(link.Type) || !string.IsNullOrWhiteSpace(link.Value))
-                    {
-                        links.Add(link);
-                    }
+                    //if (link.Id.HasValue || !string.IsNullOrWhiteSpace(link.Type) || !string.IsNullOrWhiteSpace(link.Value))
+                    //{
+                    //    links.Add(link);
+                    //}
                 }
             }
 
@@ -364,15 +364,15 @@ namespace Bgg.Net.Common.Infrastructure.Xml
                 {
                     var name = new BggName
                     {
-                        Type = nameNode.Attributes.GetNamedItem("type")?.Value,
-                        SortIndex = nameNode.Attributes.GetNamedItem("sortindex")?.Value.ToNullableInt(),
-                        Value = nameNode.Attributes.GetNamedItem("value")?.Value
+                        //Type = nameNode.Attributes.GetNamedItem("type")?.Value,
+                        //SortIndex = nameNode.Attributes.GetNamedItem("sortindex")?.Value.ToNullableInt(),
+                        //Value = nameNode.Attributes.GetNamedItem("value")?.Value
                     };
 
-                    if (!string.IsNullOrWhiteSpace(name.Type) || name.SortIndex.HasValue || !string.IsNullOrWhiteSpace(name.Value))
-                    {
-                        names.Add(name);
-                    }
+                    //if (!string.IsNullOrWhiteSpace(name.Type) || name.SortIndex.HasValue || !string.IsNullOrWhiteSpace(name.Value))
+                    //{
+                    //    names.Add(name);
+                    //}
                 }
             }
 

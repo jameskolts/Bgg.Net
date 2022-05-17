@@ -33,6 +33,19 @@ namespace Bgg.Net.Common.Tests.Resources
             return bggclientMock;
         }
 
+        public Mock<IBggDeserializer> MockBggDeserializer<T>(T? obj = null)
+            where T : BggBase
+        {
+            var returnObject = obj;
+
+            var mock = new Mock<IBggDeserializer>();
+            mock.Setup(x => x.Deserialize<T>(It.IsAny<string>()))
+                .Returns(returnObject);
+
+
+            return mock;            
+        }
+
         /// <summary>
         /// Mocks a Thing Deserializer and it's response.
         /// </summary>
@@ -69,41 +82,6 @@ namespace Bgg.Net.Common.Tests.Resources
                 {
                     deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
                         .Returns(new ThingDeserializer(Mock.Of<ILogger>()).Deserialize(resultString));
-                }
-            }
-
-            return deserializerMock;
-        }
-
-        public Mock<IFamilyDeserializer> MockIFamilyDeserializer(string? resultString = null, bool? returnsNull = false, Exception? exception = null)
-        {
-            var deserializerMock = new Mock<IFamilyDeserializer>();
-
-            if (exception != null)
-            {
-                deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
-                    .Throws(exception);
-            }
-            else if (returnsNull.HasValue && returnsNull.Value == true)
-            {
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-                deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
-                    .Returns((List<Family>)null);
-#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-            }
-            else
-            {
-                if (string.IsNullOrEmpty(resultString))
-                {
-                    deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
-                        .Returns(new FamilyDeserializer(Mock.Of<ILogger>()).Deserialize(XmlGenerator.GenerateFamilyXmlString()));
-                }
-                else
-                {
-                    deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
-                        .Returns(new FamilyDeserializer(Mock.Of<ILogger>()).Deserialize(resultString));
                 }
             }
 
