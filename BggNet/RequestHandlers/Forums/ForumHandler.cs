@@ -9,7 +9,7 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
     public class ForumHandler : RequestHandler, IForumHandler
     {
         /// <summary>
-        /// Creates an instance of <see cref="ForumListHandler"/>.
+        /// Creates an instance of <see cref="ForumHandler"/>.
         /// </summary>
         /// <param name="httpClient">The httpClient.</param>
         /// <param name="logger">The logger.</param>
