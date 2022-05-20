@@ -1,4 +1,5 @@
-﻿using Bgg.Net.Common.Models;
+﻿using Bgg.Net.Common.Infrastructure.Exceptions;
+using Bgg.Net.Common.Models;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -6,6 +7,7 @@ namespace Bgg.Net.Common.Infrastructure.Xml
 {
     public class BggDeserializer : IBggDeserializer
     {
+        /// <inheritdoc/>
         public T Deserialize<T>(string xml) 
             where T : BggBase
         {
@@ -16,10 +18,17 @@ namespace Bgg.Net.Common.Infrastructure.Xml
 
             using var stringReader = new StringReader(xml);
 
-            var serializer = new XmlSerializer(typeof(T));            
+            var serializer = new XmlSerializer(typeof(T));
             var xmlReader = new XmlTextReader(stringReader);
 
-            return (T)serializer.Deserialize(xmlReader);
+            try
+            {
+                return (T)serializer.Deserialize(xmlReader);
+            }
+            catch (Exception e)
+            {
+                throw new XmlDeserializationException(e.Message, e.InnerException);
+            }
         }
     }
 }

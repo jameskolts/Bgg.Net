@@ -35,7 +35,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             //Assert
             result.Should().BeNull();
         }
-        
+
         [TestMethod]
         public void Deserialize_ThingList()
         {
@@ -267,6 +267,33 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             result.Forums[0].NumThreads.Should().Be(5);
             result.Forums[0].NumPosts.Should().Be(48);
             result.Forums[0].LastPostDate.Should().Be("Wed, 02 Mar 2022 07:25:00 +0000");
+        }
+
+        [TestMethod]
+        public void Deserialize_Thread()
+        {
+            //Arrange
+            var xml = XmlGenerator.GenerateThreadXmlString();
+
+            //Act
+            var result = _deserializer.Deserialize<Thread>(xml);
+
+            //Assert
+            result.Should().NotBeNull();
+            result.Id.Should().Be(25);
+            result.NumArticles.Should().Be(1);
+            result.Link.Should().Be("https://boardgamegeek.com/thread/25");
+            result.TermsOfUse.Should().Be("https://boardgamegeek.com/xmlapi/termsofuse");
+            result.Subject.Should().Be("User Review");
+            result.Articles.Count.Should().Be(1);
+            result.Articles[0].Id.Should().Be(24);
+            result.Articles[0].Username.Should().Be("BoardGameGeek");
+            result.Articles[0].Link.Should().Be("https://boardgamegeek.com/thread/25/article/24#24");
+            result.Articles[0].PostDate.Should().Be("2000-07-09T13:09:35-05:00");
+            result.Articles[0].EditDate.Should().Be("2000-07-09T13:09:35-05:00");
+            result.Articles[0].NumEdits.Should().Be(0);
+            result.Articles[0].Subject.Should().Be("User Review");
+            result.Articles[0].Body.Should().StartWith("A quick, light rummy-variant for two-4 players. Rating 6.5");
         }
     }
 }

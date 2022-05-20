@@ -12,7 +12,8 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
         private const string familyFilePath = "C:\\Users\\jkolt\\source\\repos\\BggNet\\Bgg.Net.Common.Tests\\TestFiles\\FamilyXml.xml";
         private const string forumPath = "C:\\Users\\jkolt\\source\\repos\\BggNet\\Bgg.Net.Common.Tests\\TestFiles\\ForumXml.xml";
         private const string forumListPath = "C:\\Users\\jkolt\\source\\repos\\BggNet\\Bgg.Net.Common.Tests\\TestFiles\\ForumListXml.xml";
-        
+        private const string threadPath = @"C:\Users\jkolt\source\repos\BggNet\Bgg.Net.Common.Tests\TestFiles\ThreadXml.xml";
+
         public static string GenerateBoardGameXmlString()
         {
             return File.ReadAllText(boardGameFilePath);
@@ -36,6 +37,11 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
         public static string GenerateForumListXmlString()
         {
             return File.ReadAllText(forumListPath);
+        }
+
+        public static string GenerateThreadXmlString()
+        {
+            return File.ReadAllText(threadPath);
         }
     }
 }
