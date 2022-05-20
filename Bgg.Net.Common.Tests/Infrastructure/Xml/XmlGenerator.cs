@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Reflection;
 
 namespace Bgg.Net.Common.Tests.Infrastructure.Xml
 {
@@ -7,42 +9,23 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
     /// </summary>
     public static class XmlGenerator
     {
-        private const string boardGameFilePath = "C:\\Users\\jkolt\\source\\repos\\BggNet\\Bgg.Net.Common.Tests\\TestFiles\\BoardGameXml.xml";
-        private const string multipleItemFilePath = "C:\\Users\\jkolt\\source\\repos\\BggNet\\Bgg.Net.Common.Tests\\TestFiles\\MultipleItemXml.xml";
-        private const string familyFilePath = "C:\\Users\\jkolt\\source\\repos\\BggNet\\Bgg.Net.Common.Tests\\TestFiles\\FamilyXml.xml";
-        private const string forumPath = "C:\\Users\\jkolt\\source\\repos\\BggNet\\Bgg.Net.Common.Tests\\TestFiles\\ForumXml.xml";
-        private const string forumListPath = "C:\\Users\\jkolt\\source\\repos\\BggNet\\Bgg.Net.Common.Tests\\TestFiles\\ForumListXml.xml";
-        private const string threadPath = @"C:\Users\jkolt\source\repos\BggNet\Bgg.Net.Common.Tests\TestFiles\ThreadXml.xml";
-
-        public static string GenerateBoardGameXmlString()
+        public static string GenerateResourceXml(string resourceName)
         {
-            return File.ReadAllText(boardGameFilePath);
+            var stream = GetEmbeddedResourceStream(resourceName);
+            using var reader = new StreamReader(stream);
+
+            return reader.ReadToEnd();
         }
 
-        public static string GenerateMultipleItemXmlString()
+        private static Stream GetEmbeddedResourceStream(string resourceName)
         {
-            return File.ReadAllText(multipleItemFilePath);
-        }
+            var stream =  Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);
 
-        public static string GenerateFamilyXmlString()
-        {
-            return File.ReadAllText(familyFilePath);
-        }
+            if (stream == null)
+                throw new Exception("Unable to get Resource Stream");
 
-        public static string GenerateForumXmlString()
-        {
-            return File.ReadAllText(forumPath);
-        }
-
-        public static string GenerateForumListXmlString()
-        {
-            return File.ReadAllText(forumListPath);
-        }
-
-        public static string GenerateThreadXmlString()
-        {
-            return File.ReadAllText(threadPath);
-        }
+            return stream;
+        }       
     }
 }
 

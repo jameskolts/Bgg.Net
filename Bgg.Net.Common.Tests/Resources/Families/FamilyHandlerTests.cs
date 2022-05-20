@@ -9,6 +9,7 @@ using Moq;
 using Serilog;
 using System.Collections.Generic;
 using System.Net;
+using Bgg.Net.Common.Tests.TestFiles;
 using System.Threading.Tasks;
 
 namespace Bgg.Net.Common.Tests.Resources.Families
@@ -22,7 +23,7 @@ namespace Bgg.Net.Common.Tests.Resources.Families
         public async Task GetFamilyById_Success()
         {
             //Arrange
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateFamilyXmlString(), HttpStatusCode.OK);
+            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.FamilyXml), HttpStatusCode.OK);
             var bggDeserializerMock = MockBggDeserializer(
                 new FamilyList
                 {
@@ -50,7 +51,7 @@ namespace Bgg.Net.Common.Tests.Resources.Families
         public async Task GetFamilyByIds_Success()
         {
             //Arrange
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateFamilyXmlString(), HttpStatusCode.OK);
+            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.FamilyXml), HttpStatusCode.OK);
             var bggDeserializerMock = MockBggDeserializer(
                 new FamilyList
                 {
@@ -78,7 +79,7 @@ namespace Bgg.Net.Common.Tests.Resources.Families
         public async Task GetFamilyByIdsAndType_Success()
         {
             //Arrange
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateFamilyXmlString(), HttpStatusCode.OK);
+            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.FamilyXml), HttpStatusCode.OK);
             var bggDeserializerMock = MockBggDeserializer(
                 new FamilyList
                 {
@@ -106,7 +107,7 @@ namespace Bgg.Net.Common.Tests.Resources.Families
         public async Task GetFamilyExtensible_Success()
         {
             //Arrange
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateFamilyXmlString(), HttpStatusCode.OK);
+            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.FamilyXml), HttpStatusCode.OK);
             var bggDeserializerMock = MockBggDeserializer(
                 new FamilyList
                 {
@@ -142,7 +143,7 @@ namespace Bgg.Net.Common.Tests.Resources.Families
         public async Task GetFamilyExtensible_BadParameter()
         {
             //Arrange
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateFamilyXmlString(), HttpStatusCode.OK);
+            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.FamilyXml), HttpStatusCode.OK);
             var bggDeserializerMock = MockBggDeserializer<FamilyList>();
 
             _handler = new FamilyHandler(

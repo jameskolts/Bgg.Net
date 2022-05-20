@@ -3,6 +3,7 @@ using Bgg.Net.Common.Models;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
+using Bgg.Net.Common.Tests.TestFiles;
 
 namespace Bgg.Net.Common.Tests.Infrastructure.Xml
 {
@@ -40,7 +41,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
         public void Deserialize_ThingList()
         {
             //Arrange
-            var xml = XmlGenerator.GenerateBoardGameXmlString();
+            var xml = XmlGenerator.GenerateResourceXml(EmbeddedResource.BoardGameXml);
 
             //Act
             var result = _deserializer.Deserialize<ThingList>(xml);
@@ -169,7 +170,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
         public void Deserialize_ThingList_Multiple()
         {
             //Arrange
-            var xml = XmlGenerator.GenerateMultipleItemXmlString();
+            var xml = XmlGenerator.GenerateResourceXml(EmbeddedResource.MultipleBoardGameXml);
 
             //Act
             var result = _deserializer.Deserialize<ThingList>(xml);
@@ -185,7 +186,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
         public void Deserialize_Family()
         {
             //Arrange
-            var xml = XmlGenerator.GenerateFamilyXmlString();
+            var xml = XmlGenerator.GenerateResourceXml(EmbeddedResource.FamilyXml);
 
             //Act
             var result = _deserializer.Deserialize<FamilyList>(xml);
@@ -221,7 +222,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
         public void Deserialize_Forum()
         {
             //Arrange
-            var xml = XmlGenerator.GenerateForumXmlString();
+            var xml = XmlGenerator.GenerateResourceXml(EmbeddedResource.ForumXml);
 
             //Act
             var result = _deserializer.Deserialize<Forum>(xml);
@@ -248,7 +249,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
         public void Deserialize_ForumList()
         {
             //Arrange
-            var xml = XmlGenerator.GenerateForumListXmlString();
+            var xml = XmlGenerator.GenerateResourceXml(EmbeddedResource.ForumListXml);
 
             //Act
             var result = _deserializer.Deserialize<ForumList>(xml);
@@ -273,7 +274,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
         public void Deserialize_Thread()
         {
             //Arrange
-            var xml = XmlGenerator.GenerateThreadXmlString();
+            var xml = XmlGenerator.GenerateResourceXml(EmbeddedResource.ThreadXml);
 
             //Act
             var result = _deserializer.Deserialize<Thread>(xml);

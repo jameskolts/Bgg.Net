@@ -9,15 +9,19 @@
 
   <ItemGroup>
     <None Remove="TestFiles\BoardGameXml.xml" />
+    <None Remove="TestFiles\FamilyXml.xml" />
     <None Remove="TestFiles\ForumListXml.xml" />
     <None Remove="TestFiles\ForumXml.xml" />
+    <None Remove="TestFiles\MultipleItemXml.xml" />
     <None Remove="TestFiles\ThreadXml.xml" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="TestFiles\BoardGameXml.xml" />
+    <EmbeddedResource Include="TestFiles\FamilyXml.xml" />
     <EmbeddedResource Include="TestFiles\ForumListXml.xml" />
     <EmbeddedResource Include="TestFiles\ForumXml.xml" />
+    <EmbeddedResource Include="TestFiles\MultipleItemXml.xml" />
     <EmbeddedResource Include="TestFiles\ThreadXml.xml" />
   </ItemGroup>
 
