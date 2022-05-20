@@ -286,7 +286,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             result.Link.Should().Be("https://boardgamegeek.com/thread/25");
             result.TermsOfUse.Should().Be("https://boardgamegeek.com/xmlapi/termsofuse");
             result.Subject.Should().Be("User Review");
-            result.Articles.Count.Should().Be(1);
+            result.Articles.Count.Should().Be(8);
             result.Articles[0].Id.Should().Be(24);
             result.Articles[0].Username.Should().Be("BoardGameGeek");
             result.Articles[0].Link.Should().Be("https://boardgamegeek.com/thread/25/article/24#24");

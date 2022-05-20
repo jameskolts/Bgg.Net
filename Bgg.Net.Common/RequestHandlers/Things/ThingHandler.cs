@@ -47,6 +47,8 @@ namespace Bgg.Net.Common.RequestHandlers.Things
         /// <inheritdoc/>
         public async Task<BggResult<ThingList>> GetThingsExtensible(Extension extension)
         {
+            return await GetResourceExtensible<ThingList>("thing", Constants.SupportedThingQueryParameters, extension);
+
             _logger.Information("GetThingsExtensible : {extensions}", extension.ToString());
 
             foreach (var kvp in extension.Value)

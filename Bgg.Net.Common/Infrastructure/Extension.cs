@@ -10,7 +10,7 @@ namespace Bgg.Net.Common.Infrastructure
         /// <summary>
         /// The value of the extension as a key value pair.
         /// </summary>
-        public Dictionary<string, List<int>> Value { get; set; }
+        public Dictionary<string, List<string>> Value { get; set; }
 
         public override string ToString()
         {

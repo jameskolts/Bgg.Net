@@ -30,7 +30,6 @@
 	  <Folder Include="RequestHandlers\Search\" />
 	  <Folder Include="RequestHandlers\Plays\" />
 	  <Folder Include="RequestHandlers\Users\" />
-	  <Folder Include="RequestHandlers\Threads\" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -54,27 +54,7 @@ namespace Bgg.Net.Common.RequestHandlers.Families
         /// <inheritdoc/>
         public async Task<BggResult<FamilyList>> GetFamilyExtensible(Extension extension)
         {
-            _logger.Information("GetFamilyExtensible : {extensions}", extension);
-
-            foreach (var kvp in extension.Value)
-            {
-                if (!Constants.SupportedFamilyQueryParameters.Contains(kvp.Key))
-                {
-                    string errorMessage = $"'{kvp.Key}' parameter is not supported.";
-                    _logger.Error(errorMessage);
-
-                    return new BggResult<FamilyList>
-                    {
-                        IsSuccessful = false,
-                        Errors = new List<string> { errorMessage }
-                    };
-                }
-            }
-
-            string queryString = "family?" + string.Join("&", extension.Value.Select(x => x.Key + "=" + string.Join(',', x.Value)));
-            var httpResponseMessage = await _httpClient.GetAsync(queryString);
-
-            return await BuildBggResult<FamilyList>(httpResponseMessage);
+            return await GetResourceExtensible<FamilyList>("family", Constants.SupportedFamilyQueryParameters, extension);
         }
     }
 }

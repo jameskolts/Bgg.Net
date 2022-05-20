@@ -121,9 +121,9 @@ namespace Bgg.Net.Common.Tests.Resources.Families
 
             var extension = new Extension
             {
-                Value = new Dictionary<string, List<int>>
+                Value = new Dictionary<string, List<string>>
                 {
-                    { "id", new List<int> { 1 } }
+                    { "id", new List<string> { "1" } }
                 }
             };
 
@@ -153,10 +153,10 @@ namespace Bgg.Net.Common.Tests.Resources.Families
 
             var extension = new Extension
             {
-                Value = new Dictionary<string, List<int>>
+                Value = new Dictionary<string, List<string>>
                 {
-                    { "id", new List<int> { 1 } },
-                    { "badparameter", new List<int> { 1 } }
+                    { "id", new List<string> { "1" } },
+                    { "badparameter", new List<string> { "1" } }
                 }
             };
 
@@ -166,7 +166,7 @@ namespace Bgg.Net.Common.Tests.Resources.Families
             //Assert
             result.Should().NotBeNull();
             result.IsSuccessful.Should().BeFalse();
-            result.Errors.Should().Contain("'badparameter' parameter is not supported.");
+            result.Errors.Should().Contain("'badparameter' parameter is not supported for GetFamilyExtensible.");
             result.Item.Should().BeNull();
         }
     }

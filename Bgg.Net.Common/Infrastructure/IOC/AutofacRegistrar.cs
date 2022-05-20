@@ -2,9 +2,10 @@
 using Bgg.Net.Common.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.RequestHandlers.Families;
-using Bgg.Net.Common.RequestHandlers.Things;
-using Bgg.Net.Common.RequestHandlers.ForumsList;
 using Bgg.Net.Common.RequestHandlers.Forums;
+using Bgg.Net.Common.RequestHandlers.ForumsList;
+using Bgg.Net.Common.RequestHandlers.Things;
+using Bgg.Net.Common.RequestHandlers.Threads;
 using Serilog;
 using IContainer = Autofac.IContainer;
 
@@ -29,6 +30,7 @@ namespace Bgg.Net.Common.Infrastructure.IOC
             builder.RegisterType<FamilyHandler>().As<IFamilyHandler>().AsSelf();
             builder.RegisterType<ForumListHandler>().As<IForumListHandler>().AsSelf();
             builder.RegisterType<ForumHandler>().As<IForumHandler>().AsSelf();
+            builder.RegisterType<ThreadHandler>().As<IThreadHandler>().AsSelf();
 
             return builder.Build();
         }

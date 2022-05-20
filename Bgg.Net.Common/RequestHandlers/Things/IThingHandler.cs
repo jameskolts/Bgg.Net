@@ -28,6 +28,8 @@ namespace Bgg.Net.Common.RequestHandlers.Things
         /// <param name="extensions">The parameters to use.</param>
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Thing"/>.</returns>
         /// <exception cref="NotSupportedException">Thrown if the extension is an unsupported parameter.</exception>
+        /// <remarks>Supported parameters include: 'id', 'type', 'versions', videos', 'stats', 'marketplace', 'comments',
+        /// 'ratings', 'page', 'pagesize'.</remarks>
         Task<BggResult<ThingList>> GetThingsExtensible(Extension extensions);
     }
 }

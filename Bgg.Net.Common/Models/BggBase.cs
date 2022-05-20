@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using Newtonsoft.Json;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace Bgg.Net.Common.Models
@@ -11,5 +12,10 @@ namespace Bgg.Net.Common.Models
     {
         [XmlAttribute("termsofuse")]
         public string TermsOfUse { get; set; }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

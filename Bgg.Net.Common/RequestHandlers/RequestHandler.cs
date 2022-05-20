@@ -1,5 +1,6 @@
 ﻿using Bgg.Net.Common.Http;
 using Bgg.Net.Common.Infrastructure;
+using Bgg.Net.Common.Infrastructure.Extensions;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Serilog;
@@ -56,6 +57,32 @@ namespace Bgg.Net.Common.RequestHandlers
             bggResult.HttpResponseCode = httpResponse.StatusCode;
 
             return bggResult;
+        }
+
+        protected async Task<BggResult<T>> GetResourceExtensible<T>(string resourceName, IEnumerable<string> supportedParameters, Extension queryParameters)
+            where T : BggBase
+        {
+            _logger.Information("Get" + resourceName.UpperFirstChar() +"Extensible : {queryParameters}", queryParameters.ToString());
+
+            foreach (var kvp in queryParameters.Value)
+            {
+                if (!supportedParameters.Contains(kvp.Key))
+                {
+                    string errorMessage = $"'{kvp.Key}' parameter is not supported for Get{resourceName.UpperFirstChar()}Extensible.";
+                    _logger.Error(errorMessage);
+
+                    return new BggResult<T>
+                    {
+                        IsSuccessful = false,
+                        Errors = new List<string> { errorMessage }
+                    };
+                }
+            }
+
+            string queryString = $"{resourceName}?" + string.Join("&", queryParameters.Value.Select(x => x.Key + "=" + string.Join(',', x.Value)));
+            var httpResponseMessage = await _httpClient.GetAsync(queryString);
+
+            return await BuildBggResult<T>(httpResponseMessage);
         }
     }
 }

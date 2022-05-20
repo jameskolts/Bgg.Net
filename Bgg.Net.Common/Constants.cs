@@ -20,7 +20,7 @@ namespace Bgg.Net.Common
                 "comments",
                 "ratingcomments",
                 "page",
-                "pagesize" 
+                "pagesize"
             });
 
         public static ReadOnlyCollection<string> SupportedFamilyQueryParameters { get; } = new ReadOnlyCollection<string>(
@@ -28,6 +28,15 @@ namespace Bgg.Net.Common
             {
                 "id",
                 "type"
+            });
+
+        public static ReadOnlyCollection<string> SupportedThreadQueryParameters { get; } = new ReadOnlyCollection<string>(
+            new string[]
+            {
+                "id",
+                "minarticleid",
+                "minarticledate",
+                "count"
             });
     }
 }
