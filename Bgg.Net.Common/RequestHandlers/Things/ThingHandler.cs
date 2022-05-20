@@ -48,28 +48,6 @@ namespace Bgg.Net.Common.RequestHandlers.Things
         public async Task<BggResult<ThingList>> GetThingsExtensible(Extension extension)
         {
             return await GetResourceExtensible<ThingList>("thing", Constants.SupportedThingQueryParameters, extension);
-
-            _logger.Information("GetThingsExtensible : {extensions}", extension.ToString());
-
-            foreach (var kvp in extension.Value)
-            {
-                if (!Constants.SupportedThingQueryParameters.Contains(kvp.Key))
-                {
-                    string errorMessage = $"'{kvp.Key}' parameter is not supported.";
-                    _logger.Error(errorMessage);
-
-                    return new BggResult<ThingList>
-                    {
-                        IsSuccessful = false,
-                        Errors = new List<string> { errorMessage }
-                    };
-                }
-            }
-
-            string queryString = "thing?" + string.Join("&", extension.Value.Select(x => x.Key + "=" + string.Join(',', x.Value)));
-            var httpResponseMessage = await _httpClient.GetAsync(queryString);
-
-            return await BuildBggResult<ThingList>(httpResponseMessage);
         }
     }
 }

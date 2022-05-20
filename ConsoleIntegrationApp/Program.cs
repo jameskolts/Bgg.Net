@@ -4,11 +4,11 @@ using Bgg.Net.Common.Http;
 using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.IOC;
 using Bgg.Net.Common.RequestHandlers.Families;
+using Bgg.Net.Common.RequestHandlers.Forums;
 using Bgg.Net.Common.RequestHandlers.ForumsList;
 using Bgg.Net.Common.RequestHandlers.Things;
-using Bgg.Net.Common.RequestHandlers.Forums;
-using Serilog;
 using Bgg.Net.Common.RequestHandlers.Threads;
+using Serilog;
 
 Console.WriteLine("Hello, Bgg.Net!");
 
