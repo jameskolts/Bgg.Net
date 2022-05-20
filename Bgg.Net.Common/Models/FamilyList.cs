@@ -8,7 +8,7 @@ namespace Bgg.Net.Common.Models
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     [XmlRoot("items", Namespace = "", IsNullable = false)]
-    public partial class FamilyList : BggBase
+    public class FamilyList : BggBase
     {
         [XmlElement("item")]
         public List<Family> Families { get; set; } = new List<Family>();

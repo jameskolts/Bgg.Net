@@ -15,13 +15,14 @@ namespace Bgg.Net.Common.Models
     [ExcludeFromCodeCoverage]
     public partial class ForumList : BggBase
     {
+        [XmlAttribute("id")]
+        public long Id { get; set; }
+
         [XmlElement("forum")]
-        public Forum[] Forums { get; set; }
+        public List<Forum> Forums { get; set; }
 
         [XmlAttribute("type")]
         public string Type { get; set; }
-
-        [XmlAttribute("id")]
-        public long Id { get; set; }
+                
     }
 }

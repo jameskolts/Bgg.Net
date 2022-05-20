@@ -37,6 +37,6 @@ namespace Bgg.Net.Common.Models
 
         [XmlArray("threads")]
         [XmlArrayItem("thread")]
-        public ForumThread[] Threads { get; set; }
+        public List<ForumThread> Threads { get; set; } = new List<ForumThread>();
     }
 }

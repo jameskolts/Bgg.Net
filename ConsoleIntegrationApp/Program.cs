@@ -65,10 +65,12 @@ using (var scope = AutofacRegistrar.BuildContainer().BeginLifetimeScope())
     family = await familyHandler.GetFamilyExtensible(new Extension { Value = new Dictionary<string, List<int>> { { "id", new List<int> { 1 } } } });
     logger.Information("Success: " + family.IsSuccessful);
 
+    logger.Information("---ForumList---");
     var forumListHandler = scope.Resolve<ForumListHandler>();
     var forumList = await forumListHandler.GetForumListByIdAndType(1, Bgg.Net.Common.Types.ForumListType.Thing);
     logger.Information("Success: " + forumList.IsSuccessful);
 
+    logger.Information("---Forum---");
     var forumHandler = scope.Resolve<ForumHandler>();
     var forum = await forumHandler.GetForumById(3);
     logger.Information("Success: " + forum.IsSuccessful);

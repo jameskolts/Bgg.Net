@@ -8,13 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BggNet\Bgg.Net.Common.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Serilog" Version="2.10.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bgg.Net.Common\Bgg.Net.Common.csproj" />
   </ItemGroup>
 
 </Project>

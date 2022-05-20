@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel;
 using System.Xml;
 using System.Xml.Serialization;
-using Version = Bgg.Net.Common.Models.Version;
 
 namespace Bgg.Net.Common.Models
 {
     /// <summary>
-    /// Represents a "Thing" from the board game geek XmlApi2
+    /// Represents a "Thing" from the board game geek XmlApi2.
     /// </summary>
     [Serializable()]
     [DesignerCategory("code")]
@@ -99,7 +98,7 @@ namespace Bgg.Net.Common.Models
         /// Any associated links of the thing.
         /// </summary>
         [XmlElement("link")]
-        public List<Link> Link { get; set; } = new List<Link>();
+        public List<Link> Links { get; set; } = new List<Link>();
 
         /// <summary>
         /// Any additional versions of the thing.
@@ -109,7 +108,7 @@ namespace Bgg.Net.Common.Models
         public List<Version> Versions { get; set; } = new List<Version>();
 
         /// <summary>
-        /// A list of all the polls associated with an thing.
+        /// A list of all the polls associated with a thing.
         /// </summary>
         [XmlElement("poll")]
         public List<Poll> Poll { get; set; } = new List<Poll>();

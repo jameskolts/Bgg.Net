@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 namespace Bgg.Net.Common.Models
 {
     /// <summary>
-    /// The base type for Poll objects.
+    /// Represents a poll from board game geek.
     /// </summary>
     [Serializable()]
     [DesignerCategory("code")]
@@ -33,9 +33,7 @@ namespace Bgg.Net.Common.Models
         /// <summary>
         /// The results of this poll.
         /// </summary>
-        [XmlArray("results")]
-        [XmlArrayItem("result")]
-        //TODO: Doesn't work for suggested playerage poll because of age attribute.  Losing age attribute title, language is loos level.
-        public List<PollResult> Results { get; set; } = new List<PollResult>();
+        [XmlElement("results")]
+        public List<PollResultList> Results { get; set; } = new List<PollResultList>();
     }
 }

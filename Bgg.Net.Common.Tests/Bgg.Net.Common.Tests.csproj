@@ -9,10 +9,14 @@
 
   <ItemGroup>
     <None Remove="TestFiles\BoardGameXml.xml" />
+    <None Remove="TestFiles\ForumListXml.xml" />
+    <None Remove="TestFiles\ForumXml.xml" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="TestFiles\BoardGameXml.xml" />
+    <EmbeddedResource Include="TestFiles\ForumListXml.xml" />
+    <EmbeddedResource Include="TestFiles\ForumXml.xml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,11 +30,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BggNet\Bgg.Net.Common.csproj" />
+    <Folder Include="Resources\Things\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Things\" />
+    <ProjectReference Include="..\Bgg.Net.Common\Bgg.Net.Common.csproj" />
   </ItemGroup>
 
 </Project>
