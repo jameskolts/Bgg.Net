@@ -1,73 +1,94 @@
-﻿namespace Bgg.Net.Common.Models
+﻿using System.ComponentModel;
+using System.Xml;
+using System.Xml.Serialization;
+
+namespace Bgg.Net.Common.Models
 {
     /// <summary>
     /// Represents ratings from board game geek.
     /// </summary>
+    [Serializable()]
+    [DesignerCategory("code")]
+    [XmlType("ratings", AnonymousType = true)]
     public class Ratings
     {
         /// <summary>
         /// The number of users who've rated.
         /// </summary>
-        public long? UsersRated { get; set; }
+        [XmlElement("usersrated")]
+        public BggLong UsersRated { get; set; }
 
         /// <summary>
         /// The average rating.
         /// </summary>
-        public double? Average { get; set; }
+        [XmlElement("average")]
+        public BggDouble Average { get; set; }
 
         /// <summary>
         /// The bayesaverage rating.
         /// </summary>
-        public double? BayesAverage { get; set; }
+        [XmlElement("bayesaverage")]
+        public BggDouble BayesAverage { get; set; }
 
         /// <summary>
         /// A list of ranks.
         /// </summary>
+        [XmlArray("ranks")]
+        [XmlArrayItem("rank")]
         public List<Rank> Ranks { get; set; } = new List<Rank>();
 
         /// <summary>
         /// The Standard Deviation of the ratings.
         /// </summary>
-        public double? StdDeviation { get; set; }
+        [XmlElement("stddev")]
+        public BggDouble StdDeviation { get; set; }
 
         /// <summary>
         /// The median rating.
         /// </summary>
-        public double? Median { get; set; }
+        [XmlElement("median")]
+        public BggDouble Median { get; set; }
 
         /// <summary>
         /// How many users own the item.
         /// </summary>
-        public long? Owned { get; set; }
+        [XmlElement("owned")]
+        public BggLong Owned { get; set; }
 
         /// <summary>
         /// How many users are trading this item.
         /// </summary>
-        public long? Trading { get; set; }
+        [XmlElement("trading")]
+        public BggLong Trading { get; set; }
 
         /// <summary>
         /// How many users are wanting this item.
         /// </summary>
-        public long? Wanting { get; set; }
+        [XmlElement("wanting")]
+        public BggLong Wanting { get; set; }
 
         /// <summary>
         /// How many users are wishing for this item.
         /// </summary>
-        public long? Wishing { get; set; }
+        [XmlElement("wishing")]
+        public BggLong Wishing { get; set; }
 
         /// <summary>
         /// The number of comments for this item.
         /// </summary>
-        public long? NumComments { get; set; }
+        [XmlElement("numcomments")]
+        public BggLong NumComments { get; set; }
 
         /// <summary>
         /// The number of weights for this item.
         /// </summary>
-        public long? NumWeights { get; set; }
+        [XmlElement("numweights")]
+        public BggLong NumWeights { get; set; }
 
         /// <summary>
         /// The average weights for this item.
         /// </summary>
-        public double? AverageWeights { get; set; }
+        [XmlElement("averageweight")]
+        public BggDouble AverageWeights { get; set; }
     }
 }

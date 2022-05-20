@@ -67,23 +67,6 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
         }
 
         [TestMethod]
-        public void ThingDeserializer_Resolve()
-        {
-            // Arrange/Act
-            var objFromInterface = scope?.Resolve<IThingDeserializer>();
-            var objFromClass = scope?.Resolve<ThingDeserializer>();
-
-            //Assert
-            objFromInterface.Should().NotBeNull();
-            objFromInterface.Should().BeAssignableTo<ThingDeserializer>();
-            objFromInterface?.GetType().Name.Should().Be("ThingDeserializer");
-
-            objFromClass.Should().NotBeNull();
-            objFromClass.Should().BeAssignableTo<ThingDeserializer>();
-            objFromClass?.GetType().Name.Should().Be("ThingDeserializer");
-        }
-
-        [TestMethod]
         public void FamilyHandler_Resolve()
         {
             // Arrange/Act
@@ -99,24 +82,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
             objFromClass.Should().BeAssignableTo<FamilyHandler>();
             objFromClass?.GetType().Name.Should().Be("FamilyHandler");
         }
-
-        [TestMethod]
-        public void ThreadDeserializer_Resolve()
-        {
-            // Arrange/Act
-            var objFromInterface = scope?.Resolve<IThreadDeserializer>();
-            var objFromClass = scope?.Resolve<ThreadDeserializer>();
-
-            //Assert
-            objFromInterface.Should().NotBeNull();
-            objFromInterface.Should().BeAssignableTo<ThreadDeserializer>();
-            objFromInterface?.GetType().Name.Should().Be("ThreadDeserializer");
-
-            objFromClass.Should().NotBeNull();
-            objFromClass.Should().BeAssignableTo<ThreadDeserializer>();
-            objFromClass?.GetType().Name.Should().Be("ThreadDeserializer");
-        }
-
+                
         [TestMethod]
         public void ForumListHandler_Resolve()
         {

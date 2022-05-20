@@ -20,8 +20,8 @@ using (var scope = AutofacRegistrar.BuildContainer().BeginLifetimeScope())
     var handler = scope.Resolve<IThingHandler>();
 
     logger.Information("---Things---");
-    var result = await handler.GetThingById(25);
-    logger.Information("Success: " + result.IsSuccessful);
+    var resultThing = await handler.GetThingById(25);
+    logger.Information("Success: " + resultThing.IsSuccessful);
 
     var extension = new Extension
     {
@@ -33,8 +33,24 @@ using (var scope = AutofacRegistrar.BuildContainer().BeginLifetimeScope())
         }
     };
 
-    result = await handler.GetThingsExtensible(extension);
-    logger.Information("Success: " + result.IsSuccessful);
+    var resultThingList = await handler.GetThingsExtensible(extension);
+    logger.Information("Success: " + resultThingList.IsSuccessful);
+
+    extension = new Extension
+    {
+        Value = new Dictionary<string, List<int>>
+        {
+            { "id", new List<int> { 1 } },
+            { "versions", new List<int> { 1 } },
+            { "videos", new List<int> { 1 } },
+            { "comments", new List<int> { 1 } },
+            { "marketplace", new List<int> { 1 } },
+            { "stats", new List<int> { 1 } }
+        }
+    };
+
+    resultThingList = await handler.GetThingsExtensible(extension);
+    logger.Information("Success: " + resultThingList.IsSuccessful);
 
     logger.Information("---Families---");
     var familyHandler = scope.Resolve<IFamilyHandler>();
@@ -61,3 +77,5 @@ using (var scope = AutofacRegistrar.BuildContainer().BeginLifetimeScope())
 
 Console.WriteLine("Press any key to exit");
 Console.ReadKey();
+
+

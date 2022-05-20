@@ -9,62 +9,43 @@ namespace Bgg.Net.Common.RequestHandlers.Things
     /// <summary>
     /// Handles Thing requests to the BGG API.
     /// </summary>
-    public class ThingHandler : IThingHandler
+    public class ThingHandler : RequestHandler, IThingHandler
     {
-        private readonly IHttpClient _client;
-        private readonly ILogger _logger;
-        private readonly IThingDeserializer _deserializer;
-
         /// <summary>
         /// Creates an instance of <see cref="ThingHandler"/>.
         /// </summary>
         /// <param name="httpClient">The httpClient.</param>
         /// <param name="logger">The logger.</param>
         /// <param name="deserializer">The deserializer.</param>
-        public ThingHandler(IHttpClient httpClient, ILogger logger, IThingDeserializer deserializer)
+        public ThingHandler(IHttpClient httpClient, ILogger logger, IBggDeserializer deserializer)
+            : base(deserializer, logger, httpClient)
         {
-            _client = httpClient;
-            _logger = logger;
-            _deserializer = deserializer;
         }
 
-        /// <summary>
-        /// Gets a Thing by id.
-        /// </summary>
-        /// <param name="id">The id of the thing to retrieve.</param>
-        /// <returns>A <see cref="BggResult{T}"/> containing the <see cref="Thing"/>.</returns>
-        public async Task<BggResult<Thing>> GetThingById(int id)
+        /// <inheritdoc/>
+        public async Task<BggResult<ThingList>> GetThingById(int id)
         {
             _logger.Information("GetThingById : {id}", id);
 
-            var httpResponseMessage = await _client.GetAsync($"thing?id={id}");
+            var httpResponseMessage = await _httpClient.GetAsync($"thing?id={id}");
 
-            return await BuildBggResult(httpResponseMessage);
+            return await BuildBggResult<ThingList>(httpResponseMessage);
         }
 
-        /// <summary>
-        /// Gets multiple things by id, given a list of id's.
-        /// </summary>
-        /// <param name="ids">The Id's to retrieve.</param>
-        /// <returns>A <see cref="BggResult{T}"/> containing the <see cref="Thing"/>s.</returns>
-        public async Task<BggResult<Thing>> GetThingsById(List<int> ids)
+        /// <inheritdoc/>
+        public async Task<BggResult<ThingList>> GetThingsById(List<int> ids)
         {
             _logger.Information("GetThingById : {id}", ids);
 
             var queryString = $"thing?id=" + string.Join(',', ids);
 
-            var httpResponseMessage = await _client.GetAsync(queryString);
+            var httpResponseMessage = await _httpClient.GetAsync(queryString);
 
-            return await BuildBggResult(httpResponseMessage);
+            return await BuildBggResult<ThingList>(httpResponseMessage);
         }
 
-        /// <summary>
-        /// Gets a Thing by extensible parameters to allow support for additional query parameters.
-        /// </summary>
-        /// <param name="extension">The extension containing the query paramters.</param>
-        /// <returns>A <see cref="BggResult{T}"/> containing the <see cref="Thing"/>.</returns>
-        /// <exception cref="NotSupportedException"></exception>
-        public async Task<BggResult<Thing>> GetThingsExtensible(Extension extension)
+        /// <inheritdoc/>
+        public async Task<BggResult<ThingList>> GetThingsExtensible(Extension extension)
         {
             _logger.Information("GetThingsExtensible : {extensions}", extension.ToString());
 
@@ -75,7 +56,7 @@ namespace Bgg.Net.Common.RequestHandlers.Things
                     string errorMessage = $"'{kvp.Key}' parameter is not supported.";
                     _logger.Error(errorMessage);
 
-                    return new BggResult<Thing>
+                    return new BggResult<ThingList>
                     {
                         IsSuccessful = false,
                         Errors = new List<string> { errorMessage }
@@ -84,31 +65,9 @@ namespace Bgg.Net.Common.RequestHandlers.Things
             }
 
             string queryString = "thing?" + string.Join("&", extension.Value.Select(x => x.Key + "=" + string.Join(',', x.Value)));
-            var httpResponseMessage = await _client.GetAsync(queryString);
+            var httpResponseMessage = await _httpClient.GetAsync(queryString);
 
-            return await BuildBggResult(httpResponseMessage);
-        }
-
-        private async Task<BggResult<Thing>> BuildBggResult(HttpResponseMessage httpResponse)
-        {
-            var responseString = await httpResponse.Content.ReadAsStringAsync();
-            var bggResult = new BggResult<Thing>();
-
-            try
-            {
-                //bggResult.Items = _deserializer.Deserialize(responseString);
-            }
-            catch (Exception exception)
-            {
-                var errorString = $"Error during deserialization. {exception.Message}";
-                _logger.Error(exception, errorString);
-                bggResult.Errors.Add(errorString);
-            }
-
-            bggResult.IsSuccessful = httpResponse.IsSuccessStatusCode && !bggResult.Errors.Any();
-            bggResult.HttpResponseCode = httpResponse.StatusCode;
-
-            return bggResult;
+            return await BuildBggResult<ThingList>(httpResponseMessage);
         }
     }
 }

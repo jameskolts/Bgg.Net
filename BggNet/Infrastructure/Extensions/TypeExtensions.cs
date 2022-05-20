@@ -14,17 +14,13 @@ namespace Bgg.Net.Common.Infrastructure.Extensions
         /// <returns>A version type, or null.</returns>
         public static VersionType? ToVersionType(this string value)
         {
-            switch (value.ToLower())
+            return value.ToLower() switch
             {
-                case "boardgameversion":
-                    return VersionType.BoardGame;
-                case "videogame":
-                    return VersionType.VideoGame;
-                case "videogamecharacter":
-                    return VersionType.VideoGameCharacter;
-                default:
-                    return null;
-            }
+                "boardgameversion" => VersionType.BoardGame,
+                "videogame" => VersionType.VideoGame,
+                "videogamecharacter" => VersionType.VideoGameCharacter,
+                _ => null,
+            };
         }
     }
 }

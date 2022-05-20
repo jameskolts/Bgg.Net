@@ -1,17 +1,24 @@
-﻿using Version = Bgg.Net.Common.Models.Versions.Version;
-using Bgg.Net.Common.Models.Polls;
+﻿using System.ComponentModel;
+using System.Xml;
+using System.Xml.Serialization;
+using Version = Bgg.Net.Common.Models.Version;
 
 namespace Bgg.Net.Common.Models
 {
     /// <summary>
     /// Represents a "Thing" from the board game geek XmlApi2
     /// </summary>
-    public class Thing : BggBase
+    [Serializable()]
+    [DesignerCategory("code")]
+    [XmlType(AnonymousType = true)]
+    [XmlRoot("item")]
+    public class Thing
     {
         /// <summary>
         /// The id of the thing.
         /// </summary>
-        public int? Id { get; set; }
+        [XmlAttribute("id")]
+        public long Id { get; set; }
 
         /// <summary>
         /// The type of the thing.
@@ -19,98 +26,118 @@ namespace Bgg.Net.Common.Models
         /// <remarks>
         /// Should be assignable to one of <seealso cref="ThingType"/>.
         /// </remarks>
+        [XmlAttribute("type")]
         public string Type { get; set; }
 
         /// <summary>
         /// Url of a thumbnail of the thing.
         /// </summary>
+        [XmlElement("thumbnail")]
         public string Thumbnail { get; set; }
 
         /// <summary>
         /// The image of the thing.
         /// </summary>
+        [XmlElement("image")]
         public string Image { get; set; }
 
         /// <summary>
         /// Any applicable names for the thing.
         /// </summary>
+        [XmlElement("name")]
         public List<BggName> Name { get; set; } = new List<BggName>();
 
         /// <summary>
         /// A description of the thing.
         /// </summary>
+        [XmlElement("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// Year the thing was published.
         /// </summary>
-        public int? YearPublished { get; set; }
+        [XmlElement("yearpublished")]
+        public BggInteger YearPublished { get; set; }
 
         /// <summary>
         /// Minimum number of players.
         /// </summary>
-        public int? MinPlayers { get; set; }
+        [XmlElement("minplayers")]
+        public BggInteger MinPlayers { get; set; }
 
         /// <summary>
         /// Maximum number of players.
         /// </summary>
-        public int? MaxPlayers { get; set; }
-
-        /// <summary>
-        /// A list of all the polls associated with an thing.
-        /// </summary>
-        public List<Poll> Poll { get; set; } = new List<Poll>();
+        [XmlElement("maxplayers")]
+        public BggInteger MaxPlayers { get; set; }
 
         /// <summary>
         /// The typical playing time the thing will take.
         /// </summary>
-        public int? PlayingTime { get; set; }
+        [XmlElement("playingtime")]
+        public BggInteger PlayingTime { get; set; }
 
         /// <summary>
         /// The mimium playing time the thing will take.
         /// </summary>
-        public int? MinPlayTime { get; set; }
+        [XmlElement("minplaytime")]
+        public BggInteger MinPlayTime { get; set; }
 
         /// <summary>
         /// The maximum playing time the thing will take.
         /// </summary>
-        public int? MaxPlayTime { get; set; }
+        [XmlElement("maxplaytime")]
+        public BggInteger MaxPlayTime { get; set; }
 
         /// <summary>
         /// The minimum recommended age.
         /// </summary>
-        public int? MinAge { get; set; }
+        [XmlElement("minage")]
+        public BggInteger MinAge { get; set; }
 
         /// <summary>
         /// Any associated links of the thing.
         /// </summary>
+        [XmlElement("link")]
         public List<Link> Link { get; set; } = new List<Link>();
 
         /// <summary>
         /// Any additional versions of the thing.
         /// </summary>
+        [XmlArray("versions")]
+        [XmlArrayItem("item")]
         public List<Version> Versions { get; set; } = new List<Version>();
+
+        /// <summary>
+        /// A list of all the polls associated with an thing.
+        /// </summary>
+        [XmlElement("poll")]
+        public List<Poll> Poll { get; set; } = new List<Poll>();
 
         /// <summary>
         /// User comments regarding the thing.
         /// </summary>
-        public Comments Comments { get; set; }
+        [XmlElement("comments")]
+        public CommentList Comments { get; set; }
 
         /// <summary>
         /// The listings in the bgg marketplace for a thing.
         /// </summary>
+        [XmlArray("marketplacelistings")]
+        [XmlArrayItem("listing")]
         public List<Listing> MarketplaceListing { get; set; } = new List<Listing>();
 
         /// <summary>
         /// The videos associated with the thing.
         /// </summary>
-        public Videos Videos { get; set; }
+        [XmlElement("videos")]
+        public VideoList Videos { get; set; }
 
         /// <summary>
         /// The statistics associated with the thing.
         /// </summary>
+        [XmlElement("statistics")]
         public Statistics Statistics { get; set; }
-    }
+    } 
 }
-
 

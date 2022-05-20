@@ -1,35 +1,45 @@
-﻿using Bgg.Net.Common.Models.Links;
+﻿using System.ComponentModel;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Bgg.Net.Common.Models
 {
     /// <summary>
     /// Represents a listing of an item for sale on BGG.
     /// </summary>
+    [Serializable()]
+    [DesignerCategory("code")]
+    [XmlType(AnonymousType = true)]
     public class Listing
     {
         /// <summary>
         /// The date the item was listed.
         /// </summary>
-        public DateTime? ListDate { get; set; }
+        [XmlElement("listdate")]
+        public BggString ListDate { get; set; }
 
         /// <summary>
         /// The cost of the item.
         /// </summary>
+        [XmlElement("price")]
         public Price Price { get; set; }
 
         /// <summary>
         /// The condition of the item.
         /// </summary>
-        public string Condition { get; set; }
+        [XmlElement("condition")]
+        public BggString Condition { get; set; }
 
         /// <summary>
         /// Any additional notes regarding the item.
         /// </summary>
-        public string Notes { get; set; }
+        [XmlElement("notes")]
+        public BggString Notes { get; set; }
 
         /// <summary>
         /// A link to the listing.
         /// </summary>
+        [XmlElement("link")]
         public ListingLink Link { get; set; }
     }
 }

@@ -39,53 +39,13 @@ namespace Bgg.Net.Common.Tests.Resources
             var returnObject = obj;
 
             var mock = new Mock<IBggDeserializer>();
+#pragma warning disable CS8604 // Possible null reference argument.
             mock.Setup(x => x.Deserialize<T>(It.IsAny<string>()))
                 .Returns(returnObject);
+#pragma warning restore CS8604 // Possible null reference argument.
 
 
             return mock;            
-        }
-
-        /// <summary>
-        /// Mocks a Thing Deserializer and it's response.
-        /// </summary>
-        /// <param name="resultString">The xmlString to parse and return as the mocked result. </param>
-        /// <param name="returnsNull">If the deserializer should return null.</param>
-        /// <param name="exception">The exception the deserializer should throw.</param>
-        /// <returns></returns>
-        public Mock<IThingDeserializer> MockIThingDeserializer(string? resultString = null, bool? returnsNull = false, Exception? exception = null)
-        {
-            var deserializerMock = new Mock<IThingDeserializer>();
-
-            if (exception != null)
-            {
-                deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
-                    .Throws(exception);
-            }
-            else if (returnsNull.HasValue && returnsNull.Value == true)
-            {
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-                deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
-                    .Returns((List<Thing>)null);
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-            }
-            else
-            {
-                if (string.IsNullOrEmpty(resultString))
-                {
-                    deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
-                        .Returns(new ThingDeserializer(Mock.Of<ILogger>()).Deserialize(XmlGenerator.GenerateBoardGameXmlString()));
-                }
-                else
-                {
-                    deserializerMock.Setup(x => x.Deserialize(It.IsAny<string>()))
-                        .Returns(new ThingDeserializer(Mock.Of<ILogger>()).Deserialize(resultString));
-                }
-            }
-
-            return deserializerMock;
         }
     }
 }
