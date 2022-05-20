@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using Bgg.Net.Common.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
-using Bgg.Net.Common.Infrastructure.Xml.Interfaces;
 using Bgg.Net.Common.RequestHandlers.Families;
 using Bgg.Net.Common.RequestHandlers.Things;
 using Bgg.Net.Common.RequestHandlers.ForumsList;

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Serilog;
 using Bgg.Net.Common.Http;
-using Bgg.Net.Common.Infrastructure.Xml.Interfaces;
 using Bgg.Net.Common.Infrastructure.Extensions;
+using Bgg.Net.Common.Infrastructure.Xml;
 
 namespace Bgg.Net.Common.RequestHandlers.ForumsList
-{   
+{
     /// <summary>
     /// Handles ForumList requests to the BGG API.
     /// </summary>

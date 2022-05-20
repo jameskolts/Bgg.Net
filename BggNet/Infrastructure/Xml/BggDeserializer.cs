@@ -1,5 +1,4 @@
-﻿using Bgg.Net.Common.Infrastructure.Xml.Interfaces;
-using Bgg.Net.Common.Models;
+﻿using Bgg.Net.Common.Models;
 using System.Xml;
 using System.Xml.Serialization;
 

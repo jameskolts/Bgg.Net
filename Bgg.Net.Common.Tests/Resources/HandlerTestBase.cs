@@ -1,6 +1,5 @@
 ﻿using Bgg.Net.Common.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
-using Bgg.Net.Common.Infrastructure.Xml.Interfaces;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
 using Serilog;

@@ -20,6 +20,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Folder Include="Infrastructure\Xml\Interfaces\" />
 	  <Folder Include="Platforms\Android\" />
 	  <Folder Include="Platforms\iOS\" />
 	  <Folder Include="Platforms\MacCatalyst\" />
@@ -31,10 +32,6 @@
 	  <Folder Include="RequestHandlers\Plays\" />
 	  <Folder Include="RequestHandlers\Users\" />
 	  <Folder Include="RequestHandlers\Threads\" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Include="..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
 
 	<ItemGroup>
