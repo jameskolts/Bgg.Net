@@ -1,15 +1,9 @@
-﻿using Bgg.Net.Common.Infrastructure;
+﻿using Bgg.Net.Common.Http;
+using Bgg.Net.Common.Infrastructure;
+using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Serilog;
-using Bgg.Net.Common.Http;
-using Bgg.Net.Common.Infrastructure.Extensions;
-using Bgg.Net.Common.Infrastructure.Xml;
 
 namespace Bgg.Net.Common.RequestHandlers.ForumsList
 {

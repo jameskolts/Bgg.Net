@@ -6,6 +6,9 @@ using Thread = Bgg.Net.Common.Models.Thread;
 
 namespace Bgg.Net.Common.RequestHandlers.Threads
 {
+    /// <summary>
+    /// Handles Thread requests to the BGG API
+    /// </summary>
     public class ThreadHandler : RequestHandler, IThreadHandler
     {
         public ThreadHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient)

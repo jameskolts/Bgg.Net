@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<user id="1014881" name="Jimmydm90" termsofuse="https://boardgamegeek.com/xmlapi/termsofuse">
+	<firstname value="" />
+	<lastname value="" />
+	<avatarlink value="https://cf.geekdo-static.com/avatars/avatar_id121793.png" />
+	<yearregistered value="2015" />
+	<lastlogin value="2022-05-20" />
+	<stateorprovince value="California" />
+	<country value="United States" />
+	<webaddress value="" />
+	<xboxaccount value="" />
+	<wiiaccount value="" />
+	<psnaccount value="Jimmydm90" />
+	<battlenetaccount value="" />
+	<steamaccount value="" />
+	<traderating value="2" />
+	<marketrating value="1" />
+	<buddies total="40" page="1">
+		<buddy id="1246415" name="alflossomisersdream" />
+		<buddy id="624480" name="annabelseaton" />
+		<buddy id="2505491" name="Beckles" />
+		<buddy id="987220" name="brenthenson" />
+		<buddy id="1280745" name="Cardboard Canyon" />
+		<buddy id="40822" name="casterman" />
+		<buddy id="1488158" name="CutmanZ2113" />
+		<buddy id="973499" name="CyborgKoala" />
+		<buddy id="908513" name="diedre" />
+		<buddy id="755118" name="dmoser22" />
+		<buddy id="1446748" name="drfunkfungus" />
+		<buddy id="1458079" name="Elpete" />
+		<buddy id="999585" name="EsphyrSlobodkina" />
+		<buddy id="384343" name="fivegraphics" />
+		<buddy id="666394" name="GameHausCafe" />
+		<buddy id="212631" name="jeribeartx" />
+		<buddy id="997480" name="jondodd82" />
+		<buddy id="1567062" name="LumaTek" />
+		<buddy id="535208" name="madiganj" />
+		<buddy id="1087188" name="Mark_Minneapolis" />
+		<buddy id="1043133" name="mezzine" />
+		<buddy id="836005" name="MistaRau" />
+		<buddy id="333509" name="NZplayer" />
+		<buddy id="748225" name="Ploquet" />
+		<buddy id="1339617" name="PopoHappy" />
+		<buddy id="819664" name="randomdumdums" />
+		<buddy id="322147" name="RedPrince" />
+		<buddy id="1260752" name="rsalbertos" />
+		<buddy id="725613" name="scottstude" />
+		<buddy id="1367345" name="Scottvw" />
+		<buddy id="225542" name="sdetsky" />
+		<buddy id="719138" name="silentera" />
+		<buddy id="1405023" name="standobre" />
+		<buddy id="935932" name="Syarwin" />
+		<buddy id="1653529" name="TheBrothersMurph" />
+		<buddy id="336640" name="Tiberiusfox" />
+		<buddy id="1513285" name="TiEnMaRi" />
+		<buddy id="1382541" name="timonemycat" />
+		<buddy id="1067304" name="tonyro19" />
+		<buddy id="647786" name="WooHoo1" />
+	</buddies>
+	<guilds total="7" page="1">
+		<guild id="24" name="The Dice Tower" />
+		<guild id="1290" name="Redditors" />
+		<guild id="1622" name="Rahdo Runs Through" />
+		<guild id="1990" name="Out of Game" />
+		<guild id="2014" name="GenCant" />
+		<guild id="2122" name="A Couple of Gamers" />
+		<guild id="2468" name="San Fernando Valley (Los Angeles)" />
+	</guilds>
+	<top domain="boardgame">
+		<item rank="1" type="thing" id="132531" name="Roll for the Galaxy" />
+		<item rank="2" type="thing" id="180511" name="Shakespeare" />
+		<item rank="3" type="thing" id="36553" name="Time's Up! Title Recall!" />
+		<item rank="4" type="thing" id="178900" name="Codenames" />
+		<item rank="5" type="thing" id="182874" name="Grand Austria Hotel" />
+		<item rank="6" type="thing" id="163412" name="Patchwork" />
+		<item rank="7" type="thing" id="201808" name="Clank!: A Deck-Building Adventure" />
+		<item rank="8" type="thing" id="169786" name="Scythe" />
+		<item rank="9" type="thing" id="157354" name="Five Tribes" />
+		<item rank="10" type="thing" id="161936" name="Pandemic Legacy: Season 1" />
+	</top>
+	<hot domain="boardgame">
+		<item rank="1" type="thing" id="182874" name="Grand Austria Hotel" />
+		<item rank="2" type="thing" id="183880" name="Risk: Star Wars Edition" />
+		<item rank="3" type="thing" id="176396" name="Quadropolis" />
+		<item rank="4" type="thing" id="178900" name="Codenames" />
+		<item rank="5" type="thing" id="164928" name="Orléans" />
+		<item rank="6" type="thing" id="132531" name="Roll for the Galaxy" />
+		<item rank="7" type="thing" id="180511" name="Shakespeare" />
+		<item rank="8" type="thing" id="7854" name="YINSH" />
+		<item rank="9" type="thing" id="108745" name="Seasons" />
+		<item rank="10" type="thing" id="148228" name="Splendor" />
+	</hot>
+</user>

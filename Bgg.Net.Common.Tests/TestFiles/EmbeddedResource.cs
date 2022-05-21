@@ -8,5 +8,6 @@
         public const string ThreadXml = "Bgg.Net.Common.Tests.TestFiles.ThreadXml.xml";
         public const string MultipleBoardGameXml = "Bgg.Net.Common.Tests.TestFiles.MultipleItemXml.xml";
         public const string FamilyXml = "Bgg.Net.Common.Tests.TestFiles.FamilyXml.xml";
+        public const string UserXml = "Bgg.Net.Common.Tests.TestFiles.UserXml.xml";
     }
 }

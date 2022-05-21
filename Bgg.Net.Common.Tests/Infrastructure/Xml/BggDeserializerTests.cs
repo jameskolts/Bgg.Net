@@ -1,9 +1,13 @@
-﻿using Bgg.Net.Common.Infrastructure.Xml;
+﻿using Bgg.Net.Common.Infrastructure.Exceptions;
+using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Tests.TestFiles;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using Serilog;
+using System;
 using System.Linq;
-using Bgg.Net.Common.Tests.TestFiles;
 
 namespace Bgg.Net.Common.Tests.Infrastructure.Xml
 {
@@ -14,7 +18,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
 
         public BggDeserializerTests()
         {
-            _deserializer = new BggDeserializer();
+            _deserializer = new BggDeserializer(Mock.Of<ILogger>());
         }
 
         [TestMethod]
@@ -35,6 +39,21 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
 
             //Assert
             result.Should().BeNull();
+        }
+
+        [TestMethod]
+        public void Deserialize_ThrowsException()
+        {
+            //Arrange
+            var xml = XmlGenerator.GenerateResourceXml(EmbeddedResource.MultipleBoardGameXml); //Bad xml for this deserilization;
+
+            //Act
+            Action act = () => _deserializer.Deserialize<Forum>(xml);
+
+            //Assert
+            act.Should().Throw<XmlDeserializationException>()                
+                .WithMessage("There is an error in XML document (2, 2).")
+                .WithInnerException(typeof(InvalidOperationException));
         }
 
         [TestMethod]
@@ -295,6 +314,59 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             result.Articles[0].NumEdits.Should().Be(0);
             result.Articles[0].Subject.Should().Be("User Review");
             result.Articles[0].Body.Should().StartWith("A quick, light rummy-variant for two-4 players. Rating 6.5");
+        }
+
+        [TestMethod]
+        public void Deserialize_User()
+        {
+            //Arrange
+            var xml = XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml);
+
+            //Act
+            var result = _deserializer.Deserialize<User>(xml);
+
+            //Assert
+            result.Should().NotBeNull();
+            result.Id.Should().Be(1014881);
+            result.Name.Should().Be("Jimmydm90");
+            result.TermsOfUse.Should().Be("https://boardgamegeek.com/xmlapi/termsofuse");
+            result.FirstName.Value.Should().BeEmpty();
+            result.LastName.Value.Should().BeEmpty();
+            result.AvatarLink.Value.Should().Be("https://cf.geekdo-static.com/avatars/avatar_id121793.png");
+            result.YearRegistered.Value.Should().Be(2015);
+            result.LastLogin.Value.Should().Be("2022-05-20");
+            result.StateOrProvince.Value.Should().Be("California");
+            result.Country.Value.Should().Be("United States");
+            result.WebAddress.Value.Should().BeEmpty();
+            result.XboxAccount.Value.Should().BeEmpty();
+            result.WiiAccount.Value.Should().BeEmpty();
+            result.PsnNetwork.Value.Should().Be("Jimmydm90");
+            result.BattleNetAccount.Value.Should().BeEmpty();
+            result.SteamAccount.Value.Should().BeEmpty();
+            result.TradeRating.Value.Should().Be(2);
+            result.MarketRating.Value.Should().Be(1);
+            result.Buddies.Total.Should().Be(40);
+            result.Buddies.Page.Should().Be(1);
+            result.Buddies.Buddy.Count.Should().Be(40);
+            result.Buddies.Buddy[0].Id.Should().Be(1246415);
+            result.Buddies.Buddy[0].Name.Should().Be("alflossomisersdream");
+            result.Guilds.Total.Should().Be(7);
+            result.Guilds.Page.Should().Be(1);
+            result.Guilds.Guild.Count.Should().Be(7);
+            result.Guilds.Guild[0].Id.Should().Be(24);
+            result.Guilds.Guild[0].Name.Should().Be("The Dice Tower");
+            result.Top.Domain.Should().Be("boardgame");
+            result.Top.Item.Count.Should().Be(10);
+            result.Top.Item[0].Rank.Should().Be(1);
+            result.Top.Item[0].Type.Should().Be("thing");
+            result.Top.Item[0].Id.Should().Be(132531);
+            result.Top.Item[0].Name.Should().Be("Roll for the Galaxy");
+            result.Hot.Domain.Should().Be("boardgame");
+            result.Hot.Item.Count.Should().Be(10);
+            result.Hot.Item[0].Rank.Should().Be(1);
+            result.Hot.Item[0].Type.Should().Be("thing");
+            result.Hot.Item[0].Id.Should().Be(182874);
+            result.Hot.Item[0].Name.Should().Be("Grand Austria Hotel");
         }
     }
 }

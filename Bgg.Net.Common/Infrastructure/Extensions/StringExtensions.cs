@@ -7,7 +7,7 @@
             if (string.IsNullOrWhiteSpace(str))
                 return null;
 
-            return char.ToUpper(str[0]) + str.Substring(1);
+            return char.ToUpper(str[0]) + str[1..];
         }
     }
 }
