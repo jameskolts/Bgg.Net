@@ -38,5 +38,17 @@ namespace Bgg.Net.Common
                 "minarticledate",
                 "count"
             });
+
+        public static ReadOnlyCollection<string> SupportedUserQueryParameters { get; } = new ReadOnlyCollection<string>(
+            new string[]
+            {
+                "name",
+                "buddies",
+                "guilds",
+                "hot",
+                "top",
+                "domain",
+                "page"
+            });
     }
 }

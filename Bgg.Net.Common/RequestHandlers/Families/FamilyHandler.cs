@@ -8,7 +8,7 @@ using Serilog;
 namespace Bgg.Net.Common.RequestHandlers.Families
 {
     /// <summary>
-    /// Handles Family requests to the BGG API
+    /// Handles Family requests to the BGG API.
     /// </summary>
     public class FamilyHandler : RequestHandler, IFamilyHandler
     {

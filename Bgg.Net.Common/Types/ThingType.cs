@@ -1,4 +1,4 @@
-﻿namespace Bgg.Net.Common.Models
+﻿namespace Bgg.Net.Common.Types
 {
     /// <summary>
     /// Represents the type of a Thing.

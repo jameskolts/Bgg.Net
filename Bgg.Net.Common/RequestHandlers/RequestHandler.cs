@@ -59,6 +59,14 @@ namespace Bgg.Net.Common.RequestHandlers
             return bggResult;
         }
 
+        /// <summary>
+        /// Gets a resource from the BGG API2 extensibly. 
+        /// </summary>
+        /// <typeparam name="T">The type of the resource.</typeparam>
+        /// <param name="resourceName">The resource name to use in the query.</param>
+        /// <param name="supportedParameters">The supported parameters for this resource.</param>
+        /// <param name="queryParameters">The query parameters to execute.</param>
+        /// <returns>A <see cref="BggResult{T}"/> of the given type.</returns>
         protected async Task<BggResult<T>> GetResourceExtensible<T>(string resourceName, IEnumerable<string> supportedParameters, Extension queryParameters)
             where T : BggBase
         {

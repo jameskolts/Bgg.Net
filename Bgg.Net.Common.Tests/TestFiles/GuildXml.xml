@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<guild id="24" name="The Dice Tower" created="Thu, 14 Jun 2007 01:46:53 +0000" termsofuse="https://boardgamegeek.com/xmlapi/termsofuse">
+	<category>podcast</category>
+	<website>http://www.dicetower.com</website>
+	<manager>TomVasel</manager>
+	<description>A forum for all Dice Tower fans.  Let your comments be heard here.
+		&lt;br/&gt;
+		&lt;br/&gt;Or at least, show people that you like the show!
+	</description>
+	<location>
+		<addr1>The Dice Tower</addr1>
+		<addr2>3640 NE 1st St.</addr2>
+		<city>Homestead</city>
+		<stateorprovince>FL</stateorprovince>
+		<postalcode>33033</postalcode>
+		<country>USA</country>
+	</location>
+</guild>

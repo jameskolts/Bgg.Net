@@ -368,5 +368,30 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             result.Hot.Item[0].Id.Should().Be(182874);
             result.Hot.Item[0].Name.Should().Be("Grand Austria Hotel");
         }
+
+        [TestMethod]
+        public void Deserialize_Guild()
+        {
+            //Arrange
+            var xml = XmlGenerator.GenerateResourceXml(EmbeddedResource.GuildXml);
+
+            //Act
+            var result = _deserializer.Deserialize<Guild>(xml);
+
+            //Assert
+            result.Id.Should().Be(24);
+            result.Name.Should().Be("The Dice Tower");
+            result.Created.Should().Be("Thu, 14 Jun 2007 01:46:53 +0000");
+            result.TermsOfUse.Should().Be("https://boardgamegeek.com/xmlapi/termsofuse");
+            result.Category.Should().Be("podcast");
+            result.Website.Should().Be("http://www.dicetower.com");
+            result.Description.Should().StartWith("A forum for all Dice Tower fans.");
+            result.Location.Address1.Should().Be("The Dice Tower");
+            result.Location.Address2.Should().Be("3640 NE 1st St.");
+            result.Location.City.Should().Be("Homestead");
+            result.Location.StateOrProvince.Should().Be("FL");
+            result.Location.PostalCode.Should().Be("33033");
+            result.Location.Country.Should().Be("USA");
+        }
     }
 }
