@@ -60,5 +60,8 @@ namespace Bgg.Net.Common.Models
         /// </summary>
         [XmlElement("location")]
         public Location Location { get; set; }
+
+        [XmlElement("members")]
+        public GuildMemberList Members { get; set; }
     }
 }

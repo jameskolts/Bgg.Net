@@ -392,6 +392,10 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             result.Location.StateOrProvince.Should().Be("FL");
             result.Location.PostalCode.Should().Be("33033");
             result.Location.Country.Should().Be("USA");
+            result.Members.Count.Should().Be(11376);
+            result.Members.Page.Should().Be(2);
+            result.Members.Member[0].Name.Should().Be("269Hawkmoon");
+            result.Members.Member[0].Date.Should().Be("Sun, 08 Mar 2015 04:35:14 +0000");
         }
     }
 }
