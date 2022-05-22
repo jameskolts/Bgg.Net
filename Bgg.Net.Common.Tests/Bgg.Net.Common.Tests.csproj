@@ -40,7 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Things\" />
+    <Folder Include="RequestHandlers\Things\" />
   </ItemGroup>
 
   <ItemGroup>

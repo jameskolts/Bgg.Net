@@ -50,5 +50,14 @@ namespace Bgg.Net.Common
                 "domain",
                 "page"
             });
+
+        public static ReadOnlyCollection<string> SupportedGuildParameters { get; } = new ReadOnlyCollection<string>(
+           new string[]
+           {
+                "id",
+                "members",
+                "sort",
+                "page"
+           });
     }
 }

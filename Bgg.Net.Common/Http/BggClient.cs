@@ -1,5 +1,8 @@
 ﻿namespace Bgg.Net.Common.Http
 {
+    /// <summary>
+    /// A wrapper around a HttpClient.
+    /// </summary>
     public class BggClient : IHttpClient, IDisposable
     {
         readonly HttpClient httpClient;
