@@ -397,5 +397,46 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             result.Members.Member[0].Name.Should().Be("269Hawkmoon");
             result.Members.Member[0].Date.Should().Be("Sun, 08 Mar 2015 04:35:14 +0000");
         }
+
+        [TestMethod]
+        public void Deserialize_Plays()
+        {
+            //Arrange
+            var xml = XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml);
+
+            //Act
+            var result = _deserializer.Deserialize<PlayList>(xml);
+
+            //Assert
+            result.Should().NotBeNull();
+            result.UserName.Should().Be("Jimmydm90");
+            result.UserId.Should().Be(1014881);
+            result.Total.Should().Be(1958);
+            result.Page.Should().Be(1);
+            result.TermsOfUse.Should().Be("https://boardgamegeek.com/xmlapi/termsofuse");
+            result.Play.Count.Should().Be(3);
+            result.Play[0].Id.Should().Be(60784259);
+            result.Play[0].Date.Should().Be("2022-05-17");
+            result.Play[0].Quantity.Should().Be(1);
+            result.Play[0].Length.Should().Be(0);
+            result.Play[0].Incomplete.Should().BeFalse();
+            result.Play[0].NowInStats.Should().BeFalse();
+            result.Play[0].Item.Name.Should().Be("Marvel Champions: The Card Game");
+            result.Play[0].Item.ObjectType.Should().Be("thing");
+            result.Play[0].Item.Id.Should().Be(285774);
+            result.Play[0].Item.SubTypes.Count.Should().Be(1);
+            result.Play[0].Item.SubTypes[0].Value.Should().Be("boardgame");
+            result.Play[0].Comment.Should().Be("Hela default");
+            result.Play[0].Players.Count.Should().Be(1);
+            result.Play[0].Players[0].UserName.Should().Be("Jimmydm90");
+            result.Play[0].Players[0].Id.Should().Be(0);
+            result.Play[0].Players[0].Name.Should().Be("Jimmy");
+            result.Play[0].Players[0].StartPosition.Should().Be("good");
+            result.Play[0].Players[0].Color.Should().Be("Wolverine aggression*");
+            result.Play[0].Players[0].Score.Should().Be("25");
+            result.Play[0].Players[0].New.Should().BeFalse();
+            result.Play[0].Players[0].Rating.Should().Be("0");
+            result.Play[0].Players[0].Win.Should().BeTrue();
+        }
     }
 }

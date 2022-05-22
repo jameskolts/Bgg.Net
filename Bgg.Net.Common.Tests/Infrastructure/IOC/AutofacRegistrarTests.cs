@@ -4,7 +4,9 @@ using Bgg.Net.Common.Infrastructure.IOC;
 using Bgg.Net.Common.RequestHandlers.Families;
 using Bgg.Net.Common.RequestHandlers.Forums;
 using Bgg.Net.Common.RequestHandlers.ForumsList;
+using Bgg.Net.Common.RequestHandlers.Guilds;
 using Bgg.Net.Common.RequestHandlers.Things;
+using Bgg.Net.Common.RequestHandlers.Users;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -113,6 +115,40 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
             objFromClass.Should().NotBeNull();
             objFromClass.Should().BeAssignableTo<ForumHandler>();
             objFromClass?.GetType().Name.Should().Be("ForumHandler");
+        }
+
+        [TestMethod]
+        public void GuildHandler_Resolve()
+        {
+            // Arrange/Act
+            var objFromInterface = scope?.Resolve<IGuildHandler>();
+            var objFromClass = scope?.Resolve<GuildHandler>();
+
+            //Assert
+            objFromInterface.Should().NotBeNull();
+            objFromInterface.Should().BeAssignableTo<GuildHandler>();
+            objFromInterface?.GetType().Name.Should().Be("GuildHandler");
+
+            objFromClass.Should().NotBeNull();
+            objFromClass.Should().BeAssignableTo<GuildHandler>();
+            objFromClass?.GetType().Name.Should().Be("GuildHandler");
+        }
+
+        [TestMethod]
+        public void UserHandler_Resolve()
+        {
+            // Arrange/Act
+            var objFromInterface = scope?.Resolve<IUserHandler>();
+            var objFromClass = scope?.Resolve<UserHandler>();
+
+            //Assert
+            objFromInterface.Should().NotBeNull();
+            objFromInterface.Should().BeAssignableTo<UserHandler>();
+            objFromInterface?.GetType().Name.Should().Be("UserHandler");
+
+            objFromClass.Should().NotBeNull();
+            objFromClass.Should().BeAssignableTo<UserHandler>();
+            objFromClass?.GetType().Name.Should().Be("UserHandler");
         }
     }
 }
