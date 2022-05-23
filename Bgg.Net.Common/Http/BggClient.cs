@@ -36,11 +36,17 @@
         {
             return httpClient.PostAsync(url, content);
         }
-                
+
         /// <inheritdoc cref="HttpClient.PutAsync(string?, HttpContent?)"/>
         public Task<HttpResponseMessage> PutAsync(string url, HttpContent content)
         {
             return httpClient.PutAsync(url, content);
+        }
+
+        /// <inheritdoc cref="HttpClient.SendAsync(HttpRequestMessage)"/>
+        public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
+        {
+            return httpClient.SendAsync(request);
         }
 
         protected virtual void Dispose(bool disposing)
