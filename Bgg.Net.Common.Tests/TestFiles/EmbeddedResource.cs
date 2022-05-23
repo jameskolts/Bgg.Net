@@ -11,5 +11,6 @@
         public const string UserXml = "Bgg.Net.Common.Tests.TestFiles.UserXml.xml";
         public const string GuildXml = "Bgg.Net.Common.Tests.TestFiles.GuildXml.xml";
         public const string PlaysXml = "Bgg.Net.Common.Tests.TestFiles.PlaysXml.xml";
+        public const string CollectionXml = "Bgg.Net.Common.Tests.TestFiles.CollectionXml.xml";
     }
 }

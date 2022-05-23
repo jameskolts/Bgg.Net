@@ -438,5 +438,37 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             result.Play[0].Players[0].Rating.Should().Be("0");
             result.Play[0].Players[0].Win.Should().BeTrue();
         }
+
+        [TestMethod]
+        public void Deserialize_Collection()
+        {
+            //Arrange
+            var xml = XmlGenerator.GenerateResourceXml(EmbeddedResource.CollectionXml);
+
+            //Act
+            var result = _deserializer.Deserialize<Collection>(xml);
+
+            //Assert
+            result.Should().NotBeNull();
+            result.TotalItems.Should().Be(458);
+            result.TermsOfUse.Should().Be("https://boardgamegeek.com/xmlapi/termsofuse");
+            result.PubDate.Should().Be("Mon, 23 May 2022 01:17:04 +0000");
+            result.Items.Count.Should().Be(9);
+            result.Items[0].Type.Should().Be("thing");
+            result.Items[0].Id.Should().Be(68448);
+            result.Items[0].SubType.Should().Be("boardgame");
+            result.Items[0].CollId.Should().Be(28874921);
+            result.Items[0].Image.Should().Be("https://cf.geekdo-images.com/RvFVTEpnbb4NM7k0IF8V7A__original/img/JQvRoz0xns9LZII74-ygKGDq_Es=/0x0/filters:format(jpeg)/pic860217.jpg");
+            result.Items[0].Thumbnail.Should().Be("https://cf.geekdo-images.com/RvFVTEpnbb4NM7k0IF8V7A__thumb/img/ZlG_SRFChObHenw79fAve56_mnk=/fit-in/200x150/filters:strip_icc()/pic860217.jpg");
+            result.Items[0].Status.Own.Should().BeFalse();
+            result.Items[0].Status.PreviouslyOwned.Should().BeTrue();
+            result.Items[0].Status.ForTrade.Should().BeFalse();
+            result.Items[0].Status.Want.Should().BeFalse();
+            result.Items[0].Status.WantToBuy.Should().BeFalse();
+            result.Items[0].Status.WantToPlay.Should().BeFalse();
+            result.Items[0].Status.PreOrdered.Should().BeFalse();
+            result.Items[0].Status.LastModified.Should().Be("2017-03-26 12:58:16");
+            result.Items[0].NumPlays.Should().Be(7);
+        }
     }
 }

@@ -2,7 +2,6 @@
 using System.Xml;
 using System.Xml.Serialization;
 
-
 namespace Bgg.Net.Common.Models
 {
     /// <summary>
