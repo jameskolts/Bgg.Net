@@ -1,4 +1,4 @@
-﻿namespace Bgg.Net.Common.Http
+﻿namespace Bgg.Net.Common.Infrastructure.Http
 {
     /// <summary>
     /// A wrapper around a HttpClient.
@@ -19,25 +19,25 @@
             };
         }
 
-        /// <inheritdoc cref="HttpClient.DeleteAsync(string?)"/>
+        /// <inheritdoc cref="HttpClient.DeleteAsync(string)"/>
         public Task<HttpResponseMessage> DeleteAsync(string url)
         {
             return httpClient.DeleteAsync(url);
         }
 
-        /// <inheritdoc cref="HttpClient.GetAsync(string?)"/>
+        /// <inheritdoc cref="HttpClient.GetAsync(string)"/>
         public Task<HttpResponseMessage> GetAsync(string url)
         {
             return httpClient.GetAsync(url);
         }
 
-        /// <inheritdoc cref="HttpClient.PostAsync(string?, HttpContent?)"/>
+        /// <inheritdoc cref="HttpClient.PostAsync(string, HttpContent)"/>
         public Task<HttpResponseMessage> PostAsync(string url, HttpContent content)
         {
             return httpClient.PostAsync(url, content);
         }
 
-        /// <inheritdoc cref="HttpClient.PutAsync(string?, HttpContent?)"/>
+        /// <inheritdoc cref="HttpClient.PutAsync(string, HttpContent)"/>
         public Task<HttpResponseMessage> PutAsync(string url, HttpContent content)
         {
             return httpClient.PutAsync(url, content);

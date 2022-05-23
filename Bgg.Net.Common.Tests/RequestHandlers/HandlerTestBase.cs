@@ -1,5 +1,4 @@
-﻿using Bgg.Net.Common.Http;
-using Bgg.Net.Common.Infrastructure.Xml;
+﻿using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
 using Serilog;
@@ -9,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Bgg.Net.Common.Infrastructure.Http;
 
 namespace Bgg.Net.Common.Tests.Resources
 {

@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Bgg.Net.Common.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.RequestHandlers.Families;
 using Bgg.Net.Common.RequestHandlers.Forums;
@@ -10,6 +9,7 @@ using Bgg.Net.Common.RequestHandlers.Users;
 using Bgg.Net.Common.RequestHandlers.Guilds;
 using Serilog;
 using IContainer = Autofac.IContainer;
+using Bgg.Net.Common.Infrastructure.Http;
 
 namespace Bgg.Net.Common.Infrastructure.IOC
 {

@@ -1,5 +1,5 @@
-﻿using Bgg.Net.Common.Http;
-using Bgg.Net.Common.Infrastructure;
+﻿using Bgg.Net.Common.Infrastructure;
+using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Serilog;
 using Thread = Bgg.Net.Common.Models.Thread;

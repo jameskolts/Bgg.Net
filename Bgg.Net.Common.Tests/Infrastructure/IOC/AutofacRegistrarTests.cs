@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using Bgg.Net.Common.Http;
+using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.IOC;
 using Bgg.Net.Common.RequestHandlers.Families;
 using Bgg.Net.Common.RequestHandlers.Forums;

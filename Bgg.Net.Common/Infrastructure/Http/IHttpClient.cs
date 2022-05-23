@@ -1,4 +1,4 @@
-﻿namespace Bgg.Net.Common.Http
+﻿namespace Bgg.Net.Common.Infrastructure.Http
 {
     /// <summary>
     /// A wrapper around a <see cref="HttpClient"/>.
