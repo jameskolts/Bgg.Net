@@ -23,7 +23,7 @@ namespace Bgg.Net.Common.RequestHandlers.ForumsList
         {
         }
 
-        public async Task<BggResult<ForumList>> GetForumListByIdAndType(long id, ForumListType type)
+        public async Task<BggResult<ForumList>> GetForumListByIdAndType(long id, ItemType type)
         {
             _logger.Information("GetForumListByIdAndType : {id}, {type}", id, type);
 

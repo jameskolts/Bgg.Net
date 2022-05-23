@@ -59,5 +59,17 @@ namespace Bgg.Net.Common
                 "sort",
                 "page"
            });
+
+        public static ReadOnlyCollection<string> SupportedPlaysParameters { get; } = new ReadOnlyCollection<string>(
+           new string[]
+           {
+                "id",
+                "username",
+                "type",
+                "mindate",
+                "maxdate",
+                "subtype",
+                "page"
+           });
     }
 }

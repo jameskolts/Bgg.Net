@@ -67,7 +67,7 @@ using (var scope = AutofacRegistrar.BuildContainer().BeginLifetimeScope())
 
     logger.Information("---ForumList---");
     var forumListHandler = scope.Resolve<ForumListHandler>();
-    var forumList = await forumListHandler.GetForumListByIdAndType(1, Bgg.Net.Common.Types.ForumListType.Thing);
+    var forumList = await forumListHandler.GetForumListByIdAndType(1, Bgg.Net.Common.Types.ItemType.Thing);
     logger.Information("Success: " + forumList.IsSuccessful);
 
     logger.Information("---Forum---");

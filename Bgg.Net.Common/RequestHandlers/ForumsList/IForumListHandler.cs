@@ -15,6 +15,6 @@ namespace Bgg.Net.Common.RequestHandlers.ForumsList
         /// <param name="id">The id of the forumlist to retrieve.</param>
         /// <param name="type">The type of the forumlist to retrieve.</param>
         /// <returns>A <see cref="BggResult{T}"/> containing the <see cref="ForumList"/>.</returns>
-        Task<BggResult<ForumList>> GetForumListByIdAndType(long id, ForumListType type);
+        Task<BggResult<ForumList>> GetForumListByIdAndType(long id, ItemType type);
     }
 }

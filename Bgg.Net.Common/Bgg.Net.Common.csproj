@@ -27,7 +27,6 @@
 	  <Folder Include="RequestHandlers\Collection\" />
 	  <Folder Include="RequestHandlers\HotItems\" />
 	  <Folder Include="RequestHandlers\Search\" />
-	  <Folder Include="RequestHandlers\Plays\" />
 	</ItemGroup>
 
 	<ItemGroup>
