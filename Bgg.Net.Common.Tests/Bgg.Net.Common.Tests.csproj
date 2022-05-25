@@ -14,6 +14,7 @@
     <None Remove="TestFiles\ForumListXml.xml" />
     <None Remove="TestFiles\ForumXml.xml" />
     <None Remove="TestFiles\GuildXml.xml" />
+    <None Remove="TestFiles\HotXml.xml" />
     <None Remove="TestFiles\MultipleItemXml.xml" />
     <None Remove="TestFiles\PlaysXml.xml" />
     <None Remove="TestFiles\ThreadXml.xml" />
@@ -27,6 +28,7 @@
     <EmbeddedResource Include="TestFiles\ForumListXml.xml" />
     <EmbeddedResource Include="TestFiles\ForumXml.xml" />
     <EmbeddedResource Include="TestFiles\GuildXml.xml" />
+    <EmbeddedResource Include="TestFiles\HotXml.xml" />
     <EmbeddedResource Include="TestFiles\MultipleItemXml.xml" />
     <EmbeddedResource Include="TestFiles\PlaysXml.xml" />
     <EmbeddedResource Include="TestFiles\ThreadXml.xml" />

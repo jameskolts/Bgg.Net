@@ -471,5 +471,25 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             result.Items[0].Status.LastModified.Should().Be("2017-03-26 12:58:16");
             result.Items[0].NumPlays.Should().Be(7);
         }
+
+        [TestMethod]
+        public void Deserialize_Hotness()
+        {
+            //Arrange
+            var xml = XmlGenerator.GenerateResourceXml(EmbeddedResource.HotXml);
+
+            //Act
+            var result = _deserializer.Deserialize<HotItemList>(xml);
+
+            //Assert
+            result.Should().NotBeNull();
+            result.Item.Count.Should().Be(50);
+            result.TermsOfUse.Should().Be("https://boardgamegeek.com/xmlapi/termsofuse");
+            result.Item[0].Id.Should().Be(291453);
+            result.Item[0].Rank.Should().Be(1);
+            result.Item[0].Thumbnail.Value.Should().Be("https://cf.geekdo-images.com/cf0xxkevbwTGF3VUZymKjg__thumb/img/NUcMdmZ3_eA1YfIwL8iRgkZKaHw=/fit-in/200x150/filters:strip_icc()/pic6398727.png");
+            result.Item[0].Name.Value.Should().Be("SCOUT");
+            result.Item[0].YearPublished.Value.Should().Be(2019);
+        }
     }
 }

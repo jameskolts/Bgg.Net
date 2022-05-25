@@ -3,9 +3,11 @@ using Autofac;
 using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.IOC;
+using Bgg.Net.Common.RequestHandlers.Collection;
 using Bgg.Net.Common.RequestHandlers.Families;
 using Bgg.Net.Common.RequestHandlers.Forums;
 using Bgg.Net.Common.RequestHandlers.ForumsList;
+using Bgg.Net.Common.RequestHandlers.Guilds;
 using Bgg.Net.Common.RequestHandlers.Things;
 using Bgg.Net.Common.RequestHandlers.Threads;
 using Serilog;
@@ -93,6 +95,14 @@ using (var scope = AutofacRegistrar.BuildContainer().BeginLifetimeScope())
 
     thread = await threadHandler.GetThreadExtensible(extension);
     logger.Information("Success: " + thread.IsSuccessful);
+
+    var collectionHandler = scope.Resolve<ICollectionHandler>();
+    var collection = await collectionHandler.GetCollectionByUserName("Jimmydm90");
+    logger.Information("Success: " + collection.IsSuccessful);
+
+    var guildHandler = scope.Resolve<IGuildHandler>();
+    var guild = await guildHandler.GetGuildById(24);
+    logger.Information("Success: " + guild.IsSuccessful);
 }
 
 Console.WriteLine("Press any key to exit");
