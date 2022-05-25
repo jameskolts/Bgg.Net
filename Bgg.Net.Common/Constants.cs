@@ -71,5 +71,40 @@ namespace Bgg.Net.Common
                 "subtype",
                 "page"
            });
+
+        public static ReadOnlyCollection<string> SupportedCollectionParameters { get; } = new ReadOnlyCollection<string>(
+           new string[]
+           {
+                "username",
+                "version",
+                "subtype",
+                "excludesubtype",
+                "id",
+                "brief",
+                "stats",
+                "own",
+                "rated",
+                "played",
+                "comment",
+                "trade",
+                "want",
+                "wishlist",
+                "wishlistpriority",
+                "preordered",
+                "wanttoplay",
+                "wanttobuy",
+                "prevowned",
+                "hasparts",
+                "wantparts",
+                "minrating",
+                "rating",
+                "minbggrating",
+                "bggrating",
+                "minplays",
+                "maxplays",
+                "showprivate",
+                "collid",
+                "modifiedsince",
+           });
     }
 }

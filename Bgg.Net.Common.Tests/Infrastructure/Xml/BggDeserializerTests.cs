@@ -396,6 +396,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             result.Members.Page.Should().Be(2);
             result.Members.Member[0].Name.Should().Be("269Hawkmoon");
             result.Members.Member[0].Date.Should().Be("Sun, 08 Mar 2015 04:35:14 +0000");
+            result.Manager.Should().Be("TomVasel");
         }
 
         [TestMethod]

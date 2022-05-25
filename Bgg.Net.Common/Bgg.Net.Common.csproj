@@ -24,7 +24,6 @@
 	  <Folder Include="Platforms\iOS\" />
 	  <Folder Include="Platforms\MacCatalyst\" />
 	  <Folder Include="Platforms\Windows\" />
-	  <Folder Include="RequestHandlers\Collection\" />
 	  <Folder Include="RequestHandlers\HotItems\" />
 	  <Folder Include="RequestHandlers\Search\" />
 	</ItemGroup>

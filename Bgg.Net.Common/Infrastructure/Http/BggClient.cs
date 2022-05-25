@@ -26,7 +26,7 @@
         }
 
         /// <inheritdoc cref="HttpClient.GetAsync(string)"/>
-        public Task<HttpResponseMessage> GetAsync(string url)
+        public virtual Task<HttpResponseMessage> GetAsync(string url)
         {
             return httpClient.GetAsync(url);
         }

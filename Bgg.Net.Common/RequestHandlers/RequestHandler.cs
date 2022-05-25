@@ -3,6 +3,7 @@ using Bgg.Net.Common.Infrastructure.Extensions;
 using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Models.Requests;
 using Serilog;
 
 namespace Bgg.Net.Common.RequestHandlers
@@ -92,6 +93,41 @@ namespace Bgg.Net.Common.RequestHandlers
 
             return await BuildBggResult<T>(httpResponseMessage);
         }
+
+        /// <summary>
+        /// Gets a resource from the BGG XML API2 using a request to build the query.
+        /// </summary>
+        /// <typeparam name="T">The typeof the resource.</typeparam>
+        /// <param name="resourceName">The resource name to use in the query.</param>
+        /// <param name="request">The request to use to build the query.</param>
+        /// <returns>A <see cref="BggResult{T}"/> of the given type.</returns>
+        protected async Task<BggResult<T>> GetResourceFromRequestObject<T>(string resourceName, BggRequest request)
+            where T : BggBase
+        {
+            _logger.Information("Get" + resourceName.UpperFirstChar() + " : {request}", request);
+
+
+            var type = request.GetType();
+            var propInfo = type.GetProperties();
+            var query = $"{resourceName}?" + propInfo.First().Name.ToLower() + request.GetType().GetProperty(propInfo.First().Name);
+
+            foreach (var prop in propInfo.Skip(1))
+            {
+                var pi = type.GetProperty(prop.Name);
+
+                if (pi.GetValue(request) != null)
+                {
+                    query += "&";
+                    query += prop.Name.ToLower();
+                    query += "=";
+                    query += request.GetType().GetProperty(prop.Name).GetValue(request, null);
+                }
+            }
+
+            var httpResponseMessage = await _httpClient.GetAsync(query);
+
+            return await BuildBggResult<T>(httpResponseMessage);
+        }        
     }
 }
 

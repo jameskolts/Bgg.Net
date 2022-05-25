@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.IOC;
+using Bgg.Net.Common.RequestHandlers.Collection;
 using Bgg.Net.Common.RequestHandlers.Families;
 using Bgg.Net.Common.RequestHandlers.Forums;
 using Bgg.Net.Common.RequestHandlers.ForumsList;
@@ -149,6 +150,40 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
             objFromClass.Should().NotBeNull();
             objFromClass.Should().BeAssignableTo<UserHandler>();
             objFromClass?.GetType().Name.Should().Be("UserHandler");
+        }
+
+        [TestMethod]
+        public void CollectionClient_Resolve()
+        {
+            // Arrange/Act
+            var objFromInterface = scope?.Resolve<ICollectionClient>();
+            var objFromClass = scope?.Resolve<CollectionClient>();
+
+            //Assert
+            objFromInterface.Should().NotBeNull();
+            objFromInterface.Should().BeAssignableTo<CollectionClient>();
+            objFromInterface?.GetType().Name.Should().Be("CollectionClient");
+
+            objFromClass.Should().NotBeNull();
+            objFromClass.Should().BeAssignableTo<CollectionClient>();
+            objFromClass?.GetType().Name.Should().Be("CollectionClient");
+        }
+
+        [TestMethod]
+        public void CollectionHandler_Resolve()
+        {
+            // Arrange/Act
+            var objFromInterface = scope?.Resolve<ICollectionHandler>();
+            var objFromClass = scope?.Resolve<CollectionHandler>();
+
+            //Assert
+            objFromInterface.Should().NotBeNull();
+            objFromInterface.Should().BeAssignableTo<CollectionHandler>();
+            objFromInterface?.GetType().Name.Should().Be("CollectionHandler");
+
+            objFromClass.Should().NotBeNull();
+            objFromClass.Should().BeAssignableTo<CollectionHandler>();
+            objFromClass?.GetType().Name.Should().Be("CollectionHandler");
         }
     }
 }
