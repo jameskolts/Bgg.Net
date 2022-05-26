@@ -1,6 +1,7 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
+using Bgg.Net.Common.Models.Requests;
 using Serilog;
 using Thread = Bgg.Net.Common.Models.Thread;
 
@@ -14,6 +15,12 @@ namespace Bgg.Net.Common.RequestHandlers.Threads
         public ThreadHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient)
             : base(deserializer, logger, httpClient)
         { 
+        }
+
+        /// <inheritdoc/>
+        public async Task<BggResult<Thread>> GetThread(ThreadRequest request)
+        {
+            return await GetResourceFromRequestObject<Thread>("thread", request);
         }
 
         /// <inheritdoc/>

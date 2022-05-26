@@ -12,7 +12,7 @@ namespace Bgg.Net.Common.RequestHandlers.Families
     /// </summary>
     public class FamilyHandler : RequestHandler, IFamilyHandler
     {
-        public FamilyHandler(IHttpClient client, ILogger logger, IBggDeserializer deserializer)
+        public FamilyHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient client)
             : base(deserializer, logger, client)
         {
         }

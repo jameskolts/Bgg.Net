@@ -31,9 +31,9 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
                 });
 
             _handler = new FamilyHandler(
-                httpClientMock.Object,
+                bggDeserializerMock.Object,
                 Mock.Of<ILogger>(),
-                bggDeserializerMock.Object);
+                httpClientMock.Object);
 
             //Act
             var result = await _handler.GetFamilyById(1);
@@ -59,9 +59,9 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
                 });
 
             _handler = new FamilyHandler(
-                httpClientMock.Object,
+                bggDeserializerMock.Object,
                 Mock.Of<ILogger>(),
-                bggDeserializerMock.Object);
+                httpClientMock.Object);
 
             //Act
             var result = await _handler.GetFamilyByIds(new List<int> { 1, 2, 3 });
@@ -87,9 +87,9 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
                 });
 
             _handler = new FamilyHandler(
-                httpClientMock.Object,
+                bggDeserializerMock.Object,
                 Mock.Of<ILogger>(),
-                bggDeserializerMock.Object);
+                httpClientMock.Object);
 
             //Act
             var result = await _handler.GetFamilyByIdsAndType(new List<int> { 1, 2, 3 }, new List<FamilyType> { FamilyType.RpgPeriodical });
@@ -115,9 +115,9 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
                 });
 
             _handler = new FamilyHandler(
-                httpClientMock.Object,
+                bggDeserializerMock.Object,
                 Mock.Of<ILogger>(),
-                bggDeserializerMock.Object);
+                httpClientMock.Object);
 
             var extension = new Extension
             {
@@ -147,9 +147,9 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
             var bggDeserializerMock = MockBggDeserializer<FamilyList>();
 
             _handler = new FamilyHandler(
-               httpClientMock.Object,
-               Mock.Of<ILogger>(),
-               bggDeserializerMock.Object);
+                bggDeserializerMock.Object,
+                Mock.Of<ILogger>(),
+                httpClientMock.Object);
 
             var extension = new Extension
             {
