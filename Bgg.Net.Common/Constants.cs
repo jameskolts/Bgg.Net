@@ -106,5 +106,11 @@ namespace Bgg.Net.Common
                 "collid",
                 "modifiedsince",
            });
+
+        public static ReadOnlyCollection<string> SupportedHotItemParameters { get; } = new ReadOnlyCollection<string>(
+           new string[]
+           {
+                "type",
+           });
     }
 }

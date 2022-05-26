@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace Bgg.Net.Common.Tests.Resources.Families
+namespace Bgg.Net.Common.Tests.RequestHandlers.Families
 {
     [TestClass]
     public class FamilyHandlerTests : HandlerTestBase

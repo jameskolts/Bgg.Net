@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using Bgg.Net.Common.Infrastructure.Exceptions;
+using System.Net;
 
 namespace Bgg.Net.Common.Infrastructure.Http
 {
@@ -24,6 +25,9 @@ namespace Bgg.Net.Common.Infrastructure.Http
 
                 await Task.Delay(250).ConfigureAwait(false);               
             }
+
+            if (httpResponseMessage.StatusCode == HttpStatusCode.Accepted)
+                throw new AttemptsExceededException($"Exceeded Max attempts {maxAttempts} while querying: {url}.");
 
             return httpResponseMessage;
         }

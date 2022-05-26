@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Bgg.Net.Common.Infrastructure.Http;
 
-namespace Bgg.Net.Common.Tests.Resources
+namespace Bgg.Net.Common.Tests.RequestHandlers
 {
     /// <summary>
     /// Base Class for testing handlers.

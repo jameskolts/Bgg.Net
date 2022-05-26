@@ -6,6 +6,7 @@ using Bgg.Net.Common.RequestHandlers.Families;
 using Bgg.Net.Common.RequestHandlers.Forums;
 using Bgg.Net.Common.RequestHandlers.ForumsList;
 using Bgg.Net.Common.RequestHandlers.Guilds;
+using Bgg.Net.Common.RequestHandlers.HotItems;
 using Bgg.Net.Common.RequestHandlers.Things;
 using Bgg.Net.Common.RequestHandlers.Threads;
 using Bgg.Net.Common.RequestHandlers.Users;
@@ -38,6 +39,7 @@ namespace Bgg.Net.Common.Infrastructure.IOC
             builder.RegisterType<UserHandler>().As<IUserHandler>().AsSelf();
             builder.RegisterType<GuildHandler>().As<IGuildHandler>().AsSelf();
             builder.RegisterType<CollectionHandler>().As<ICollectionHandler>().AsSelf();
+            builder.RegisterType<HotItemHandler>().As<IHotItemsHandler>().AsSelf();
 
             return builder.Build();
         }

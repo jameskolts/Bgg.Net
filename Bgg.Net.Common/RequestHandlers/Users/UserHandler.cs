@@ -2,6 +2,7 @@
 using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Models.Requests;
 using Serilog;
 
 namespace Bgg.Net.Common.RequestHandlers.Users
@@ -14,6 +15,12 @@ namespace Bgg.Net.Common.RequestHandlers.Users
         public UserHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient)
             : base(deserializer, logger, httpClient)
         {
+        }
+
+        /// <inheritdoc/>
+        public async Task<BggResult<User>> GetUser(UserRequest request)
+        {
+            return await GetResourceFromRequestObject<User>("user", request);
         }
 
         /// <inheritdoc/>

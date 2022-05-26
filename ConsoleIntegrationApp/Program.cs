@@ -10,6 +10,8 @@ using Bgg.Net.Common.RequestHandlers.ForumsList;
 using Bgg.Net.Common.RequestHandlers.Guilds;
 using Bgg.Net.Common.RequestHandlers.Things;
 using Bgg.Net.Common.RequestHandlers.Threads;
+using Bgg.Net.Common.RequestHandlers.HotItems;
+using Bgg.Net.Common.Types;
 using Serilog;
 
 Console.WriteLine("Hello, Bgg.Net!");
@@ -96,13 +98,20 @@ using (var scope = AutofacRegistrar.BuildContainer().BeginLifetimeScope())
     thread = await threadHandler.GetThreadExtensible(extension);
     logger.Information("Success: " + thread.IsSuccessful);
 
+    logger.Information("---Collection---");
     var collectionHandler = scope.Resolve<ICollectionHandler>();
     var collection = await collectionHandler.GetCollectionByUserName("Jimmydm90");
     logger.Information("Success: " + collection.IsSuccessful);
 
+    logger.Information("---Guild---");
     var guildHandler = scope.Resolve<IGuildHandler>();
     var guild = await guildHandler.GetGuildById(24);
     logger.Information("Success: " + guild.IsSuccessful);
+
+    logger.Information("---HotItem---");
+    var hotHandler = scope.Resolve<IHotItemsHandler>();
+    var hotItem = await hotHandler.GetHotItemsByType(HotItemType.BoardGame);
+    logger.Information("Success: " + hotItem.IsSuccessful);
 }
 
 Console.WriteLine("Press any key to exit");

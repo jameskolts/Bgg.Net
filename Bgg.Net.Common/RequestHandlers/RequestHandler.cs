@@ -109,7 +109,7 @@ namespace Bgg.Net.Common.RequestHandlers
 
             var type = request.GetType();
             var propInfo = type.GetProperties();
-            var query = $"{resourceName}?" + propInfo.First().Name.ToLower() + request.GetType().GetProperty(propInfo.First().Name);
+            var query = $"{resourceName}?" + propInfo.First().Name.ToLower() + "=" + type.GetProperty(propInfo.First().Name).GetValue(request);
 
             foreach (var prop in propInfo.Skip(1))
             {
@@ -120,7 +120,25 @@ namespace Bgg.Net.Common.RequestHandlers
                     query += "&";
                     query += prop.Name.ToLower();
                     query += "=";
-                    query += request.GetType().GetProperty(prop.Name).GetValue(request, null);
+
+                    //var paramValue = pi.GetValue(request, null) as bool?;
+                    if (pi.PropertyType == typeof(bool?))
+                    {
+                        var paramValue = pi.GetValue(request, null) as bool?;
+
+                        if (paramValue == true)
+                        {
+                            query += "1";
+                        }
+                        else
+                        {
+                            query += "0";
+                        }
+                    }
+                    else
+                    {
+                        query += pi.GetValue(request, null).ToString().ToLower();
+                    }
                 }
             }
 
