@@ -13,5 +13,6 @@
         public const string PlaysXml = "Bgg.Net.Common.Tests.TestFiles.PlaysXml.xml";
         public const string CollectionXml = "Bgg.Net.Common.Tests.TestFiles.CollectionXml.xml";
         public const string HotXml = "Bgg.Net.Common.Tests.TestFiles.HotXml.xml";
+        public const string SearchXml = "Bgg.Net.Common.Tests.TestFiles.SearchXml.xml";
     }
 }

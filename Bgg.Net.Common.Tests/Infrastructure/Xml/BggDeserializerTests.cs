@@ -491,5 +491,26 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             result.Item[0].Name.Value.Should().Be("SCOUT");
             result.Item[0].YearPublished.Value.Should().Be(2019);
         }
+
+        [TestMethod]
+        public void Deserialize_Search()
+        {
+            //Arrange
+            var xml = XmlGenerator.GenerateResourceXml(EmbeddedResource.SearchXml);
+
+            //Act
+            var result = _deserializer.Deserialize<SearchResultList>(xml);
+
+            //Assert
+            result.Should().NotBeNull();
+            result.TermsOfUse.Should().Be("https://boardgamegeek.com/xmlapi/termsofuse");
+            result.Total.Should().Be(2);
+            result.Item.Count.Should().Be(2);
+            result.Item[0].Type.Should().Be("boardgame");
+            result.Item[0].Id.Should().Be(342942);
+            result.Item[0].Name.Value.Should().Be("Ark Nova");
+            result.Item[0].Name.Type.Should().Be("primary");
+            result.Item[0].YearPublished.Value.Should().Be(2021);
+        }
     }
 }

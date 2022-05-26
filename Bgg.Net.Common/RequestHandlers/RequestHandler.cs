@@ -5,6 +5,9 @@ using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Serilog;
+using System.Collections;
+using System.Linq;
+using System.Text;
 
 namespace Bgg.Net.Common.RequestHandlers
 {
@@ -106,10 +109,21 @@ namespace Bgg.Net.Common.RequestHandlers
         {
             _logger.Information("Get" + resourceName.UpperFirstChar() + " : {request}", request);
 
+            var query = BuildQuery(resourceName, request);          
+
+            var httpResponseMessage = await _httpClient.GetAsync(query);
+
+            return await BuildBggResult<T>(httpResponseMessage);
+        }
+        
+        private string BuildQuery(string resourceName, BggRequest request)
+        {
+            var stringBuilder = new StringBuilder();
 
             var type = request.GetType();
             var propInfo = type.GetProperties();
-            var query = $"{resourceName}?" + propInfo.First().Name.ToLower() + "=" + type.GetProperty(propInfo.First().Name).GetValue(request);
+
+            stringBuilder.Append($"{resourceName}?" + propInfo.First().Name.ToLower() + "=" + type.GetProperty(propInfo.First().Name).GetValue(request));
 
             foreach (var prop in propInfo.Skip(1))
             {
@@ -117,35 +131,49 @@ namespace Bgg.Net.Common.RequestHandlers
 
                 if (pi.GetValue(request) != null)
                 {
-                    query += "&";
-                    query += prop.Name.ToLower();
-                    query += "=";
+                    stringBuilder.Append('&');
+                    stringBuilder.Append(prop.Name.ToLower());
+                    stringBuilder.Append('=');
 
-                    //var paramValue = pi.GetValue(request, null) as bool?;
                     if (pi.PropertyType == typeof(bool?))
                     {
                         var paramValue = pi.GetValue(request, null) as bool?;
 
                         if (paramValue == true)
                         {
-                            query += "1";
+                            stringBuilder.Append('1');
                         }
                         else
                         {
-                            query += "0";
+                            stringBuilder.Append('0');
+                        }
+                    }
+                    else if (pi.PropertyType.Name.StartsWith("List"))
+                    {
+                        var paramList = pi.GetValue(request, null) as IList;
+
+                        for (int i = 0; i < paramList.Count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                stringBuilder.Append(paramList[i].ToString().ToLower());
+                            }
+                            else
+                            {
+                                stringBuilder.Append("," + paramList[i].ToString().ToLower());
+                            }
+
                         }
                     }
                     else
                     {
-                        query += pi.GetValue(request, null).ToString().ToLower();
+                        stringBuilder.Append(pi.GetValue(request, null).ToString().ToLower());
                     }
                 }
             }
 
-            var httpResponseMessage = await _httpClient.GetAsync(query);
-
-            return await BuildBggResult<T>(httpResponseMessage);
-        }        
+            return stringBuilder.ToString();
+        }
     }
 }
 

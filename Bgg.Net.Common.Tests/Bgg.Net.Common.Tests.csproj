@@ -17,6 +17,7 @@
     <None Remove="TestFiles\HotXml.xml" />
     <None Remove="TestFiles\MultipleItemXml.xml" />
     <None Remove="TestFiles\PlaysXml.xml" />
+    <None Remove="TestFiles\SearchXml.xml" />
     <None Remove="TestFiles\ThreadXml.xml" />
     <None Remove="TestFiles\UserXml.xml" />
   </ItemGroup>
@@ -31,6 +32,7 @@
     <EmbeddedResource Include="TestFiles\HotXml.xml" />
     <EmbeddedResource Include="TestFiles\MultipleItemXml.xml" />
     <EmbeddedResource Include="TestFiles\PlaysXml.xml" />
+    <EmbeddedResource Include="TestFiles\SearchXml.xml" />
     <EmbeddedResource Include="TestFiles\ThreadXml.xml" />
     <EmbeddedResource Include="TestFiles\UserXml.xml" />
   </ItemGroup>

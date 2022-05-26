@@ -13,7 +13,7 @@ namespace Bgg.Net.Common.Types
         BoardGame,
         BoardGameExpansion,
         BoardGameAccessory,
-        BoardGameInteegration,
+        BoardGameIntegration,
         BoardGameCompilation,
         BoardGameImplementation,
         Rpg,

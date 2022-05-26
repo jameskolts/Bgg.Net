@@ -1,10 +1,9 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Models;
-using Bgg.Net.Common.RequestHandlers.Families;
+using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Threads;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
 using Bgg.Net.Common.Tests.TestFiles;
-using Bgg.Net.Common.Types;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -12,7 +11,6 @@ using Serilog;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using Bgg.Net.Common.Models.Requests;
 
 namespace Bgg.Net.Common.Tests.RequestHandlers.Threads
 {

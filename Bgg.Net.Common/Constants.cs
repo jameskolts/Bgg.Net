@@ -112,5 +112,13 @@ namespace Bgg.Net.Common
            {
                 "type",
            });
+
+        public static ReadOnlyCollection<string> SupportedSearchParameters { get; } = new ReadOnlyCollection<string>(
+           new string[]
+           {
+                "query",
+                "type",
+                "exact"
+           });
     }
 }
