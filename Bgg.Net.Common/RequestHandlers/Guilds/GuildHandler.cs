@@ -2,6 +2,7 @@
 using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
 using Serilog;
 
@@ -15,6 +16,12 @@ namespace Bgg.Net.Common.RequestHandlers.Guilds
         public GuildHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient)
             : base(deserializer, logger, httpClient)
         {
+        }
+
+        /// <inheritdoc/>
+        public async Task<BggResult<Guild>> GetGuild(GuildRequest request)
+        {
+            return await GetResourceFromRequestObject<Guild>("guild", request);
         }
 
         /// <inheritdoc/>

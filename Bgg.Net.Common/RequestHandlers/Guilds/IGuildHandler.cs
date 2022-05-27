@@ -1,5 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
 
 namespace Bgg.Net.Common.RequestHandlers.Guilds
@@ -9,6 +10,13 @@ namespace Bgg.Net.Common.RequestHandlers.Guilds
     /// </summary>
     public interface IGuildHandler
     {
+        /// <summary>
+        /// Gets a guild by the given request.
+        /// </summary>
+        /// <param name="request">The request to execute.</param>
+        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Guild"/>.</returns>
+        Task<BggResult<Guild>> GetGuild(GuildRequest request);
+
         /// <summary>
         /// Gets a guild by the given id.
         /// </summary>
@@ -31,7 +39,7 @@ namespace Bgg.Net.Common.RequestHandlers.Guilds
         /// <param name="extension">The parameters to use.</param>
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Guild"/>.</returns>
         /// <exception cref="NotSupportedException">Thrown if the extension is an unsupported parameter.</exception>
-        /// <remarks>Supported parameters include: 'id', 'members', 'sort', page'.</remarks>
+        /// <remarks>See <see cref="Constants.SupportedGuildParameters"/>.</remarks>
         Task<BggResult<Guild>> GetGuildExtensible(Extension extension);
     }
 }
