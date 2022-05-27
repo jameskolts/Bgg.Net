@@ -48,10 +48,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="RequestHandlers\Things\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Bgg.Net.Common\Bgg.Net.Common.csproj" />
   </ItemGroup>
 

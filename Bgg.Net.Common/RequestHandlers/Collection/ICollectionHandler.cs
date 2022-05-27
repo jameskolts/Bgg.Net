@@ -64,7 +64,7 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         /// </summary>
         /// <param name="userName">The users collection to retrieve.</param>
         /// <param name="ids">The ids of items to retrieve.</param>
-        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Models.Collection"/>./returns>
+        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Models.Collection"/>.</returns>
         Task<BggResult<Models.Collection>> GetCollectionByUserNameAndId(string userName, List<long> ids);
 
         /// <summary>
@@ -80,10 +80,7 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         /// <param name="extension"></param>
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Models.Collection"/>.</returns>
         /// <exception cref="NotSupportedException">Thrown if the extension is an unsupported parameter.</exception>
-        /// <remarks>Supported parameters include: 'username', 'version', 'subtype', 'excludesubtype',
-        /// 'id', 'brief', 'stats', 'own', 'rated', 'played', 'comment', trade', 'want', 'wishlist', 'wishlistpriority',
-        /// 'preordered', 'wanttoplay', 'wanttobuy', 'prevowned', 'hasparts', 'wantparts', 'minrating', 'rating',
-        /// 'minbggrating', 'bggrating', 'minplays', 'maxplays', 'showprivate', 'collid', 'modifiedsince'</remarks>
+        /// <remarks>See <see cref="Constants.SupportedCollectionParameters"/>.</remarks>
         Task<BggResult<Models.Collection>> GetCollectionExtensible(Extension extension);
     }
 }

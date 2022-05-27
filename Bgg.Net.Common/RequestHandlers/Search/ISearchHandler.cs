@@ -36,7 +36,7 @@ namespace Bgg.Net.Common.RequestHandlers.Search
         /// <summary>
         /// Gets a search result by the parameters provided in the reqquest.
         /// </summary>
-        /// <param name="query">What to search for.</param>
+        /// <param name="request">What to search for.</param>
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="SearchResultList"/>.</returns>
         public Task<BggResult<SearchResultList>> Search(SearchRequest request);
 

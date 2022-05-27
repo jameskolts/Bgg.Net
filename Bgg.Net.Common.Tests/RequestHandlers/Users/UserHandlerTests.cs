@@ -93,7 +93,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Users
             var result = await _handler.GetUser(request);
 
             //Assert
-            httpClientMock.Verify(x => x.GetAsync("user?name=userName&buddies=1&guilds=1&hot=0&top=1&domain=boardgame&page=2"));
+            httpClientMock.Verify(x => x.GetAsync("user?name=username&buddies=1&guilds=1&hot=0&top=1&domain=boardgame&page=2"));
             result.Should().NotBeNull();
             result.IsSuccessful.Should().BeTrue();
             result.Errors.Should().BeNullOrEmpty();

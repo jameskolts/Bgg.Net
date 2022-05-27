@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Diagnostics.CodeAnalysis;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -8,6 +9,7 @@ namespace Bgg.Net.Common.Models
     /// The Base object for Board Game Geek Objects.
     /// </summary>
     [Serializable()]
+    [ExcludeFromCodeCoverage]
     public abstract class BggBase
     {
         [XmlAttribute("termsofuse")]

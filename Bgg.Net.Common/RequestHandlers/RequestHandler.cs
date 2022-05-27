@@ -42,7 +42,7 @@ namespace Bgg.Net.Common.RequestHandlers
         /// <returns>The <see cref="BggResult{T}"/> populated from the httpResponse.</returns>
         protected async Task<BggResult<T>> BuildBggResult<T>(HttpResponseMessage httpResponse)
             where T : BggBase
-        {            
+        {
             var bggResult = new BggResult<T>();
 
             try
@@ -52,7 +52,7 @@ namespace Bgg.Net.Common.RequestHandlers
             }
             catch (Exception exception)
             {
-                var errorString = $"Error during deserialization. {exception.Message}";              
+                var errorString = $"Error during deserialization. {exception.Message}";
                 bggResult.Errors.Add(errorString);
                 _logger.Error(exception, errorString);
             }
@@ -74,7 +74,7 @@ namespace Bgg.Net.Common.RequestHandlers
         protected async Task<BggResult<T>> GetResourceExtensible<T>(string resourceName, IEnumerable<string> supportedParameters, Extension queryParameters)
             where T : BggBase
         {
-            _logger.Information("Get" + resourceName.UpperFirstChar() +"Extensible : {queryParameters}", queryParameters.ToString());
+            _logger.Information("Get" + resourceName.UpperFirstChar() + "Extensible : {queryParameters}", queryParameters.ToString());
 
             foreach (var kvp in queryParameters.Value)
             {
@@ -109,13 +109,13 @@ namespace Bgg.Net.Common.RequestHandlers
         {
             _logger.Information("Get" + resourceName.UpperFirstChar() + " : {request}", request);
 
-            var query = BuildQuery(resourceName, request);          
+            var query = BuildQuery(resourceName, request);
 
             var httpResponseMessage = await _httpClient.GetAsync(query);
 
             return await BuildBggResult<T>(httpResponseMessage);
         }
-        
+
         private string BuildQuery(string resourceName, BggRequest request)
         {
             var stringBuilder = new StringBuilder();
@@ -123,15 +123,18 @@ namespace Bgg.Net.Common.RequestHandlers
             var type = request.GetType();
             var propInfo = type.GetProperties();
 
-            stringBuilder.Append($"{resourceName}?" + propInfo.First().Name.ToLower() + "=" + type.GetProperty(propInfo.First().Name).GetValue(request));
+            stringBuilder.Append($"{resourceName}?");
 
-            foreach (var prop in propInfo.Skip(1))
+            foreach (var prop in propInfo)
             {
                 var pi = type.GetProperty(prop.Name);
 
                 if (pi.GetValue(request) != null)
                 {
-                    stringBuilder.Append('&');
+                    if (!stringBuilder.ToString().EndsWith('?'))
+                    {
+                        stringBuilder.Append('&');
+                    }
                     stringBuilder.Append(prop.Name.ToLower());
                     stringBuilder.Append('=');
 
@@ -162,7 +165,6 @@ namespace Bgg.Net.Common.RequestHandlers
                             {
                                 stringBuilder.Append("," + paramList[i].ToString().ToLower());
                             }
-
                         }
                     }
                     else

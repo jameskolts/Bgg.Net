@@ -2,6 +2,7 @@
 using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Models.Requests;
 using Serilog;
 
 namespace Bgg.Net.Common.RequestHandlers.Things
@@ -17,13 +18,19 @@ namespace Bgg.Net.Common.RequestHandlers.Things
         /// <param name="httpClient">The httpClient.</param>
         /// <param name="logger">The logger.</param>
         /// <param name="deserializer">The deserializer.</param>
-        public ThingHandler(IHttpClient httpClient, ILogger logger, IBggDeserializer deserializer)
+        public ThingHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient )
             : base(deserializer, logger, httpClient)
         {
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<ThingList>> GetThingById(int id)
+        public async Task<BggResult<ThingList>> GetThing(ThingRequest request)
+        {
+            return await GetResourceFromRequestObject<ThingList>("thing", request);
+        }
+
+        /// <inheritdoc/>
+        public async Task<BggResult<ThingList>> GetThingById(long id)
         {
             _logger.Information("GetThingById : {id}", id);
 
@@ -33,7 +40,7 @@ namespace Bgg.Net.Common.RequestHandlers.Things
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<ThingList>> GetThingsById(List<int> ids)
+        public async Task<BggResult<ThingList>> GetThingsById(List<long> ids)
         {
             _logger.Information("GetThingById : {id}", ids);
 

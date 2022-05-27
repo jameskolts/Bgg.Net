@@ -1,4 +1,5 @@
 ﻿using Bgg.Net.Common.Types;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Bgg.Net.Common.Models.Requests
 {
@@ -6,6 +7,7 @@ namespace Bgg.Net.Common.Models.Requests
     /// Represents a request for a collection to the BoardGameGeex Xml API2.
     /// Null properties will be excluded from the query.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class CollectionRequest : BggRequest
     {
         public CollectionRequest(string userName)

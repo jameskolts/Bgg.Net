@@ -13,7 +13,7 @@ namespace Bgg.Net.Common.Infrastructure
 
         public bool IsSuccessful { get; set; }
 
-        public HttpStatusCode HttpResponseCode { get; set; }
+        public HttpStatusCode? HttpResponseCode { get; set; }
 
         public override string ToString()
         {

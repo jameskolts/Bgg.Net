@@ -1,5 +1,4 @@
 ﻿using Bgg.Net.Common.Infrastructure;
-using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Search;
@@ -31,7 +30,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Search
                 Type = new List<SearchType> { SearchType.BoardGame, SearchType.BoardGameExpansion }
             };
 
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml), HttpStatusCode.OK);
+            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.SearchXml), HttpStatusCode.OK);
             var bggDeserializerMock = MockBggDeserializer(new SearchResultList { Total = 100 });
 
             _handler = new SearchHandler(bggDeserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
