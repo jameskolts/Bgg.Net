@@ -2,7 +2,7 @@
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Types;
 
-namespace Bgg.Net.Common.RequestHandlers.ForumsList
+namespace Bgg.Net.Common.RequestHandlers.Forums
 {
     /// <summary>
     /// Public interface that handles ForumList requests to the Bgg XmlApi2.

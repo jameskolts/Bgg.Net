@@ -14,7 +14,7 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
         /// <param name="httpClient">The httpClient.</param>
         /// <param name="logger">The logger.</param>
         /// <param name="deserializer">The deserializer.</param>
-        public ForumHandler(IHttpClient httpClient, ILogger logger, IBggDeserializer deserializer)
+        public ForumHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient)
             : base(deserializer, logger, httpClient)
         {
         }

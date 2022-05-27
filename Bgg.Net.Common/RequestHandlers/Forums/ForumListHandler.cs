@@ -5,20 +5,20 @@ using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Types;
 using Serilog;
 
-namespace Bgg.Net.Common.RequestHandlers.ForumsList
+namespace Bgg.Net.Common.RequestHandlers.Forums
 {
     /// <summary>
     /// Handles ForumList requests to the BGG API.
     /// </summary>
     public class ForumListHandler : RequestHandler, IForumListHandler
     {
-        /// <summary>
+        /// <summary>s
         /// Creates an instance of <see cref="ForumListHandler"/>.
         /// </summary>
         /// <param name="httpClient">The httpClient.</param>
         /// <param name="logger">The logger.</param>
         /// <param name="deserializer">The deserializer.</param>
-        public ForumListHandler(IHttpClient httpClient, ILogger logger, IBggDeserializer deserializer)
+        public ForumListHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient)
             : base(deserializer, logger, httpClient)
         {
         }

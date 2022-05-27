@@ -39,7 +39,7 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
         /// <param name="type">The type of items to retrieve.</param>
         /// <param name="subType">Optional parameter of subtype to retrieve.</param>
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Guild"/>.</returns>
-        Task<BggResult<PlayList>> GetPlaysByUserNameAndType(string userName, ItemType type, ItemSubType? subType = null);
+        Task<BggResult<PlayList>> GetPlaysByUserNameAndType(string userName, ItemType type, PlaysSubType? subType = null);
 
         /// <summary>
         /// Gets the plays within a specific time period for a user.

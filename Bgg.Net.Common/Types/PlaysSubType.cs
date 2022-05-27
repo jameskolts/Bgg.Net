@@ -8,7 +8,7 @@ namespace Bgg.Net.Common.Types
     /// <remarks>
     /// Used in <seealso cref="PlayList"/>.
     /// </remarks>
-    public enum ItemSubType
+    public enum PlaysSubType
     {
         BoardGame,
         BoardGameExpansion,

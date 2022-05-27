@@ -163,7 +163,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
             _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
-            var result = await _handler.GetPlaysByUserNameAndType("user", ItemType.Thing, ItemSubType.BoardGame);
+            var result = await _handler.GetPlaysByUserNameAndType("user", ItemType.Thing, PlaysSubType.BoardGame);
 
             //Assert
             _httpClientMock.Verify(x => x.GetAsync("plays?username=user&type=thing&subtype=boardgame"), Times.Once);

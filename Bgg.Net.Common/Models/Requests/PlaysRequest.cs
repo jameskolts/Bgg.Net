@@ -39,7 +39,7 @@ namespace Bgg.Net.Common.Models.Requests
         /// <summary>
         /// Limits play results to the specified type.
         /// </summary>
-        public ItemSubType? SubType { get; set; }
+        public PlaysSubType? SubType { get; set; }
 
         /// <summary>
         /// The page of information to request. Page size is 100 records.

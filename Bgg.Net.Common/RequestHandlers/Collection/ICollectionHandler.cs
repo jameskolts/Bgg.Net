@@ -57,7 +57,7 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         /// <param name="userName">The users collection to retrieve.</param>
         /// <param name="type">The type of the item.</param>
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Models.Collection"/>.</returns>
-        Task<BggResult<Models.Collection>> GetCollectionByUserNameAndType(string userName, ThingType type);
+        Task<BggResult<Models.Collection>> GetCollectionByUserNameAndType(string userName, CollectionSubType type);
 
         /// <summary>
         /// Gets a collection by the users name and item ids.

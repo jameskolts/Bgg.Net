@@ -10,11 +10,6 @@ namespace Bgg.Net.Common.Models.Requests
     [ExcludeFromCodeCoverage]
     public class CollectionRequest : BggRequest
     {
-        public CollectionRequest(string userName)
-        {
-            UserName = userName;
-        }
-
         /// <summary>
         /// Name of the user to request the collection for.
         /// </summary>
@@ -28,17 +23,17 @@ namespace Bgg.Net.Common.Models.Requests
         /// <summary>
         /// Specifies which collection you want to retrieve.
         /// </summary>
-        public ItemType? Subtype { get; set; }
+        public CollectionSubType? Subtype { get; set; }
 
         /// <summary>
         /// Specifies which subtype you want to exclude from the results.
         /// </summary>
-        public ItemType? ExcludeSubtype { get; set; }
+        public CollectionSubType? ExcludeSubtype { get; set; }
 
         /// <summary>
         /// Filter collection to specifically listed item(s). NNN may be a comma-delimited list of item ids.
         /// </summary>
-        public List<long> Ids { get; set; } = new List<long>();
+        public List<long> Id { get; set; } = new List<long>();
 
         /// <summary>
         /// Returns more abbreviated results.
@@ -141,7 +136,7 @@ namespace Bgg.Net.Common.Models.Requests
         /// <summary>
         /// Filter on minimum personal rating assigned for that item in the collection. Range 1..10
         /// </summary>
-        public bool? MinRating { get; set; }
+        public int? MinRating { get; set; }
 
         /// <summary>
         /// Filter on minimum BGG rating for that item in the collection. Range -1..10
@@ -153,7 +148,7 @@ namespace Bgg.Net.Common.Models.Requests
         /// Filter on maximum BGG rating for that item in the collection.Range -1..10
         /// </summary>
         /// <remarks>Note: 0 is ignored... you can use -1 though, for example min -1 and max 1 to get items w/no bgg rating.</remarks>
-        public bool? BggRating { get; set; }
+        public int? BggRating { get; set; }
 
         /// <summary>
         /// Filter by minimum number of recorded plays.

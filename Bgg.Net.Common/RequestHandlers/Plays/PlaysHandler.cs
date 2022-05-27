@@ -64,7 +64,7 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<PlayList>> GetPlaysByUserNameAndType(string userName, ItemType type, ItemSubType? subType = null)
+        public async Task<BggResult<PlayList>> GetPlaysByUserNameAndType(string userName, ItemType type, PlaysSubType? subType = null)
         {
             _logger.Information("GetPlaysByUserNameAndType : {userName}, {type}, {subType}", userName, type, subType);
 

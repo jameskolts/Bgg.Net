@@ -54,7 +54,7 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<Models.Collection>> GetCollectionByUserNameAndType(string userName, ThingType type)
+        public async Task<BggResult<Models.Collection>> GetCollectionByUserNameAndType(string userName, CollectionSubType type)
         {
             _logger.Information("GetCollectionByUserNameAndType : {userName}, {type}", userName, type);
 
