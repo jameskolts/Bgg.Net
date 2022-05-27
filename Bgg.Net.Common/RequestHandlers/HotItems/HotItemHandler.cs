@@ -14,7 +14,7 @@ namespace Bgg.Net.Common.RequestHandlers.HotItems
     {
         public HotItemHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient)
             : base(deserializer, logger, httpClient)
-        { 
+        {
         }
 
         /// <inheritdoc/>

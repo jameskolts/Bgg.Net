@@ -5,10 +5,10 @@ using Bgg.Net.Common.RequestHandlers.Collection;
 using Bgg.Net.Common.RequestHandlers.Families;
 using Bgg.Net.Common.RequestHandlers.Forums;
 using Bgg.Net.Common.RequestHandlers.Guilds;
-using Bgg.Net.Common.RequestHandlers.Things;
-using Bgg.Net.Common.RequestHandlers.Users;
 using Bgg.Net.Common.RequestHandlers.HotItems;
 using Bgg.Net.Common.RequestHandlers.Search;
+using Bgg.Net.Common.RequestHandlers.Things;
+using Bgg.Net.Common.RequestHandlers.Users;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -19,7 +19,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
     {
         private IContainer? container;
         private ILifetimeScope? scope;
-               
+
         [TestInitialize]
         public void Init()
         {
@@ -43,7 +43,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
 
             //Assert
             objFromInterface.Should().NotBeNull();
-            objFromInterface.Should().BeAssignableTo<BggClient>();            
+            objFromInterface.Should().BeAssignableTo<BggClient>();
             objFromInterface?.GetType().Name.Should().Be("BggClient");
 
             objFromClass.Should().NotBeNull();
@@ -84,7 +84,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
             objFromClass.Should().BeAssignableTo<FamilyHandler>();
             objFromClass?.GetType().Name.Should().Be("FamilyHandler");
         }
-                
+
         [TestMethod]
         public void ForumListHandler_Resolve()
         {

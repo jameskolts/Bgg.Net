@@ -36,7 +36,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers
             };
 
             _httpClientMock.Setup(x => x.GetAsync(It.IsAny<string>()))
-                .Returns(Task.FromResult(responseMessage));            
+                .Returns(Task.FromResult(responseMessage));
         }
 
         public void MockBggDeserializer<T>(T? obj = null)

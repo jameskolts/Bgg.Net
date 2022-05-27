@@ -23,7 +23,7 @@ namespace Bgg.Net.Common.Infrastructure.Http
                     break;
                 }
 
-                await Task.Delay(250).ConfigureAwait(false);               
+                await Task.Delay(250).ConfigureAwait(false);
             }
 
             if (httpResponseMessage.StatusCode == HttpStatusCode.Accepted)

@@ -1,5 +1,5 @@
-﻿using Bgg.Net.Common.Models;
-using Bgg.Net.Common.Infrastructure.Exceptions;
+﻿using Bgg.Net.Common.Infrastructure.Exceptions;
+using Bgg.Net.Common.Models;
 
 namespace Bgg.Net.Common.Infrastructure.Xml
 {

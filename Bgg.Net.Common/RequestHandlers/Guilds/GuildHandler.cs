@@ -39,7 +39,7 @@ namespace Bgg.Net.Common.RequestHandlers.Guilds
         {
             _logger.Information("GetGuildByIdWithMembers : {id}, {sortType}, {page}", id, sortType, page);
 
-            var httpResponseMessage = 
+            var httpResponseMessage =
                 await _httpClient.GetAsync($"guild?id={id}&members=1&sort={sortType.ToString().ToLower()}&page={page}");
 
             return await BuildBggResult<Guild>(httpResponseMessage);

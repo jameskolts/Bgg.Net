@@ -24,9 +24,9 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.HotItems
             //Arrange
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.HotXml), HttpStatusCode.OK);
             MockBggDeserializer(
-                new HotItemList 
-                { 
-                    Item = new List<HotItem> 
+                new HotItemList
+                {
+                    Item = new List<HotItem>
                     {
                         new HotItem
                         {
@@ -36,7 +36,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.HotItems
                         {
                             Id = 2
                         }
-                    } 
+                    }
                 });
 
             _handler = new HotItemHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);

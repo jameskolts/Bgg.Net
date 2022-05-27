@@ -1,5 +1,4 @@
 ﻿using Bgg.Net.Common.Infrastructure;
-using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Plays;
@@ -9,7 +8,6 @@ using Bgg.Net.Common.Types;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -105,7 +103,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
             _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
-            var result = await _handler.GetPlaysByUserNameAndDate("user", new DateOnly(2010,01,01), new DateOnly(2020,05,28));
+            var result = await _handler.GetPlaysByUserNameAndDate("user", new DateOnly(2010, 01, 01), new DateOnly(2020, 05, 28));
 
             //Assert
             _httpClientMock.Verify(x => x.GetAsync("plays?username=user&mindate=2010-01-01&maxdate=2020-05-28"), Times.Once);

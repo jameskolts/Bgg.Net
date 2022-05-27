@@ -8,7 +8,6 @@ using Bgg.Net.Common.Types;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Serilog;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
@@ -76,7 +75,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Search
             _handler = new SearchHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
-            var result = await _handler.SearchByQueryAndType("ark nova", new List<SearchType> { SearchType.BoardGame, SearchType.BoardGameExpansion});
+            var result = await _handler.SearchByQueryAndType("ark nova", new List<SearchType> { SearchType.BoardGame, SearchType.BoardGameExpansion });
 
             //Assert
             _httpClientMock.Verify(x => x.GetAsync("search?query=ark nova&type=boardgame,boardgameexpansion"), Times.Once);

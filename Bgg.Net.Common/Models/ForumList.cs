@@ -23,6 +23,6 @@ namespace Bgg.Net.Common.Models
 
         [XmlAttribute("type")]
         public string Type { get; set; }
-                
+
     }
 }

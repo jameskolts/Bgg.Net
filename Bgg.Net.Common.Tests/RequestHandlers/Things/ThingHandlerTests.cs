@@ -34,16 +34,16 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
             };
 
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.BoardGameXml), HttpStatusCode.OK);
-             MockBggDeserializer(
-                new ThingList
-                {
-                    Things = new List<Thing>
-                    {
+            MockBggDeserializer(
+               new ThingList
+               {
+                   Things = new List<Thing>
+                   {
                         new Thing { Id = 1 },
                         new Thing { Id = 2 },
                         new Thing { Id = 3 }
-                    }
-                });
+                   }
+               });
 
             _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
@@ -75,7 +75,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
                     }
                 });
 
-            _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object); 
+            _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
             var result = await _handler.GetThingById(1);
@@ -195,7 +195,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
         {
             //Arrange
 
-            MockHttpClientGet("", HttpStatusCode.NotFound);    
+            MockHttpClientGet("", HttpStatusCode.NotFound);
             _deserializerMock.Setup(x => x.Deserialize<ThingList>(It.IsAny<string>()))
                 .Throws(new Exception("exception"));
 

@@ -11,7 +11,7 @@ namespace Bgg.Net.Common.Models
     [XmlRoot("forum", Namespace = "", IsNullable = false)]
     [ExcludeFromCodeCoverage]
     public partial class Forum : BggBase
-    {                  
+    {
         [XmlAttribute("id")]
         public long Id { get; set; }
 
@@ -20,21 +20,21 @@ namespace Bgg.Net.Common.Models
 
         [XmlAttribute("title")]
         public string Title { get; set; }
-                
+
         [XmlAttribute("numthreads")]
         public long NumThreads { get; set; }
 
         [XmlAttribute("numposts")]
-        public long NumPosts { get; set; }  
+        public long NumPosts { get; set; }
 
         [XmlAttribute("lastpostdate")]
         public string LastPostDate { get; set; }
-                
+
         [XmlAttribute("noposting")]
         public bool NoPosting { get; set; }
 
         [XmlAttribute("description")]
-        public string Description { get; set; } 
+        public string Description { get; set; }
 
         [XmlArray("threads")]
         [XmlArrayItem("thread")]

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -10,6 +11,7 @@ namespace Bgg.Net.Common.Models
     [Serializable()]
     [DesignerCategory("code")]
     [XmlType("item", AnonymousType = true)]
+    [ExcludeFromCodeCoverage]
     public class CollectionItem
     {
         /// <summary>
@@ -23,7 +25,7 @@ namespace Bgg.Net.Common.Models
         /// </summary>
         [XmlAttribute("objecttype")]
         public string Type { get; set; }
-               
+
         /// <summary>
         /// The subtype of the item.
         /// </summary>
@@ -73,18 +75,18 @@ namespace Bgg.Net.Common.Models
         [XmlElement("numplays")]
         public int NumPlays { get; set; }
 
-    
-    
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

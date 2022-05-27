@@ -27,6 +27,6 @@ namespace Bgg.Net.Common.Models.Requests
         /// <summary>
         /// The page of the members list to return.
         /// </summary>
-        public int? Page {get; set; }
+        public int? Page { get; set; }
     }
 }

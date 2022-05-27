@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -11,6 +12,7 @@ namespace Bgg.Net.Common.Models
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     [XmlRoot(Namespace = "", IsNullable = false)]
+    [ExcludeFromCodeCoverage]
     public class BuddyList
     {
         /// <summary>
@@ -24,7 +26,7 @@ namespace Bgg.Net.Common.Models
         /// </summary>
         [XmlAttribute("page")]
         public int Page { get; set; }
-        
+
         /// <summary>
         /// The list of buddy results for this page.
         /// </summary>

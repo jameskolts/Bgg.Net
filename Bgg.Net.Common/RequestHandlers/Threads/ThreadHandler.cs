@@ -14,7 +14,7 @@ namespace Bgg.Net.Common.RequestHandlers.Threads
     {
         public ThreadHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient)
             : base(deserializer, logger, httpClient)
-        { 
+        {
         }
 
         /// <inheritdoc/>

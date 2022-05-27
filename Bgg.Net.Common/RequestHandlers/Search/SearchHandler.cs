@@ -15,7 +15,7 @@ namespace Bgg.Net.Common.RequestHandlers.Search
     {
         public SearchHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient)
             : base(deserializer, logger, httpClient)
-        { 
+        {
         }
 
         /// <inheritdoc/>

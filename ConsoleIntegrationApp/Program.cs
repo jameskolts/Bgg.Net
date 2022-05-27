@@ -7,9 +7,9 @@ using Bgg.Net.Common.RequestHandlers.Collection;
 using Bgg.Net.Common.RequestHandlers.Families;
 using Bgg.Net.Common.RequestHandlers.Forums;
 using Bgg.Net.Common.RequestHandlers.Guilds;
+using Bgg.Net.Common.RequestHandlers.HotItems;
 using Bgg.Net.Common.RequestHandlers.Things;
 using Bgg.Net.Common.RequestHandlers.Threads;
-using Bgg.Net.Common.RequestHandlers.HotItems;
 using Bgg.Net.Common.Types;
 using Serilog;
 
@@ -61,7 +61,7 @@ using (var scope = AutofacRegistrar.BuildContainer().BeginLifetimeScope())
     logger.Information("Success: " + family.IsSuccessful);
     family = await familyHandler.GetFamilyByIds(new List<int> { 1, 2, 3 });
     logger.Information("Success: " + family.IsSuccessful);
-    family = await familyHandler.GetFamilyByIdsAndType(new List<int> { 1, 2, 3 }, new List<Bgg.Net.Common.Types.FamilyType> { Bgg.Net.Common.Types.FamilyType.BoardGameFamily});
+    family = await familyHandler.GetFamilyByIdsAndType(new List<int> { 1, 2, 3 }, new List<Bgg.Net.Common.Types.FamilyType> { Bgg.Net.Common.Types.FamilyType.BoardGameFamily });
     logger.Information("Success: " + family.IsSuccessful);
     family = await familyHandler.GetFamilyByIdsAndType(new List<int> { 1, 2, 3 }, new List<Bgg.Net.Common.Types.FamilyType> { Bgg.Net.Common.Types.FamilyType.BoardGameFamily });
     logger.Information("Success: " + family.IsSuccessful);

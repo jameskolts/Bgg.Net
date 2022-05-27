@@ -6,7 +6,6 @@ using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Serilog;
 using System.Collections;
-using System.Linq;
 using System.Text;
 
 namespace Bgg.Net.Common.RequestHandlers

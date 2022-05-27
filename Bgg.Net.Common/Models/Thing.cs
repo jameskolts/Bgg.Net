@@ -1,7 +1,8 @@
-﻿using System.ComponentModel;
+﻿using Bgg.Net.Common.Types;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Xml;
 using System.Xml.Serialization;
-using Bgg.Net.Common.Types;
 
 namespace Bgg.Net.Common.Models
 {
@@ -12,6 +13,7 @@ namespace Bgg.Net.Common.Models
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     [XmlRoot("item")]
+    [ExcludeFromCodeCoverage]
     public class Thing
     {
         /// <summary>
@@ -138,6 +140,6 @@ namespace Bgg.Net.Common.Models
         /// </summary>
         [XmlElement("statistics")]
         public Statistics Statistics { get; set; }
-    } 
+    }
 }
 

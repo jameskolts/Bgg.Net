@@ -51,7 +51,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             Action act = () => _deserializer.Deserialize<Forum>(xml);
 
             //Assert
-            act.Should().Throw<XmlDeserializationException>()                
+            act.Should().Throw<XmlDeserializationException>()
                 .WithMessage("There is an error in XML document (2, 2).")
                 .WithInnerException(typeof(InvalidOperationException));
         }

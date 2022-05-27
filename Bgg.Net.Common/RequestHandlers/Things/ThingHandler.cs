@@ -18,7 +18,7 @@ namespace Bgg.Net.Common.RequestHandlers.Things
         /// <param name="httpClient">The httpClient.</param>
         /// <param name="logger">The logger.</param>
         /// <param name="deserializer">The deserializer.</param>
-        public ThingHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient )
+        public ThingHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient)
             : base(deserializer, logger, httpClient)
         {
         }

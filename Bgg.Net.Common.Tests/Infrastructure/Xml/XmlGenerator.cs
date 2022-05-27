@@ -19,13 +19,13 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
 
         private static Stream GetEmbeddedResourceStream(string resourceName)
         {
-            var stream =  Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);
+            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);
 
             if (stream == null)
                 throw new Exception("Unable to get Resource Stream");
 
             return stream;
-        }       
+        }
     }
 }
 

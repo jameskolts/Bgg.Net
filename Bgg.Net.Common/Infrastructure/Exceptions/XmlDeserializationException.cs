@@ -16,7 +16,7 @@
 
         }
 
-        public XmlDeserializationException(string message, Exception inner) 
+        public XmlDeserializationException(string message, Exception inner)
             : base(message, inner)
         {
 

@@ -7,7 +7,6 @@ using Bgg.Net.Common.Types;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Serilog;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;

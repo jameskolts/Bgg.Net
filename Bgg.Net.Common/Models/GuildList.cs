@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Diagnostics.CodeAnalysis;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace Bgg.Net.Common.Models
 {
@@ -8,6 +9,7 @@ namespace Bgg.Net.Common.Models
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     [XmlRoot(Namespace = "", IsNullable = false)]
+    [ExcludeFromCodeCoverage]
     public class GuildList
     {
         /// <summary>
