@@ -8,6 +8,8 @@ using Bgg.Net.Common.RequestHandlers.ForumsList;
 using Bgg.Net.Common.RequestHandlers.Guilds;
 using Bgg.Net.Common.RequestHandlers.Things;
 using Bgg.Net.Common.RequestHandlers.Users;
+using Bgg.Net.Common.RequestHandlers.HotItems;
+using Bgg.Net.Common.RequestHandlers.Search;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -184,6 +186,40 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
             objFromClass.Should().NotBeNull();
             objFromClass.Should().BeAssignableTo<CollectionHandler>();
             objFromClass?.GetType().Name.Should().Be("CollectionHandler");
+        }
+
+        [TestMethod]
+        public void HotItemHandler_Resolve()
+        {
+            // Arrange/Act
+            var objFromInterface = scope?.Resolve<IHotItemsHandler>();
+            var objFromClass = scope?.Resolve<HotItemHandler>();
+
+            //Assert
+            objFromInterface.Should().NotBeNull();
+            objFromInterface.Should().BeAssignableTo<HotItemHandler>();
+            objFromInterface?.GetType().Name.Should().Be("HotItemHandler");
+
+            objFromClass.Should().NotBeNull();
+            objFromClass.Should().BeAssignableTo<HotItemHandler>();
+            objFromClass?.GetType().Name.Should().Be("HotItemHandler");
+        }
+
+        [TestMethod]
+        public void SearchnHandler_Resolve()
+        {
+            // Arrange/Act
+            var objFromInterface = scope?.Resolve<ISearchHandler>();
+            var objFromClass = scope?.Resolve<SearchHandler>();
+
+            //Assert
+            objFromInterface.Should().NotBeNull();
+            objFromInterface.Should().BeAssignableTo<SearchHandler>();
+            objFromInterface?.GetType().Name.Should().Be("SearchHandler");
+
+            objFromClass.Should().NotBeNull();
+            objFromClass.Should().BeAssignableTo<SearchHandler>();
+            objFromClass?.GetType().Name.Should().Be("SearchHandler");
         }
     }
 }

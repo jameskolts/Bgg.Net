@@ -7,11 +7,13 @@ using Bgg.Net.Common.RequestHandlers.Forums;
 using Bgg.Net.Common.RequestHandlers.ForumsList;
 using Bgg.Net.Common.RequestHandlers.Guilds;
 using Bgg.Net.Common.RequestHandlers.HotItems;
+using Bgg.Net.Common.RequestHandlers.Search;
 using Bgg.Net.Common.RequestHandlers.Things;
 using Bgg.Net.Common.RequestHandlers.Threads;
 using Bgg.Net.Common.RequestHandlers.Users;
 using Serilog;
 using IContainer = Autofac.IContainer;
+using SearchHandler = Bgg.Net.Common.RequestHandlers.Search.SearchHandler;
 
 namespace Bgg.Net.Common.Infrastructure.IOC
 {
@@ -40,6 +42,7 @@ namespace Bgg.Net.Common.Infrastructure.IOC
             builder.RegisterType<GuildHandler>().As<IGuildHandler>().AsSelf();
             builder.RegisterType<CollectionHandler>().As<ICollectionHandler>().AsSelf();
             builder.RegisterType<HotItemHandler>().As<IHotItemsHandler>().AsSelf();
+            builder.RegisterType<SearchHandler>().As<ISearchHandler>().AsSelf();
 
             return builder.Build();
         }
