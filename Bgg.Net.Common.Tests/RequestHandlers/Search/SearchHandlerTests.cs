@@ -18,7 +18,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Search
     [TestClass]
     public class SearchHandlerTests : HandlerTestBase
     {
-        private ISearchHandler _handler;
+        private ISearchHandler? _handler;
 
         [TestMethod]
         public async Task Search_Success()
@@ -30,16 +30,16 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Search
                 Type = new List<SearchType> { SearchType.BoardGame, SearchType.BoardGameExpansion }
             };
 
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.SearchXml), HttpStatusCode.OK);
-            var bggDeserializerMock = MockBggDeserializer(new SearchResultList { Total = 100 });
+            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.SearchXml), HttpStatusCode.OK);
+            MockBggDeserializer(new SearchResultList { Total = 100 });
 
-            _handler = new SearchHandler(bggDeserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+            _handler = new SearchHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
             var result = await _handler.Search(request);
 
             //Assert
-            httpClientMock.Verify(x => x.GetAsync("search?query=ark nova&type=boardgame,boardgameexpansion&exact=1"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync("search?query=ark nova&type=boardgame,boardgameexpansion&exact=1"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -50,16 +50,16 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Search
         public async Task SearchByQuery_Success()
         {
             //Arrange
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml), HttpStatusCode.OK);
-            var bggDeserializerMock = MockBggDeserializer(new SearchResultList { Total = 100 });
+            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml), HttpStatusCode.OK);
+            MockBggDeserializer(new SearchResultList { Total = 100 });
 
-            _handler = new SearchHandler(bggDeserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+            _handler = new SearchHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
             var result = await _handler.SearchByQuery("ark nova");
 
             //Assert
-            httpClientMock.Verify(x => x.GetAsync("search?query=ark nova"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync("search?query=ark nova"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -70,16 +70,16 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Search
         public async Task SearchByQueryAndType_Success()
         {
             //Arrange
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml), HttpStatusCode.OK);
-            var bggDeserializerMock = MockBggDeserializer(new SearchResultList { Total = 100 });
+            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml), HttpStatusCode.OK);
+            MockBggDeserializer(new SearchResultList { Total = 100 });
 
-            _handler = new SearchHandler(bggDeserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+            _handler = new SearchHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
             var result = await _handler.SearchByQueryAndType("ark nova", new List<SearchType> { SearchType.BoardGame, SearchType.BoardGameExpansion});
 
             //Assert
-            httpClientMock.Verify(x => x.GetAsync("search?query=ark nova&type=boardgame,boardgameexpansion"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync("search?query=ark nova&type=boardgame,boardgameexpansion"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -90,16 +90,16 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Search
         public async Task SearchByQueryExact_Success()
         {
             //Arrange
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml), HttpStatusCode.OK);
-            var bggDeserializerMock = MockBggDeserializer(new SearchResultList { Total = 100 });
+            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml), HttpStatusCode.OK);
+            MockBggDeserializer(new SearchResultList { Total = 100 });
 
-            _handler = new SearchHandler(bggDeserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+            _handler = new SearchHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
             var result = await _handler.SearchByQueryExact("ark nova");
 
             //Assert
-            httpClientMock.Verify(x => x.GetAsync("search?query=ark nova&exact=1"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync("search?query=ark nova&exact=1"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -119,16 +119,16 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Search
                 }
             };
 
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml), HttpStatusCode.OK);
-            var bggDeserializerMock = MockBggDeserializer(new SearchResultList { Total = 100 });
+            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml), HttpStatusCode.OK);
+            MockBggDeserializer(new SearchResultList { Total = 100 });
 
-            _handler = new SearchHandler(bggDeserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+            _handler = new SearchHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
             var result = await _handler.SearchExtensible(extension);
 
             //Assert
-            httpClientMock.Verify(x => x.GetAsync("search?query=ark nova&type=boardgame"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync("search?query=ark nova&type=boardgame"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();

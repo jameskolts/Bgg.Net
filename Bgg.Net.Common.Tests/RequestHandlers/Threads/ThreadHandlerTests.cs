@@ -7,7 +7,6 @@ using Bgg.Net.Common.Tests.TestFiles;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Serilog;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
@@ -17,7 +16,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Threads
     [TestClass]
     public class ThreadHandlerTests : HandlerTestBase
     {
-        private IThreadHandler _handler;
+        private IThreadHandler? _handler;
 
         [TestMethod]
         public async Task GetThread_Success()
@@ -30,16 +29,16 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Threads
                 MinArticleId = 1
             };
 
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ThreadXml), HttpStatusCode.OK);
-            var deserializerMock = MockBggDeserializer(new Thread { Id = 100 });
+            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ThreadXml), HttpStatusCode.OK);
+            MockBggDeserializer(new Thread { Id = 100 });
 
-            _handler = new ThreadHandler(deserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+            _handler = new ThreadHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
             var result = await _handler.GetThread(request);
 
             //Assert
-            httpClientMock.Verify(x => x.GetAsync("thread?id=100&minarticleid=1&minarticledatetime=2020-01-01&count=1"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync("thread?id=100&minarticleid=1&minarticledatetime=2020-01-01&count=1"), Times.Once);
             result.Should().NotBeNull();
             result.IsSuccessful.Should().BeTrue();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
@@ -59,16 +58,16 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Threads
                 }
             };
 
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ThreadXml), HttpStatusCode.OK);
-            var deserializerMock = MockBggDeserializer(new Thread { Id = 100 });
+            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ThreadXml), HttpStatusCode.OK);
+            MockBggDeserializer(new Thread { Id = 100 });
 
-            _handler = new ThreadHandler(deserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+            _handler = new ThreadHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
             var result = await _handler.GetThreadExtensible(extension);
 
             //Assert
-            httpClientMock.Verify(x => x.GetAsync("thread?id=100"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync("thread?id=100"), Times.Once);
             result.Should().NotBeNull();
             result.IsSuccessful.Should().BeTrue();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
@@ -88,10 +87,10 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Threads
                 }
             };
 
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ThreadXml), HttpStatusCode.OK);
-            var deserializerMock = MockBggDeserializer(new Thread { Id = 100 });
+            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ThreadXml), HttpStatusCode.OK);
+            MockBggDeserializer(new Thread { Id = 100 });
 
-            _handler = new ThreadHandler(deserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+            _handler = new ThreadHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
             var result = await _handler.GetThreadExtensible(extension);
@@ -107,16 +106,16 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Threads
         public async Task GetThreadById_Success()
         {
             //Arrange
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ThreadXml), HttpStatusCode.OK);
-            var deserializerMock = MockBggDeserializer(new Thread { Id = 100 });
+            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ThreadXml), HttpStatusCode.OK);
+            MockBggDeserializer(new Thread { Id = 100 });
 
-            _handler = new ThreadHandler(deserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+            _handler = new ThreadHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
             var result = await _handler.GetThreadById(100);
 
             //Asserrt
-            httpClientMock.Verify(x => x.GetAsync("thread?id=100"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync("thread?id=100"), Times.Once);
             result.Should().NotBeNull();
             result.IsSuccessful.Should().BeTrue();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);

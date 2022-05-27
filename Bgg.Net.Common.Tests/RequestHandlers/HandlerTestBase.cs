@@ -1,14 +1,11 @@
-﻿using Bgg.Net.Common.Infrastructure.Xml;
+﻿using Bgg.Net.Common.Infrastructure.Http;
+using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
-using Bgg.Net.Common.Tests.Infrastructure.Xml;
-using Serilog;
 using Moq;
-using System;
+using Serilog;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-using Bgg.Net.Common.Infrastructure.Http;
 
 namespace Bgg.Net.Common.Tests.RequestHandlers
 {
@@ -17,7 +14,20 @@ namespace Bgg.Net.Common.Tests.RequestHandlers
     /// </summary>
     public abstract class HandlerTestBase
     {
-        public Mock<IHttpClient> MockHttpClientGet(string content, HttpStatusCode statusCode)
+        protected Mock<IHttpClient> _httpClientMock { get; set; }
+
+        protected Mock<IBggDeserializer> _deserializerMock { get; set; }
+
+        protected Mock<ILogger> _loggerMock { get; set; }
+
+        public HandlerTestBase()
+        {
+            _httpClientMock = new Mock<IHttpClient>();
+            _deserializerMock = new Mock<IBggDeserializer>();
+            _loggerMock = new Mock<ILogger>();
+        }
+
+        public void MockHttpClientGet(string content, HttpStatusCode statusCode)
         {
             var responseMessage = new HttpResponseMessage
             {
@@ -25,26 +35,17 @@ namespace Bgg.Net.Common.Tests.RequestHandlers
                 Content = new StringContent(content),
             };
 
-            var bggclientMock = new Mock<IHttpClient>();
-            bggclientMock.Setup(x => x.GetAsync(It.IsAny<string>()))
-                .Returns(Task.FromResult(responseMessage));
-
-            return bggclientMock;
+            _httpClientMock.Setup(x => x.GetAsync(It.IsAny<string>()))
+                .Returns(Task.FromResult(responseMessage));            
         }
 
-        public Mock<IBggDeserializer> MockBggDeserializer<T>(T? obj = null)
+        public void MockBggDeserializer<T>(T? obj = null)
             where T : BggBase
         {
-            var returnObject = obj;
-
-            var mock = new Mock<IBggDeserializer>();
 #pragma warning disable CS8604 // Possible null reference argument.
-            mock.Setup(x => x.Deserialize<T>(It.IsAny<string>()))
-                .Returns(returnObject);
-#pragma warning restore CS8604 // Possible null reference argument.
-
-
-            return mock;            
+            _deserializerMock.Setup(x => x.Deserialize<T>(It.IsAny<string>()))
+                .Returns(obj);
+#pragma warning restore CS8604 // Possible null reference argument.           
         }
     }
 }

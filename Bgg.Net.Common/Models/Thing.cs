@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Xml;
 using System.Xml.Serialization;
+using Bgg.Net.Common.Types;
 
 namespace Bgg.Net.Common.Models
 {

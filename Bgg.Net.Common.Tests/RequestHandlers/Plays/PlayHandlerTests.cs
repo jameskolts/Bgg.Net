@@ -20,7 +20,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
     [TestClass]
     public class PlayHandlerTests : HandlerTestBase
     {
-        private IPlaysHandler _handler;
+        private IPlaysHandler? _handler;
 
         [TestMethod]
         public async Task GetPlays()
@@ -32,8 +32,8 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                 MinDate = new DateOnly(2020, 1, 12)
             };
 
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
-            var bggDeserializerMock = MockBggDeserializer(
+            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
+            MockBggDeserializer(
                 new PlayList
                 {
                     Play = new List<Play>
@@ -44,13 +44,13 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                     }
                 });
 
-            _handler = new PlaysHandler(bggDeserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
             var result = await _handler.GetPlays(request);
 
             //Assert
-            httpClientMock.Verify(x => x.GetAsync("plays?username=user&mindate=2020-01-12"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync("plays?username=user&mindate=2020-01-12"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -61,8 +61,8 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
         public async Task GetPlaysByUserName_Success()
         {
             //Arrange
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
-            var bggDeserializerMock = MockBggDeserializer(
+            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
+            MockBggDeserializer(
                new PlayList
                {
                    Play = new List<Play>
@@ -73,13 +73,13 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                    }
                });
 
-            _handler = new PlaysHandler(bggDeserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
             var result = await _handler.GetPlaysByUserName("user");
 
             //Assert
-            httpClientMock.Verify(x => x.GetAsync("plays?username=user"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync("plays?username=user"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -90,8 +90,8 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
         public async Task GetPlaysByUserNameAndDate_Success()
         {
             //Arrange
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
-            var bggDeserializerMock = MockBggDeserializer(
+            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
+            MockBggDeserializer(
                new PlayList
                {
                    Play = new List<Play>
@@ -102,13 +102,13 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                    }
                });
 
-            _handler = new PlaysHandler(bggDeserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
             var result = await _handler.GetPlaysByUserNameAndDate("user", new DateOnly(2010,01,01), new DateOnly(2020,05,28));
 
             //Assert
-            httpClientMock.Verify(x => x.GetAsync("plays?username=user&mindate=2010-01-01&maxdate=2020-05-28"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync("plays?username=user&mindate=2010-01-01&maxdate=2020-05-28"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -119,8 +119,8 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
         public async Task GetPlaysByUserNameAndId_Success()
         {
             //Arrange
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
-            var bggDeserializerMock = MockBggDeserializer(
+            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
+            MockBggDeserializer(
                new PlayList
                {
                    Play = new List<Play>
@@ -131,13 +131,13 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                    }
                });
 
-            _handler = new PlaysHandler(bggDeserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
             var result = await _handler.GetPlaysByUserNameAndId("user", 2500);
 
             //Assert
-            httpClientMock.Verify(x => x.GetAsync("plays?username=user&id=2500"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync("plays?username=user&id=2500"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -148,8 +148,8 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
         public async Task GetPlaysByUserNameAndTypeAndSubType_Success()
         {
             //Arrange
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
-            var bggDeserializerMock = MockBggDeserializer(
+            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
+            MockBggDeserializer(
                new PlayList
                {
                    Play = new List<Play>
@@ -160,13 +160,13 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                    }
                });
 
-            _handler = new PlaysHandler(bggDeserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
             var result = await _handler.GetPlaysByUserNameAndType("user", ItemType.Thing, ItemSubType.BoardGame);
 
             //Assert
-            httpClientMock.Verify(x => x.GetAsync("plays?username=user&type=thing&subtype=boardgame"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync("plays?username=user&type=thing&subtype=boardgame"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -177,8 +177,8 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
         public async Task GetPlaysByUserNameAndType_Success()
         {
             //Arrange
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
-            var bggDeserializerMock = MockBggDeserializer(
+            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
+            MockBggDeserializer(
                new PlayList
                {
                    Play = new List<Play>
@@ -189,13 +189,13 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                    }
                });
 
-            _handler = new PlaysHandler(bggDeserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
             var result = await _handler.GetPlaysByUserNameAndType("user", ItemType.Thing);
 
             //Assert
-            httpClientMock.Verify(x => x.GetAsync("plays?username=user&type=thing"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync("plays?username=user&type=thing"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -206,8 +206,8 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
         public async Task GetPlaysByIdAndType_Success()
         {
             //Arrange
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
-            var bggDeserializerMock = MockBggDeserializer(
+            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
+            MockBggDeserializer(
                new PlayList
                {
                    Play = new List<Play>
@@ -218,13 +218,13 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                    }
                });
 
-            _handler = new PlaysHandler(bggDeserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
             var result = await _handler.GetPlaysByIdAndType(2500, ItemType.Thing);
 
             //Assert
-            httpClientMock.Verify(x => x.GetAsync("plays?id=2500&type=thing"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync("plays?id=2500&type=thing"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -244,10 +244,9 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                 }
             };
 
-            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
-            var bggDeserializerMock = new Mock<IBggDeserializer>();
+            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
 
-            _handler = new PlaysHandler(bggDeserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
 
             //Act
             var result = await _handler.GetPlaysExtensible(extension);

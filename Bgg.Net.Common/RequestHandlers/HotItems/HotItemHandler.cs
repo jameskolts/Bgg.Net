@@ -22,7 +22,7 @@ namespace Bgg.Net.Common.RequestHandlers.HotItems
         {
             _logger.Information("GetHotItemsByType : {type}", type);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"hot?typ={type.ToString().ToLower()}");
+            var httpResponseMessage = await _httpClient.GetAsync($"hot?type={type.ToString().ToLower()}");
 
             return await BuildBggResult<HotItemList>(httpResponseMessage);
         }
