@@ -9,6 +9,7 @@ using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
@@ -188,6 +189,29 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
             result.Errors.Count.Should().Be(1);
             result.Errors[0].Should().Be("'badParam' parameter is not supported for GetThingExtensible.");
             result.Item.Should().BeNull();
+        }
+
+        [TestMethod]
+        public async Task GetThingById_NoContent()
+        {
+            //Arrange
+
+            var httpClientMock = MockHttpClientGet("", HttpStatusCode.NotFound);
+
+            var bggDeserializerMock = new Mock<IBggDeserializer>();
+            bggDeserializerMock.Setup(x => x.Deserialize<ThingList>(It.IsAny<string>()))
+                .Throws(new Exception("exception"));
+
+            _handler = new ThingHandler(bggDeserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+
+            //Act
+           var result = await _handler.GetThingById(1);
+
+            //Assert
+            result.Should().NotBeNull();
+            result.Errors.Count.Should().Be(1);
+            result.Item.Should().BeNull();
+            result.IsSuccessful.Should().BeFalse();
         }
     }
 }

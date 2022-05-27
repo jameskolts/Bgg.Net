@@ -1,5 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
 
 namespace Bgg.Net.Common.RequestHandlers.Plays
@@ -9,6 +10,13 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
     /// </summary>
     public interface IPlaysHandler
     {
+        /// <summary>
+        /// Gets the plays by the given query.
+        /// </summary>
+        /// <param name="request">The request to query.</param>
+        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Guild"/>.</returns>
+        Task<BggResult<PlayList>> GetPlays(PlaysRequest request);
+
         /// <summary>
         /// Gets the plays by the given user name.
         /// </summary>
@@ -43,12 +51,20 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
         Task<BggResult<PlayList>> GetPlaysByUserNameAndDate(string userName, DateOnly start, DateOnly end);
 
         /// <summary>
+        /// Gets the plays for a specific id and type.
+        /// </summary>
+        /// <param name="id">The id of the item.</param>
+        /// <param name="type">A <see cref="BggResult{T}"/> where T is a <see cref="Guild"/>.</param>
+        /// <returns></returns>
+        Task<BggResult<PlayList>> GetPlaysByIdAndType(long id, ItemType type);
+
+        /// <summary>
         /// Gets the plays given extensible parameters.
         /// </summary>
         /// <param name="extension">The parameters to use.</param>
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Guild"/>.</returns>
         /// <exception cref="NotSupportedException">Thrown if the extension is an unsupported parameter.</exception>
-        /// <remarks>Supported parameters include: 'username', 'id', 'type', mindate', 'maxdate', 'subtype', 'page'.</remarks>
+        /// <remarks>See <see cref="Constants.SupportedPlaysParameters"/>.</remarks>
         Task<BggResult<PlayList>> GetPlaysExtensible(Extension extension);
     }
 }

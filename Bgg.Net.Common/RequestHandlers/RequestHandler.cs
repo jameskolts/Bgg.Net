@@ -151,6 +151,12 @@ namespace Bgg.Net.Common.RequestHandlers
                             stringBuilder.Append('0');
                         }
                     }
+                    else if (pi.PropertyType == typeof(DateOnly?))
+                    {
+                        var paramValue = pi.GetValue(request, null) as DateOnly?;
+
+                        stringBuilder.Append(paramValue.Value.ToString("yyyy-MM-dd"));
+                    }
                     else if (pi.PropertyType.Name.StartsWith("List"))
                     {
                         var paramList = pi.GetValue(request, null) as IList;
