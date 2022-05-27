@@ -145,7 +145,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
         }
 
         [TestMethod]
-        public async Task GetPlaysByUserNameAndType_Success()
+        public async Task GetPlaysByUserNameAndTypeAndSubType_Success()
         {
             //Arrange
             var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
@@ -167,6 +167,35 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
 
             //Assert
             httpClientMock.Verify(x => x.GetAsync("plays?username=user&type=thing&subtype=boardgame"), Times.Once);
+            result.Should().NotBeNull();
+            result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
+            result.Errors.Should().BeNullOrEmpty();
+            result.Item.Play.Count.Should().Be(3);
+        }
+
+        [TestMethod]
+        public async Task GetPlaysByUserNameAndType_Success()
+        {
+            //Arrange
+            var httpClientMock = MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
+            var bggDeserializerMock = MockBggDeserializer(
+               new PlayList
+               {
+                   Play = new List<Play>
+                   {
+                        new Play { Id = 1 },
+                        new Play { Id = 2 },
+                        new Play { Id = 3 }
+                   }
+               });
+
+            _handler = new PlaysHandler(bggDeserializerMock.Object, Mock.Of<ILogger>(), httpClientMock.Object);
+
+            //Act
+            var result = await _handler.GetPlaysByUserNameAndType("user", ItemType.Thing);
+
+            //Assert
+            httpClientMock.Verify(x => x.GetAsync("plays?username=user&type=thing"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
