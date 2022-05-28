@@ -1,5 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Http;
+using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
@@ -12,8 +13,8 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
     /// </summary>
     public class CollectionHandler : RequestHandler, ICollectionHandler
     {
-        public CollectionHandler(IBggDeserializer deserializer, ILogger logger, ICollectionClient httpClient)
-            : base(deserializer, logger, httpClient)
+        public CollectionHandler(IBggDeserializer deserializer, ILogger logger, ICollectionClient httpClient, IRequestValidatorFactory validatorFactory)
+            : base(deserializer, logger, httpClient, validatorFactory)
         {
         }
 

@@ -1,5 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Http;
+using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Types;
@@ -12,13 +13,13 @@ namespace Bgg.Net.Common.RequestHandlers.Families
     /// </summary>
     public class FamilyHandler : RequestHandler, IFamilyHandler
     {
-        public FamilyHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient client)
-            : base(deserializer, logger, client)
+        public FamilyHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient client, IRequestValidatorFactory validatorFactory)
+            : base(deserializer, logger, client, validatorFactory)
         {
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<FamilyList>> GetFamilyById(int id)
+        public async Task<BggResult<FamilyList>> GetFamilyById(long id)
         {
             _logger.Information("GetFamilyById : {id}", id);
 
@@ -28,7 +29,7 @@ namespace Bgg.Net.Common.RequestHandlers.Families
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<FamilyList>> GetFamilyByIds(List<int> ids)
+        public async Task<BggResult<FamilyList>> GetFamilyByIds(List<long> ids)
         {
             _logger.Information("GetFamilyByIds : {id}", ids);
 
@@ -40,7 +41,7 @@ namespace Bgg.Net.Common.RequestHandlers.Families
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<FamilyList>> GetFamilyByIdsAndType(List<int> ids, List<FamilyType> types)
+        public async Task<BggResult<FamilyList>> GetFamilyByIdsAndType(List<long> ids, List<FamilyType> types)
         {
             _logger.Information("GetFamilyByIdsAndType : {id}, {types}", ids, types);
 

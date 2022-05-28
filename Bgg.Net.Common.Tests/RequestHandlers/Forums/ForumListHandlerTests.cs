@@ -23,7 +23,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ForumListXml), HttpStatusCode.OK);
             MockBggDeserializer(new ForumList { Id = 100 });
 
-            _handler = new ForumListHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
+            _handler = new ForumListHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
 
             //Act
             var result = await _handler.GetForumListByIdAndType(100, ItemType.Thing);

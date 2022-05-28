@@ -1,4 +1,5 @@
 ﻿using Bgg.Net.Common.Infrastructure;
+using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.RequestHandlers.HotItems;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
@@ -39,7 +40,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.HotItems
                     }
                 });
 
-            _handler = new HotItemHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
+            _handler = new HotItemHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
 
             //Act
             var result = await _handler.GetHotItemsByType(HotItemType.BoardGame);
@@ -66,6 +67,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.HotItems
                 }
             };
 
+            MockValidatorFactory(new HotItemRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.HotXml), HttpStatusCode.OK);
             MockBggDeserializer(
                 new HotItemList
@@ -83,7 +85,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.HotItems
                     }
                 });
 
-            _handler = new HotItemHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
+            _handler = new HotItemHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
 
             //Act
             var result = await _handler.GetHotItemsExtensible(extension);
@@ -111,6 +113,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.HotItems
                 }
             };
 
+            MockValidatorFactory(new HotItemRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.HotXml), HttpStatusCode.OK);
             MockBggDeserializer(
                 new HotItemList
@@ -128,7 +131,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.HotItems
                     }
                 });
 
-            _handler = new HotItemHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
+            _handler = new HotItemHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
 
             //Act
             var result = await _handler.GetHotItemsExtensible(extension);

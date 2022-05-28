@@ -1,5 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Http;
+using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
@@ -12,14 +13,8 @@ namespace Bgg.Net.Common.RequestHandlers.Things
     /// </summary>
     public class ThingHandler : RequestHandler, IThingHandler
     {
-        /// <summary>
-        /// Creates an instance of <see cref="ThingHandler"/>.
-        /// </summary>
-        /// <param name="httpClient">The httpClient.</param>
-        /// <param name="logger">The logger.</param>
-        /// <param name="deserializer">The deserializer.</param>
-        public ThingHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient)
-            : base(deserializer, logger, httpClient)
+        public ThingHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory)
+            : base(deserializer, logger, httpClient, validatorFactory)
         {
         }
 

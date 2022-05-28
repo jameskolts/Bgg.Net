@@ -1,4 +1,5 @@
 ﻿using Bgg.Net.Common.Infrastructure;
+using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Guilds;
@@ -31,10 +32,11 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Guilds
                 Sort = SortType.UserName
             };
 
+            MockValidatorFactory(new GuildRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.GuildXml), HttpStatusCode.OK);
             MockBggDeserializer(new Guild { Id = 100 });
 
-            _handler = new GuildHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
+            _handler = new GuildHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
 
             //Act
             var result = await _handler.GetGuild(request);
@@ -54,7 +56,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Guilds
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.GuildXml), HttpStatusCode.OK);
             MockBggDeserializer(new Guild { Id = 100 });
 
-            _handler = new GuildHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
+            _handler = new GuildHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
 
             //Act
             var result = await _handler.GetGuildById(100);
@@ -74,7 +76,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Guilds
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.GuildXml), HttpStatusCode.OK);
             MockBggDeserializer(new Guild { Id = 100 });
 
-            _handler = new GuildHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
+            _handler = new GuildHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
 
             //Act
             var result = await _handler.GetGuildByIdWithMembers(100);
@@ -102,10 +104,11 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Guilds
                 }
             };
 
+            MockValidatorFactory(new GuildRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.GuildXml), HttpStatusCode.OK);
             MockBggDeserializer(new Guild { Id = 100 });
 
-            _handler = new GuildHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
+            _handler = new GuildHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
 
             //Act
             var result = await _handler.GetGuildExtensible(extension);

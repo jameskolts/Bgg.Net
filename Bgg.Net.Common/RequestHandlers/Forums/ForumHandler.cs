@@ -1,5 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Http;
+using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Serilog;
@@ -14,8 +15,8 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
         /// <param name="httpClient">The httpClient.</param>
         /// <param name="logger">The logger.</param>
         /// <param name="deserializer">The deserializer.</param>
-        public ForumHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient)
-            : base(deserializer, logger, httpClient)
+        public ForumHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory)
+            : base(deserializer, logger, httpClient, validatorFactory)
         {
         }
 

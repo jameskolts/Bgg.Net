@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Bgg.Net.Common.Infrastructure.Http;
+using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.RequestHandlers.Collection;
 using Bgg.Net.Common.RequestHandlers.Families;
@@ -32,6 +33,7 @@ namespace Bgg.Net.Common.Infrastructure.IOC
             builder.RegisterType<BggClient>().As<IHttpClient>().AsSelf();
             builder.RegisterType<CollectionClient>().As<ICollectionClient>().AsSelf();
             builder.RegisterType<BggDeserializer>().As<IBggDeserializer>().AsSelf();
+            builder.RegisterType<RequestValidatorFactory>().As<IRequestValidatorFactory>().AsSelf();
             builder.RegisterType<ThingHandler>().As<IThingHandler>().AsSelf();
             builder.RegisterType<FamilyHandler>().As<IFamilyHandler>().AsSelf();
             builder.RegisterType<ForumListHandler>().As<IForumListHandler>().AsSelf();

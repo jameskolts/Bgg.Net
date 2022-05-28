@@ -1,6 +1,7 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Extensions;
 using Bgg.Net.Common.Infrastructure.Http;
+using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
@@ -18,6 +19,7 @@ namespace Bgg.Net.Common.RequestHandlers
         protected readonly IBggDeserializer _bggDeserializer;
         protected readonly ILogger _logger;
         protected readonly IHttpClient _httpClient;
+        protected readonly IRequestValidatorFactory _requestValidatorFactory;
 
         /// <summary>
         /// Creates a new instance of <see cref="RequestHandler"/>.
@@ -25,11 +27,12 @@ namespace Bgg.Net.Common.RequestHandlers
         /// <param name="deserializer">The <see cref="IBggDeserializer"/> that will deserialize the response.</param>
         /// <param name="logger">The <see cref="ILogger"/> instance.</param>
         /// <param name="httpClient">The <see cref="IHttpClient"/> that will handle http requests.</param>
-        public RequestHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient)
+        public RequestHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory)
         {
             _bggDeserializer = deserializer;
             _logger = logger;
             _httpClient = httpClient;
+            _requestValidatorFactory = validatorFactory;
         }
 
         /// <summary>
@@ -75,19 +78,18 @@ namespace Bgg.Net.Common.RequestHandlers
         {
             _logger.Information("Get" + resourceName.UpperFirstChar() + "Extensible : {queryParameters}", queryParameters.ToString());
 
-            foreach (var kvp in queryParameters.Value)
-            {
-                if (!supportedParameters.Contains(kvp.Key))
-                {
-                    string errorMessage = $"'{kvp.Key}' parameter is not supported for Get{resourceName.UpperFirstChar()}Extensible.";
-                    _logger.Error(errorMessage);
+            var validator = _requestValidatorFactory.CreateRequestValidator(resourceName);
+            var validationResult = validator.Validate(queryParameters);
 
-                    return new BggResult<T>
-                    {
-                        IsSuccessful = false,
-                        Errors = new List<string> { errorMessage }
-                    };
-                }
+            if (!validationResult.IsValid)
+            {
+                _logger.Error("Validation error(s) found: {errors}", string.Join(",", validationResult.Errors));
+
+                return new BggResult<T>
+                {
+                    IsSuccessful = false,
+                    Errors = validationResult.Errors
+                };
             }
 
             string queryString = $"{resourceName}?" + string.Join("&", queryParameters.Value.Select(x => x.Key + "=" + string.Join(',', x.Value)));
@@ -107,6 +109,18 @@ namespace Bgg.Net.Common.RequestHandlers
             where T : BggBase
         {
             _logger.Information("Get" + resourceName.UpperFirstChar() + " : {request}", request);
+                        
+            var validator = _requestValidatorFactory.CreateRequestValidator(resourceName);
+            var validationResult = validator.Validate(request);
+
+            if (!validationResult.IsValid)
+            {
+                return new BggResult<T>
+                {
+                    IsSuccessful = false,
+                    Errors = validationResult.Errors
+                };
+            }
 
             var query = BuildQuery(resourceName, request);
 
@@ -187,6 +201,11 @@ namespace Bgg.Net.Common.RequestHandlers
 
             return stringBuilder.ToString();
         }
+
+        //private  ValidateRequest(string resourceName, BggRequest request)
+        //{
+
+        //}
     }
 }
 

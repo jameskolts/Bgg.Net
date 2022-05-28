@@ -14,14 +14,14 @@ namespace Bgg.Net.Common.RequestHandlers.Families
         /// </summary>
         /// <param name="id">The id to retrieve.</param>
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="FamilyList"/>.</returns>
-        Task<BggResult<FamilyList>> GetFamilyById(int id);
+        Task<BggResult<FamilyList>> GetFamilyById(long id);
 
         /// <summary>
         /// Gets multiple families by the given ids.
         /// </summary>
         /// <param name="ids">The ids to retrieve.</param>
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="FamilyList"/>.</returns>
-        Task<BggResult<FamilyList>> GetFamilyByIds(List<int> ids);
+        Task<BggResult<FamilyList>> GetFamilyByIds(List<long> ids);
 
         /// <summary>
         /// Gets multiple families by the given ids, filtered by type.
@@ -29,7 +29,7 @@ namespace Bgg.Net.Common.RequestHandlers.Families
         /// <param name="ids">The ids to retrieve.</param>
         /// <param name="types">The types to retrieve</param>
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="FamilyList"/>.</returns>
-        Task<BggResult<FamilyList>> GetFamilyByIdsAndType(List<int> ids, List<FamilyType> types);
+        Task<BggResult<FamilyList>> GetFamilyByIdsAndType(List<long> ids, List<FamilyType> types);
 
         /// <summary>
         /// Gets a family given extensible parameters. 

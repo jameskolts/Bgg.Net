@@ -1,4 +1,5 @@
 ﻿using Bgg.Net.Common.Infrastructure.Http;
+using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Moq;
@@ -15,16 +16,16 @@ namespace Bgg.Net.Common.Tests.RequestHandlers
     public abstract class HandlerTestBase
     {
         protected Mock<IHttpClient> _httpClientMock { get; set; }
-
         protected Mock<IBggDeserializer> _deserializerMock { get; set; }
-
         protected Mock<ILogger> _loggerMock { get; set; }
+        protected Mock<IRequestValidatorFactory> _validatorFactory { get; set; }
 
         public HandlerTestBase()
         {
             _httpClientMock = new Mock<IHttpClient>();
             _deserializerMock = new Mock<IBggDeserializer>();
             _loggerMock = new Mock<ILogger>();
+            _validatorFactory = new Mock<IRequestValidatorFactory>();
         }
 
         public void MockHttpClientGet(string content, HttpStatusCode statusCode)
@@ -46,6 +47,12 @@ namespace Bgg.Net.Common.Tests.RequestHandlers
             _deserializerMock.Setup(x => x.Deserialize<T>(It.IsAny<string>()))
                 .Returns(obj);
 #pragma warning restore CS8604 // Possible null reference argument.           
+        }
+
+        public void MockValidatorFactory(IRequestValidator validator)
+        {
+            _validatorFactory.Setup(x => x.CreateRequestValidator(It.IsAny<string>()))
+                .Returns(validator);
         }
     }
 }

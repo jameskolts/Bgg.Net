@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.IOC;
+using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.RequestHandlers.Collection;
 using Bgg.Net.Common.RequestHandlers.Families;
 using Bgg.Net.Common.RequestHandlers.Forums;
@@ -205,7 +206,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
         }
 
         [TestMethod]
-        public void SearchnHandler_Resolve()
+        public void SearchHandler_Resolve()
         {
             // Arrange/Act
             var objFromInterface = scope?.Resolve<ISearchHandler>();
@@ -219,6 +220,23 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
             objFromClass.Should().NotBeNull();
             objFromClass.Should().BeAssignableTo<SearchHandler>();
             objFromClass?.GetType().Name.Should().Be("SearchHandler");
+        }
+
+        [TestMethod]
+        public void RequestValidatorFactory_Resolve()
+        {
+            // Arrange/Act
+            var objFromInterface = scope?.Resolve<IRequestValidatorFactory>();
+            var objFromClass = scope?.Resolve<RequestValidatorFactory>();
+
+            //Assert
+            objFromInterface.Should().NotBeNull();
+            objFromInterface.Should().BeAssignableTo<RequestValidatorFactory>();
+            objFromInterface?.GetType().Name.Should().Be("RequestValidatorFactory");
+
+            objFromClass.Should().NotBeNull();
+            objFromClass.Should().BeAssignableTo<RequestValidatorFactory>();
+            objFromClass?.GetType().Name.Should().Be("RequestValidatorFactory");
         }
     }
 }

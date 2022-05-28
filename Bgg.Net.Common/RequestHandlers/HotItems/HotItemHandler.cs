@@ -1,5 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Http;
+using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Types;
@@ -12,8 +13,8 @@ namespace Bgg.Net.Common.RequestHandlers.HotItems
     /// </summary>
     public class HotItemHandler : RequestHandler, IHotItemsHandler
     {
-        public HotItemHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient)
-            : base(deserializer, logger, httpClient)
+        public HotItemHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory)
+            : base(deserializer, logger, httpClient, validatorFactory)
         {
         }
 

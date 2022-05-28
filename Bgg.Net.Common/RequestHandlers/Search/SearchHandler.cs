@@ -1,5 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Http;
+using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
@@ -13,8 +14,8 @@ namespace Bgg.Net.Common.RequestHandlers.Search
     /// </summary>
     public class SearchHandler : RequestHandler, ISearchHandler
     {
-        public SearchHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient)
-            : base(deserializer, logger, httpClient)
+        public SearchHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory)
+            : base(deserializer, logger, httpClient, validatorFactory)
         {
         }
 

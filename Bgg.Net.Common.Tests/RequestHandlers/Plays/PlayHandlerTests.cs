@@ -1,4 +1,5 @@
 ﻿using Bgg.Net.Common.Infrastructure;
+using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Plays;
@@ -29,7 +30,8 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                 UserName = "user",
                 MinDate = new DateOnly(2020, 1, 12)
             };
-
+            
+            MockValidatorFactory(new PlayRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
             MockBggDeserializer(
                 new PlayList
@@ -42,7 +44,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                     }
                 });
 
-            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
+            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
 
             //Act
             var result = await _handler.GetPlays(request);
@@ -71,7 +73,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                    }
                });
 
-            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
+            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
 
             //Act
             var result = await _handler.GetPlaysByUserName("user");
@@ -100,7 +102,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                    }
                });
 
-            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
+            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
 
             //Act
             var result = await _handler.GetPlaysByUserNameAndDate("user", new DateOnly(2010, 01, 01), new DateOnly(2020, 05, 28));
@@ -129,7 +131,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                    }
                });
 
-            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
+            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
 
             //Act
             var result = await _handler.GetPlaysByUserNameAndId("user", 2500);
@@ -158,7 +160,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                    }
                });
 
-            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
+            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
 
             //Act
             var result = await _handler.GetPlaysByUserNameAndType("user", ItemType.Thing, PlaysSubType.BoardGame);
@@ -187,7 +189,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                    }
                });
 
-            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
+            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
 
             //Act
             var result = await _handler.GetPlaysByUserNameAndType("user", ItemType.Thing);
@@ -216,7 +218,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                    }
                });
 
-            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
+            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
 
             //Act
             var result = await _handler.GetPlaysByIdAndType(2500, ItemType.Thing);
@@ -242,9 +244,10 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                 }
             };
 
+            MockValidatorFactory(new PlayRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
 
-            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object);
+            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
 
             //Act
             var result = await _handler.GetPlaysExtensible(extension);

@@ -1,5 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Http;
+using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
@@ -13,8 +14,8 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
     /// </summary>
     public class PlaysHandler : RequestHandler, IPlaysHandler
     {
-        public PlaysHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient)
-            : base(deserializer, logger, httpClient)
+        public PlaysHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory)
+            : base(deserializer, logger, httpClient, validatorFactory)
         {
         }
 
