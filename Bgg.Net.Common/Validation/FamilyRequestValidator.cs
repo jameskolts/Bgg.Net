@@ -5,6 +5,9 @@ namespace Bgg.Net.Common.Infrastructure.Validation
 {
     public class FamilyRequestValidator : RequestValidatorBase, IRequestValidator
     {
+        /// <summary>
+        /// Not implemented for FamilyRequests.
+        /// </summary>
         public ValidationResult Validate(BggRequest request)
         {
             throw new NotImplementedException();
@@ -12,38 +15,34 @@ namespace Bgg.Net.Common.Infrastructure.Validation
 
         public ValidationResult Validate(Extension extension)
         {
-            var result = new ValidationResult();
-
             foreach (var kvp in extension.Value)
             {
-                if (!Constants.SupportedFamilyQueryParameters.Contains(kvp.Key))
-                {
-                    result.Errors.Add($"'{kvp.Key}' parameter is not supported for GetFamilyExtensible.");
-                }
-
                 switch (kvp.Key.ToLower())
                 {
                     case "type":
-                        ValidateFamilyTypeParam(kvp.Key, result, extension.Value[kvp.Key]);
+                        ValidateFamilyTypeParam(kvp.Key, extension.Value[kvp.Key]);
                         break;
                     case "id":
-                        ValidateListLongParam(kvp.Key, result, extension.Value[kvp.Key]);
+                        ValidateParam<long>(kvp.Key, extension.Value[kvp.Key]);
+                        break;
+                    default:
+                        _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for GetFamilyExtensible.");
                         break;
                 }
             }
 
-            result.IsValid = !result.Errors.Any();
+            _validationResult.IsValid = !_validationResult.Errors.Any();
 
-            return result;
+            return _validationResult;
         }
 
-        private void ValidateFamilyTypeParam(string paramName, ValidationResult result, List<string> values)
+        private void ValidateFamilyTypeParam(string paramName, List<string> values)
         {
             foreach (var value in values)
             {
                 if (!Enum.TryParse(value, true, out FamilyType _))
                 {
-                    result.Errors.Add($"The value {value} was not valid for {paramName}");
+                    _validationResult.Errors.Add($"The value {value} was not valid for {paramName}");
                 }
             }
         }

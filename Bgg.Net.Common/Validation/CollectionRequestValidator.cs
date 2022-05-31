@@ -8,38 +8,28 @@ namespace Bgg.Net.Common.Infrastructure.Validation
         public ValidationResult Validate(BggRequest request)
         {
             var collectionRequest = request as CollectionRequest;
-            var result = new ValidationResult();
+            _validationResult = new ValidationResult();
 
             if (string.IsNullOrWhiteSpace(collectionRequest.UserName))
             {
-                result.Errors.Add("Missing required element for CollectionRequest: userName");
+                _validationResult.Errors.Add($"Missing required element for {typeof(CollectionRequest)}: userName");
             }
 
-            result.IsValid = !result.Errors.Any();
+            _validationResult.IsValid = !_validationResult.Errors.Any();
 
-            return result;
+            return _validationResult;
         }
 
         public ValidationResult Validate(Extension extension)
         {
-            var result = new ValidationResult();
-
-            if (!extension.Value.ContainsKey("username"))
-            {
-                result.Errors.Add("Missing required element for CollectionRequest: userName");
-            }
+            _validationResult = new ValidationResult();
 
             foreach (var kvp in extension.Value)
             {
-                if (!Constants.SupportedCollectionParameters.Contains(kvp.Key))
-                {
-                    result.Errors.Add($"'{kvp.Key}' parameter is not supported for GetCollectionExtensible.");
-                }
-
                 switch (kvp.Key.ToLower())
                 {
                     case "username":
-                        ValidateStringParam(kvp.Key, result, extension.Value[kvp.Key]);
+                        ValidateParam<string>(kvp.Key, kvp.Value, true, true);
                         break;
                     case "version":
                     case "brief":
@@ -58,53 +48,56 @@ namespace Bgg.Net.Common.Infrastructure.Validation
                     case "hasparts":
                     case "wantparts":
                     case "showprivate":
-                        ValidateBoolParam(kvp.Key, result, extension.Value[kvp.Key]);
+                        ValidateParam<bool>(kvp.Key, kvp.Value, false, true);
                         break;
                     case "minplays":
                     case "maxplays":
-                        ValidateIntParam(kvp.Key, result, extension.Value[kvp.Key], 0, int.MaxValue);
+                        ValidateParam<int>(kvp.Key, kvp.Value, false, true, 0, int.MaxValue);
                         break;
                     case "rating":
                     case "minrating":
                     case "collid":
-                        ValidateIntParam(kvp.Key, result, extension.Value[kvp.Key], 1, 10);
+                        ValidateParam<int>(kvp.Key, kvp.Value, false, true, 1, 10);
                         break;
                     case "minbggrating":
                     case "bggrating":
-                        ValidateIntParam(kvp.Key, result, extension.Value[kvp.Key], -1, 10);
+                        ValidateParam<int>(kvp.Key, kvp.Value, false, true, -1, 10);
                         break;
                     case "wishlistpriority":
-                        ValidateIntParam(kvp.Key, result, extension.Value[kvp.Key], 1, 5);
+                        ValidateParam<int>(kvp.Key, kvp.Value, false, true, 1, 5);
                         break;
                     case "subtype":
                     case "excludesubtype":
-                        ValidateCollectionSubTypeParam(kvp.Key, result, extension.Value[kvp.Key]);
+                        ValidateCollectionSubTypeParam(kvp.Key, kvp.Value);
                         break;
                     case "id":
-                        ValidateListLongParam(kvp.Key, result, extension.Value[kvp.Key]);
+                        ValidateParam<long>(kvp.Key, kvp.Value);
                         break;
                     case "modifiedsince":
-                        ValidateDateTime(kvp.Key, result, extension.Value[kvp.Key]);
+                        ValidateParam<DateTime>(kvp.Key, kvp.Value, false, true);
+                        break;
+                    default:
+                        _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for GetCollectionExtensible.");
                         break;
                 }
             }
 
-            result.IsValid = !result.Errors.Any();
+            _validationResult.IsValid = !_validationResult.Errors.Any();
 
-            return result;
+            return _validationResult;
         }
 
-        private void ValidateCollectionSubTypeParam(string paramName, ValidationResult result, List<string> values)
+        private void ValidateCollectionSubTypeParam(string paramName, List<string> values)
         {
             if (values.Count > 1)
             {
-                result.Errors.Add($"Only one value is allowed for {paramName}");
+                _validationResult.Errors.Add($"Only one value is allowed for {paramName}");
             }
 
             var value = values.FirstOrDefault();
             if (!Enum.TryParse(value, true, out CollectionSubType _))
             {
-                result.Errors.Add($"The value {value} was not valid for {paramName}");
+                _validationResult.Errors.Add($"The value {value} was not valid for {paramName}");
             }
         }
     }

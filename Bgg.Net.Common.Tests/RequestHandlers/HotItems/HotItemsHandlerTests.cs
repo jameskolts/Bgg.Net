@@ -140,7 +140,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.HotItems
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().BeNull();
             result.Errors.Count.Should().Be(1);
-            result.Errors[0].Should().Be("'badParam' parameter is not supported for GetHotExtensible.");
+            result.Errors[0].Should().Be("'badParam' parameter is not supported for GetHotItemsExtensible.");
             result.Item.Should().BeNull();
         }
     }

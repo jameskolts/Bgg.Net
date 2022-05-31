@@ -201,11 +201,6 @@ namespace Bgg.Net.Common.RequestHandlers
 
             return stringBuilder.ToString();
         }
-
-        //private  ValidateRequest(string resourceName, BggRequest request)
-        //{
-
-        //}
     }
 }
 

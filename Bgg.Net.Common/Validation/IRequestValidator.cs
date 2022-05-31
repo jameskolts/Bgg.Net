@@ -8,14 +8,14 @@ namespace Bgg.Net.Common.Infrastructure.Validation
     public interface IRequestValidator
     {
         /// <summary>
-        /// Validates a ThingRequest.
+        /// Validates a request object.
         /// </summary>
         /// <param name="request">The request to validate.</param>
         /// <returns>A <see cref="ValidationResult"/> indicating the outcome.</returns>
         ValidationResult Validate(BggRequest request);
 
         /// <summary>
-        /// Validates a ThingRequest.
+        /// Validates an extensible request.
         /// </summary>
         /// <param name="extension">The extension to validate.</param>
         /// <returns>A <see cref="ValidationResult"/> indicating the outcome.</returns>

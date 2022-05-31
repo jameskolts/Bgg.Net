@@ -47,7 +47,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Extensions
         [TestMethod]
         public void UpperFirstChar_Null()
         {
-            string value = null;
+            string? value = null;
             value.UpperFirstChar().Should().BeNull();
         }
 

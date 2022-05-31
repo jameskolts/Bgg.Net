@@ -59,11 +59,11 @@ using (var scope = AutofacRegistrar.BuildContainer().BeginLifetimeScope())
     var familyHandler = scope.Resolve<IFamilyHandler>();
     var family = await familyHandler.GetFamilyById(1);
     logger.Information("Success: " + family.IsSuccessful);
-    family = await familyHandler.GetFamilyByIds(new List<int> { 1, 2, 3 });
+    family = await familyHandler.GetFamilyByIds(new List<long> { 1, 2, 3 });
     logger.Information("Success: " + family.IsSuccessful);
-    family = await familyHandler.GetFamilyByIdsAndType(new List<int> { 1, 2, 3 }, new List<Bgg.Net.Common.Types.FamilyType> { Bgg.Net.Common.Types.FamilyType.BoardGameFamily });
+    family = await familyHandler.GetFamilyByIdsAndType(new List<long> { 1, 2, 3 }, new List<Bgg.Net.Common.Types.FamilyType> { Bgg.Net.Common.Types.FamilyType.BoardGameFamily });
     logger.Information("Success: " + family.IsSuccessful);
-    family = await familyHandler.GetFamilyByIdsAndType(new List<int> { 1, 2, 3 }, new List<Bgg.Net.Common.Types.FamilyType> { Bgg.Net.Common.Types.FamilyType.BoardGameFamily });
+    family = await familyHandler.GetFamilyByIdsAndType(new List<long> { 1, 2, 3 }, new List<Bgg.Net.Common.Types.FamilyType> { Bgg.Net.Common.Types.FamilyType.BoardGameFamily });
     logger.Information("Success: " + family.IsSuccessful);
     family = await familyHandler.GetFamilyExtensible(new Extension { Value = new Dictionary<string, List<string>> { { "id", new List<string> { "1" } } } });
     logger.Information("Success: " + family.IsSuccessful);
