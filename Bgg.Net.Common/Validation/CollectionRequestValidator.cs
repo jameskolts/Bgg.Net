@@ -13,7 +13,7 @@ namespace Bgg.Net.Common.Infrastructure.Validation
 
             if (string.IsNullOrWhiteSpace(collectionRequest.UserName))
             {
-                _validationResult.Errors.Add($"Missing required element for {typeof(CollectionRequest)}: userName");
+                _validationResult.Errors.Add($"Missing required element for CollectionRequest: userName");
             }
 
             _validationResult.IsValid = !_validationResult.Errors.Any();
@@ -24,6 +24,11 @@ namespace Bgg.Net.Common.Infrastructure.Validation
         public ValidationResult Validate(Extension extension)
         {
             _validationResult = new ValidationResult();
+
+            if (!extension.Value.ContainsKey("username"))
+            {
+                _validationResult.Errors.Add($"Missing required element for CollectionRequest: userName");
+            }
 
             foreach (var kvp in extension.Value)
             {
@@ -57,7 +62,6 @@ namespace Bgg.Net.Common.Infrastructure.Validation
                         break;
                     case "rating":
                     case "minrating":
-                    case "collid":
                         ValidateInt(kvp.Key, kvp.Value, false, true, 1, 10);
                         break;
                     case "minbggrating":
@@ -77,8 +81,11 @@ namespace Bgg.Net.Common.Infrastructure.Validation
                     case "modifiedsince":
                         ValidateParam(kvp.Key, kvp.Value, false, true, IsValidDateTime);
                         break;
+                    case "collid":
+                        ValidateInt(kvp.Key, kvp.Value, false, true, 0, int.MaxValue);
+                        break;
                     default:
-                        _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for GetCollectionExtensible.");
+                        _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for GetCollectionExtensible");
                         break;
                 }
             }
@@ -92,13 +99,13 @@ namespace Bgg.Net.Common.Infrastructure.Validation
         {
             if (values.Count > 1)
             {
-                _validationResult.Errors.Add($"Only one value is allowed for {paramName}");
+                _validationResult.Errors.Add($"Only one value is allowed for: {paramName}");
             }
 
             var value = values.FirstOrDefault();
             if (!Enum.TryParse(value, true, out CollectionSubType _))
             {
-                _validationResult.Errors.Add($"The value {value} was not valid for {paramName}");
+                _validationResult.Errors.Add($"The value '{value}' was not valid for: {paramName}");
             }
         }
     }

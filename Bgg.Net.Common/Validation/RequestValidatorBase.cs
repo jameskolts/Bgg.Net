@@ -12,6 +12,14 @@
             _validationResult = new ValidationResult();
         }
 
+        /// <summary>
+        /// Validates the given values, populating _validationResult with any validation errors.
+        /// </summary>
+        /// <param name="paramName">The name of the parameter being validated.</param>
+        /// <param name="values">The values being validated.</param>
+        /// <param name="isRequired">True if this parameter is required.</param>
+        /// <param name="limitOne">True if this parameter is limited to a single entry.</param>
+        /// <param name="isValid">The function that validates an individual string value for correctedness.</param>
         public void ValidateParam(string paramName, List<string> values, bool isRequired, bool limitOne, Func<string, bool> isValid)
         {
             if (isRequired && !IsElementPresent(values))
@@ -31,7 +39,7 @@
                 if (isValid != null &&
                     !isValid(value))
                 {
-                    _validationResult.Errors.Add($"The value {value} was not valid for {paramName}");
+                    _validationResult.Errors.Add($"The value '{value}' was not valid for: {paramName}");
                 }
             }
             else if (isValid != null)
@@ -40,7 +48,7 @@
                 {
                     if (!isValid(value))
                     {
-                        _validationResult.Errors.Add($"The value {value} was not valid for {paramName}");
+                        _validationResult.Errors.Add($"The value '{value}' was not valid for: {paramName}");
                     }
                 }
             }
@@ -64,7 +72,7 @@
 
                 if (!IsValidInt(value, minValue, maxValue))
                 {
-                    _validationResult.Errors.Add($"The value {value} was not valid for {paramName}");
+                    _validationResult.Errors.Add($"The value '{value}' was not valid for: {paramName}");
                 }
             }
             else
@@ -73,7 +81,7 @@
                 {
                     if (!IsValidInt(value, minValue, maxValue))
                     {
-                        _validationResult.Errors.Add($"The value {value} was not valid for {paramName}");
+                        _validationResult.Errors.Add($"The value '{value}' was not valid for: {paramName}");
                     }
                 }
             }
