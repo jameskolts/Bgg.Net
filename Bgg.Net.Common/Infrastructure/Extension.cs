@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Bgg.Net.Common.Infrastructure
 {
     /// <summary>
     /// Represents an extension to allow for extensible additions to queries and searches
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class Extension
     {
         /// <summary>

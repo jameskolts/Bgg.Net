@@ -1,5 +1,8 @@
-﻿namespace Bgg.Net.Common.Infrastructure.Exceptions
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Bgg.Net.Common.Infrastructure.Exceptions
 {
+    [ExcludeFromCodeCoverage]
     public class AttemptsExceededException : Exception
     {
         public AttemptsExceededException()

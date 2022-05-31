@@ -1,9 +1,11 @@
 ﻿using Bgg.Net.Common.Models;
 using Newtonsoft.Json;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 
 namespace Bgg.Net.Common.Infrastructure
 {
+    [ExcludeFromCodeCoverage]
     public class BggResult<T>
         where T : BggBase
     {
