@@ -30,19 +30,19 @@ namespace Bgg.Net.Common.Validation
                 switch (kvp.Key.ToLower())
                 {
                     case "name":
-                        ValidateParam<string>(kvp.Key, kvp.Value, true, true);
+                        ValidateParam(kvp.Key, kvp.Value, true, true, null);
                         break;
                     case "buddies":
                     case "guilds":
                     case "hot":
                     case "top":
-                        ValidateParam<bool>(kvp.Key, kvp.Value, false, true);
+                        ValidateParam(kvp.Key, kvp.Value, false, true, IsValidBool);
                         break;
                     case "domain":
                         ValidateDomainType(kvp.Key, kvp.Value);
                         break;
                     case "page":
-                        ValidateParam<int>(kvp.Key, kvp.Value, false, true, 1, int.MaxValue);
+                        ValidateInt(kvp.Key, kvp.Value, false, true, 1, int.MaxValue);
                         break;
                     default:
                         _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for GetUserExtensible.");

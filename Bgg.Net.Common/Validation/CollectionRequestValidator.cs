@@ -30,7 +30,7 @@ namespace Bgg.Net.Common.Infrastructure.Validation
                 switch (kvp.Key.ToLower())
                 {
                     case "username":
-                        ValidateParam<string>(kvp.Key, kvp.Value, true, true);
+                        ValidateParam(kvp.Key, kvp.Value, true, true, null);
                         break;
                     case "version":
                     case "brief":
@@ -49,33 +49,33 @@ namespace Bgg.Net.Common.Infrastructure.Validation
                     case "hasparts":
                     case "wantparts":
                     case "showprivate":
-                        ValidateParam<bool>(kvp.Key, kvp.Value, false, true);
+                        ValidateParam(kvp.Key, kvp.Value, false, true, IsValidBool);
                         break;
                     case "minplays":
                     case "maxplays":
-                        ValidateParam<int>(kvp.Key, kvp.Value, false, true, 0, int.MaxValue);
+                        ValidateInt(kvp.Key, kvp.Value, false, true, 0, int.MaxValue);
                         break;
                     case "rating":
                     case "minrating":
                     case "collid":
-                        ValidateParam<int>(kvp.Key, kvp.Value, false, true, 1, 10);
+                        ValidateInt(kvp.Key, kvp.Value, false, true, 1, 10);
                         break;
                     case "minbggrating":
                     case "bggrating":
-                        ValidateParam<int>(kvp.Key, kvp.Value, false, true, -1, 10);
+                        ValidateInt(kvp.Key, kvp.Value, false, true, -1, 10);
                         break;
                     case "wishlistpriority":
-                        ValidateParam<int>(kvp.Key, kvp.Value, false, true, 1, 5);
+                        ValidateInt(kvp.Key, kvp.Value, false, true, 1, 5);
                         break;
                     case "subtype":
                     case "excludesubtype":
                         ValidateCollectionSubTypeParam(kvp.Key, kvp.Value);
                         break;
                     case "id":
-                        ValidateParam<long>(kvp.Key, kvp.Value);
+                        ValidateParam(kvp.Key, kvp.Value, false, false, IsValidLong);
                         break;
                     case "modifiedsince":
-                        ValidateParam<DateTime>(kvp.Key, kvp.Value, false, true);
+                        ValidateParam(kvp.Key, kvp.Value, false, true, IsValidDateTime);
                         break;
                     default:
                         _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for GetCollectionExtensible.");

@@ -24,16 +24,16 @@ namespace Bgg.Net.Common.Validation
                     case "marketplace":
                     case "comments":
                     case "ratingcomments":
-                        ValidateParam<bool>(kvp.Key, kvp.Value, false, true);
+                        ValidateParam(kvp.Key, kvp.Value, false, true, IsValidBool);
                         break;
                     case "page":
-                        ValidateParam<int>(kvp.Key, kvp.Value, false, true, 1, int.MaxValue);
+                        ValidateInt(kvp.Key, kvp.Value, false, true, 1, int.MaxValue);
                         break;
                     case "type":
                         ValidateThingTypeParam(kvp.Key, kvp.Value);
                         break;
                     case "id":
-                        ValidateParam<long>(kvp.Key, kvp.Value, true);
+                        ValidateParam(kvp.Key, kvp.Value, true, false, IsValidLong);
                         break;
                     default:
                         _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for GetThingExtensible.");

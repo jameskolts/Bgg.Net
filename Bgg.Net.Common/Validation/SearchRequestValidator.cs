@@ -30,13 +30,13 @@ namespace Bgg.Net.Common.Validation
                 switch (kvp.Key.ToLower())
                 {
                     case "query":
-                        ValidateParam<string>(kvp.Key, kvp.Value, true, true);
+                        ValidateParam(kvp.Key, kvp.Value, true, true, null);
                         break;
                     case "type":
                         ValidateSearchType(kvp.Key, kvp.Value);
                         break;
                     case "exact":
-                        ValidateParam<bool>(kvp.Key, kvp.Value, false, true);
+                        ValidateParam(kvp.Key, kvp.Value, false, true, IsValidBool);
                         break;
                     default:
                         _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for  SearchExtensible.");

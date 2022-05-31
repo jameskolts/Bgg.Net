@@ -12,7 +12,7 @@ namespace Bgg.Net.Common.Validation
             _validationResult = new ValidationResult();
 
             if (!DateTime.TryParseExact(threadRequest.MinArticleDateTime, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime _) &&
-                            !DateTime.TryParseExact(threadRequest.MinArticleDateTime, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime _))
+                !DateTime.TryParseExact(threadRequest.MinArticleDateTime, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime _))
             {
                 _validationResult.Errors.Add("minarticledatetime Should be in the format yyyy-MM-dd or yyyy-mm-dd HH:mm:ss");
             }
@@ -31,13 +31,13 @@ namespace Bgg.Net.Common.Validation
                 switch (kvp.Key.ToLower())
                 {
                     case "id":
-                        ValidateParam<long>(kvp.Key, kvp.Value, true, true);
+                        ValidateParam(kvp.Key, kvp.Value, true, true, IsValidLong);
                         break;
                     case "minarticleid":
-                        ValidateParam<int>(kvp.Key, kvp.Value, false, true);
+                        ValidateInt(kvp.Key, kvp.Value, false, true, 0, int.MaxValue);
                         break;
                     case "minarticledatetime":
-                        ValidateParam<string>(kvp.Key, kvp.Value, false, true);
+                        ValidateParam(kvp.Key, kvp.Value, false, true, null);
                         if (!DateTime.TryParseExact(kvp.Value.FirstOrDefault(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime _) &&
                             !DateTime.TryParseExact(kvp.Value.FirstOrDefault(), "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime _))
                         {
@@ -45,7 +45,7 @@ namespace Bgg.Net.Common.Validation
                         }
                         break;
                     case "count":
-                        ValidateParam<int>(kvp.Key, kvp.Value, false, true, 1, int.MaxValue);
+                        ValidateInt(kvp.Key, kvp.Value, false, true, 1, int.MaxValue);
                         break;
                     default:
                         _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for GetThreadExtensible.");

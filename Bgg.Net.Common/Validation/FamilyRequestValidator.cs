@@ -21,10 +21,10 @@ namespace Bgg.Net.Common.Validation
                 switch (kvp.Key.ToLower())
                 {
                     case "type":
-                        ValidateFamilyTypeParam(kvp.Key, extension.Value[kvp.Key]);
+                        ValidateFamilyTypeParam(kvp.Key, kvp.Value);
                         break;
                     case "id":
-                        ValidateParam<long>(kvp.Key, extension.Value[kvp.Key]);
+                        ValidateParam(kvp.Key, kvp.Value, false, false, IsValidLong);
                         break;
                     default:
                         _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for GetFamilyExtensible.");

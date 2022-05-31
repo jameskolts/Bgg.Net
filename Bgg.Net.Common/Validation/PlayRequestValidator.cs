@@ -35,22 +35,23 @@ namespace Bgg.Net.Common.Validation
                 switch (kvp.Key.ToLower())
                 {
                     case "username":
-                        ValidateParam<string>(kvp.Key, kvp.Value, false, true);
+                        ValidateParam(kvp.Key, kvp.Value, false, true, null);
                         break;
                     case "id":
-                        ValidateParam<long>(kvp.Key, kvp.Value, false, true);
+                        ValidateParam(kvp.Key, kvp.Value, false, true, IsValidLong);
                         break;
                     case "type":
+                        ValidateItemType(kvp.Key, kvp.Value);
                         break;
                     case "mindate":
                     case "maxdate":
-                        ValidateParam<DateOnly>(kvp.Key, kvp.Value, false, true);
+                        ValidateParam(kvp.Key, kvp.Value, false, true, IsValidDateOnly);
                         break;
                     case "subtype":
-                        ValidateItemType(kvp.Key, kvp.Value);
+                        ValidateSubType(kvp.Key, kvp.Value);
                         break;
                     case "page":
-                        ValidateParam<int>(kvp.Key, kvp.Value, false, true, 1, int.MaxValue);
+                        ValidateInt(kvp.Key, kvp.Value, false, true, 1, int.MaxValue);
                         break;
                     default:
                         _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for GetPlaysExtensible.");
@@ -72,6 +73,20 @@ namespace Bgg.Net.Common.Validation
 
             var value = values.FirstOrDefault();
             if (!Enum.TryParse(value, true, out ItemType _))
+            {
+                _validationResult.Errors.Add($"The value {value} was not valid for {paramName}");
+            }
+        }
+
+        private void ValidateSubType(string paramName, List<string> values)
+        {
+            if (values.Count > 1)
+            {
+                _validationResult.Errors.Add($"Only one value is allowed for {paramName}");
+            }
+
+            var value = values.FirstOrDefault();
+            if (!Enum.TryParse(value, true, out PlaysSubType _))
             {
                 _validationResult.Errors.Add($"The value {value} was not valid for {paramName}");
             }

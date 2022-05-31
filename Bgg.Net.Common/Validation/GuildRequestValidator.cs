@@ -30,16 +30,16 @@ namespace Bgg.Net.Common.Validation
                 switch (kvp.Key.ToLower())
                 {
                     case "id":
-                        ValidateParam<long>(kvp.Key, extension.Value[kvp.Key], true, true);
+                        ValidateParam(kvp.Key, kvp.Value, true, true, IsValidLong);
                         break;
                     case "members":
-                        ValidateParam<bool>(kvp.Key, extension.Value[kvp.Key], false, true);
+                        ValidateParam(kvp.Key, kvp.Value, false, true, IsValidBool);
                         break;
                     case "sort":
                         ValidateSortTypeParam(kvp.Key, extension.Value[kvp.Key]);
                         break;
                     case "page":
-                        ValidateParam<int>(kvp.Key, extension.Value[kvp.Key], false, true, 1, int.MaxValue);
+                        ValidateInt(kvp.Key, kvp.Value, false, true, 1, int.MaxValue);
                         break;
                 }
             }
