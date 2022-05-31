@@ -1,4 +1,4 @@
-﻿namespace Bgg.Net.Common.Infrastructure.Validation
+﻿namespace Bgg.Net.Common.Validation
 {
     /// <summary>
     /// Public interface for the RequestValidatorFactory.

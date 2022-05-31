@@ -1,5 +1,4 @@
 ﻿using Bgg.Net.Common.Infrastructure;
-using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
@@ -7,6 +6,7 @@ using Bgg.Net.Common.RequestHandlers.Users;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
 using Bgg.Net.Common.Tests.TestFiles;
 using Bgg.Net.Common.Types;
+using Bgg.Net.Common.Validation;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

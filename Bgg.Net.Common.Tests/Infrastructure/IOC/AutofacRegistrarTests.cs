@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.IOC;
-using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.RequestHandlers.Collection;
 using Bgg.Net.Common.RequestHandlers.Families;
 using Bgg.Net.Common.RequestHandlers.Forums;
@@ -10,6 +9,7 @@ using Bgg.Net.Common.RequestHandlers.HotItems;
 using Bgg.Net.Common.RequestHandlers.Search;
 using Bgg.Net.Common.RequestHandlers.Things;
 using Bgg.Net.Common.RequestHandlers.Users;
+using Bgg.Net.Common.Validation;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

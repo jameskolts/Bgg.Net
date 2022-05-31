@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Bgg.Net.Common.Infrastructure.Http;
-using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.RequestHandlers.Collection;
 using Bgg.Net.Common.RequestHandlers.Families;
@@ -11,6 +10,7 @@ using Bgg.Net.Common.RequestHandlers.Search;
 using Bgg.Net.Common.RequestHandlers.Things;
 using Bgg.Net.Common.RequestHandlers.Threads;
 using Bgg.Net.Common.RequestHandlers.Users;
+using Bgg.Net.Common.Validation;
 using Serilog;
 using IContainer = Autofac.IContainer;
 using SearchHandler = Bgg.Net.Common.RequestHandlers.Search.SearchHandler;

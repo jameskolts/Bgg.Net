@@ -1,7 +1,8 @@
-﻿using Bgg.Net.Common.Models.Requests;
+﻿using Bgg.Net.Common.Infrastructure;
+using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
 
-namespace Bgg.Net.Common.Infrastructure.Validation
+namespace Bgg.Net.Common.Validation
 {
     /// <summary>
     /// Validates ThingRequests.

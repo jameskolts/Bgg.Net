@@ -1,4 +1,4 @@
-﻿namespace Bgg.Net.Common.Infrastructure.Validation
+﻿namespace Bgg.Net.Common.Validation
 {
     /// <summary>
     /// Base class containing common functionality for RequestValidation.
@@ -13,7 +13,7 @@
         }
 
         protected virtual void ValidateParam<T>(string paramName, List<string> values, bool isRequired = false, bool limitOne = false, int? minValue = null, int? maxValue = null)
-        {            
+        {
             var type = typeof(T);
 
             switch (type.Name.ToLower())
@@ -270,10 +270,10 @@
                 return false;
             }
 
-            if ((minValue.HasValue && maxValue.HasValue) &&
+            if (minValue.HasValue && maxValue.HasValue &&
               (parsedValue < minValue.Value || parsedValue > maxValue.Value))
             {
-               return false;
+                return false;
             }
 
             return true;

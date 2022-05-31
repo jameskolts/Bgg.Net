@@ -1,5 +1,6 @@
 ﻿using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
+using Bgg.Net.Common.Validation;
 
 namespace Bgg.Net.Common.Infrastructure.Validation
 {

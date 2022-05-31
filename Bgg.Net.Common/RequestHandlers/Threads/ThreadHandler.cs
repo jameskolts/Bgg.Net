@@ -1,8 +1,8 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Http;
-using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models.Requests;
+using Bgg.Net.Common.Validation;
 using Serilog;
 using Thread = Bgg.Net.Common.Models.Thread;
 

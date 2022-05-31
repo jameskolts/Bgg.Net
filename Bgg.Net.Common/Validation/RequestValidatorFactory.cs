@@ -1,4 +1,6 @@
-﻿namespace Bgg.Net.Common.Infrastructure.Validation
+﻿using Bgg.Net.Common.Infrastructure.Validation;
+
+namespace Bgg.Net.Common.Validation
 {
     public class RequestValidatorFactory : IRequestValidatorFactory
     {

@@ -1,10 +1,10 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Extensions;
 using Bgg.Net.Common.Infrastructure.Http;
-using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
+using Bgg.Net.Common.Validation;
 using Serilog;
 using System.Collections;
 using System.Text;
@@ -109,7 +109,7 @@ namespace Bgg.Net.Common.RequestHandlers
             where T : BggBase
         {
             _logger.Information("Get" + resourceName.UpperFirstChar() + " : {request}", request);
-                        
+
             var validator = _requestValidatorFactory.CreateRequestValidator(resourceName);
             var validationResult = validator.Validate(request);
 
@@ -203,4 +203,3 @@ namespace Bgg.Net.Common.RequestHandlers
         }
     }
 }
-

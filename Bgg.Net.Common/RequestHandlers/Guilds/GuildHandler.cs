@@ -1,10 +1,10 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Http;
-using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
+using Bgg.Net.Common.Validation;
 using Serilog;
 
 namespace Bgg.Net.Common.RequestHandlers.Guilds

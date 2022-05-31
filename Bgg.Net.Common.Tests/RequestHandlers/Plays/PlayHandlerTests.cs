@@ -1,11 +1,11 @@
 ﻿using Bgg.Net.Common.Infrastructure;
-using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Plays;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
 using Bgg.Net.Common.Tests.TestFiles;
 using Bgg.Net.Common.Types;
+using Bgg.Net.Common.Validation;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -30,7 +30,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                 UserName = "user",
                 MinDate = new DateOnly(2020, 1, 12)
             };
-            
+
             MockValidatorFactory(new PlayRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
             MockBggDeserializer(

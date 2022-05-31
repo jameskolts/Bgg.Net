@@ -1,7 +1,8 @@
-﻿using Bgg.Net.Common.Models.Requests;
+﻿using Bgg.Net.Common.Infrastructure;
+using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
 
-namespace Bgg.Net.Common.Infrastructure.Validation
+namespace Bgg.Net.Common.Validation
 {
     public class PlayRequestValidator : RequestValidatorBase, IRequestValidator
     {
@@ -55,7 +56,7 @@ namespace Bgg.Net.Common.Infrastructure.Validation
                         _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for GetPlaysExtensible.");
                         break;
                 }
-            }          
+            }
 
             _validationResult.IsValid = !_validationResult.Errors.Any();
 
