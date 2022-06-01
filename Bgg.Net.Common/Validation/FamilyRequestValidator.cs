@@ -16,6 +16,13 @@ namespace Bgg.Net.Common.Validation
 
         public ValidationResult Validate(Extension extension)
         {
+            _validationResult = new ValidationResult();
+
+            if (!extension.Value.ContainsKey("id"))
+            {
+                _validationResult.Errors.Add($"Missing required element for FamilyRequest: id");
+            }
+
             foreach (var kvp in extension.Value)
             {
                 switch (kvp.Key.ToLower())
@@ -27,7 +34,7 @@ namespace Bgg.Net.Common.Validation
                         ValidateParam(kvp.Key, kvp.Value, false, false, IsValidLong);
                         break;
                     default:
-                        _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for GetFamilyExtensible.");
+                        _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for: GetFamilyExtensible.");
                         break;
                 }
             }
@@ -43,7 +50,7 @@ namespace Bgg.Net.Common.Validation
             {
                 if (!Enum.TryParse(value, true, out FamilyType _))
                 {
-                    _validationResult.Errors.Add($"The value {value} was not valid for {paramName}");
+                    _validationResult.Errors.Add($"The value '{value}' was not valid for: {paramName}");
                 }
             }
         }

@@ -12,7 +12,7 @@ namespace Bgg.Net.Common.Tests.Validation
     [TestClass]
     public class CollectionRequestValidatorTests
     {
-        private IRequestValidator _validator;
+        private readonly IRequestValidator _validator;
 
         public CollectionRequestValidatorTests()
         {
