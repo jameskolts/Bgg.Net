@@ -256,7 +256,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().BeNull();
             result.Errors.Count.Should().Be(2);
-            result.Errors.Should().Contain("'badParam' parameter is not supported for GetPlaysExtensible.");
+            result.Errors.Should().Contain("'badParam' parameter is not supported for GetPlaysExtensible");
             result.Item.Should().BeNull();
         }
     }

@@ -13,7 +13,12 @@ namespace Bgg.Net.Common.Validation
 
             if (string.IsNullOrWhiteSpace(playRequest.UserName) && !playRequest.Id.HasValue)
             {
-                _validationResult.Errors.Add($"Missing required element. Either username or id is required.");
+                _validationResult.Errors.Add($"Missing required element. Either username or id is required");
+            }
+
+            if (!string.IsNullOrWhiteSpace(playRequest.UserName) && playRequest.Id.HasValue)
+            {
+                _validationResult.Errors.Add($"Only one of 'username' or 'id' is allowed for PlaysRequest");
             }
 
             _validationResult.IsValid = !_validationResult.Errors.Any();
@@ -27,7 +32,12 @@ namespace Bgg.Net.Common.Validation
 
             if (!(extension.Value.ContainsKey("username") || extension.Value.ContainsKey("id")))
             {
-                _validationResult.Errors.Add($"Missing required element. Either username or id is required.");
+                _validationResult.Errors.Add($"Missing required element for PlaysRequest. Either username or id is required");
+            }
+
+            if (extension.Value.ContainsKey("username") && extension.Value.ContainsKey("id"))
+            {
+                _validationResult.Errors.Add($"Only one of 'username' or 'id' is allowed for PlaysRequest");
             }
 
             foreach (var kvp in extension.Value)
@@ -54,7 +64,7 @@ namespace Bgg.Net.Common.Validation
                         ValidateInt(kvp.Key, kvp.Value, false, true, 1, int.MaxValue);
                         break;
                     default:
-                        _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for GetPlaysExtensible.");
+                        _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for GetPlaysExtensible");
                         break;
                 }
             }
@@ -68,13 +78,13 @@ namespace Bgg.Net.Common.Validation
         {
             if (values.Count > 1)
             {
-                _validationResult.Errors.Add($"Only one value is allowed for {paramName}");
+                _validationResult.Errors.Add($"Only one value is allowed for: {paramName}");
             }
 
             var value = values.FirstOrDefault();
             if (!Enum.TryParse(value, true, out ItemType _))
             {
-                _validationResult.Errors.Add($"The value {value} was not valid for {paramName}");
+                _validationResult.Errors.Add($"The value '{value}' was not valid for: {paramName}");
             }
         }
 
@@ -82,13 +92,13 @@ namespace Bgg.Net.Common.Validation
         {
             if (values.Count > 1)
             {
-                _validationResult.Errors.Add($"Only one value is allowed for {paramName}");
+                _validationResult.Errors.Add($"Only one value is allowed for: {paramName}");
             }
 
             var value = values.FirstOrDefault();
             if (!Enum.TryParse(value, true, out PlaysSubType _))
             {
-                _validationResult.Errors.Add($"The value {value} was not valid for {paramName}");
+                _validationResult.Errors.Add($"The value '{value}' was not valid for: {paramName}");
             }
         }
     }
