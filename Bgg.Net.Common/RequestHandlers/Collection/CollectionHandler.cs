@@ -80,7 +80,6 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
             return await BuildBggResult<Models.Collection>(httpResponseMessage);
         }
 
-
         /// <inheritdoc/>
         public async Task<BggResult<Models.Collection>> GetPlayedCollectionByUserName(string userName)
         {

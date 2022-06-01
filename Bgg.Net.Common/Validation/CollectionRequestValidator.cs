@@ -1,8 +1,8 @@
-﻿using Bgg.Net.Common.Models.Requests;
+﻿using Bgg.Net.Common.Infrastructure;
+using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
-using Bgg.Net.Common.Validation;
 
-namespace Bgg.Net.Common.Infrastructure.Validation
+namespace Bgg.Net.Common.Validation
 {
     public class CollectionRequestValidator : RequestValidatorBase, IRequestValidator
     {

@@ -7,11 +7,6 @@
     {
         protected ValidationResult _validationResult;
 
-        public RequestValidatorBase()
-        {
-            _validationResult = new ValidationResult();
-        }
-
         /// <summary>
         /// Validates the given values, populating _validationResult with any validation errors.
         /// </summary>

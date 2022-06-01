@@ -1,7 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure;
-using Bgg.Net.Common.Infrastructure.Validation;
-using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Validation;
+using Bgg.Net.Common.Models.Requests;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;

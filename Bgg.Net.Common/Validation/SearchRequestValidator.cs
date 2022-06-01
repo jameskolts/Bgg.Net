@@ -13,7 +13,7 @@ namespace Bgg.Net.Common.Validation
 
             if (string.IsNullOrWhiteSpace(searchRequest.Query))
             {
-                _validationResult.Errors.Add($"Missing required element for {typeof(CollectionRequest)}: query");
+                _validationResult.Errors.Add("Missing required element for SearchRequest: query");
             }
 
             _validationResult.IsValid = !_validationResult.Errors.Any();
@@ -24,6 +24,11 @@ namespace Bgg.Net.Common.Validation
         public ValidationResult Validate(Extension extension)
         {
             _validationResult = new ValidationResult();
+
+            if (!extension.Value.ContainsKey("query"))
+            {
+                _validationResult.Errors.Add("Missing required element for SearchRequest: query");
+            }
 
             foreach (var kvp in extension.Value)
             {
@@ -39,7 +44,7 @@ namespace Bgg.Net.Common.Validation
                         ValidateParam(kvp.Key, kvp.Value, false, true, IsValidBool);
                         break;
                     default:
-                        _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for  SearchExtensible.");
+                        _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for SearchExtensible");
                         break;
                 }
             }
@@ -55,7 +60,7 @@ namespace Bgg.Net.Common.Validation
             {
                 if (!Enum.TryParse(value, true, out SearchType _))
                 {
-                    _validationResult.Errors.Add($"The value {value} was not valid for {paramName}");
+                    _validationResult.Errors.Add($"The value '{value}' was not valid for: {paramName}");
                 }
             }
         }

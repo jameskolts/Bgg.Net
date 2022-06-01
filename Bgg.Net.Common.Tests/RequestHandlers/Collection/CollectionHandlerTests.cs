@@ -1,6 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Http;
-using Bgg.Net.Common.Infrastructure.Validation;
+using Bgg.Net.Common.Validation;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Collection;
 using Bgg.Net.Common.Types;

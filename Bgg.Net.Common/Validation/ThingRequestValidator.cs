@@ -14,6 +14,11 @@ namespace Bgg.Net.Common.Validation
         {
             _validationResult = new ValidationResult();
 
+            if (!extension.Value.ContainsKey("id"))
+            {
+                _validationResult.Errors.Add("Missing required element for ThingRequest: id");
+            }    
+
             foreach (var kvp in extension.Value)
             {
                 switch (kvp.Key.ToLower())
@@ -36,7 +41,7 @@ namespace Bgg.Net.Common.Validation
                         ValidateParam(kvp.Key, kvp.Value, true, false, IsValidLong);
                         break;
                     default:
-                        _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for GetThingExtensible.");
+                        _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for GetThingExtensible");
                         break;
                 }
             }
@@ -53,7 +58,7 @@ namespace Bgg.Net.Common.Validation
 
             if (!thingRequest.Id.Any())
             {
-                _validationResult.Errors.Add("Missing required element for ThingRequest: Id");
+                _validationResult.Errors.Add("Missing required element for ThingRequest: id");
             }
 
             _validationResult.IsValid = !_validationResult.Errors.Any();
@@ -67,7 +72,7 @@ namespace Bgg.Net.Common.Validation
             {
                 if (!Enum.TryParse(value, true, out ThingType _))
                 {
-                    _validationResult.Errors.Add($"The value {value} was not valid for {paramName}");
+                    _validationResult.Errors.Add($"The value '{value}' was not valid for: {paramName}");
                 }
             }
         }

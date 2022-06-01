@@ -30,13 +30,6 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Models.Collection"/>.</returns>
         Task<BggResult<Models.Collection>> GetPlayedCollectionByUserName(string userName);
 
-        ///// <summary>
-        ///// Gets the for sale items in a collection by the users name.
-        ///// </summary>
-        ///// <param name="username">The users collection to retrieve.</param>
-        ///// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Models.Collection"/>.</returns>
-        //Task<BggResult<Models.Collection>> GetForSaleCollectionByUserName(string userName);
-
         /// <summary>
         /// Gets the wishlisted items in a collection by the users name.
         /// </summary>
