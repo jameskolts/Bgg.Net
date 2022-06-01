@@ -13,7 +13,7 @@ namespace Bgg.Net.Common.Validation
 
             if (guildRequest.Id == default)
             {
-                _validationResult.Errors.Add($"Missing required element for {typeof(GuildRequest)}: id");
+                _validationResult.Errors.Add($"Missing required element for GuildRequest: id");
             }
 
             _validationResult.IsValid = !_validationResult.Errors.Any();
@@ -24,6 +24,11 @@ namespace Bgg.Net.Common.Validation
         public ValidationResult Validate(Extension extension)
         {
             _validationResult = new ValidationResult();
+
+            if (!extension.Value.ContainsKey("id"))
+            {
+                _validationResult.Errors.Add($"Missing required element for GuildRequest: id");
+            }
 
             foreach (var kvp in extension.Value)
             {
@@ -36,10 +41,13 @@ namespace Bgg.Net.Common.Validation
                         ValidateParam(kvp.Key, kvp.Value, false, true, IsValidBool);
                         break;
                     case "sort":
-                        ValidateSortTypeParam(kvp.Key, extension.Value[kvp.Key]);
+                        ValidateSortTypeParam(kvp.Key, kvp.Value);
                         break;
                     case "page":
                         ValidateInt(kvp.Key, kvp.Value, false, true, 1, int.MaxValue);
+                        break;
+                    default:
+                        _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for: GetGuildExtensible");
                         break;
                 }
             }
@@ -53,13 +61,13 @@ namespace Bgg.Net.Common.Validation
         {
             if (values.Count > 1)
             {
-                _validationResult.Errors.Add($"Only one value is allowed for {paramName}");
+                _validationResult.Errors.Add($"Only one value is allowed for: {paramName}");
             }
 
             var value = values.FirstOrDefault();
             if (!Enum.TryParse(value, true, out SortType _))
             {
-                _validationResult.Errors.Add($"The value {value} was not valid for {paramName}");
+                _validationResult.Errors.Add($"The value '{value}' was not valid for: {paramName}");
             }
         }
     }

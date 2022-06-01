@@ -153,7 +153,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
             //Assert
             result.Should().NotBeNull();
             result.IsSuccessful.Should().BeFalse();
-            result.Errors.Should().Contain("'badparameter' parameter is not supported for GetFamilyExtensible.");
+            result.Errors.Should().Contain("'badparameter' parameter is not supported for: GetFamilyExtensible.");
             result.Item.Should().BeNull();
         }
     }

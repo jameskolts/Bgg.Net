@@ -1,5 +1,4 @@
 ﻿using Bgg.Net.Common.Infrastructure;
-using Bgg.Net.Common.Infrastructure.Validation;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Validation;
 using FluentAssertions;

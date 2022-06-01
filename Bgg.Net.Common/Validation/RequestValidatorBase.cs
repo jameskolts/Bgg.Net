@@ -25,6 +25,7 @@
             if (isRequired && !IsElementPresent(values))
             {
                 _validationResult.Errors.Add($"Missing required element: {paramName}");
+                return;
             }
 
             if (limitOne)
@@ -34,7 +35,7 @@
                     _validationResult.Errors.Add($"Only one value is allowed for: {paramName}");
                 }
 
-                var value = values.First();
+                var value = values.FirstOrDefault();
 
                 if (isValid != null &&
                     !isValid(value))
@@ -68,7 +69,7 @@
                     _validationResult.Errors.Add($"Only one value is allowed for: {paramName}");
                 }
 
-                var value = values.First();
+                var value = values.FirstOrDefault();
 
                 if (!IsValidInt(value, minValue, maxValue))
                 {
