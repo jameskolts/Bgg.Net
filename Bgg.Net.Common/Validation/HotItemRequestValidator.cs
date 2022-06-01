@@ -18,6 +18,11 @@ namespace Bgg.Net.Common.Validation
         {
             _validationResult = new ValidationResult();
 
+            if (!extension.Value.ContainsKey("type"))
+            {
+                _validationResult.Errors.Add("Missing required element for HotItemRequest: type");
+            }
+
             foreach (var kvp in extension.Value)
             {
                 switch (kvp.Key.ToLower())
@@ -38,15 +43,21 @@ namespace Bgg.Net.Common.Validation
 
         private void ValidateHotItemType(string paramName, List<string> values)
         {
+            if (values == null || !values.Any())
+            {
+                _validationResult.Errors.Add("Missing required element for HotItemRequest: type");
+                return;
+            }
+
             if (values.Count > 1)
             {
-                _validationResult.Errors.Add($"Only one value is allowed for {paramName}");
-            }
+                _validationResult.Errors.Add($"Only one value is allowed for: {paramName}");
+            }            
 
             var value = values.FirstOrDefault();
             if (!Enum.TryParse(value, true, out HotItemType _))
             {
-                _validationResult.Errors.Add($"The value {value} was not valid for {paramName}");
+                _validationResult.Errors.Add($"The value '{value}' was not valid for: {paramName}");
             }
         }
     }

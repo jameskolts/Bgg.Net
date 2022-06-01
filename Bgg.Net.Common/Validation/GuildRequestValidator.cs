@@ -13,7 +13,7 @@ namespace Bgg.Net.Common.Validation
 
             if (guildRequest.Id == default)
             {
-                _validationResult.Errors.Add($"Missing required element for GuildRequest: id");
+                _validationResult.Errors.Add("Missing required element for GuildRequest: id");
             }
 
             _validationResult.IsValid = !_validationResult.Errors.Any();
@@ -27,7 +27,7 @@ namespace Bgg.Net.Common.Validation
 
             if (!extension.Value.ContainsKey("id"))
             {
-                _validationResult.Errors.Add($"Missing required element for GuildRequest: id");
+                _validationResult.Errors.Add("Missing required element for GuildRequest: id");
             }
 
             foreach (var kvp in extension.Value)
