@@ -20,7 +20,34 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
         private IThingHandler? _handler;
 
         [TestMethod]
-        public async Task GetThing()
+        public async Task GetThing_FailsValidation()
+        {
+            //Arrange
+            var request = new ThingRequest()
+            {
+                Id = new List<long>(),
+                Stats = true
+            };
+
+            MockValidatorFactory(new ThingRequestValidator());
+           
+            _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
+
+            //Act
+            var result = await _handler.GetThing(request);
+
+            //Assert
+            _httpClientMock.Verify(x => x.GetAsync(It.IsAny<string>()), Times.Never);
+            result.Should().NotBeNull();
+            result.HttpResponseCode.Should().BeNull();
+            result.IsSuccessful.Should().BeFalse();
+            result.Item.Should().BeNull();
+            result.Errors.Should().NotBeNullOrEmpty();
+            result.Errors.Should().Contain("Missing required element for ThingRequest: id");
+        }
+
+        [TestMethod]
+        public async Task GetThing_Success()
         {
             //Arrange
             var request = new ThingRequest()

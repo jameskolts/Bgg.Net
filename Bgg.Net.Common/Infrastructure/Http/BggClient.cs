@@ -20,7 +20,7 @@
         }
 
         /// <inheritdoc cref="HttpClient.DeleteAsync(string)"/>
-        public Task<HttpResponseMessage> DeleteAsync(string url)
+        public virtual Task<HttpResponseMessage> DeleteAsync(string url)
         {
             return httpClient.DeleteAsync(url);
         }
@@ -32,19 +32,19 @@
         }
 
         /// <inheritdoc cref="HttpClient.PostAsync(string, HttpContent)"/>
-        public Task<HttpResponseMessage> PostAsync(string url, HttpContent content)
+        public virtual Task<HttpResponseMessage> PostAsync(string url, HttpContent content)
         {
             return httpClient.PostAsync(url, content);
         }
 
         /// <inheritdoc cref="HttpClient.PutAsync(string, HttpContent)"/>
-        public Task<HttpResponseMessage> PutAsync(string url, HttpContent content)
+        public virtual Task<HttpResponseMessage> PutAsync(string url, HttpContent content)
         {
             return httpClient.PutAsync(url, content);
         }
 
         /// <inheritdoc cref="HttpClient.SendAsync(HttpRequestMessage)"/>
-        public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
+        public virtual Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
         {
             return httpClient.SendAsync(request);
         }

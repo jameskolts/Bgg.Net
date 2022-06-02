@@ -1,7 +1,9 @@
 ﻿using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Forums;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
 using Bgg.Net.Common.Tests.TestFiles;
+using Bgg.Net.Common.Validation;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -18,6 +20,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
         [TestMethod]
         public async Task GetForumById_Success()
         {
+            //Arrange
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ForumXml), HttpStatusCode.OK);
             MockBggDeserializer(new Forum { Id = 100 });
 
@@ -38,6 +41,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
         [TestMethod]
         public async Task GetForumByIdAndPage_Success()
         {
+            //Arrange
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ForumXml), HttpStatusCode.OK);
             MockBggDeserializer(new Forum { Id = 100 });
 
@@ -52,6 +56,33 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
+            result.Item.Id.Should().Be(100);
+        }
+
+        [TestMethod]
+        public async Task GetForum_Success()
+        {
+            //Arrange
+            var request = new ForumRequest
+            {
+                Id = 100,
+            };
+
+            MockValidatorFactory(new ForumRequestValidator());
+            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ForumXml), HttpStatusCode.OK);
+            MockBggDeserializer(new Forum { Id = 100 });
+
+            _handler = new ForumHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
+
+            //Act
+            var result = await _handler.GetForum(request);
+
+            //Assert
+            _httpClientMock.Verify(x => x.GetAsync("forum?id=100"), Times.Once);
+            result.Should().NotBeNull();
+            result.IsSuccessful.Should().BeTrue();
+            result.Errors.Should().BeNullOrEmpty();
+            result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Item.Id.Should().Be(100);
         }
     }

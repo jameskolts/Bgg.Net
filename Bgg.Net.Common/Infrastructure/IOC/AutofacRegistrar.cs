@@ -12,11 +12,13 @@ using Bgg.Net.Common.RequestHandlers.Threads;
 using Bgg.Net.Common.RequestHandlers.Users;
 using Bgg.Net.Common.Validation;
 using Serilog;
+using System.Diagnostics.CodeAnalysis;
 using IContainer = Autofac.IContainer;
 using SearchHandler = Bgg.Net.Common.RequestHandlers.Search.SearchHandler;
 
 namespace Bgg.Net.Common.Infrastructure.IOC
 {
+
     public static class AutofacRegistrar
     {
         public static IContainer BuildContainer()
@@ -48,6 +50,7 @@ namespace Bgg.Net.Common.Infrastructure.IOC
             return builder.Build();
         }
 
+        [ExcludeFromCodeCoverage]
         public static ContainerBuilder RegisterCommon(this ContainerBuilder builder)
         {
             builder.RegisterType<BggClient>().As<IHttpClient>().AsSelf();
