@@ -23,9 +23,13 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         {
             _logger.Information("GetBriefCollectionByUserName : {userName}", userName);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"collection?username={userName}&brief=1");
+            var request = new CollectionRequest
+            {
+                UserName = userName,
+                Brief = true
+            };
 
-            return await BuildBggResult<Models.Collection>(httpResponseMessage);
+            return await GetResourceFromRequestObject<Models.Collection>("collection", request);
         }
 
         /// <inheritdoc/>
@@ -39,9 +43,9 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         {
             _logger.Information("GetCollectionByUserName : {userName}", userName);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"collection?username={userName}");
+            var request = new CollectionRequest(userName);
 
-            return await BuildBggResult<Models.Collection>(httpResponseMessage);
+            return await GetResourceFromRequestObject<Models.Collection>("collection", request);
         }
 
         /// <inheritdoc/>
@@ -49,19 +53,27 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         {
             _logger.Information("GetCollectionByUserNameAndId : {userName}, {ids}", userName, ids);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"collection?username={userName}&id={string.Join(",", ids)}");
+            var request = new CollectionRequest
+            {
+                UserName = userName,
+                Id = ids
+            };
 
-            return await BuildBggResult<Models.Collection>(httpResponseMessage);
+            return await GetResourceFromRequestObject<Models.Collection>("collection", request);
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<Models.Collection>> GetCollectionByUserNameAndType(string userName, CollectionSubType type)
+        public async Task<BggResult<Models.Collection>> GetCollectionByUserNameAndSubtype(string userName, CollectionSubType subtype)
         {
-            _logger.Information("GetCollectionByUserNameAndType : {userName}, {type}", userName, type);
+            _logger.Information("GetCollectionByUserNameAndType : {userName}, {type}", userName, subtype);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"collection?username={userName}&type={type.ToString().ToLower()}");
+            var request = new CollectionRequest
+            {
+                UserName = userName,
+                Subtype = subtype
+            };
 
-            return await BuildBggResult<Models.Collection>(httpResponseMessage);
+            return await GetResourceFromRequestObject<Models.Collection>("collection", request);
         }
 
         /// <inheritdoc/>
@@ -69,9 +81,13 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         {
             _logger.Information("GetCollectionStatsByUserName : {userName}", userName);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"collection?username={userName}&stats=1");
+            var request = new CollectionRequest
+            {
+                UserName = userName,
+                Stats = true
+            };
 
-            return await BuildBggResult<Models.Collection>(httpResponseMessage);
+            return await GetResourceFromRequestObject<Models.Collection>("collection", request);
         }
 
         /// <inheritdoc/>
@@ -79,9 +95,13 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         {
             _logger.Information("GetPlayedCollectionByUserName : {userName}", userName);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"collection?username={userName}&played=1");
+            var request = new CollectionRequest
+            {
+                UserName = userName,
+                Played = true
+            };
 
-            return await BuildBggResult<Models.Collection>(httpResponseMessage);
+            return await GetResourceFromRequestObject<Models.Collection>("collection", request);
         }
 
         /// <inheritdoc/>
@@ -89,9 +109,13 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         {
             _logger.Information("GetWishListCollectionByUserName : {userName}", userName);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"collection?username={userName}&wishlist=1");
+            var request = new CollectionRequest
+            {
+                UserName = userName,
+                WishList = true
+            };
 
-            return await BuildBggResult<Models.Collection>(httpResponseMessage);
+            return await GetResourceFromRequestObject<Models.Collection>("collection", request);
         }
     }
 }

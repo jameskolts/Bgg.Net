@@ -30,7 +30,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
             };
 
             MockValidatorFactory(new ThingRequestValidator());
-           
+
             _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
@@ -92,6 +92,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
         public async Task GetThingById_Success()
         {
             //Arrange           
+            MockValidatorFactory(new ThingRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.BoardGameXml), HttpStatusCode.OK);
             MockBggDeserializer(
                 new ThingList
@@ -120,6 +121,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
         public async Task GetThingsById_Success()
         {
             //Arrange
+            MockValidatorFactory(new ThingRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.BoardGameXml), HttpStatusCode.OK);
             MockBggDeserializer(
                 new ThingList
@@ -151,7 +153,8 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
         [TestMethod]
         public async Task GetThingById_NoContent()
         {
-            //Arrange            
+            //Arrange
+            MockValidatorFactory(new ThingRequestValidator());
             MockHttpClientGet("", HttpStatusCode.NotFound);
             _deserializerMock.Setup(x => x.Deserialize<ThingList>(It.IsAny<string>()))
                 .Throws(new Exception("exception"));

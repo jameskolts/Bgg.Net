@@ -6,8 +6,6 @@ using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Validation;
 using Serilog;
-using System.Collections;
-using System.Text;
 
 namespace Bgg.Net.Common.RequestHandlers
 {
@@ -21,7 +19,7 @@ namespace Bgg.Net.Common.RequestHandlers
         protected readonly IHttpClient _httpClient;
         protected readonly IRequestValidatorFactory _requestValidatorFactory;
         protected readonly IQueryBuilder _queryBuilder;
-                
+
         public RequestHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
         {
             _bggDeserializer = deserializer;
@@ -86,6 +84,7 @@ namespace Bgg.Net.Common.RequestHandlers
             }
 
             var query = _queryBuilder.BuildQuery(resourceName, request);
+            _logger.Information("Performing query: " + query);
 
             var httpResponseMessage = await _httpClient.GetAsync(query);
 

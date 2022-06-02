@@ -51,6 +51,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Guilds
         public async Task GetGuildById()
         {
             //Arrange
+            MockValidatorFactory(new GuildRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.GuildXml), HttpStatusCode.OK);
             MockBggDeserializer(new Guild { Id = 100 });
 
@@ -71,6 +72,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Guilds
         public async Task GetGuildByIdWithMembers()
         {
             //Arrange
+            MockValidatorFactory(new GuildRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.GuildXml), HttpStatusCode.OK);
             MockBggDeserializer(new Guild { Id = 100 });
 

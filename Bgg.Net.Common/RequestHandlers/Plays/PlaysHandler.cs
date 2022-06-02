@@ -29,9 +29,13 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
         {
             _logger.Information("GetPlaysByIdAndType : {id}, {type}", id, type);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"plays?id={id}&type={type.ToString().ToLower()}");
+            var request = new PlaysRequest
+            {
+                Id = id,
+                Type = type
+            };
 
-            return await BuildBggResult<PlayList>(httpResponseMessage);
+            return await GetResourceFromRequestObject<PlayList>("plays", request);
         }
 
         /// <inheritdoc/>
@@ -39,9 +43,12 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
         {
             _logger.Information("GetPlaysByUserName : {userName}", userName);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"plays?username={userName}");
+            var request = new PlaysRequest
+            {
+                UserName = userName,
+            };
 
-            return await BuildBggResult<PlayList>(httpResponseMessage);
+            return await GetResourceFromRequestObject<PlayList>("plays", request);
         }
 
         /// <inheritdoc/>
@@ -49,19 +56,14 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
         {
             _logger.Information("GetPlaysByUserNameAndDate : {userName}, {start}, {end}", userName, start, end);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"plays?username={userName}&mindate={start:yyyy-MM-dd}&maxdate={end:yyyy-MM-dd}");
+            var request = new PlaysRequest
+            {
+                UserName = userName,
+                MinDate = start,
+                MaxDate = end
+            };
 
-            return await BuildBggResult<PlayList>(httpResponseMessage);
-        }
-
-        /// <inheritdoc/>
-        public async Task<BggResult<PlayList>> GetPlaysByUserNameAndId(string userName, long id)
-        {
-            _logger.Information("GetPlaysByUserNameAndId : {userName}, {id}, {end}", userName, id);
-
-            var httpResponseMessage = await _httpClient.GetAsync($"plays?username={userName}&id={id}");
-
-            return await BuildBggResult<PlayList>(httpResponseMessage);
+            return await GetResourceFromRequestObject<PlayList>("plays", request);
         }
 
         /// <inheritdoc/>
@@ -69,10 +71,14 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
         {
             _logger.Information("GetPlaysByUserNameAndType : {userName}, {type}, {subType}", userName, type, subType);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"plays?username={userName}&type={type.ToString().ToLower()}" +
-                $"{(subType.HasValue ? $"&subtype={subType.ToString().ToLower()}" : string.Empty)}");
+            var request = new PlaysRequest
+            {
+                UserName = userName,
+                Type = type,
+                SubType = subType
+            };
 
-            return await BuildBggResult<PlayList>(httpResponseMessage);
+            return await GetResourceFromRequestObject<PlayList>("plays", request);
         }
     }
 }

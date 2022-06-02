@@ -31,22 +31,25 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
         {
             _logger.Information("GetForumById : {id}", id);
 
-            var queryString = $"forum?id={id}";
+            var request = new ForumRequest
+            {
+                Id = id
+            };
 
-            var httpResponseMessage = await _httpClient.GetAsync(queryString);
-
-            return await BuildBggResult<Forum>(httpResponseMessage);
+            return await GetResourceFromRequestObject<Forum>("forum", request);
         }
 
-        public async Task<BggResult<Forum>> GetForumByIdAndPage(long id, int page)
+        public async Task<BggResult<Forum>> GetForumByIdAndPage(long id, uint page)
         {
             _logger.Information("GetForumByIdAndPage : {id}, {page}", id, page);
 
-            var queryString = $"forum?id={id}&page={page}";
+            var request = new ForumRequest
+            {
+                Id = id,
+                Page = page
+            };
 
-            var httpResponseMessage = await _httpClient.GetAsync(queryString);
-
-            return await BuildBggResult<Forum>(httpResponseMessage);
+            return await GetResourceFromRequestObject<Forum>("forum", request);
         }
     }
 }

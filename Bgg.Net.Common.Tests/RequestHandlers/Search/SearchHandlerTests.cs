@@ -50,6 +50,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Search
         public async Task SearchByQuery_Success()
         {
             //Arrange
+            MockValidatorFactory(new SearchRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml), HttpStatusCode.OK);
             MockBggDeserializer(new SearchResultList { Total = 100 });
 
@@ -70,6 +71,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Search
         public async Task SearchByQueryAndType_Success()
         {
             //Arrange
+            MockValidatorFactory(new SearchRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml), HttpStatusCode.OK);
             MockBggDeserializer(new SearchResultList { Total = 100 });
 
@@ -90,6 +92,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Search
         public async Task SearchByQueryExact_Success()
         {
             //Arrange
+            MockValidatorFactory(new SearchRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml), HttpStatusCode.OK);
             MockBggDeserializer(new SearchResultList { Total = 100 });
 

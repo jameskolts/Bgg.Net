@@ -25,14 +25,6 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
         Task<BggResult<PlayList>> GetPlaysByUserName(string userName);
 
         /// <summary>
-        /// Gets the plays of a specific item and user.
-        /// </summary>
-        /// <param name="userName">The userName to retrieve plays for.</param>
-        /// <param name="id">The Id of the item to retrieve plays for.></param>
-        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Guild"/>.</returns>
-        Task<BggResult<PlayList>> GetPlaysByUserNameAndId(string userName, long id);
-
-        /// <summary>
         /// Gets the plays of a specific Type of item for a user.
         /// </summary>
         /// <param name="userName">The userName to retrieve plays for.</param>

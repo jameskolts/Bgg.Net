@@ -29,9 +29,9 @@ namespace Bgg.Net.Common.RequestHandlers.Users
         {
             _logger.Information("GetUserByName : {name}", name);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"user?name={name}");
+            var request = new UserRequest(name);
 
-            return await BuildBggResult<User>(httpResponseMessage);
+            return await GetResourceFromRequestObject<User>("user", request);
         }
     }
 }

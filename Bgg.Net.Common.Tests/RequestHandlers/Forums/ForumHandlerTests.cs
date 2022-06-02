@@ -21,6 +21,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
         public async Task GetForumById_Success()
         {
             //Arrange
+            MockValidatorFactory(new ForumRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ForumXml), HttpStatusCode.OK);
             MockBggDeserializer(new Forum { Id = 100 });
 
@@ -42,6 +43,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
         public async Task GetForumByIdAndPage_Success()
         {
             //Arrange
+            MockValidatorFactory(new ForumRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ForumXml), HttpStatusCode.OK);
             MockBggDeserializer(new Forum { Id = 100 });
 

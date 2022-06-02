@@ -29,7 +29,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Http
             _client = new CollectionClient(httpClient.Object);
 
             //Act
-            Func<Task> f = async () =>  await _client.GetAsync("someUrl");
+            Func<Task> f = async () => await _client.GetAsync("someUrl");
 
             //Assert
             await f.Should().ThrowAsync<AttemptsExceededException>();

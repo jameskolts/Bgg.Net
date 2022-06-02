@@ -20,7 +20,7 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
         /// <param name="page">The page of threads to include in the Thread list.</param>
         /// <returns>A <see cref="BggResult{T}"/> containing the <see cref="Forum"/>.</returns>
         /// <remarks>Page size is 50.  Threads are sorted in order of the most recent post.</remarks>
-        Task<BggResult<Forum>> GetForumByIdAndPage(long id, int page);
+        Task<BggResult<Forum>> GetForumByIdAndPage(long id, uint page);
 
         /// <summary>
         /// Gets a fourm by the given query.

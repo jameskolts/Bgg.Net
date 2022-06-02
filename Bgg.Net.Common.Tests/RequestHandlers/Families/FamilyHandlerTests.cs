@@ -3,6 +3,7 @@ using Bgg.Net.Common.RequestHandlers.Families;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
 using Bgg.Net.Common.Tests.TestFiles;
 using Bgg.Net.Common.Types;
+using Bgg.Net.Common.Validation;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -21,6 +22,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
         public async Task GetFamilyById_Success()
         {
             //Arrange
+            MockValidatorFactory(new FamilyRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.FamilyXml), HttpStatusCode.OK);
             MockBggDeserializer(
                 new FamilyList
@@ -46,6 +48,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
         public async Task GetFamilyByIds_Success()
         {
             //Arrange
+            MockValidatorFactory(new FamilyRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.FamilyXml), HttpStatusCode.OK);
             MockBggDeserializer(
                 new FamilyList
@@ -71,6 +74,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
         public async Task GetFamilyByIdsAndType_Success()
         {
             //Arrange
+            MockValidatorFactory(new FamilyRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.FamilyXml), HttpStatusCode.OK);
             MockBggDeserializer(
                 new FamilyList

@@ -1,5 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
 
 namespace Bgg.Net.Common.RequestHandlers.Families
@@ -30,5 +31,12 @@ namespace Bgg.Net.Common.RequestHandlers.Families
         /// <param name="types">The types to retrieve</param>
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="FamilyList"/>.</returns>
         Task<BggResult<FamilyList>> GetFamilyByIdsAndType(List<long> ids, List<FamilyType> types);
+
+        /// <summary>
+        /// Gets a familylist by the parameters provided in the request.
+        /// </summary>
+        /// <param name="request">The request to query.</param>
+        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="FamilyList"/>.</returns>
+        Task<BggResult<FamilyList>> GetFamily(FamilyRequest request);
     }
 }

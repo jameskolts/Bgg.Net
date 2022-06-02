@@ -22,6 +22,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
         public async Task GetForumListByIdAndType_Success()
         {
             //Arrange
+            MockValidatorFactory(new ForumListRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ForumListXml), HttpStatusCode.OK);
             MockBggDeserializer(new ForumList { Id = 100 });
 

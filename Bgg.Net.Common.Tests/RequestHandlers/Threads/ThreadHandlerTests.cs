@@ -51,6 +51,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Threads
         public async Task GetThreadById_Success()
         {
             //Arrange
+            MockValidatorFactory(new ThreadRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ThreadXml), HttpStatusCode.OK);
             MockBggDeserializer(new Thread { Id = 100 });
 

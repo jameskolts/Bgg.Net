@@ -30,9 +30,12 @@ namespace Bgg.Net.Common.RequestHandlers.Guilds
         {
             _logger.Information("GetGuildById : {id}", id);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"guild?id={id}");
+            var request = new GuildRequest
+            {
+                Id = id
+            };
 
-            return await BuildBggResult<Guild>(httpResponseMessage);
+            return await GetResourceFromRequestObject<Guild>("guild", request);
         }
 
         /// <inheritdoc/>
@@ -40,10 +43,15 @@ namespace Bgg.Net.Common.RequestHandlers.Guilds
         {
             _logger.Information("GetGuildByIdWithMembers : {id}, {sortType}, {page}", id, sortType, page);
 
-            var httpResponseMessage =
-                await _httpClient.GetAsync($"guild?id={id}&members=1&sort={sortType.ToString().ToLower()}&page={page}");
+            var request = new GuildRequest
+            {
+                Id = id,
+                Members = true,
+                Sort = sortType,
+                Page = page
+            };
 
-            return await BuildBggResult<Guild>(httpResponseMessage);
+            return await GetResourceFromRequestObject<Guild>("guild", request);
         }
     }
 }

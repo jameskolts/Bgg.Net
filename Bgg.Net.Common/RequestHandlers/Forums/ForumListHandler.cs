@@ -31,15 +31,18 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
             return await GetResourceFromRequestObject<ForumList>("forumlist", request);
         }
 
+        /// <inheritdoc/>
         public async Task<BggResult<ForumList>> GetForumListByIdAndType(long id, ItemType type)
         {
             _logger.Information("GetForumListByIdAndType : {id}, {type}", id, type);
 
-            var queryString = $"forumlist?id={id}&type={type.ToString().ToLower()}";
+            var request = new ForumListRequest
+            {
+                Id = id,
+                Type = type
+            };
 
-            var httpResponseMessage = await _httpClient.GetAsync(queryString);
-
-            return await BuildBggResult<ForumList>(httpResponseMessage);
+            return await GetResourceFromRequestObject<ForumList>("forumlist", request);
         }
     }
 }

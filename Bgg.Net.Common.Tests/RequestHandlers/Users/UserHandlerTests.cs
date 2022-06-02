@@ -23,6 +23,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Users
         public async Task GetUserByName_Success()
         {
             //Arrange
+            MockValidatorFactory(new UserRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml), HttpStatusCode.OK);
             MockBggDeserializer(new User { Id = 100 });
 
@@ -32,7 +33,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Users
             var result = await _handler.GetUserByName("inigoMontoya");
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("user?name=inigoMontoya"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync("user?name=inigomontoya"), Times.Once);
             result.Should().NotBeNull();
             result.IsSuccessful.Should().BeTrue();
             result.Item.Should().NotBeNull();
@@ -45,6 +46,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Users
         public async Task GetUserByName_Failure()
         {
             //Arrange
+            MockValidatorFactory(new UserRequestValidator());
             MockHttpClientGet(string.Empty, HttpStatusCode.NotFound);
             _deserializerMock = new Mock<IBggDeserializer>();
 

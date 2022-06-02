@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.IOC;
 using Bgg.Net.Common.RequestHandlers.Collection;
@@ -237,6 +238,23 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
             objFromClass.Should().NotBeNull();
             objFromClass.Should().BeAssignableTo<RequestValidatorFactory>();
             objFromClass?.GetType().Name.Should().Be("RequestValidatorFactory");
+        }
+
+        [TestMethod]
+        public void QueryBuilder_Resolve()
+        {
+            // Arrange/Act
+            var objFromInterface = scope?.Resolve<IQueryBuilder>();
+            var objFromClass = scope?.Resolve<QueryBuilder>();
+
+            //Assert
+            objFromInterface.Should().NotBeNull();
+            objFromInterface.Should().BeAssignableTo<QueryBuilder>();
+            objFromInterface?.GetType().Name.Should().Be("QueryBuilder");
+
+            objFromClass.Should().NotBeNull();
+            objFromClass.Should().BeAssignableTo<QueryBuilder>();
+            objFromClass?.GetType().Name.Should().Be("QueryBuilder");
         }
     }
 }

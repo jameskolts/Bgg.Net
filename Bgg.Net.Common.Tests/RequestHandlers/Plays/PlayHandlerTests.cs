@@ -60,6 +60,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
         public async Task GetPlaysByUserName_Success()
         {
             //Arrange
+            MockValidatorFactory(new PlayRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
             MockBggDeserializer(
                new PlayList
@@ -89,6 +90,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
         public async Task GetPlaysByUserNameAndDate_Success()
         {
             //Arrange
+            MockValidatorFactory(new PlayRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
             MockBggDeserializer(
                new PlayList
@@ -115,38 +117,10 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
         }
 
         [TestMethod]
-        public async Task GetPlaysByUserNameAndId_Success()
-        {
-            //Arrange
-            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
-            MockBggDeserializer(
-               new PlayList
-               {
-                   Play = new List<Play>
-                   {
-                        new Play { Id = 1 },
-                        new Play { Id = 2 },
-                        new Play { Id = 3 }
-                   }
-               });
-
-            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
-
-            //Act
-            var result = await _handler.GetPlaysByUserNameAndId("user", 2500);
-
-            //Assert
-            _httpClientMock.Verify(x => x.GetAsync("plays?username=user&id=2500"), Times.Once);
-            result.Should().NotBeNull();
-            result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
-            result.Errors.Should().BeNullOrEmpty();
-            result.Item.Play.Count.Should().Be(3);
-        }
-
-        [TestMethod]
         public async Task GetPlaysByUserNameAndTypeAndSubType_Success()
         {
             //Arrange
+            MockValidatorFactory(new PlayRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
             MockBggDeserializer(
                new PlayList
@@ -176,6 +150,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
         public async Task GetPlaysByUserNameAndType_Success()
         {
             //Arrange
+            MockValidatorFactory(new PlayRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
             MockBggDeserializer(
                new PlayList
@@ -205,6 +180,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
         public async Task GetPlaysByIdAndType_Success()
         {
             //Arrange
+            MockValidatorFactory(new PlayRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
             MockBggDeserializer(
                new PlayList

@@ -30,9 +30,9 @@ namespace Bgg.Net.Common.RequestHandlers.Search
         {
             _logger.Information("SearchByQuery : {query}", query);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"search?query={query}");
+            var request = new SearchRequest(query);
 
-            return await BuildBggResult<SearchResultList>(httpResponseMessage);
+            return await GetResourceFromRequestObject<SearchResultList>("search", request);
         }
 
         /// <inheritdoc/>
@@ -40,9 +40,12 @@ namespace Bgg.Net.Common.RequestHandlers.Search
         {
             _logger.Information("SearchByQueryAndType : {query}, {type}", query, type);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"search?query={query}&type={string.Join(",", type.Select(x => x.ToString().ToLower()))}");
+            var request = new SearchRequest(query)
+            {
+                Type = type
+            };
 
-            return await BuildBggResult<SearchResultList>(httpResponseMessage);
+            return await GetResourceFromRequestObject<SearchResultList>("search", request);
         }
 
         /// <inheritdoc/>
@@ -50,9 +53,12 @@ namespace Bgg.Net.Common.RequestHandlers.Search
         {
             _logger.Information("SearchByQueryExact : {query}", query);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"search?query={query}&exact=1");
+            var request = new SearchRequest(query)
+            {
+                Exact = true
+            };
 
-            return await BuildBggResult<SearchResultList>(httpResponseMessage);
+            return await GetResourceFromRequestObject<SearchResultList>("search", request);
         }
     }
 }

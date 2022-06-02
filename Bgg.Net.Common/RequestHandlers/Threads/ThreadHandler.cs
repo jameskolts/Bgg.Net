@@ -29,9 +29,9 @@ namespace Bgg.Net.Common.RequestHandlers.Threads
         {
             _logger.Information("GetThreadById : {id}", id);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"thread?id={id}");
+            var request = new ThreadRequest(id);
 
-            return await BuildBggResult<Thread>(httpResponseMessage);
+            return await GetResourceFromRequestObject<Thread>("thread", request);
         }
     }
 }

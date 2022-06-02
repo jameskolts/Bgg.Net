@@ -10,6 +10,13 @@ namespace Bgg.Net.Common.Models.Requests
     [ExcludeFromCodeCoverage]
     public class CollectionRequest : BggRequest
     {
+        public CollectionRequest() { }
+
+        public CollectionRequest(string userName)
+        {
+            UserName = userName;
+        }
+
         /// <summary>
         /// Name of the user to request the collection for.
         /// </summary>

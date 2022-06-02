@@ -29,9 +29,12 @@ namespace Bgg.Net.Common.RequestHandlers.Things
         {
             _logger.Information("GetThingById : {id}", id);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"thing?id={id}");
+            var request = new ThingRequest
+            {
+                Id = new List<long> { id }
+            };
 
-            return await BuildBggResult<ThingList>(httpResponseMessage);
+            return await GetResourceFromRequestObject<ThingList>("thing", request);
         }
 
         /// <inheritdoc/>
@@ -39,11 +42,12 @@ namespace Bgg.Net.Common.RequestHandlers.Things
         {
             _logger.Information("GetThingById : {id}", ids);
 
-            var queryString = $"thing?id=" + string.Join(',', ids);
+            var request = new ThingRequest
+            {
+                Id = ids
+            };
 
-            var httpResponseMessage = await _httpClient.GetAsync(queryString);
-
-            return await BuildBggResult<ThingList>(httpResponseMessage);
+            return await GetResourceFromRequestObject<ThingList>("thing", request);
         }
     }
 }

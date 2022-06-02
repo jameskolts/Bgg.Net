@@ -28,6 +28,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Collection
             _collectionClientMock.Setup(x => x.GetAsync(It.IsAny<string>()))
                 .ReturnsAsync(new HttpResponseMessage());
             MockBggDeserializer(new Models.Collection { TotalItems = 100 });
+            MockValidatorFactory(new CollectionRequestValidator());
 
             _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
@@ -105,7 +106,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Collection
         public async Task GetCollectionByUserName_Success()
         {
             //Arrange
-
+            MockValidatorFactory(new CollectionRequestValidator());
             _collectionClientMock.Setup(x => x.GetAsync(It.IsAny<string>()))
                 .ReturnsAsync(new HttpResponseMessage());
             MockBggDeserializer(new Models.Collection { TotalItems = 100 });
@@ -127,7 +128,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Collection
         public async Task GetCollectionByUserNameAndId_Success()
         {
             //Arrange
-
+            MockValidatorFactory(new CollectionRequestValidator());
             _collectionClientMock.Setup(x => x.GetAsync(It.IsAny<string>()))
                 .ReturnsAsync(new HttpResponseMessage());
             MockBggDeserializer(new Models.Collection { TotalItems = 100 });
@@ -149,7 +150,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Collection
         public async Task GetCollectionByUserNameAndType_Success()
         {
             //Arrange
-
+            MockValidatorFactory(new CollectionRequestValidator());
             _collectionClientMock.Setup(x => x.GetAsync(It.IsAny<string>()))
                 .ReturnsAsync(new HttpResponseMessage());
             MockBggDeserializer(new Models.Collection { TotalItems = 100 });
@@ -157,10 +158,10 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Collection
             _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
-            var result = await _handler.GetCollectionByUserNameAndType("user", CollectionSubType.RpgItem);
+            var result = await _handler.GetCollectionByUserNameAndSubtype("user", CollectionSubType.RpgItem);
 
             //Assert
-            _collectionClientMock.Verify(x => x.GetAsync("collection?username=user&type=rpgitem"), Times.Once);
+            _collectionClientMock.Verify(x => x.GetAsync("collection?username=user&subtype=rpgitem"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -171,7 +172,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Collection
         public async Task GetCollectionStatsByUserName_Success()
         {
             //Arrange
-
+            MockValidatorFactory(new CollectionRequestValidator());
             _collectionClientMock.Setup(x => x.GetAsync(It.IsAny<string>()))
                 .ReturnsAsync(new HttpResponseMessage());
             MockBggDeserializer(new Models.Collection { TotalItems = 100 });
@@ -193,7 +194,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Collection
         public async Task GetPlayedCollectionByUserName_Success()
         {
             //Arrange
-
+            MockValidatorFactory(new CollectionRequestValidator());
             _collectionClientMock.Setup(x => x.GetAsync(It.IsAny<string>()))
                 .ReturnsAsync(new HttpResponseMessage());
             MockBggDeserializer(new Models.Collection { TotalItems = 100 });
@@ -215,7 +216,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Collection
         public async Task GetWishListCollectionByUserName_Success()
         {
             //Arrange
-
+            MockValidatorFactory(new CollectionRequestValidator());
             _collectionClientMock.Setup(x => x.GetAsync(It.IsAny<string>()))
                 .ReturnsAsync(new HttpResponseMessage());
             MockBggDeserializer(new Models.Collection { TotalItems = 100 });

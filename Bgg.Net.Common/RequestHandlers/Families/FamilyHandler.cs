@@ -2,6 +2,7 @@
 using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
 using Bgg.Net.Common.Validation;
 using Serilog;
@@ -18,14 +19,22 @@ namespace Bgg.Net.Common.RequestHandlers.Families
         {
         }
 
+        public async Task<BggResult<FamilyList>> GetFamily(FamilyRequest request)
+        {
+            return await GetResourceFromRequestObject<FamilyList>("family", request);
+        }
+
         /// <inheritdoc/>
         public async Task<BggResult<FamilyList>> GetFamilyById(long id)
         {
             _logger.Information("GetFamilyById : {id}", id);
 
-            var httpResponseMessage = await _httpClient.GetAsync($"family?id={id}");
+            var request = new FamilyRequest
+            {
+                Id = new List<long> { id }
+            };
 
-            return await BuildBggResult<FamilyList>(httpResponseMessage);
+            return await GetResourceFromRequestObject<FamilyList>("family", request);
         }
 
         /// <inheritdoc/>
@@ -33,11 +42,12 @@ namespace Bgg.Net.Common.RequestHandlers.Families
         {
             _logger.Information("GetFamilyByIds : {id}", ids);
 
-            var queryString = $"family?id=" + string.Join(',', ids);
+            var request = new FamilyRequest
+            {
+                Id = ids
+            };
 
-            var httpResponseMessage = await _httpClient.GetAsync(queryString);
-
-            return await BuildBggResult<FamilyList>(httpResponseMessage);
+            return await GetResourceFromRequestObject<FamilyList>("family", request);
         }
 
         /// <inheritdoc/>
@@ -45,11 +55,13 @@ namespace Bgg.Net.Common.RequestHandlers.Families
         {
             _logger.Information("GetFamilyByIdsAndType : {id}, {types}", ids, types);
 
-            var queryString = $"family?id={string.Join(',', ids)}&type={string.Join(',', types).ToLower()}";
+            var request = new FamilyRequest
+            {
+                Id = ids,
+                Type = types
+            };
 
-            var httpResponseMessage = await _httpClient.GetAsync(queryString);
-
-            return await BuildBggResult<FamilyList>(httpResponseMessage);
+            return await GetResourceFromRequestObject<FamilyList>("family", request); ;
         }
     }
 }

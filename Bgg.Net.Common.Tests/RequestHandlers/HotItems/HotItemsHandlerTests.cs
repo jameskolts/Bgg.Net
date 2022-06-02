@@ -3,6 +3,7 @@ using Bgg.Net.Common.RequestHandlers.HotItems;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
 using Bgg.Net.Common.Tests.TestFiles;
 using Bgg.Net.Common.Types;
+using Bgg.Net.Common.Validation;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -21,6 +22,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.HotItems
         public async Task GetHotItemsByType_Success()
         {
             //Arrange
+            MockValidatorFactory(new HotItemRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.HotXml), HttpStatusCode.OK);
             MockBggDeserializer(
                 new HotItemList
