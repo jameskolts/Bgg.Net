@@ -26,7 +26,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Users
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml), HttpStatusCode.OK);
             MockBggDeserializer(new User { Id = 100 });
 
-            _handler = new UserHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
+            _handler = new UserHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act 
             var result = await _handler.GetUserByName("inigoMontoya");
@@ -48,7 +48,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Users
             MockHttpClientGet(string.Empty, HttpStatusCode.NotFound);
             _deserializerMock = new Mock<IBggDeserializer>();
 
-            _handler = new UserHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
+            _handler = new UserHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act 
             var result = await _handler.GetUserByName("inigoMontoya");
@@ -80,7 +80,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Users
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml), HttpStatusCode.OK);
             MockBggDeserializer(new User { Id = 100 });
 
-            _handler = new UserHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
+            _handler = new UserHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetUser(request);

@@ -13,8 +13,8 @@ namespace Bgg.Net.Common.RequestHandlers.Things
     /// </summary>
     public class ThingHandler : RequestHandler, IThingHandler
     {
-        public ThingHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory)
-            : base(deserializer, logger, httpClient, validatorFactory)
+        public ThingHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
+            : base(deserializer, logger, httpClient, validatorFactory, queryBuilder)
         {
         }
 

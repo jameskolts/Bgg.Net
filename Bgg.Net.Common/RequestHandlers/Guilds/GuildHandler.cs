@@ -14,8 +14,8 @@ namespace Bgg.Net.Common.RequestHandlers.Guilds
     /// </summary>
     public class GuildHandler : RequestHandler, IGuildHandler
     {
-        public GuildHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory)
-            : base(deserializer, logger, httpClient, validatorFactory)
+        public GuildHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
+            : base(deserializer, logger, httpClient, validatorFactory, queryBuilder)
         {
         }
 

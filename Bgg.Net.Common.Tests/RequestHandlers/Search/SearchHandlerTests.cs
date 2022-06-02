@@ -33,7 +33,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Search
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.SearchXml), HttpStatusCode.OK);
             MockBggDeserializer(new SearchResultList { Total = 100 });
 
-            _handler = new SearchHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
+            _handler = new SearchHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.Search(request);
@@ -53,7 +53,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Search
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml), HttpStatusCode.OK);
             MockBggDeserializer(new SearchResultList { Total = 100 });
 
-            _handler = new SearchHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
+            _handler = new SearchHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.SearchByQuery("ark nova");
@@ -73,7 +73,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Search
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml), HttpStatusCode.OK);
             MockBggDeserializer(new SearchResultList { Total = 100 });
 
-            _handler = new SearchHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
+            _handler = new SearchHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.SearchByQueryAndType("ark nova", new List<SearchType> { SearchType.BoardGame, SearchType.BoardGameExpansion });
@@ -93,7 +93,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Search
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.UserXml), HttpStatusCode.OK);
             MockBggDeserializer(new SearchResultList { Total = 100 });
 
-            _handler = new SearchHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
+            _handler = new SearchHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.SearchByQueryExact("ark nova");

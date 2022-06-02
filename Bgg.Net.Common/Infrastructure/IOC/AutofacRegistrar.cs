@@ -35,6 +35,7 @@ namespace Bgg.Net.Common.Infrastructure.IOC
             builder.RegisterType<BggClient>().As<IHttpClient>().AsSelf();
             builder.RegisterType<CollectionClient>().As<ICollectionClient>().AsSelf();
             builder.RegisterType<BggDeserializer>().As<IBggDeserializer>().AsSelf();
+            builder.RegisterType<QueryBuilder>().As<IQueryBuilder>().AsSelf();
             builder.RegisterType<RequestValidatorFactory>().As<IRequestValidatorFactory>().AsSelf();
             builder.RegisterType<ThingHandler>().As<IThingHandler>().AsSelf();
             builder.RegisterType<FamilyHandler>().As<IFamilyHandler>().AsSelf();

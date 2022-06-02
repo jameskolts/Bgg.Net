@@ -14,8 +14,8 @@ namespace Bgg.Net.Common.RequestHandlers.Search
     /// </summary>
     public class SearchHandler : RequestHandler, ISearchHandler
     {
-        public SearchHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory)
-            : base(deserializer, logger, httpClient, validatorFactory)
+        public SearchHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
+            : base(deserializer, logger, httpClient, validatorFactory, queryBuilder)
         {
         }
 

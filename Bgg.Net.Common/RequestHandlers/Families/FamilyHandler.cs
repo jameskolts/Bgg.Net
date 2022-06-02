@@ -13,8 +13,8 @@ namespace Bgg.Net.Common.RequestHandlers.Families
     /// </summary>
     public class FamilyHandler : RequestHandler, IFamilyHandler
     {
-        public FamilyHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient client, IRequestValidatorFactory validatorFactory)
-            : base(deserializer, logger, client, validatorFactory)
+        public FamilyHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient client, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
+            : base(deserializer, logger, client, validatorFactory, queryBuilder)
         {
         }
 

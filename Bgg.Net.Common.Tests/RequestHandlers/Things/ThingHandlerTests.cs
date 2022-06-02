@@ -31,7 +31,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
 
             MockValidatorFactory(new ThingRequestValidator());
            
-            _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
+            _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetThing(request);
@@ -72,7 +72,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
                    }
                });
 
-            _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
+            _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetThing(request);
@@ -102,7 +102,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
                     }
                 });
 
-            _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
+            _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetThingById(1);
@@ -132,7 +132,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
                     }
                 });
 
-            _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
+            _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetThingsById(new List<long> { 1, 2, 3 });
@@ -156,7 +156,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
             _deserializerMock.Setup(x => x.Deserialize<ThingList>(It.IsAny<string>()))
                 .Throws(new Exception("exception"));
 
-            _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
+            _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetThingById(1);

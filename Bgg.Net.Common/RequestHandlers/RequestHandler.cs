@@ -20,19 +20,15 @@ namespace Bgg.Net.Common.RequestHandlers
         protected readonly ILogger _logger;
         protected readonly IHttpClient _httpClient;
         protected readonly IRequestValidatorFactory _requestValidatorFactory;
-
-        /// <summary>
-        /// Creates a new instance of <see cref="RequestHandler"/>.
-        /// </summary>
-        /// <param name="deserializer">The <see cref="IBggDeserializer"/> that will deserialize the response.</param>
-        /// <param name="logger">The <see cref="ILogger"/> instance.</param>
-        /// <param name="httpClient">The <see cref="IHttpClient"/> that will handle http requests.</param>
-        public RequestHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory)
+        protected readonly IQueryBuilder _queryBuilder;
+                
+        public RequestHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
         {
             _bggDeserializer = deserializer;
             _logger = logger;
             _httpClient = httpClient;
             _requestValidatorFactory = validatorFactory;
+            _queryBuilder = queryBuilder;
         }
 
         /// <summary>
@@ -89,84 +85,11 @@ namespace Bgg.Net.Common.RequestHandlers
                 };
             }
 
-            var query = BuildQuery(resourceName, request);
+            var query = _queryBuilder.BuildQuery(resourceName, request);
 
             var httpResponseMessage = await _httpClient.GetAsync(query);
 
             return await BuildBggResult<T>(httpResponseMessage);
-        }
-
-        private string BuildQuery(string resourceName, BggRequest request)
-        {
-            var stringBuilder = new StringBuilder();
-
-            var type = request.GetType();
-            var propInfo = type.GetProperties();
-
-            stringBuilder.Append($"{resourceName}?");
-
-            foreach (var prop in propInfo)
-            {
-                var pi = type.GetProperty(prop.Name);
-
-                if (pi.GetValue(request) != null)
-                {
-                    if (!stringBuilder.ToString().EndsWith('?'))
-                    {
-                        stringBuilder.Append('&');
-                    }
-                    stringBuilder.Append(prop.Name.ToLower());
-                    stringBuilder.Append('=');
-
-                    if (pi.PropertyType == typeof(bool?))
-                    {
-                        var paramValue = pi.GetValue(request, null) as bool?;
-
-                        if (paramValue == true)
-                        {
-                            stringBuilder.Append('1');
-                        }
-                        else
-                        {
-                            stringBuilder.Append('0');
-                        }
-                    }
-                    else if (pi.PropertyType == typeof(DateOnly?))
-                    {
-                        var paramValue = pi.GetValue(request, null) as DateOnly?;
-
-                        stringBuilder.Append(paramValue.Value.ToString("yyyy-MM-dd"));
-                    }
-                    else if (pi.PropertyType == typeof(DateTime?))
-                    {
-                        var paramValue = pi.GetValue(request, null) as DateTime?;
-
-                        stringBuilder.Append(paramValue.Value.ToString("yyyy-MM-dd HH:mm:ss"));
-                    }
-                    else if (pi.PropertyType.Name.StartsWith("List"))
-                    {
-                        var paramList = pi.GetValue(request, null) as IList;
-
-                        for (int i = 0; i < paramList.Count; i++)
-                        {
-                            if (i == 0)
-                            {
-                                stringBuilder.Append(paramList[i].ToString().ToLower());
-                            }
-                            else
-                            {
-                                stringBuilder.Append("," + paramList[i].ToString().ToLower());
-                            }
-                        }
-                    }
-                    else
-                    {
-                        stringBuilder.Append(pi.GetValue(request, null).ToString().ToLower());
-                    }
-                }
-            }
-
-            return stringBuilder.ToString();
         }
     }
 }

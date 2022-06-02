@@ -29,7 +29,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Collection
                 .ReturnsAsync(new HttpResponseMessage());
             MockBggDeserializer(new Models.Collection { TotalItems = 100 });
 
-            _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object);
+            _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetBriefCollectionByUserName("user");
@@ -87,7 +87,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Collection
             MockBggDeserializer(new Models.Collection { TotalItems = 100 });
             MockValidatorFactory(new CollectionRequestValidator());
 
-            _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object);
+            _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetCollection(request);
@@ -110,7 +110,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Collection
                 .ReturnsAsync(new HttpResponseMessage());
             MockBggDeserializer(new Models.Collection { TotalItems = 100 });
 
-            _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object);
+            _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetCollectionByUserName("user");
@@ -132,7 +132,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Collection
                 .ReturnsAsync(new HttpResponseMessage());
             MockBggDeserializer(new Models.Collection { TotalItems = 100 });
 
-            _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object);
+            _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetCollectionByUserNameAndId("user", new List<long> { 1, 2 });
@@ -154,7 +154,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Collection
                 .ReturnsAsync(new HttpResponseMessage());
             MockBggDeserializer(new Models.Collection { TotalItems = 100 });
 
-            _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object);
+            _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetCollectionByUserNameAndType("user", CollectionSubType.RpgItem);
@@ -176,7 +176,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Collection
                 .ReturnsAsync(new HttpResponseMessage());
             MockBggDeserializer(new Models.Collection { TotalItems = 100 });
 
-            _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object);
+            _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetCollectionStatsByUserName("user");
@@ -198,7 +198,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Collection
                 .ReturnsAsync(new HttpResponseMessage());
             MockBggDeserializer(new Models.Collection { TotalItems = 100 });
 
-            _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object);
+            _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetPlayedCollectionByUserName("user");
@@ -220,7 +220,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Collection
                 .ReturnsAsync(new HttpResponseMessage());
             MockBggDeserializer(new Models.Collection { TotalItems = 100 });
 
-            _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object);
+            _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetWishListCollectionByUserName("user");

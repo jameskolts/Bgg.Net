@@ -1,4 +1,5 @@
-﻿using Bgg.Net.Common.Infrastructure.Http;
+﻿using Bgg.Net.Common.Infrastructure;
+using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Validation;
@@ -19,6 +20,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers
         protected Mock<IBggDeserializer> _deserializerMock { get; set; }
         protected Mock<ILogger> _loggerMock { get; set; }
         protected Mock<IRequestValidatorFactory> _validatorFactory { get; set; }
+        protected Mock<QueryBuilder> _queryBuilder { get; set; } = new Mock<QueryBuilder>() { CallBase = true };
 
         public HandlerTestBase()
         {

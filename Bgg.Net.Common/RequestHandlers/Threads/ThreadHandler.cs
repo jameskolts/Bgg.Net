@@ -13,8 +13,8 @@ namespace Bgg.Net.Common.RequestHandlers.Threads
     /// </summary>
     public class ThreadHandler : RequestHandler, IThreadHandler
     {
-        public ThreadHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory)
-            : base(deserializer, logger, httpClient, validatorFactory)
+        public ThreadHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
+            : base(deserializer, logger, httpClient, validatorFactory, queryBuilder)
         {
         }
 

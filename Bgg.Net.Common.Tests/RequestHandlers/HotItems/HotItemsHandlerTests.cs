@@ -38,7 +38,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.HotItems
                     }
                 });
 
-            _handler = new HotItemHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
+            _handler = new HotItemHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetHotItemsByType(HotItemType.BoardGame);

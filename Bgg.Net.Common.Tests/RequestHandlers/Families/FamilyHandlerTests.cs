@@ -28,7 +28,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
                     Families = new List<Family> { new Family(), new Family() }
                 });
 
-            _handler = new FamilyHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
+            _handler = new FamilyHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetFamilyById(1);
@@ -53,7 +53,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
                     Families = new List<Family> { new Family(), new Family() }
                 });
 
-            _handler = new FamilyHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
+            _handler = new FamilyHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetFamilyByIds(new List<long> { 1, 2, 3 });
@@ -78,7 +78,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
                     Families = new List<Family> { new Family(), new Family() }
                 });
 
-            _handler = new FamilyHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
+            _handler = new FamilyHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetFamilyByIdsAndType(new List<long> { 1, 2, 3 }, new List<FamilyType> { FamilyType.RpgPeriodical });
