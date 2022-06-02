@@ -1,8 +1,11 @@
-﻿namespace Bgg.Net.Common.Infrastructure.Http
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Bgg.Net.Common.Infrastructure.Http
 {
     /// <summary>
     /// A wrapper around a HttpClient.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class BggClient : IHttpClient, IDisposable
     {
         readonly HttpClient httpClient;

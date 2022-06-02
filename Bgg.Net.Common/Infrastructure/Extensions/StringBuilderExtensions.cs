@@ -48,7 +48,7 @@ namespace Bgg.Net.Common.Infrastructure.Extensions
 
         public static StringBuilder AppendListProp(this StringBuilder stringBuilder, string propName, IList valueList)
         {
-            if (valueList != null && valueList.Count > 0)
+            if (valueList.Count > 0)
             {
                 stringBuilder.AppendPropName(propName);
                 for (int i = 0; i < valueList.Count; i++)
