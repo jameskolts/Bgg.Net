@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bgg.Net.Common", "Bgg.Net.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bgg.Net.Common.Tests", "Bgg.Net.Common.Tests\Bgg.Net.Common.Tests.csproj", "{258B79F1-C77D-401C-BD0C-B2A8E1E336F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bgg.Net.Client", "Bgg.Net.Client\Bgg.Net.Client.csproj", "{0C0EC8D2-3F2B-4489-BF45-39849CD17055}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,12 @@ Global
 		{258B79F1-C77D-401C-BD0C-B2A8E1E336F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{258B79F1-C77D-401C-BD0C-B2A8E1E336F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{258B79F1-C77D-401C-BD0C-B2A8E1E336F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C0EC8D2-3F2B-4489-BF45-39849CD17055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C0EC8D2-3F2B-4489-BF45-39849CD17055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C0EC8D2-3F2B-4489-BF45-39849CD17055}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0C0EC8D2-3F2B-4489-BF45-39849CD17055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C0EC8D2-3F2B-4489-BF45-39849CD17055}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C0EC8D2-3F2B-4489-BF45-39849CD17055}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
