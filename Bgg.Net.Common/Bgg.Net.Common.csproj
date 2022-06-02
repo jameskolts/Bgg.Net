@@ -13,7 +13,7 @@
 		<SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Version>1.1.0-alpha</Version>
+		<Version>1.2.0</Version>
 		<Authors>James Kolts</Authors>
 		<Description>A lightweight library to aide in the consuming of the board game geek XML API 2</Description>
 		<Product>Bgg.Net</Product>
