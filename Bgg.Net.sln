@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bgg.Net.Common", "Bgg.Net.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bgg.Net.Common.Tests", "Bgg.Net.Common.Tests\Bgg.Net.Common.Tests.csproj", "{258B79F1-C77D-401C-BD0C-B2A8E1E336F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bgg.Net.Common.IntegrationTests", "Bgg.Net.Common.IntegrationTests\Bgg.Net.Common.IntegrationTests.csproj", "{931325BC-2A8E-4AE5-9EEF-DA7686D4AA59}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{258B79F1-C77D-401C-BD0C-B2A8E1E336F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{258B79F1-C77D-401C-BD0C-B2A8E1E336F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{258B79F1-C77D-401C-BD0C-B2A8E1E336F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{931325BC-2A8E-4AE5-9EEF-DA7686D4AA59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{931325BC-2A8E-4AE5-9EEF-DA7686D4AA59}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{931325BC-2A8E-4AE5-9EEF-DA7686D4AA59}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{931325BC-2A8E-4AE5-9EEF-DA7686D4AA59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
