@@ -22,7 +22,7 @@ namespace Bgg.Net.Common.Tests.Validation
             var request = new FamilyRequest();
 
             //Act
-            var result =  _validator.Validate(request);
+            var result = _validator.Validate(request);
 
             //Assert
             result.IsValid.Should().BeFalse();

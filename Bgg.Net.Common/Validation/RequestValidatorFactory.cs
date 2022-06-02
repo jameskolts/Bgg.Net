@@ -4,7 +4,12 @@
     {
         public IRequestValidator CreateRequestValidator(string requestType)
         {
-            return requestType switch
+            if (string.IsNullOrWhiteSpace(requestType))
+            {
+                throw new ArgumentNullException(nameof(requestType));
+            }
+
+            return requestType.ToLower() switch
             {
                 "thing" => new ThingRequestValidator(),
                 "family" => new FamilyRequestValidator(),
