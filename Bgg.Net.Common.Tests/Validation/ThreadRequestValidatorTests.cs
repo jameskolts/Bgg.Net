@@ -6,22 +6,22 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Bgg.Net.Common.Tests.Validation
 {
     [TestClass]
-    public class ThingRequestValidatorTests
+    public class ThreadRequestValidatorTests
     {
-        private readonly ThingRequestValidator _validator;
+        private readonly ThreadRequestValidator _validator;
 
-        public ThingRequestValidatorTests()
+        public ThreadRequestValidatorTests()
         {
-            _validator = new ThingRequestValidator();
+            _validator = new ThreadRequestValidator();
         }
 
         [TestMethod]
-        public void Request_MissingId()
+        public void Request_DefaultId()
         {
             //Arrange
-            var request = new ThingRequest
+            var request = new ThreadRequest(default)
             {
-                Page = 1
+                Count = 1
             };
 
             //Act
@@ -29,7 +29,7 @@ namespace Bgg.Net.Common.Tests.Validation
 
             //Assert
             result.IsValid.Should().BeFalse();
-            result.Errors.Should().Contain("Missing required element for ThingRequest: id");
+            result.Errors.Should().Contain("Missing required element for ThreadRequest: id");
         }
     }
 }

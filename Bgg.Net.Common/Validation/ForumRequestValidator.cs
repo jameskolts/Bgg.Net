@@ -2,16 +2,16 @@
 
 namespace Bgg.Net.Common.Validation
 {
-    public class UserRequestValidator : IRequestValidator
+    public class ForumRequestValidator : IRequestValidator
     {
         public ValidationResult Validate(BggRequest request)
         {
-            var userRequest = request as UserRequest;
+            var forumRequest = request as ForumRequest;
             var validationResult = new ValidationResult();
 
-            if (string.IsNullOrWhiteSpace(userRequest.Name))
+            if (forumRequest.Id == default)
             {
-                validationResult.Errors.Add($"Missing required element for UserRequest: name");
+                validationResult.Errors.Add($"Missing required element for ForumRequest: id");
             }
 
             validationResult.IsValid = !validationResult.Errors.Any();

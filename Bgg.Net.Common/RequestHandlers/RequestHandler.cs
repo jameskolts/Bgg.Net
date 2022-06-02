@@ -66,39 +66,6 @@ namespace Bgg.Net.Common.RequestHandlers
         }
 
         /// <summary>
-        /// Gets a resource from the BGG API2 extensibly. 
-        /// </summary>
-        /// <typeparam name="T">The type of the resource.</typeparam>
-        /// <param name="resourceName">The resource name to use in the query.</param>
-        /// <param name="supportedParameters">The supported parameters for this resource.</param>
-        /// <param name="queryParameters">The query parameters to execute.</param>
-        /// <returns>A <see cref="BggResult{T}"/> of the given type.</returns>
-        protected async Task<BggResult<T>> GetResourceExtensible<T>(string resourceName, IEnumerable<string> supportedParameters, Extension queryParameters)
-            where T : BggBase
-        {
-            _logger.Information("Get" + resourceName.UpperFirstChar() + "Extensible : {queryParameters}", queryParameters.ToString());
-
-            var validator = _requestValidatorFactory.CreateRequestValidator(resourceName);
-            var validationResult = validator.Validate(queryParameters);
-
-            if (!validationResult.IsValid)
-            {
-                _logger.Error("Validation error(s) found: {errors}", string.Join(",", validationResult.Errors));
-
-                return new BggResult<T>
-                {
-                    IsSuccessful = false,
-                    Errors = validationResult.Errors
-                };
-            }
-
-            string queryString = $"{resourceName}?" + string.Join("&", queryParameters.Value.Select(x => x.Key + "=" + string.Join(',', x.Value)));
-            var httpResponseMessage = await _httpClient.GetAsync(queryString);
-
-            return await BuildBggResult<T>(httpResponseMessage);
-        }
-
-        /// <summary>
         /// Gets a resource from the BGG XML API2 using a request to build the query.
         /// </summary>
         /// <typeparam name="T">The typeof the resource.</typeparam>

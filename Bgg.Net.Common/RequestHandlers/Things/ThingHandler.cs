@@ -45,11 +45,5 @@ namespace Bgg.Net.Common.RequestHandlers.Things
 
             return await BuildBggResult<ThingList>(httpResponseMessage);
         }
-
-        /// <inheritdoc/>
-        public async Task<BggResult<ThingList>> GetThingsExtensible(Extension extension)
-        {
-            return await GetResourceExtensible<ThingList>("thing", Constants.SupportedThingQueryParameters, extension);
-        }
     }
 }

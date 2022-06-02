@@ -19,8 +19,7 @@
         /// <summary>
         /// Filters the results so that only articles on the specified dateTime or later will be returned.
         /// </summary>
-        /// <remarks>Should be in the format "YYYY-mm-dd or YYYY-mm-dd HH:MM:SS</remarks>
-        public string MinArticleDateTime { get; set; }
+        public DateTime? MinArticleDate { get; set; }
 
         /// <summary>
         /// Limits the number of articles returned to no more than NNN.

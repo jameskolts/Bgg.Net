@@ -22,14 +22,5 @@ namespace Bgg.Net.Common.RequestHandlers.Users
         /// <param name="request">The request to query.</param>
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="User"/>.</returns>
         Task<BggResult<User>> GetUser(UserRequest request);
-
-        /// <summary>
-        /// Gets a user given extensible parameters.
-        /// </summary>
-        /// <param name="extension">The parameters to use.</param>
-        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="User"/>.</returns>
-        /// <exception cref="NotSupportedException">Thrown if the extension is an unsupported parameter.</exception>
-        /// <remarks>See <see cref="Constants.SupportedUserQueryParameters"/>.</remarks>
-        Task<BggResult<User>> GetUserExtensible(Extension extension);
     }
 }

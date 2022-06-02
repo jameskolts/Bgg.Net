@@ -27,11 +27,5 @@ namespace Bgg.Net.Common.RequestHandlers.HotItems
 
             return await BuildBggResult<HotItemList>(httpResponseMessage);
         }
-
-        /// <inheritdoc/>
-        public async Task<BggResult<HotItemList>> GetHotItemsExtensible(Extension extension)
-        {
-            return await GetResourceExtensible<HotItemList>("hot", Constants.SupportedHotItemParameters, extension);
-        }
     }
 }

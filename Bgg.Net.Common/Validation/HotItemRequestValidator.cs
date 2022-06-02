@@ -1,64 +1,18 @@
-﻿using Bgg.Net.Common.Infrastructure;
-using Bgg.Net.Common.Models.Requests;
-using Bgg.Net.Common.Types;
+﻿using Bgg.Net.Common.Models.Requests;
 
 namespace Bgg.Net.Common.Validation
 {
-    public class HotItemRequestValidator : RequestValidatorBase, IRequestValidator
+    public class HotItemRequestValidator : IRequestValidator
     {
         /// <summary>
         /// Not Implemented for HotItemRequests.
         /// </summary>
         public ValidationResult Validate(BggRequest request)
         {
-            throw new NotImplementedException();
-        }
-
-        public ValidationResult Validate(Extension extension)
-        {
-            _validationResult = new ValidationResult();
-
-            if (!extension.Value.ContainsKey("type"))
+            return new ValidationResult
             {
-                _validationResult.Errors.Add("Missing required element for HotItemRequest: type");
-            }
-
-            foreach (var kvp in extension.Value)
-            {
-                switch (kvp.Key.ToLower())
-                {
-                    case "type":
-                        ValidateHotItemType(kvp.Key, kvp.Value);
-                        break;
-                    default:
-                        _validationResult.Errors.Add($"'{kvp.Key}' parameter is not supported for GetHotItemsExtensible.");
-                        break;
-                }
-            }
-
-            _validationResult.IsValid = !_validationResult.Errors.Any();
-
-            return _validationResult;
-        }
-
-        private void ValidateHotItemType(string paramName, List<string> values)
-        {
-            if (values == null || !values.Any())
-            {
-                _validationResult.Errors.Add("Missing required element for HotItemRequest: type");
-                return;
-            }
-
-            if (values.Count > 1)
-            {
-                _validationResult.Errors.Add($"Only one value is allowed for: {paramName}");
-            }            
-
-            var value = values.FirstOrDefault();
-            if (!Enum.TryParse(value, true, out HotItemType _))
-            {
-                _validationResult.Errors.Add($"The value '{value}' was not valid for: {paramName}");
-            }
+                IsValid = true
+            };
         }
     }
 }

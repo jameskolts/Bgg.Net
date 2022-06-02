@@ -1,6 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Autofac;
-using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.IOC;
 using Bgg.Net.Common.RequestHandlers.Collection;
@@ -26,35 +25,6 @@ using (var scope = AutofacRegistrar.BuildContainer().BeginLifetimeScope())
     var resultThing = await handler.GetThingById(25);
     logger.Information("Success: " + resultThing.IsSuccessful);
 
-    var extension = new Extension
-    {
-        Value = new Dictionary<string, List<string>>
-        {
-            { "id", new List<string> { "1" } },
-            { "versions", new List<string> { "1" } },
-            { "badParameter", new List<string> { "1" }}
-        }
-    };
-
-    var resultThingList = await handler.GetThingsExtensible(extension);
-    logger.Information("Success: " + resultThingList.IsSuccessful);
-
-    extension = new Extension
-    {
-        Value = new Dictionary<string, List<string>>
-        {
-            { "id", new List<string> { "1" } },
-            { "versions", new List<string> { "1" } },
-            { "videos", new List<string> { "1" } },
-            { "comments", new List<string> { "1" } },
-            { "marketplace", new List<string> { "1" } },
-            { "stats", new List<string> { "1" } }
-        }
-    };
-
-    resultThingList = await handler.GetThingsExtensible(extension);
-    logger.Information("Success: " + resultThingList.IsSuccessful);
-
     logger.Information("---Families---");
     var familyHandler = scope.Resolve<IFamilyHandler>();
     var family = await familyHandler.GetFamilyById(1);
@@ -65,8 +35,7 @@ using (var scope = AutofacRegistrar.BuildContainer().BeginLifetimeScope())
     logger.Information("Success: " + family.IsSuccessful);
     family = await familyHandler.GetFamilyByIdsAndType(new List<long> { 1, 2, 3 }, new List<Bgg.Net.Common.Types.FamilyType> { Bgg.Net.Common.Types.FamilyType.BoardGameFamily });
     logger.Information("Success: " + family.IsSuccessful);
-    family = await familyHandler.GetFamilyExtensible(new Extension { Value = new Dictionary<string, List<string>> { { "id", new List<string> { "1" } } } });
-    logger.Information("Success: " + family.IsSuccessful);
+
 
     logger.Information("---ForumList---");
     var forumListHandler = scope.Resolve<ForumListHandler>();
@@ -82,19 +51,6 @@ using (var scope = AutofacRegistrar.BuildContainer().BeginLifetimeScope())
     logger.Information("---Thread---");
     var threadHandler = scope.Resolve<ThreadHandler>();
     var thread = await threadHandler.GetThreadById(25);
-    logger.Information("Success: " + thread.IsSuccessful);
-
-    extension = new Extension
-    {
-        Value = new Dictionary<string, List<string>>
-        {
-            { "id", new List<string> { "1" } },
-            { "minarticleid", new List<string> { "1" } },
-            { "minarticledate", new List<string> { "2000-07-09" } }
-        }
-    };
-
-    thread = await threadHandler.GetThreadExtensible(extension);
     logger.Information("Success: " + thread.IsSuccessful);
 
     logger.Information("---Collection---");

@@ -2,6 +2,7 @@
 using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
 using Bgg.Net.Common.Validation;
 using Serilog;
@@ -22,6 +23,12 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
         public ForumListHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory)
             : base(deserializer, logger, httpClient, validatorFactory)
         {
+        }
+
+        /// <inheritdoc/>
+        public async Task<BggResult<ForumList>> GetForumList(ForumListRequest request)
+        {
+            return await GetResourceFromRequestObject<ForumList>("forumlist", request);
         }
 
         public async Task<BggResult<ForumList>> GetForumListByIdAndType(long id, ItemType type)

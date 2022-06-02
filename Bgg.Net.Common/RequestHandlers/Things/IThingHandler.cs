@@ -29,14 +29,5 @@ namespace Bgg.Net.Common.RequestHandlers.Things
         /// <param name="ids">the id's of the things to retrieve.</param>
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Thing"/>.</returns>
         Task<BggResult<ThingList>> GetThingsById(List<long> ids);
-
-        /// <summary>
-        /// Gets a thing given extensible parameters. 
-        /// </summary>
-        /// <param name="extensions">The parameters to use.</param>
-        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Thing"/>.</returns>
-        /// <exception cref="NotSupportedException">Thrown if the extension is an unsupported parameter.</exception>
-        /// <remarks>See <see cref="Constants.SupportedThingQueryParameters"/>.</remarks>
-        Task<BggResult<ThingList>> GetThingsExtensible(Extension extensions);
     }
 }

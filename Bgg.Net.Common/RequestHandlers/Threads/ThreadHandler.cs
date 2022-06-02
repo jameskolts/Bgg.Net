@@ -33,11 +33,5 @@ namespace Bgg.Net.Common.RequestHandlers.Threads
 
             return await BuildBggResult<Thread>(httpResponseMessage);
         }
-
-        /// <inheritdoc/>
-        public async Task<BggResult<Thread>> GetThreadExtensible(Extension extension)
-        {
-            return await GetResourceExtensible<Thread>("thread", Constants.SupportedThreadQueryParameters, extension);
-        }
     }
 }

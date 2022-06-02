@@ -39,12 +39,5 @@ namespace Bgg.Net.Common.RequestHandlers.Search
         /// <param name="request">What to search for.</param>
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="SearchResultList"/>.</returns>
         public Task<BggResult<SearchResultList>> Search(SearchRequest request);
-
-        /// <summary>
-        /// Gets a search result given extensible parameters
-        /// </summary>
-        /// <param name="extension">What to search for.</param>
-        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="SearchResultList"/>.</returns>
-        public Task<BggResult<SearchResultList>> SearchExtensible(Extension extension);
     }
 }

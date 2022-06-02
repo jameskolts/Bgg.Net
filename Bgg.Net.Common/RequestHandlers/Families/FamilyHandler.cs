@@ -51,11 +51,5 @@ namespace Bgg.Net.Common.RequestHandlers.Families
 
             return await BuildBggResult<FamilyList>(httpResponseMessage);
         }
-
-        /// <inheritdoc/>
-        public async Task<BggResult<FamilyList>> GetFamilyExtensible(Extension extension)
-        {
-            return await GetResourceExtensible<FamilyList>("family", Constants.SupportedFamilyQueryParameters, extension);
-        }
     }
 }

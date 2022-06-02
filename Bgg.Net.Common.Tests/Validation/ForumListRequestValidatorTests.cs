@@ -2,34 +2,32 @@
 using Bgg.Net.Common.Validation;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Bgg.Net.Common.Tests.Validation
 {
     [TestClass]
-    public class ThingRequestValidatorTests
+    public class ForumListRequestValidatorTests
     {
-        private readonly ThingRequestValidator _validator;
+        private readonly ForumListRequestValidator _validator;
 
-        public ThingRequestValidatorTests()
+        public ForumListRequestValidatorTests()
         {
-            _validator = new ThingRequestValidator();
+            _validator = new ForumListRequestValidator();
         }
 
         [TestMethod]
-        public void Request_MissingId()
+        public void Request_IdDefault()
         {
             //Arrange
-            var request = new ThingRequest
-            {
-                Page = 1
-            };
+            var request = new ForumListRequest();
 
             //Act
             var result = _validator.Validate(request);
 
             //Assert
             result.IsValid.Should().BeFalse();
-            result.Errors.Should().Contain("Missing required element for ThingRequest: id");
+            result.Errors.Should().Contain("Missing required element for ForumListRequest: id");
         }
     }
 }

@@ -74,11 +74,5 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
 
             return await BuildBggResult<PlayList>(httpResponseMessage);
         }
-
-        /// <inheritdoc/>
-        public async Task<BggResult<PlayList>> GetPlaysExtensible(Extension extension)
-        {
-            return await GetResourceExtensible<PlayList>("plays", Constants.SupportedPlaysParameters, extension);
-        }
     }
 }

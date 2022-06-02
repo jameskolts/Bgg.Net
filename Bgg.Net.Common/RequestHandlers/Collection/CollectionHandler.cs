@@ -65,12 +65,6 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<Models.Collection>> GetCollectionExtensible(Extension extension)
-        {
-            return await GetResourceExtensible<Models.Collection>("collection", Constants.SupportedCollectionParameters, extension);
-        }
-
-        /// <inheritdoc/>
         public async Task<BggResult<Models.Collection>> GetCollectionStatsByUserName(string userName)
         {
             _logger.Information("GetCollectionStatsByUserName : {userName}", userName);

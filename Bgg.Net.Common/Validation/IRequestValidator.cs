@@ -1,5 +1,4 @@
-﻿using Bgg.Net.Common.Infrastructure;
-using Bgg.Net.Common.Models.Requests;
+﻿using Bgg.Net.Common.Models.Requests;
 
 namespace Bgg.Net.Common.Validation
 {
@@ -14,12 +13,5 @@ namespace Bgg.Net.Common.Validation
         /// <param name="request">The request to validate.</param>
         /// <returns>A <see cref="ValidationResult"/> indicating the outcome.</returns>
         ValidationResult Validate(BggRequest request);
-
-        /// <summary>
-        /// Validates an extensible request.
-        /// </summary>
-        /// <param name="extension">The extension to validate.</param>
-        /// <returns>A <see cref="ValidationResult"/> indicating the outcome.</returns>
-        ValidationResult Validate(Extension extension);
     }
 }

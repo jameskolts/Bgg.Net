@@ -1,10 +1,8 @@
-﻿using Bgg.Net.Common.Infrastructure;
-using Bgg.Net.Common.Models;
+﻿using Bgg.Net.Common.Models;
 using Bgg.Net.Common.RequestHandlers.Families;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
 using Bgg.Net.Common.Tests.TestFiles;
 using Bgg.Net.Common.Types;
-using Bgg.Net.Common.Validation;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -92,69 +90,6 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
             result.Item.Families.Count.Should().Be(2);
             result.IsSuccessful.Should().BeTrue();
             result.Errors.Should().BeNullOrEmpty();
-        }
-
-        [TestMethod]
-        public async Task GetFamilyExtensible_Success()
-        {
-            //Arrange
-            MockValidatorFactory(new FamilyRequestValidator());
-            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.FamilyXml), HttpStatusCode.OK);
-            MockBggDeserializer(
-                new FamilyList
-                {
-                    Families = new List<Family> { new Family(), new Family() }
-                });
-
-            _handler = new FamilyHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
-
-            var extension = new Extension
-            {
-                Value = new Dictionary<string, List<string>>
-                {
-                    { "id", new List<string> { "1" } }
-                }
-            };
-
-            //Act
-            var result = await _handler.GetFamilyExtensible(extension);
-
-            //Assert
-            _httpClientMock.Verify(x => x.GetAsync("family?id=1"), Times.Once);
-            result.Should().NotBeNull();
-            result.Item.Should().NotBeNull();
-            result.Item.Families.Count.Should().Be(2);
-            result.IsSuccessful.Should().BeTrue();
-            result.Errors.Should().BeNullOrEmpty();
-        }
-
-        [TestMethod]
-        public async Task GetFamilyExtensible_BadParameter()
-        {
-            //Arrange
-            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.FamilyXml), HttpStatusCode.OK);
-            MockBggDeserializer<FamilyList>();
-            MockValidatorFactory(new FamilyRequestValidator());
-
-            _handler = new FamilyHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
-
-            var extension = new Extension
-            {
-                Value = new Dictionary<string, List<string>>
-                {
-                    { "id", new List<string> { "1" } },
-                    { "badparameter", new List<string> { "1" } }
-                }
-            };
-
-            //Act
-            var result = await _handler.GetFamilyExtensible(extension);
-
-            //Assert
-            result.Should().NotBeNull();
-            result.IsSuccessful.Should().BeFalse();
-            result.Errors.Should().Contain("'badparameter' parameter is not supported for: GetFamilyExtensible.");
-            result.Item.Should().BeNull();
         }
     }
 }

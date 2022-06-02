@@ -15,6 +15,8 @@
                 "search" => new SearchRequestValidator(),
                 "thread" => new ThreadRequestValidator(),
                 "user" => new UserRequestValidator(),
+                "forum" => new ForumRequestValidator(),
+                "forumlist" => new ForumListRequestValidator(),
                 _ => throw new NotImplementedException($"Unable to create validator for {requestType}"),
             };
         }

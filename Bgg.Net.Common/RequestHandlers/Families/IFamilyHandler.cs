@@ -30,14 +30,5 @@ namespace Bgg.Net.Common.RequestHandlers.Families
         /// <param name="types">The types to retrieve</param>
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="FamilyList"/>.</returns>
         Task<BggResult<FamilyList>> GetFamilyByIdsAndType(List<long> ids, List<FamilyType> types);
-
-        /// <summary>
-        /// Gets a family given extensible parameters. 
-        /// </summary>
-        /// <param name="extension">The parameters to use.</param>
-        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="FamilyList"/>.</returns>
-        /// <exception cref="NotSupportedException">Thrown if the extension is an unsupported parameter.</exception>
-        /// <remarks>Supported parameters include: 'id', 'type'.</remarks>
-        Task<BggResult<FamilyList>> GetFamilyExtensible(Extension extension);
     }
 }

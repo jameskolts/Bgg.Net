@@ -1,5 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Models.Requests;
 
 namespace Bgg.Net.Common.RequestHandlers.Forums
 {
@@ -20,5 +21,12 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
         /// <returns>A <see cref="BggResult{T}"/> containing the <see cref="Forum"/>.</returns>
         /// <remarks>Page size is 50.  Threads are sorted in order of the most recent post.</remarks>
         Task<BggResult<Forum>> GetForumByIdAndPage(long id, int page);
+
+        /// <summary>
+        /// Gets a fourm by the given query.
+        /// </summary>
+        /// <param name="request">The request to query.</param>
+        /// <returns>A <see cref="BggResult{T}"/> containing the <see cref="Forum"/>.</returns>
+        Task<BggResult<Forum>> GetForum(ForumRequest request);
     }
 }

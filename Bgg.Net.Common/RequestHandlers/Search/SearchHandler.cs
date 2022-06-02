@@ -54,11 +54,5 @@ namespace Bgg.Net.Common.RequestHandlers.Search
 
             return await BuildBggResult<SearchResultList>(httpResponseMessage);
         }
-
-        /// <inheritdoc/>
-        public async Task<BggResult<SearchResultList>> SearchExtensible(Extension extension)
-        {
-            return await GetResourceExtensible<SearchResultList>("search", Constants.SupportedSearchParameters, extension);
-        }
     }
 }

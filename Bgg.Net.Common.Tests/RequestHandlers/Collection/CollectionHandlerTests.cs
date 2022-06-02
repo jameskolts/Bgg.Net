@@ -1,9 +1,8 @@
-﻿using Bgg.Net.Common.Infrastructure;
-using Bgg.Net.Common.Infrastructure.Http;
-using Bgg.Net.Common.Validation;
+﻿using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Collection;
 using Bgg.Net.Common.Types;
+using Bgg.Net.Common.Validation;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -228,36 +227,6 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Collection
 
             //Assert
             _collectionClientMock.Verify(x => x.GetAsync("collection?username=user&wishlist=1"), Times.Once);
-            result.Should().NotBeNull();
-            result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
-            result.Errors.Should().BeNullOrEmpty();
-            result.Item.TotalItems.Should().Be(100);
-        }
-
-        [TestMethod]
-        public async Task GetCollectionExtensible_Success()
-        {
-            //Arrange
-            var extension = new Extension
-            {
-                Value = new Dictionary<string, List<string>>
-                {
-                    { "username", new List<string> { "user" } }
-                }
-            };
-
-            _collectionClientMock.Setup(x => x.GetAsync(It.IsAny<string>()))
-                .ReturnsAsync(new HttpResponseMessage());
-            MockBggDeserializer(new Models.Collection { TotalItems = 100 });
-            MockValidatorFactory(new CollectionRequestValidator());
-
-            _handler = new CollectionHandler(_deserializerMock.Object, _loggerMock.Object, _collectionClientMock.Object, _validatorFactory.Object);
-
-            //Act
-            var result = await _handler.GetCollectionExtensible(extension);
-
-            //Assert
-            _collectionClientMock.Verify(x => x.GetAsync("collection?username=user"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();

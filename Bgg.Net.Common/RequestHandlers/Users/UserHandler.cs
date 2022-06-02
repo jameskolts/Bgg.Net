@@ -33,11 +33,5 @@ namespace Bgg.Net.Common.RequestHandlers.Users
 
             return await BuildBggResult<User>(httpResponseMessage);
         }
-
-        /// <inheritdoc/>
-        public async Task<BggResult<User>> GetUserExtensible(Extension extension)
-        {
-            return await GetResourceExtensible<User>("user", Constants.SupportedUserQueryParameters, extension);
-        }
     }
 }

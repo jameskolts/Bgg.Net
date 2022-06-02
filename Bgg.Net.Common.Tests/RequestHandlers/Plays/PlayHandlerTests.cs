@@ -1,5 +1,4 @@
-﻿using Bgg.Net.Common.Infrastructure;
-using Bgg.Net.Common.Models;
+﻿using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Plays;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
@@ -229,35 +228,6 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
             result.Item.Play.Count.Should().Be(3);
-        }
-
-
-        [TestMethod]
-        public async Task GetPlaysExtensible_BadParameter()
-        {
-            //Arrange
-            var extension = new Extension
-            {
-                Value = new Dictionary<string, List<string>>
-                {
-                    {"badParam", new List<string> { "1,2,3" } },
-                }
-            };
-
-            MockValidatorFactory(new PlayRequestValidator());
-            MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.PlaysXml), HttpStatusCode.OK);
-
-            _handler = new PlaysHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object);
-
-            //Act
-            var result = await _handler.GetPlaysExtensible(extension);
-
-            //Assert
-            result.Should().NotBeNull();
-            result.HttpResponseCode.Should().BeNull();
-            result.Errors.Count.Should().Be(2);
-            result.Errors.Should().Contain("'badParam' parameter is not supported for GetPlaysExtensible");
-            result.Item.Should().BeNull();
         }
     }
 }

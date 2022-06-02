@@ -57,14 +57,5 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
         /// <param name="type">A <see cref="BggResult{T}"/> where T is a <see cref="Guild"/>.</param>
         /// <returns></returns>
         Task<BggResult<PlayList>> GetPlaysByIdAndType(long id, ItemType type);
-
-        /// <summary>
-        /// Gets the plays given extensible parameters.
-        /// </summary>
-        /// <param name="extension">The parameters to use.</param>
-        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Guild"/>.</returns>
-        /// <exception cref="NotSupportedException">Thrown if the extension is an unsupported parameter.</exception>
-        /// <remarks>See <see cref="Constants.SupportedPlaysParameters"/>.</remarks>
-        Task<BggResult<PlayList>> GetPlaysExtensible(Extension extension);
     }
 }

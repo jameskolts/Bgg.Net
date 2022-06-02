@@ -66,14 +66,5 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         /// <param name="request">The request to query.</param>
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Models.Collection"/>.</returns>
         Task<BggResult<Models.Collection>> GetCollection(CollectionRequest request);
-
-        /// <summary>
-        /// Gets a collection given extensible parameters.
-        /// </summary>
-        /// <param name="extension"></param>
-        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Models.Collection"/>.</returns>
-        /// <exception cref="NotSupportedException">Thrown if the extension is an unsupported parameter.</exception>
-        /// <remarks>See <see cref="Constants.SupportedCollectionParameters"/>.</remarks>
-        Task<BggResult<Models.Collection>> GetCollectionExtensible(Extension extension);
     }
 }

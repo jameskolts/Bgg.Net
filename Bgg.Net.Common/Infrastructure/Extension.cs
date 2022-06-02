@@ -12,7 +12,7 @@ namespace Bgg.Net.Common.Infrastructure
         /// <summary>
         /// The value of the extension as a key value pair.
         /// </summary>
-        public Dictionary<string, List<string>> Value { get; internal set; } = new Dictionary<string, List<string>>(StringComparer.InvariantCultureIgnoreCase);
+        public Dictionary<string, List<string>> Values { get; internal set; }
 
         public override string ToString()
         {
@@ -27,7 +27,7 @@ namespace Bgg.Net.Common.Infrastructure
         /// <param name="values">The value to add.</param>
         public void AddValue(string key, List<string> values)
         {
-            Value.Add(key.ToLower(), values.ConvertAll(v => v.ToLower()));
+            Values.Add(key.ToLower(), values.ConvertAll(v => v.ToLower()));
         }
     }
 }

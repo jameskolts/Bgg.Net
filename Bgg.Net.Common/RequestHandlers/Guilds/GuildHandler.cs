@@ -45,11 +45,5 @@ namespace Bgg.Net.Common.RequestHandlers.Guilds
 
             return await BuildBggResult<Guild>(httpResponseMessage);
         }
-
-        /// <inheritdoc/>
-        public async Task<BggResult<Guild>> GetGuildExtensible(Extension extension)
-        {
-            return await GetResourceExtensible<Guild>("guild", Constants.SupportedGuildParameters, extension);
-        }
     }
 }

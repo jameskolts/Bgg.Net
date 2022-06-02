@@ -32,14 +32,5 @@ namespace Bgg.Net.Common.RequestHandlers.Guilds
         /// <param name="page">Optional parameter indicates which page of members to include in the set.  Defaults to 1.</param>
         /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Guild"/>.</returns>
         Task<BggResult<Guild>> GetGuildByIdWithMembers(long id, SortType sortType = SortType.UserName, int page = 1);
-
-        /// <summary>
-        /// Gets a guild given extensible parameters.
-        /// </summary>
-        /// <param name="extension">The parameters to use.</param>
-        /// <returns>A <see cref="BggResult{T}"/> where T is a <see cref="Guild"/>.</returns>
-        /// <exception cref="NotSupportedException">Thrown if the extension is an unsupported parameter.</exception>
-        /// <remarks>See <see cref="Constants.SupportedGuildParameters"/>.</remarks>
-        Task<BggResult<Guild>> GetGuildExtensible(Extension extension);
     }
 }

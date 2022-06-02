@@ -2,6 +2,7 @@
 using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Validation;
 using Serilog;
 
@@ -18,6 +19,12 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
         public ForumHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory)
             : base(deserializer, logger, httpClient, validatorFactory)
         {
+        }
+
+        /// <inheritdoc/>
+        public async Task<BggResult<Forum>> GetForum(ForumRequest request)
+        {
+            return await GetResourceFromRequestObject<Forum>("forum", request);
         }
 
         public async Task<BggResult<Forum>> GetForumById(long id)
