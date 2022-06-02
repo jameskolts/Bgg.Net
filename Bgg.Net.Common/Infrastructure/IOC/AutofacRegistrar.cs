@@ -52,7 +52,7 @@ namespace Bgg.Net.Common.Infrastructure.IOC
         }
 
         [ExcludeFromCodeCoverage]
-        public static ContainerBuilder RegisterCommon(this ContainerBuilder builder)
+        public static ContainerBuilder RegisterBggCommon(this ContainerBuilder builder)
         {
             builder.RegisterType<BggClient>().As<IHttpClient>().AsSelf();
             builder.RegisterType<CollectionClient>().As<ICollectionClient>().AsSelf();
