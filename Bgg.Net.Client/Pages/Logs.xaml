@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Bgg.Net.Client.Pages.Dashboard"
-             Title="Dashboard">
+             x:Class="Bgg.Net.Client.Pages.Logs"
+             Title="Logs">
     <StackLayout>
-        <Label Text="Welcome to Board Game Geek.NET! Dashboard"
+        <Label Text="Logs"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
     </StackLayout>

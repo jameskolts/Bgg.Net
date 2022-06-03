@@ -32,7 +32,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->		
-		<MauiIcon Include="Resources\AppIcon\bgg_icon.png"/>
+		<MauiIcon Include="Resources\AppIcon\bgg_icon.png" />
 		
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -50,6 +50,8 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\bgglogo_3_dark.png" />
 	  <None Remove="Resources\Images\bgglogo_3_light.png" />
+	  <None Remove="Resources\Images\filter.png" />
+	  <None Remove="Resources\Images\filterWhite.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -57,9 +59,32 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\CardView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Collection.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\Dashboard.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\Logs.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ThingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Platforms\Android\Resources\drawable\" />
+	  <Folder Include="Platforms\Android\Resources\mipmapp\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\CardView.xaml.cs">
+	    <DependentUpon>CardView.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>

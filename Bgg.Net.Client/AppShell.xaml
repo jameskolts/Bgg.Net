@@ -10,6 +10,16 @@
     <ShellContent
         Title="Dashboard"
         ContentTemplate="{DataTemplate Pages:Dashboard}"
-        Route="MainPage" />
+        Route="dashboard" />
+
+    <ShellContent
+        Title="Collection"
+        ContentTemplate="{DataTemplate Pages:Collection}"
+        Route="collection" />
+
+    <ShellContent
+        Title="Dashboard"
+        ContentTemplate="{DataTemplate Pages:Logs}"
+        Route="logs" />
 
 </Shell>

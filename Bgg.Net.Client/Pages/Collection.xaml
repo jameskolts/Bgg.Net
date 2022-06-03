@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Views="clr-namespace:Bgg.Net.Client.Views"
+             x:Class="Bgg.Net.Client.Pages.Collection"
+             Title="Collection">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="filterwhite.png" Order="Primary" Priority="0"/>
+        <ToolbarItem Text="To Excel" Order="Secondary" Priority="0"/>
+        <ToolbarItem Text="To Email" Order="Secondary" Priority="0"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+
+        <StackLayout>
+            <Entry 
+                Margin="2.5"
+                Placeholder="Search collection ..."/>
+            <ActivityIndicator x:Name="activityIndicator" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" VerticalOptions="Center"/>
+            
+            <ListView ItemsSource="{Binding Collection}"
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Label Text="{Binding Name}"/>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>                    
+                </ListView.ItemTemplate>                
+            </ListView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

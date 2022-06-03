@@ -74,19 +74,5 @@ namespace Bgg.Net.Common.Models
         /// </summary>
         [XmlElement("numplays")]
         public int NumPlays { get; set; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
