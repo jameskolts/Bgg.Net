@@ -1,4 +1,6 @@
-﻿namespace Bgg.Net.Client;
+﻿using Bgg.Net.Client.Pages;
+
+namespace Bgg.Net.Client;
 
 public partial class App : Application
 {
