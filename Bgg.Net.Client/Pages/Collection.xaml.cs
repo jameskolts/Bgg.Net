@@ -1,32 +1,52 @@
-using Bgg.Net.Common.Models;
-using Bgg.Net.Common.RequestHandlers.Collection;
-using Bgg.Net.Common.Infrastructure.IOC;
-using Autofac;
-using Bgg.Net.Client.ViewModels;
 using Bgg.Net.Client.IOC;
+using Bgg.Net.Client.ViewModels;
 
 namespace Bgg.Net.Client.Pages;
 
 public partial class Collection : ContentPage
 {
-	public ICollectionViewModel collectionViewModel;
-	public Common.Models.Collection _collection;
+    public ICollectionViewModel collectionViewModel;
+    public Common.Models.Collection _collection;
 
-	public Collection()
-	{
-		InitializeComponent();
-		Init();
-		InitAsync();
-	}
-
-	public void Init()
+    public Collection()
     {
-        collectionViewModel = BootStrapper.Resolve<ICollectionViewModel>();
-		BindingContext = collectionViewModel;
+        InitializeComponent();
+        Init();
+        InitAsync();
     }
 
-	public async void InitAsync()
+    public void Init()
     {
-		await collectionViewModel.GetCollection("JusticiarIV");
+        collectionViewModel = BootStrapper.Resolve<ICollectionViewModel>();
+        BindingContext = collectionViewModel;
+    }
+
+    public async void InitAsync()
+    {
+        await collectionViewModel.GetCollection("JusticiarIV");
+    }
+
+    protected void FilterBtn_Clicked(object sender, EventArgs e)
+    {
+        if (filterFrame.IsVisible)
+        {
+            filterFrame.IsVisible = false;
+        }
+        else
+        {
+            filterFrame.IsVisible = true;
+        }
+    }
+
+    protected void SearchBtn_Clicked(object sender, EventArgs e)
+    {
+        if (searchFrame.IsVisible)
+        {
+            searchFrame.IsVisible = false;
+        }
+        else
+        {
+            searchFrame.IsVisible = true;
+        }
     }
 }

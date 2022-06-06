@@ -18,7 +18,7 @@
         Route="collection" />
 
     <ShellContent
-        Title="Dashboard"
+        Title="Logs"
         ContentTemplate="{DataTemplate Pages:Logs}"
         Route="logs" />
 

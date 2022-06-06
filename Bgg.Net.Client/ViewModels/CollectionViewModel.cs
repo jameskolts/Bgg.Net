@@ -39,6 +39,8 @@ namespace Bgg.Net.Client.ViewModels
 
                 var collectionResponse = await _collectionHandler.GetCollectionByUserName(userName);
                 Collection = collectionResponse.Item.Items.ToObservableCollection();
+
+                var collectionIds = Collection.Select(x => x.Id).ToList();
             }
             catch (Exception ex)
             {

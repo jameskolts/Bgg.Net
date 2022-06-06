@@ -21,7 +21,7 @@ namespace Bgg.Net.Common.Models
         public bool Own { get; set; }
 
         /// <summary>
-        /// Whas the item previously owned in this collection.
+        /// Was the item previously owned in this collection.
         /// </summary>
         [XmlAttribute("prevowned")]
         public bool PreviouslyOwned { get; set; }

@@ -35,7 +35,7 @@
 		<MauiIcon Include="Resources\AppIcon\bgg_icon.png" />
 		
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Images\bgglogo_1_dark.png" Color="#512BD4" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -52,6 +52,8 @@
 	  <None Remove="Resources\Images\bgglogo_3_light.png" />
 	  <None Remove="Resources\Images\filter.png" />
 	  <None Remove="Resources\Images\filterWhite.png" />
+	  <None Remove="Resources\Images\search.png" />
+	  <None Remove="Resources\Images\searchwhite.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -59,7 +61,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\CardView.xaml">
+	  <MauiXaml Update="Views\CollectionCardView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Collection.xaml">
@@ -77,13 +79,23 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Models\" />
 	  <Folder Include="Platforms\Android\Resources\drawable\" />
 	  <Folder Include="Platforms\Android\Resources\mipmapp\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\CardView.xaml.cs">
-	    <DependentUpon>CardView.xaml</DependentUpon>
+	  <PackageReference Include="Syncfusion.Maui.Charts" Version="20.1.58-preview" />
+	  <PackageReference Include="Syncfusion.Maui.Core" Version="20.1.58-preview" />
+	  <PackageReference Include="Syncfusion.Maui.Gauges" Version="20.1.58-preview" />
+	  <PackageReference Include="Syncfusion.Maui.ListView" Version="20.1.58-preview" />
+	  <PackageReference Include="Syncfusion.Maui.Sliders" Version="20.1.58-preview" />
+	  <PackageReference Include="Syncfusion.Maui.TabView" Version="20.1.58-preview" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\CollectionCardView.xaml.cs">
+	    <DependentUpon>CollectionCardView.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
