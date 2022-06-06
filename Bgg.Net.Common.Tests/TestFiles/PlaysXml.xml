@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<plays username="Jimmydm90" userid="1014881" total="1958" page="1" termsofuse="https://boardgamegeek.com/xmlapi/termsofuse">
+	<play id="60784259" date="2022-05-17" quantity="1" length="0" incomplete="0" nowinstats="0" location="home">
+		<item name="Marvel Champions: The Card Game" objecttype="thing" objectid="285774">
+			<subtypes>
+				<subtype value="boardgame" />
+			</subtypes>
+		</item>
+		<comments>Hela default</comments>
+		<players>
+			<player username="Jimmydm90" userid="0" name="Jimmy" startposition="good" color="Wolverine aggression*" score="25" new="0" rating="0" win="1" />
+		</players>
+	</play>
+	<play id="60683689" date="2022-05-13" quantity="1" length="0" incomplete="0" nowinstats="0" location="home">
+		<item name="Cascadia" objecttype="thing" objectid="295947">
+			<subtypes>
+				<subtype value="boardgame" />
+			</subtypes>
+		</item>
+		<players>
+			<player username="" userid="0" name="Jimmy" startposition="" color="" score="101" new="0" rating="0" win="1" />
+			<player username="" userid="0" name="Hannah" startposition="" color="" score="86" new="0" rating="0" win="0" />
+		</players>
+	</play>
+	<play id="60676333" date="2022-05-13" quantity="1" length="0" incomplete="0" nowinstats="0" location="">
+		<item name="Marvel Champions: The Card Game" objecttype="thing" objectid="285774">
+			<subtypes>
+				<subtype value="boardgame" />
+			</subtypes>
+		</item>
+		<comments>Mutagen gimmicks </comments>
+		<players>
+			<player username="" userid="0" name="Jimmy" startposition="" color="Aquarian protection " score="" new="0" rating="0" win="1" />
+		</players>
+	</play>
+</plays>

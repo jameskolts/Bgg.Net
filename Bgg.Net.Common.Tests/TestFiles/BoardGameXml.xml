@@ -1,0 +1,791 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<items termsofuse="https://boardgamegeek.com/xmlapi/termsofuse">
+	<item type="boardgame" id="1">
+		<thumbnail>https://cf.geekdo-images.com/rpwCZAjYLD940NWwP3SRoA__thumb/img/YT6svCVsWqLrDitcMEtyazVktbQ=/fit-in/200x150/filters:strip_icc()/pic4718279.jpg</thumbnail>
+		<image>https://cf.geekdo-images.com/rpwCZAjYLD940NWwP3SRoA__original/img/yR0aoBVKNrAmmCuBeSzQnMflLYg=/0x0/filters:format(jpeg)/pic4718279.jpg</image>
+		<name type="primary" sortindex="5" value="Die Macher" />
+		<name type="alternate" sortindex="1" value="德国大选" />
+		<name type="alternate" sortindex="1" value="디 마허" />
+		<description>Die Macher is a game about seven sequential political races in different regions of Germany. Players are in charge of national political parties, and must manage limited resources to help their party to victory. The winning party will have the most victory points after all the regional elections. There are four different ways of scoring victory points. First, each regional election can supply one to eighty victory points, depending on the size of the region and how well your party does in it. Second, if a party wins a regional election and has some media influence in the region, then the party will receive some media-control victory points. Third, each party has a national party membership which will grow as the game progresses and this will supply a fair number of victory points. Lastly, parties score some victory points if their party platform matches the national opinions at the end of the game.&amp;#10;&amp;#10;The 1986 edition featured four parties from the old West Germany and supported 3-4 players. The 1997 edition supports up to five players in the re-united Germany and updated several features of the rules as well.  The 2006 edition also supports up to five players and adds a shorter five-round variant and additional rules updates by the original designer.&amp;#10;&amp;#10;</description>
+		<yearpublished value="1986" />
+		<minplayers value="3" />
+		<maxplayers value="5" />
+		<poll name="suggested_numplayers" title="User Suggested Number of Players" totalvotes="132">
+			<results numplayers="1">
+				<result value="Best" numvotes="0" />
+				<result value="Recommended" numvotes="1" />
+				<result value="Not Recommended" numvotes="83" />
+			</results>
+			<results numplayers="2">
+				<result value="Best" numvotes="0" />
+				<result value="Recommended" numvotes="1" />
+				<result value="Not Recommended" numvotes="85" />
+			</results>
+			<results numplayers="3">
+				<result value="Best" numvotes="2" />
+				<result value="Recommended" numvotes="26" />
+				<result value="Not Recommended" numvotes="73" />
+			</results>
+			<results numplayers="4">
+				<result value="Best" numvotes="25" />
+				<result value="Recommended" numvotes="84" />
+				<result value="Not Recommended" numvotes="9" />
+			</results>
+			<results numplayers="5">
+				<result value="Best" numvotes="111" />
+				<result value="Recommended" numvotes="12" />
+				<result value="Not Recommended" numvotes="2" />
+			</results>
+			<results numplayers="5+">
+				<result value="Best" numvotes="1" />
+				<result value="Recommended" numvotes="0" />
+				<result value="Not Recommended" numvotes="59" />
+			</results>
+		</poll>
+		<playingtime value="240" />
+		<minplaytime value="240" />
+		<maxplaytime value="240" />
+		<minage value="14" />
+		<poll name="suggested_playerage" title="User Suggested Player Age" totalvotes="30">
+			<results>
+				<result value="2" numvotes="0" />
+				<result value="3" numvotes="0" />
+				<result value="4" numvotes="0" />
+				<result value="5" numvotes="0" />
+				<result value="6" numvotes="0" />
+				<result value="8" numvotes="0" />
+				<result value="10" numvotes="0" />
+				<result value="12" numvotes="6" />
+				<result value="14" numvotes="17" />
+				<result value="16" numvotes="4" />
+				<result value="18" numvotes="2" />
+				<result value="21 and up" numvotes="1" />
+			</results>
+		</poll>
+		<poll name="language_dependence" title="Language Dependence" totalvotes="48">
+			<results>
+				<result level="1" value="No necessary in-game text" numvotes="36" />
+				<result level="2" value="Some necessary text - easily memorized or small crib sheet" numvotes="5" />
+				<result level="3" value="Moderate in-game text - needs crib sheet or paste ups" numvotes="7" />
+				<result level="4" value="Extensive use of text - massive conversion needed to be playable" numvotes="0" />
+				<result level="5" value="Unplayable in another language" numvotes="0" />
+			</results>
+		</poll>
+		<link type="boardgamecategory" id="1021" value="Economic" />
+		<link type="boardgamecategory" id="1026" value="Negotiation" />
+		<link type="boardgamecategory" id="1001" value="Political" />
+		<link type="boardgamemechanic" id="2916" value="Alliances" />
+		<link type="boardgamemechanic" id="2080" value="Area Majority / Influence" />
+		<link type="boardgamemechanic" id="2012" value="Auction/Bidding" />
+		<link type="boardgamemechanic" id="2072" value="Dice Rolling" />
+		<link type="boardgamemechanic" id="2040" value="Hand Management" />
+		<link type="boardgamemechanic" id="2020" value="Simultaneous Action Selection" />
+		<link type="boardgamefamily" id="10643" value="Country: Germany" />
+		<link type="boardgamefamily" id="34116" value="Political: Elections" />
+		<link type="boardgamefamily" id="91" value="Series: Classic Line (Valley Games)" />
+		<link type="boardgamedesigner" id="1" value="Karl-Heinz Schmiel" />
+		<link type="boardgameartist" id="12517" value="Marcus Gschwendtner" />
+		<link type="boardgameartist" id="4959" value="Harald Lieske" />
+		<link type="boardgamepublisher" id="133" value="Hans im Glück" />
+		<link type="boardgamepublisher" id="2" value="Moskito Spiele" />
+		<link type="boardgamepublisher" id="2726" value="Portal Games" />
+		<link type="boardgamepublisher" id="15108" value="Spielworxx" />
+		<link type="boardgamepublisher" id="39249" value="sternenschimmermeer" />
+		<link type="boardgamepublisher" id="11652" value="Stronghold Games" />
+		<link type="boardgamepublisher" id="5382" value="Valley Games, Inc." />
+		<link type="boardgamepublisher" id="8147" value="YOKA Games" />
+		<videos total="31">
+			<video id="331304" title="Die Macher Learn to Play" category="instructional" language="English" link="http://www.youtube.com/watch?v=fg1IiX41UKs" username="PieLoGic" userid="1054024" postdate="2021-06-26T17:38:47-05:00" />
+			<video id="295893" title="Buka-bukaan Die Macher" category="unboxing" language="Indonesian" link="http://www.youtube.com/watch?v=nATghVoHzos" username="vardamir" userid="397401" postdate="2020-12-04T22:43:37-06:00" />
+			<video id="280230" title="Gambit TV: Die Macher - skrót zasad i moja opinia" category="review" language="Polish" link="http://www.youtube.com/watch?v=LuXMjXjoHmQ" username="Gambit_GGK" userid="147355" postdate="2020-09-03T11:54:10-05:00" />
+			<video id="280009" title="[이보게tv UNBOXING] 디 마허(Die Macher 1986) 독일 총선을 배경으로 한 5인이 즐길 수 있는 최고의 전략게임 | 난이도가 높은 게임이지만 꿀잼게임!" category="unboxing" language="Korean" link="http://www.youtube.com/watch?v=CEFcV4HCjJg" username="Alex_ebgtv" userid="2664133" postdate="2020-09-01T21:02:28-05:00" />
+			<video id="261717" title="Die Macher [Unboxing, version history, and comparison] - (Spielworxx English/German edition (2019))" category="unboxing" language="English" link="http://www.youtube.com/watch?v=EAIK7hc4S-A" username="Amnese" userid="108282" postdate="2020-04-25T06:44:27-05:00" />
+			<video id="260374" title="Die Macher (Unboxing)" category="unboxing" language="English" link="http://www.youtube.com/watch?v=ZyWU9VAXyM4" username="oliverkinne" userid="1497489" postdate="2020-04-16T06:27:56-05:00" />
+			<video id="253508" title="Abrindo: Die Macher" category="unboxing" language="Portuguese" link="http://www.youtube.com/watch?v=fOAtuaeLVho" username="Micaelsousa" userid="790334" postdate="2020-02-27T17:16:01-06:00" />
+			<video id="252435" title="Die Macher - Brettspiel Unboxing" category="unboxing" language="German" link="http://www.youtube.com/watch?v=2dBbY-bKVoE" username="Madhunter" userid="1062702" postdate="2020-02-21T05:36:04-06:00" />
+			<video id="248577" title="Unboxing the latest edition of Die Macher" category="unboxing" language="English" link="http://www.youtube.com/watch?v=DLrof3UQWU4" username="Blackbart1984" userid="866084" postdate="2020-01-24T08:30:09-06:00" />
+			<video id="246373" title="Die Macher - Tutorial and Playthrough" category="instructional" language="English" link="http://www.youtube.com/watch?v=O5nJQn67FAA" username="PaulGrogan" userid="1685" postdate="2020-01-04T03:27:33-06:00" />
+			<video id="224877" title="Die Macher Review - Still Worth it in 2019?" category="review" language="English" link="http://www.youtube.com/watch?v=7HUZ0c6I5Y4" username="boardgames4k" userid="2040628" postdate="2019-07-11T09:47:53-05:00" />
+			<video id="224731" title="Die Macher - Boardgames4K Tutorial/Live Playthrough" category="session" language="English" link="http://www.youtube.com/watch?v=IkXo4J-sNoE" username="boardgames4k" userid="2040628" postdate="2019-07-10T00:53:15-05:00" />
+			<video id="222554" title="Gumbo Live! with Stephen Buonocore talking Die Macher" category="interview" language="English" link="http://www.youtube.com/watch?v=4L-dhZWFkgM" username="BoardGameGumbo" userid="786127" postdate="2019-06-21T23:15:37-05:00" />
+			<video id="221523" title="Die Macher - Brettspiel - Let&#039;s Play mit Peat &amp; Alex + Gast" category="review" language="German" link="http://www.youtube.com/watch?v=-SI-ZxihlBE" username="Norc" userid="405769" postdate="2019-06-12T08:42:37-05:00" />
+			<video id="221060" title="Die Macher 5p Teaching &amp; Play-through by Heavy Cardboard" category="review" language="English" link="http://www.youtube.com/watch?v=zo6kxOdsuQQ" username="eapeas" userid="377742" postdate="2019-06-08T08:10:21-05:00" />
+		</videos>
+		<versions>
+			<item type="boardgameversion" id="456543">
+				<thumbnail>https://cf.geekdo-images.com/0bTB2RY9SP54L5Ua1l174A__thumb/img/LQtHKp9cFcT-Np632hh_02dtH28=/fit-in/200x150/filters:strip_icc()/pic4814244.jpg</thumbnail>
+				<image>https://cf.geekdo-images.com/0bTB2RY9SP54L5Ua1l174A__original/img/z0GNyPQ69Sg6pds22vmGXUfhnEM=/0x0/filters:format(jpeg)/pic4814244.jpg</image>
+				<link type="boardgameversion" id="1" value="Die Macher" inbound="true"/>
+				<name type="primary" sortindex="1" value="Chinese edition" />
+				<link type="boardgamepublisher" id="8147" value="YOKA Games" />
+				<yearpublished value="2019" />
+				<productcode value="" />
+				<width value="0" />
+				<length value="0" />
+				<depth value="0" />
+				<weight value="0" />
+				<link type="language" id="2181" value="Chinese" />
+			</item>
+			<item type="boardgameversion" id="25164">
+				<thumbnail>https://cf.geekdo-images.com/AxjGpkAAgSC9Ztsvit1lxw__thumb/img/zs7z8Q7OeTfCGa1M4XuMmrv_36k=/fit-in/200x150/filters:strip_icc()/pic247203.jpg</thumbnail>
+				<image>https://cf.geekdo-images.com/AxjGpkAAgSC9Ztsvit1lxw__original/img/lbSy_tgJYindrwZqm6A2-DPnwRo=/0x0/filters:format(jpeg)/pic247203.jpg</image>
+				<link type="boardgameversion" id="1" value="Die Macher" inbound="true"/>
+				<name type="primary" sortindex="1" value="German-only first edition" />
+				<link type="boardgamepublisher" id="133" value="Hans im Glück" />
+				<link type="boardgamepublisher" id="2" value="Moskito Spiele" />
+				<yearpublished value="1986" />
+				<productcode value="" />
+				<width value="9" />
+				<length value="12.5" />
+				<depth value="2" />
+				<weight value="0" />
+				<link type="language" id="2188" value="German" />
+			</item>
+			<item type="boardgameversion" id="24939">
+				<thumbnail>https://cf.geekdo-images.com/rc6kh3l7IAI7pmlDPws17A__thumb/img/RGX_nxAOAxb1jCLQOPI8ONc1ffs=/fit-in/200x150/filters:strip_icc()/pic2243000.jpg</thumbnail>
+				<image>https://cf.geekdo-images.com/rc6kh3l7IAI7pmlDPws17A__original/img/S_FqsIcD7f6TPQoXQcQiiC3rCZ0=/0x0/filters:format(jpeg)/pic2243000.jpg</image>
+				<link type="boardgameversion" id="1" value="Die Macher" inbound="true"/>
+				<name type="primary" sortindex="1" value="German-only second edition" />
+				<link type="boardgamepublisher" id="133" value="Hans im Glück" />
+				<link type="boardgamepublisher" id="2" value="Moskito Spiele" />
+				<link type="boardgameartist" id="12517" value="Marcus Gschwendtner" />
+				<yearpublished value="1997" />
+				<productcode value="48116" />
+				<width value="10.7" />
+				<length value="14.6" />
+				<depth value="2.8" />
+				<weight value="3.74786" />
+				<link type="language" id="2188" value="German" />
+			</item>
+			<item type="boardgameversion" id="493943">
+				<thumbnail>https://cf.geekdo-images.com/3IPbjZtHs09Yp7X2kqfq_A__thumb/img/XYnpaWg9BaFwiL6pdupw07OkFfk=/fit-in/200x150/filters:strip_icc()/pic5960818.jpg</thumbnail>
+				<image>https://cf.geekdo-images.com/3IPbjZtHs09Yp7X2kqfq_A__original/img/WQVeEgFcJTOkkLuouGMpRoXQ_QY=/0x0/filters:format(jpeg)/pic5960818.jpg</image>
+				<link type="boardgameversion" id="1" value="Die Macher" inbound="true"/>
+				<name type="primary" sortindex="1" value="Korean edition" />
+				<link type="boardgamepublisher" id="39249" value="sternenschimmermeer" />
+				<link type="boardgameartist" id="4959" value="Harald Lieske" />
+				<yearpublished value="2020" />
+				<productcode value="" />
+				<width value="0" />
+				<length value="0" />
+				<depth value="0" />
+				<weight value="0" />
+				<link type="language" id="2195" value="Korean" />
+			</item>
+			<item type="boardgameversion" id="24534">
+				<thumbnail>https://cf.geekdo-images.com/atw3uPHiIBbp7ga3e-BHGA__thumb/img/ZUunab_Ccbg4ohwr26LuALghZEk=/fit-in/200x150/filters:strip_icc()/pic159509.jpg</thumbnail>
+				<image>https://cf.geekdo-images.com/atw3uPHiIBbp7ga3e-BHGA__original/img/kkvSNEbgHuZ22J94ERmkaBGHTvk=/0x0/filters:format(jpeg)/pic159509.jpg</image>
+				<link type="boardgameversion" id="1" value="Die Macher" inbound="true"/>
+				<name type="primary" sortindex="1" value="Multilingual edition 2006" />
+				<link type="boardgamepublisher" id="5382" value="Valley Games, Inc." />
+				<yearpublished value="2006" />
+				<productcode value="" />
+				<width value="12" />
+				<length value="10" />
+				<depth value="2.8" />
+				<weight value="2.82192" />
+				<link type="language" id="2183" value="Dutch" />
+				<link type="language" id="2184" value="English" />
+				<link type="language" id="2187" value="French" />
+				<link type="language" id="2188" value="German" />
+				<link type="language" id="2193" value="Italian" />
+				<link type="language" id="2203" value="Spanish" />
+			</item>
+			<item type="boardgameversion" id="502544">
+				<thumbnail>https://cf.geekdo-images.com/8Dq9gR7NL9L49BvHiFIFsA__thumb/img/B0wfcSeGLem4gAU725d3AL5t00Q=/fit-in/200x150/filters:strip_icc()/pic5347728.png</thumbnail>
+				<image>https://cf.geekdo-images.com/8Dq9gR7NL9L49BvHiFIFsA__original/img/n9E1LWrqetTKIt1KVSxrdzJQShs=/0x0/filters:format(png)/pic5347728.png</image>
+				<link type="boardgameversion" id="1" value="Die Macher" inbound="true"/>
+				<name type="primary" sortindex="1" value="Polish edition" />
+				<link type="boardgamepublisher" id="2726" value="Portal Games" />
+				<yearpublished value="2020" />
+				<productcode value="" />
+				<width value="0" />
+				<length value="0" />
+				<depth value="0" />
+				<weight value="0" />
+				<link type="language" id="2199" value="Polish" />
+			</item>
+			<item type="boardgameversion" id="455802">
+				<thumbnail>https://cf.geekdo-images.com/rpwCZAjYLD940NWwP3SRoA__thumb/img/YT6svCVsWqLrDitcMEtyazVktbQ=/fit-in/200x150/filters:strip_icc()/pic4718279.jpg</thumbnail>
+				<image>https://cf.geekdo-images.com/rpwCZAjYLD940NWwP3SRoA__original/img/yR0aoBVKNrAmmCuBeSzQnMflLYg=/0x0/filters:format(jpeg)/pic4718279.jpg</image>
+				<link type="boardgameversion" id="1" value="Die Macher" inbound="true"/>
+				<name type="primary" sortindex="1" value="Spielworxx English/German edition" />
+				<name type="alternate" sortindex="1" value="Limited Edition" />
+				<link type="boardgamepublisher" id="15108" value="Spielworxx" />
+				<link type="boardgameartist" id="4959" value="Harald Lieske" />
+				<yearpublished value="2019" />
+				<productcode value="SW_MACHER_032019" />
+				<width value="12.2047" />
+				<length value="12.2047" />
+				<depth value="2.95276" />
+				<weight value="0" />
+				<link type="language" id="2184" value="English" />
+				<link type="language" id="2188" value="German" />
+			</item>
+			<item type="boardgameversion" id="459325">
+				<thumbnail>https://cf.geekdo-images.com/rpwCZAjYLD940NWwP3SRoA__thumb/img/YT6svCVsWqLrDitcMEtyazVktbQ=/fit-in/200x150/filters:strip_icc()/pic4718279.jpg</thumbnail>
+				<image>https://cf.geekdo-images.com/rpwCZAjYLD940NWwP3SRoA__original/img/yR0aoBVKNrAmmCuBeSzQnMflLYg=/0x0/filters:format(jpeg)/pic4718279.jpg</image>
+				<link type="boardgameversion" id="1" value="Die Macher" inbound="true"/>
+				<name type="primary" sortindex="1" value="Stronghold English/German edition" />
+				<link type="boardgamepublisher" id="11652" value="Stronghold Games" />
+				<link type="boardgameartist" id="4959" value="Harald Lieske" />
+				<yearpublished value="2019" />
+				<productcode value="" />
+				<width value="0" />
+				<length value="0" />
+				<depth value="0" />
+				<weight value="0" />
+				<link type="language" id="2184" value="English" />
+				<link type="language" id="2188" value="German" />
+			</item>
+		</versions>
+		<comments page="1" totalitems="2018">
+			<comment username=".JcK." rating="9" value="Die Macher is one of the very few long games that I&apos;d like to play on any given opportunity, and I was hugely impressed by its design since my first play. It&apos;s long, but it&apos;s complex, not complicated: there are different rule systems mixed together to portray different aspects of your political campaign, but each of them is simple to understand and to manipulate during the game. 
+Mastering the whole system takes time, of course, but you&apos;ll find yourself grasping its main dynamics much sooner than you&apos;d expect, probably just after you&apos;ve gone through the first round of play. So, don&apos;t let its fame scare you: our first game was with two non-gamers, and they both really enjoyed it. The system is streamlined and functional, the theme is well implemented and you can easily imagine your party going through all the vicissitudes of a political campaign. 
+Give it a try if you can :)" />
+			<comment username="100pcBlade" rating="6" value="Very good deep strategy game but while I don&apos;t mind games of this length, they need have a little less repetitiveness for them to really shine. And the Valley Games implementation is really poor with their choice of card icons which are far too similar. (I also own the original 4p version)" />
+			<comment username="143245" rating="5" value="Die Macher as a game that is over 30 years old and still played is an example of another time in gaming. Today, the game lacks a certain pizzazz that newer heavy euros have (not just in theme, but mechanical implementation) and it&apos;s more difficult to hold the attention of players. I can see where those who put in the effort to look past the points where modern gamers would say &quot;this really should be streamlined&quot; and study of the design will be rewarded.
+
+In some ways, it&apos;s a game that falls into the same category as Virgin Queen/HiS and the COIN series; long, hulking, beautiful monstrosities that require a full player count to shine. Bonus points if they are all experienced folks. People have to rearrange their lives and schedules to make these sorts of games happen. Die Macher is a wonderful convention game, provided people have agree on a rule set... Unfortunately, that boat seems to have sailed, and the 4th edition is also unlikely to resolve that. That&apos;s not necessarily bad, just an annoyance.
+
+This is an experience, one of those games that was revolutionary at it&apos;s time, and I encourage people to give it a shot. I&apos;d like to sit and tinker with it, to explore how the interlocking pieces and parts all fit together, but at what cost? Do I need a copy on hand? I doubt it, possibly just nearby. Every now and then I think about it, even if it took years to get it to the table, and I&apos;m unsure when I&apos;ll see it played again...
+
+edit: The more I fiddle with and talk about the game with others, the more I find that it&apos;s just undercooked, and you have to cobble together an agreeable ruleset in order to get it to really sing. I don&apos;t think that&apos;s worth my time anymore." />
+			<comment username="1Aspielerin" rating="6" value="first edition for 4 players
+" />
+			<comment username="3greyhounds" rating="7.5" value="Awesome game.  I enjoy playing, the only caveat being the length, so I can&apos;t always agree to play it, but I&apos;d like to play more often." />
+			<comment username="4Corners" rating="6" value="Great theme, very involved and engrossing game, BUT has some significantly flawed random elements to the game (opinion polls, secret auction for first player).  Also, although this needs more than 1 play to really appreciate/properly rate this game, how likely is it that you&apos;re going to get at least 3 people to sit down for another 6-8 hour game again (especially if someone got burned by the randomness of the game the first time)?  Unfortunately, this game will probably be forever retired after 1 play." />
+			<comment username="4x scalper" rating="N/A" value="All these years, All this time. And you develop this?!?! A missed opportunity to improve a fantastic gaming experience." />
+			<comment username="4x scalper" rating="7.5" value="Valley Games Ed. Could play this game much more if time and ppl were more readily available. A great design and game flow." />
+			<comment username="521tiger" rating="9" value="played it twice for a good feeeling - but did not test it  thoroughly" />
+			<comment username="5th Beatles" rating="9" value="reviewed on my blog." />
+			<comment username="A Strange Aeon" rating="N/A" value="Got off of Tanga, figuring I&apos;ll want it someday and the price is right.  [update]  And I bought this off of Tanga why?  When will I ever have time or desire to play a 5 hour Euro??  " />
+			<comment username="aaronseeber" rating="9" value="Epic &quot;experience&quot; game that every serious gamer should try at least once. Shines with 5 and given the investment of time I will not play it with less." />
+			<comment username="abadiadelcrimen" rating="8" value="Buen juego, pero bastante frío." />
+			<comment username="abgg" rating="N/A" value="ndru" />
+			<comment username="abnormallyramsey" rating="N/A" value="On of my partner&apos;s favorites." />
+			<comment username="Abraxox" rating="7" value="I like the theme because it is really unique, but the game time is just too long. Perhaps the new shortplay rules will make it even better. The game mechanics work fine and offer a lot, but it is nevertheless hard to plan everything and so still quite luck dependant." />
+			<comment username="abrocker" rating="4" value="Long and repetitive.  No interest in getting this to the table again." />
+			<comment username="aceraxon" rating="9" value="Perhaps one of the ultimate games of our times.  The rules take awhile to explain, but everything makes some sort of sense in the end.  Have to play with the play aids, but the game is a blast." />
+			<comment username="ACTP" rating="7.8" value="Played by lo" />
+			<comment username="adamanthys" rating="5" value="Heavy, counter intuitive and fiddly. Highly disappointed with first game. May need more plays to decide, won&apos;t suffer it." />
+			<comment username="adambadura" rating="7.5" value="2010-06-05 (rating 7.5):
+
+I like the game. But it wasn&apos;t as heavy as I expected (sadly). Some luck factor, not large but still significant (especially when it comes to polls). But more depends on interactions between players.
+
+This is somewhat strange as the game is way to long for a light, heavy interaction, party game. And yet I didn&apos;t feel I had enough influence on the game progress to call it a Diplomacy-kind of game.
+
+But I played it only once and we didn&apos;t do much negotiations (sadly)." />
+			<comment username="adamredwoods" rating="6" value="1 play / 4 players
+
+LIKE: I liked how players could build up votes in another area while attempting to conduct manipulation in another. This created some interesting aspects in timing, and when to spend money. The rules for the short game were not too complicated. The theme is unique.
+
+DISLIKE: The cards created a very luck-oriented feel to the game. I think not allowing a card flush would help with this. There are also some random take-that cards in the poll deck, which felt out of place. I feel some other mechanism could have been used.
+
+OVERALL: Not a bad game, but the random elements made the game results seem lopsided. For that much of a time investment, we might be better playing something else. I saw a variant in the BGG forums for mixing in first edition rules, may be worth a look.
+
+Some similarities to El Grande, but El Grande is so much better." />
+			<comment username="adamw" rating="8.5" value="I&apos;ve played it. It took 5 hours for 5 of us to march through the game. I really liked it. It never felt slow or bogged down. There&apos;s not much room for AP ever in the game. But it is the same game played basically 6 times in a row. Each state is resolved as you peer ahead to the next 3 coming up. At times, you start getting plans laid out and other times, you find you made a mistake. The random &apos;poll&apos; cards are harsh and scary and frankly, I love &apos;em. They add spice to an otherwise nearly precise mathematical experience (something I generally do not like in a game). I like the dodge and match game with your platforms vs. opponents vs. the state vs. the national end game. There&apos;s really nothing else like the granddaddy of heavy Euros. And there likely never will be. Very fun." />
+			<comment username="Adanedhel" rating="N/A" value="Requiere inmersion en el juego, 4 horitas mínimo. No recomenado para principiantes." />
+			<comment username="adebisi" rating="6" value="2008-08-17
+A complex game for true gamers. Very rewarding for those who are willing to invest the time to learn the secrets of Die Macher.
+
+The biggest minus comes from the rather big luck factor for such a long game. Losing a 4 hour game in the last minute just because of bad luck can be quite frustrating.
+
+2016-03-08
+It is remarkable how well Die Macher has stood the test of time. Considering the fact that the game was designed back in the mid 80&apos;s, it is still very relevant. Of course, you have to admit that the game is not as visually pleasing as you would expect today. It almost looks like a prototype. After a while the table also starts to look very busy.
+
+Once you get past the game&apos;s age and looks, you have a solid but heavy strategy game in your hands. Each turn has many steps and is rather complex. There are a lot of things to keep an eye on. Fortunately, there is a fair amount of fluctuation of luck which helps in maintaining the flow of the game. If the Die Macher was purely deterministic, would it surely suffer from too much analysis. Now, since you cannot calculate everything, you can come up with sensible moves within a reasonable amount of time. Of course, very tight games can be decided by chance but usually it is the best player who wins.
+
+Die Macher is definitely not the beast its reputation suggests. There are far heavier and more difficult games out there. Yes, the game is long but you do not need the whole day. A game can be finished in an evening." />
+			<comment username="adiamant" rating="9" value="Wow, great game. There is so much going on your head explodes if you try to keep track of it all. You must develop a &quot;feel&quot; and go with your guesstimates, which is what I like about games. Beautifully done." />
+			<comment username="ADK_FOX" rating="N/A" value="Not at all good with 3, and cannot be played with 2." />
+			<comment username="Admiral Fisher" rating="7.5" value="A very tentative rating based on one play.  I think I&apos;d like this the more I get to know it.  It has to be said that it&apos;s pretty dry and involved, but I felt early on that I had a bit of an idea what I was doing.  For a deep game, there is still quite a lot of luck in it, but I think you can mitigate against most of it if you&apos;re careful." />
+			<comment username="AdmiralGT" rating="9" value="Only one play so far but really enjoyed the game. Would like to play again now I understand more about how the game works. Hampered only by the play time though as it does take several hours to complete a game." />
+			<comment username="adriang" rating="9" value="Simply amazing!" />
+			<comment username="Aelf" rating="7" value="If you have even *heard* about this game you are a real game geek. Possibly the most dull theme ever devised, but it works oh so well. It&apos;s such a shame it is so hard to organise games, but enjoyable and tense without fail when we do play.
+My favourite game to show non-gamers to scare them!
+Even if you are scared of the theme and supposed complexity, give it a chance - I promise you won&apos;t be disappointed.
+For a 4 hour game, the rules are very easy to teach, since the game occurs in phases (a la Power Grid) and turns." />
+			<comment username="Aermord" rating="5" value="Solid euro mechanics, but the game takes far too long to play." />
+			<comment username="afcgamer3" rating="6" value="From the Reviews: Looks like it could be fun with the right people but then again finding enough people to play a heavy long game might be difficult" />
+			<comment username="afrey15" rating="N/A" value="Ludology Podcast - dominant strategies
+Ludology Podcast - finding the balance" />
+			<comment username="agent_t_bib" rating="8" value="Great game and very funny if you know the parties." />
+			<comment username="Aging One" rating="N/A" value="Acquired Jan 10." />
+			<comment username="agius1520" rating="N/A" value="unplayed - Looks like one of those grail games that everyone should play
+" />
+			<comment username="Aglar" rating="7.5" value="It is fiddly.  It is long.  It is cluttered with odd mechanisms.  Yet, despite these shortcomings, a Die Macher game starts like a roller coaster ride (slowly building up speed) and then midway through the thrill starts to build up leading to a great payoff. " />
+			<comment username="ahwood23" rating="N/A" value="One play a couple months ago, but I enjoyed it so much I traded for my own copy. Not sure I&apos;ll ever get this to the table again, lol, but one can hope!" />
+			<comment username="Ajax" rating="8" value="Heaviest game I&apos;ve played so far.  Wow.  That was something.  I really enjoyed it.  It was like watching a beautiful machine hum and see the cogs moving.
+
+Man, it took a long time to teach and play.  Played smoothly and didn&apos;t seem to drag at all.  Print out Liumas&apos;s player aids before playing!" />
+			<comment username="ajie426" rating="6" value="一个非常看运气的游戏，起始手牌不好的话建议直接掀桌！玩一局要三至四个小时，第二把我们玩的时候有三家手牌高度一致，结果就变成二打三，无论如何都没办法翻盘，简直浪费时间！" />
+			<comment username="akapastorguy" rating="8" value="OK... I understand now. I&apos;m not sure I&apos;ll play it more than 4 or 5 more times in my lifetime, but I get why people love this game so dang much.
+
+Board Games With Scott does an amazing job explaining the rules - it is ESSENTIAL viewing before you play." />
+			<comment username="Akhnaten" rating="N/A" value="unplayed" />
+			<comment username="Akke" rating="8" value="Not as complex as it seems, one of the few German games in which you can really plan ahead." />
+			<comment username="akrebs" rating="N/A" value="Lost in the move?" />
+			<comment username="Al Johnson" rating="9" value="Truly an exceptional and fascinating game.  It does have a 2-3 turn learning curve (at least for me it did), but thankfully you are not out of the game at that time.  The theme is excellent and integrates well into the game with the national election carrying significant weight at the end.  There is a lot going on here, and I would classify it as a very meaty game - definitely for experienced gamers only as a game can easily go for more than 5 hours.  Negatives are game length - it&apos;s hard to find people who are willing to sit down for one game this long, and second, fiddly rules.  And because I don&apos;t see this game being played often, constant reference back to the rulebook may be the norm.  Overall though, great game!  If you consider yourself a gamer, you owe it to yourself to give this game a try." />
+			<comment username="Alan R" rating="N/A" value="Mint. Still in shrink. Vally Games edition." />
+			<comment username="Alan Stern" rating="8" value="I did not expect to like this one as much as I did.  I want to play it again/more!" />
+			<comment username="alanykl" rating="N/A" value="Nelson own" />
+			<comment username="alcofa" rating="8.5" value="Just read the rules, not played yet. The game is very structured and tense! The theme and the rules work very well! Need play soon!" />
+			<comment username="Alcuinus" rating="N/A" value="Lacerda&apos;s shortlist. Jason Matthews (Twilight Struggle): 10 &apos;The best political game. Period.&apos; Monster game 4hr play." />
+			<comment username="ALe582" rating="N/A" value="Valley Games Edition" />
+			<comment username="alerce" rating="N/A" value="Thinking about the new kickstarter edition. Waiting to see the reception." />
+			<comment username="Alexfrog" rating="9" value="The best &apos;long&apos; game I have played.  Very deep, it makes your head spin :)   Definitely a gamer&apos;s game. Everything that happens affects everything else, so there are loads of considerations for every decision.  I recommend this very highly for anyone wishing to spend 6 hours of mind-bending exercise that will leave you satisfied and wanting to play it again." />
+			<comment username="alextrov" rating="9.5" value="One of the best ever, for hard gamers." />
+			<comment username="Alfdis" rating="N/A" value="Essen 2021 loot.
+
+Looking forward to playing this with my dad." />
+			<comment username="alfonzos" rating="N/A" value="This game makes an appearance about once every three years. The game has a higher luck factor than I like in a long game but there is much player interaction so the game doesn&apos;t seem as long as it is." />
+			<comment username="alfredo lorente" rating="N/A" value="[i]Location: Basement (FR)[/i]" />
+			<comment username="ALGO" rating="7" value="Epic game of... ahem.... German electoral strategy.
+
+Surprisingly fun for all that though the rules are complex and it&apos;s all too easy to get left behind by naive play during your first game." />
+			<comment username="alita_4b" rating="6" value="A classic! Select your gaming group carefully! Definitely not for the faint of heart - very AP prone. Had a blast playing the short version of this game with 5 players. Valley Games version. MUST GET PLAYER AIDS FOR THIS ONE! Tracked on family game list (grooven). Update: Lowered rating as I don&apos;t have the time or inclination to ever choose to play this." />
+			<comment username="alleyman" rating="9" value="just awesome...." />
+			<comment username="alohola" rating="7.25" value="SURPRISE" />
+			<comment username="alvae64" rating="N/A" value="Have german version for trade" />
+			<comment username="alwaysjung" rating="9" value="Kick started expected November 2019--update Feb 2020 arrived Jan 21, 2020" />
+			<comment username="amadan" rating="9" value="Epic. A great game that really makes you think, and fascinatingly true to its rather strange theme. Its procedural nature makes it rather easy to teach, but still has enough complexity to be far from trivial to master. A fault (for Valley Games edition, at least): The cards are *very* difficult to tell apart - not only across the table, but even in your own hand." />
+			<comment username="Amber Kraken" rating="8" value="Sounded very complicated, plus I can&apos;t read German. But no matter, as once you start playing it becomes easily understandable, plus everything is picture based so no German is needed (sorry Hans!).
+This game plays well, and apart from an unlimited amount of possible votes/seats is a very good representation of the mechanics of politics. Highly  enjoyable, and although competitive not a game you can loose friends over!" />
+			<comment username="amberaleman" rating="7.5" value="Talk about sensory overload. Seeing this board set up and ready to play can be a little intimidating. So many cards, so many wooden cubes, and yet after a round or two everything makes sense. German politics: an interesting way to spend an afternoon." />
+			<comment username="amitche1" rating="6.5" value="Influential game based around a series of resource management mini-games. It moves along quickly, but it takes a while to actually finish. I believe enjoyment increases if every player is familiar with strategic games.  I&apos;d like to get another game in, but it&apos;s hard to pick this one over some other 4 hour games.  It feels like a once-a-year treat." />
+			<comment username="Amnese" rating="10" value="My favourite multi-player game. The mechanics blend so well together. This is a MUST HAVE in any collection. The rules are not too difficult (esp. with player aids available on bgg), but the gameplay (ie: how the rules actually relate to each other) is much more difficult. Persevere, DM is awesome!" />
+			<comment username="Anaesthetic" rating="7.5" value="Am I the only one concerned about the heavy influence of the random Opinion Poll cards?" />
+			<comment username="Anarchy Ape" rating="N/A" value="While I own this game, it is rather daunting to begin playing.  There is so much to learn!  Maybe over the summer we&apos;ll sit down to play..." />
+			<comment username="Anconed" rating="N/A" value="..." />
+			<comment username="andersed" rating="7" value="We play this game once every year." />
+			<comment username="anderspree" rating="N/A" value="3 - 5 Player,
+Best: 5" />
+			<comment username="Andrewey" rating="8" value="Possibly the best political game there is. " />
+			<comment username="andrewfoerster" rating="N/A" value="4-5(5)" />
+			<comment username="andrewh63" rating="7" value="Play this years ago with the original German edition.  Quite interesting rule mechanic since you have to balance various resources(votes, polls, fundraising).  Very hard to master." />
+			<comment username="andrewo75" rating="N/A" value="This game is the quintessential game of the self-professing DE game enthusiast. Who cares if no one is going to want to play this game with me." />
+			<comment username="Andy Mesa" rating="9" value="It amazes me that this game is almost 30 years old. It&apos;s still one of the best heavy euros around; thematic, deep, beautiful." />
+			<comment username="Andy Parsons" rating="8" value="I&apos;ve only played with four and five players.  Rich theme, lots to think about, forward planning and picking your fights essential.  A strong suspicion that an early success is vital to build momentum for the win.  The Valley Games edition is very good looking, my only criticism is that the icons for nuclear and economic development are too similar.  I kind of miss the politicians&apos; heads on the shadow cabinet cards from the first edition." />
+			<comment username="andy61" rating="9" value="Very good election game, well constructed, challenging and enjoyable, but a bit too long to play more than occasionally" />
+			<comment username="andyl" rating="8.5" value="It took nearly 6 hours but it felt like 3.  Great game." />
+			<comment username="angelgabriel" rating="9" value="Brilliant, though long, political game. First time played Derek Carver&apos;s variant, so some rules from the 1st edition mixed in with the 3rd; second time standard Valley Games rules." />
+			<comment username="angelkurisu" rating="8" value="With the exception of the abominable card art(new edition), great game.  If played with knowledgeable and quick-ish players, completes in a very reasonable time frame." />
+			<comment username="angst" rating="8" value="This has the potential to become one of my favorites. A great strategy game where you have to plan ahead and focus your resources to reach your goals." />
+			<comment username="AngusBull" rating="9.35" value="What can I say that hasn&apos;t been said already?  Beautiful game, not overly complex game play but the strategies to win certainly are.  I enjoyed the player interaction that this game fostered and the making and breaking of colitions (especially those that were forced) made this game very enjoyable.  The 5hrs that it took to play really flew by.  I am eagerly looking forward to playing this one again and wouldn&apos;t turn down the opportunity!!!" />
+			<comment username="anonystu" rating="8" value="The shine has worn off: so much of it works so well together, but the last campaign of the game feels too important for a game of such length." />
+			<comment username="AnttiT" rating="8" value="A game of heavy series politics. This game really captures the feeling of parlamentar democracy, with constant changes of official opinions to attract more voters." />
+			<comment username="anubis9" rating="N/A" value="I had to buy it just to say I have it if for nothing else, but I have yet to find a group with the desire or time to play it.
+(It may kill my gamer cred, but I sold it.)" />
+			<comment username="apecage" rating="N/A" value="Remains the only game in the Top 10 that I haven&apos;t played. Length is definitely an issue here. But maybe one of these days if it&apos;s early in the day and the mood strikes." />
+			<comment username="Apple Paul" rating="6" value="A tough game to teach and play for the first game.  Lots of cross-cutting, interesting mechanics that seem to be nicely thematic.  The card iconography is terrible, and the game play a little bit clunky and time consuming, but overall, I definitely want to play the game again to better understand its subtleties. 8 of 10. (October 2012)
+
+Okay, played Die Macher for a second time, the new edition, in February 2020, and for my tastes in game design, I think there are just too many things about this game that feel randomly decisive.  For example, the polling mechanic, and the platform card array with its &quot;luck of the draw&quot; flips, and the blind bidding for turn order.  In general, I really dislike games where blind bidding plays an overly decisive role in the game, and Die Macher seems to feature this problem.  Bottom line: unfortunately, this game now feels like an &quot;old school&quot; euro design, wherein random events are actually considered a fun feature of the design.  Not a fan.  Dropping it to a 6 of 10.  " />
+			<comment username="Aratar" rating="9" value="Excellent and deep game. Takes about 5 hours to play, meaning it&apos;s not something that will hit the table often." />
+			<comment username="Arbuthnot" rating="8.5" value="Good game, but hard to find people willing to play it." />
+			<comment username="Archvile" rating="5" value="Too long and fiddly. Cards are very difficult to set apart from each other (Valley Games version). Some trivial decicions take a long time to calculate. 
+
+Some interesting decisions and thematical for an euro. If this was a 2 hour game I could like it, but 3+ hours is too much." />
+			<comment username="Ardan" rating="8" value="Liked quite a lot after one game." />
+			<comment username="Ardrosis" rating="10" value="My favorite game.  As close to gaming perfection as I have seen." />
+			<comment username="Argantonio" rating="8" value="Un juego que te gusta o lo odias, con una gran témática pero con gran complejidad, quizá excesiva... un quemacerebros para los muy cafeteros " />
+			<comment username="Aristoteles" rating="N/A" value="Getraded für &quot;Navegador&quot;" />
+			<comment username="Arksyth" rating="8" value="This game is nice because it handles a theme that most games would not dare to handle: politics. If you like politics, you like really heavy german-games, and you&apos;re willing to sit down 3 to 4 hours, die Macher is the absolute game to play! If any of the previous requisites do not apply to your game group; don&apos;t play die Macher ;). " />
+			<comment username="Armadi" rating="8" value="Excellent, excellent game.  There is more luck then you&apos;d expect but it doesn&apos;t bother me, since I already feel too much in the game is calculable.  The only problem I have with this game is the length.  If it were a bit shorter (and thus easier to throw into a real world scehdule) my rating would be a 9.5." />
+		</comments>
+		<statistics page="1">
+			<ratings >
+				<usersrated value="5381" />
+				<average value="7.61485" />
+				<bayesaverage value="7.10199" />
+				<ranks>
+					<rank type="subtype" id="1" name="boardgame" friendlyname="Board Game Rank" value="323" bayesaverage="7.10199" />
+					<rank type="family" id="5497" name="strategygames" friendlyname="Strategy Game Rank" value="182" bayesaverage="7.23373" />
+				</ranks>
+				<stddev value="1.57893" />
+				<median value="0" />
+				<owned value="7546" />
+				<trading value="250" />
+				<wanting value="506" />
+				<wishing value="2064" />
+				<numcomments value="2018" />
+				<numweights value="761" />
+				<averageweight value="4.3206" />
+			</ratings>
+		</statistics>
+		<marketplacelistings>
+			<listing>
+				<listdate value="Wed, 18 Mar 2015 11:45:57 +0000" />
+				<price currency="GBP" value="75.00" />
+				<condition value="verygood" />
+				<notes value="Shipping costs paid by buyer" />
+				<link href="https://boardgamegeek.com/geekmarket/product/718811" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sun, 06 Dec 2015 13:32:07 +0000" />
+				<price currency="EUR" value="85.00" />
+				<condition value="likenew" />
+				<notes value="The accurest political game&amp;#10;German version&amp;#10;&amp;#10;Good and complete.&amp;#10;Pictures on demand.&amp;#10;&amp;#10;Accepted payments : paypal or bank transfers.&amp;#10;&amp;#10;Referenced ebay seller.&amp;#10;Shipping fees to be added.&amp;#10;See my other games for combined delivery fees ." />
+				<link href="https://boardgamegeek.com/geekmarket/product/845686" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sat, 03 Dec 2016 15:07:42 +0000" />
+				<price currency="EUR" value="75.00" />
+				<condition value="likenew" />
+				<notes value="first Edition, German version, &amp;#194;&amp;#169; 1986 by Hans-im-Gl&amp;#195;&amp;#188;ck-Verlag&amp;#10;&amp;#10;Shipping costs see informations below.&amp;#10;&amp;#10;Payment via PayPal or bank transfer.&amp;#10;If you pay via PayPal, please use the button &amp;#226;&amp;#128;&amp;#156;Send to friends abroad&amp;#226;&amp;#128;&amp;#157;, then there are no fees. ... Thanks!!&amp;#10;&amp;#10;Please verify your shipping address before ordering or paying with PayPal. If your address contains non-Latin characters please include it in Latin script, too.&amp;#10;&amp;#10;We offer in our &quot;Modern Second-Hand-Games-Shop&quot; on our private homepage www.alte-spiele.de/antiquar.html more than 3.500 other games: older one, newer one, rare one and little known one. The offer consists of titles since the 1970s and mainly in German-speaking. Just look once over with us." />
+				<link href="https://boardgamegeek.com/geekmarket/product/1061220" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sun, 05 Mar 2017 04:56:52 +0000" />
+				<price currency="USD" value="130.00" />
+				<condition value="likenew" />
+				<notes value="Worldwide shipping fee: $30&amp;#10;&amp;#10;Buyer pay shipping fee and 5% total paypal fee." />
+				<link href="https://boardgamegeek.com/geekmarket/product/1150898" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Mon, 01 May 2017 05:23:15 +0000" />
+				<price currency="USD" value="180.00" />
+				<condition value="new" />
+				<notes value="The box has never been opened the shrink is present but has some opening in the shrink wrap." />
+				<link href="https://boardgamegeek.com/geekmarket/product/1191501" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sat, 03 Feb 2018 01:05:07 +0000" />
+				<price currency="USD" value="200.00" />
+				<condition value="verygood" />
+				<notes value="" />
+				<link href="https://boardgamegeek.com/geekmarket/product/1410609" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Mon, 12 Feb 2018 16:04:53 +0000" />
+				<price currency="EUR" value="50.00" />
+				<condition value="good" />
+				<notes value="Prefer to ship to Germany!&amp;#10;For shipment to other EU countries please send me a message first.&amp;#10;&amp;#10;Versand mit Hermes.&amp;#10;Bezahlung per &amp;#195;&amp;#156;berweisung." />
+				<link href="https://boardgamegeek.com/geekmarket/product/1417885" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sun, 17 Jun 2018 16:34:49 +0000" />
+				<price currency="EUR" value="70.00" />
+				<condition value="likenew" />
+				<notes value="Second edition mosquito spiele" />
+				<link href="https://boardgamegeek.com/geekmarket/product/1517477" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Mon, 01 Oct 2018 20:33:38 +0000" />
+				<price currency="EUR" value="80.00" />
+				<condition value="likenew" />
+				<notes value="German 2nd edition, played once.  Mosquito Spiele edition" />
+				<link href="https://boardgamegeek.com/geekmarket/product/1605424" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Wed, 23 Jan 2019 10:34:20 +0000" />
+				<price currency="GBP" value="45.00" />
+				<condition value="likenew" />
+				<notes value="Slight dip in the box top, but the contents are unplayed." />
+				<link href="https://boardgamegeek.com/geekmarket/product/1742122" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sun, 24 Mar 2019 11:11:09 +0000" />
+				<price currency="USD" value="120.00" />
+				<condition value="likenew" />
+				<notes value="" />
+				<link href="https://boardgamegeek.com/geekmarket/product/1798166" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Mon, 20 May 2019 16:21:41 +0000" />
+				<price currency="EUR" value="80.00" />
+				<condition value="new" />
+				<notes value="Brand new in mica" />
+				<link href="https://boardgamegeek.com/geekmarket/product/1849097" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Tue, 24 Sep 2019 11:06:10 +0000" />
+				<price currency="EUR" value="60.00" />
+				<condition value="likenew" />
+				<notes value="Game has never been played. Always kept in a smoke free, mold free environment." />
+				<link href="https://boardgamegeek.com/geekmarket/product/1955338" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Thu, 17 Oct 2019 20:55:56 +0000" />
+				<price currency="USD" value="80.00" />
+				<condition value="verygood" />
+				<notes value="" />
+				<link href="https://boardgamegeek.com/geekmarket/product/1973262" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sun, 03 Nov 2019 01:27:20 +0000" />
+				<price currency="EUR" value="45.00" />
+				<condition value="verygood" />
+				<notes value="In great shape, few small marks on box, otherwise the game material is in excellent condition.&amp;#10;Feel free to ask for photos.&amp;#10;Accept Bitcoins, Paypal or Wire Transfer." />
+				<link href="https://boardgamegeek.com/geekmarket/product/1987580" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Thu, 30 Jan 2020 15:34:21 +0000" />
+				<price currency="EUR" value="200.00" />
+				<condition value="verygood" />
+				<notes value="" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2060511" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Fri, 31 Jan 2020 19:40:59 +0000" />
+				<price currency="GBP" value="299.00" />
+				<condition value="good" />
+				<notes value="This is a chance to own a little bit of board game history. The very first game published by Valley Games and this is the very first copy from that run. Individually numbered and signed by the designer. This is a unique item. Free postage within the UK and Europe. For the US please enquire." />
+				<link href="https://boardgamegeek.com/geekmarket/product/2061536" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sat, 01 Feb 2020 21:12:54 +0000" />
+				<price currency="USD" value="135.00" />
+				<condition value="new" />
+				<notes value="Kickstarter version unopened in shrink&amp;#10;&amp;#10;$15 shipping in the US. Dicetower West (Feb 26-29, Las Vegas) pickup available instead of shipping" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2062477" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sun, 02 Feb 2020 19:29:35 +0000" />
+				<price currency="USD" value="96.00" />
+				<condition value="new" />
+				<notes value="Brand new. Sealed and ready to ship." />
+				<link href="https://boardgamegeek.com/geekmarket/product/2064315" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sun, 22 Mar 2020 18:53:23 +0000" />
+				<price currency="EUR" value="45.00" />
+				<condition value="verygood" />
+				<notes value="Ich verkaufe hier die zweite Edition des Spiels Die Macher.&amp;#10;Das Spielmaterial ist vollst&amp;#195;&amp;#164;ndig und die Box hat leichte Gebrauchsspuren.&amp;#10;Nichtraucher und Tierfreier Haushalt." />
+				<link href="https://boardgamegeek.com/geekmarket/product/2108489" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Mon, 06 Apr 2020 21:46:23 +0000" />
+				<price currency="EUR" value="55.00" />
+				<condition value="verygood" />
+				<notes value="Complete&amp;#10;Very good shape&amp;#10;German edition&amp;#10;&amp;#10;&amp;#10;I pay the Geekcommission, you pay the Paypalcosts" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2119735" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Tue, 19 May 2020 22:19:18 +0000" />
+				<price currency="USD" value="80.00" />
+				<condition value="new" />
+				<notes value="" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2151830" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Tue, 06 Oct 2020 19:21:51 +0000" />
+				<price currency="USD" value="78.99" />
+				<condition value="verygood" />
+				<notes value="CLS Games - Atlanta's Board Game Warehouse - is the largest retailer of board games in metro Atlanta!&amp;#10;&amp;#10;DIE MACHER: $78.99&amp;#10;Valley Games [VLY 001-b]&amp;#10;b - open copy in very good -- see 3 pictures with this listing&amp;#10;&amp;#10;SHIPPING&amp;#10;Continental U.S. - $14.99&amp;#10;International (Including AK &amp; HI) - TBD" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2339568" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sun, 25 Oct 2020 11:29:21 +0000" />
+				<price currency="GBP" value="49.99" />
+				<condition value="new" />
+				<notes value="Brand new and sealed." />
+				<link href="https://boardgamegeek.com/geekmarket/product/2355802" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Fri, 06 Nov 2020 18:10:13 +0000" />
+				<price currency="EUR" value="100.00" />
+				<condition value="new" />
+				<notes value="New in shrink.&amp;#10;Shipping is calculated based on the destination country." />
+				<link href="https://boardgamegeek.com/geekmarket/product/2365889" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Wed, 30 Dec 2020 20:53:16 +0000" />
+				<price currency="USD" value="120.00" />
+				<condition value="verygood" />
+				<notes value="Insert gone&amp;#10;1997 copyright German edition Moskito Spiel&amp;#10;Box structurally sound but dirty with a little whitening around the edges, one corner  has a small split&amp;#10;Game pieces like new" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2417556" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Mon, 04 Jan 2021 11:32:20 +0000" />
+				<price currency="EUR" value="55.00" />
+				<condition value="likenew" />
+				<notes value="PM me for shipping quotes and additional payment options." />
+				<link href="https://boardgamegeek.com/geekmarket/product/2421231" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Fri, 26 Feb 2021 09:41:51 +0000" />
+				<price currency="GBP" value="65.00" />
+				<condition value="likenew" />
+				<notes value="" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2480728" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sat, 08 May 2021 13:35:50 +0000" />
+				<price currency="USD" value="44.00" />
+				<condition value="verygood" />
+				<notes value="" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2548173" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Wed, 12 May 2021 00:08:55 +0000" />
+				<price currency="USD" value="69.00" />
+				<condition value="likenew" />
+				<notes value="Never played. Shipping / Local pickup 97070" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2550660" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Thu, 10 Jun 2021 19:05:49 +0000" />
+				<price currency="EUR" value="64.99" />
+				<condition value="verygood" />
+				<notes value="Payment is possible with Revolut, PayPal, or a bank transfer.&amp;#10;&amp;#10;Please ask for shipping :)" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2572765" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Fri, 18 Jun 2021 10:32:39 +0000" />
+				<price currency="EUR" value="210.00" />
+				<condition value="new" />
+				<notes value="I sell three copies of the game: The first edition from 1986, the second from 1997 and the latest from 2019 (Spielworxx).&amp;#10;'From a smoke free and pet free home.&amp;#10;&amp;#10;Die Macher &amp;#226;&amp;#128;&amp;#144; First edition (1986)&amp;#10;Publisher: Moskito Spiele (Hans im Gl&amp;#195;&amp;#188;ck)&amp;#10;Language: German-only&amp;#10;** Condition: Very good (Already opened and played, but very well conserved) &amp;#10;&amp;#10;Die Macher &amp;#226;&amp;#128;&amp;#144; Second edition (1997) &amp;#10;Publisher: Hans im Gl&amp;#195;&amp;#188;ck&amp;#10;Language: German-only&amp;#10;** Condition: Like New (I bought it opened, but it was never played)&amp;#10;&amp;#10;Die Macher &amp;#10;Die Macher - 2019 Edition&amp;#10;Publisher: Spielworxx &amp;#10;Language: English/German&amp;#10;** Condition: New &amp;#10;&amp;#10;Payment via Paypal (friends) or 4% fee or Bank transfer (EU)&amp;#10;Ready to ship&amp;#10;&amp;#10;Shipping: insured using DHL, with tracking number.&amp;#10;Germany: +8,50&amp;#226;&amp;#130;&amp;#172;&amp;#10;Rest EU: +20,00&amp;#226;&amp;#130;&amp;#172;&amp;#10;UK/Switzerland/Non-EU: +35&amp;#226;&amp;#130;&amp;#172;" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2577927" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Thu, 24 Jun 2021 12:49:20 +0000" />
+				<price currency="EUR" value="99.90" />
+				<condition value="new" />
+				<notes value="Privater Verkauf, keine R&amp;#195;&amp;#188;ckgabe, Widerruf oder Gew&amp;#195;&amp;#164;hrleistung.&amp;#10;Versand innerhalb Deutschlands kostet 5 Euro." />
+				<link href="https://boardgamegeek.com/geekmarket/product/2581723" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sat, 26 Jun 2021 11:28:07 +0000" />
+				<price currency="EUR" value="54.99" />
+				<condition value="good" />
+				<notes value="One coalition tile was lost and replaced with a homemade one. &amp;#10;All the tiles and cards are tiles are numbered with 1561 on the back since the game was used in a library.&amp;#10;Payment is possible with Revolut, PayPal, or a bank transfer.&amp;#10;&amp;#10;Please ask for shipping :)" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2583059" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sat, 26 Jun 2021 11:39:18 +0000" />
+				<price currency="EUR" value="59.99" />
+				<condition value="verygood" />
+				<notes value="The cards have red marks on the sides from a rubber band.&amp;#10;Other than that the components are in very good condition.&amp;#10;Payment is possible with Revolut, PayPal, or a bank transfer.&amp;#10;&amp;#10;Please ask for shipping :)" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2583070" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Tue, 17 Aug 2021 15:23:24 +0000" />
+				<price currency="USD" value="70.00" />
+				<condition value="new" />
+				<notes value="English/German Spielworxx version. New in shrink wrap&amp;#10;&amp;#10;Stored in a smoke free and pet free environment. &amp;#10;&amp;#10;Please Note: Shipping will be via USPS, however, delivery time might be longer than usual. Expect up to 1-2 weeks for shipping." />
+				<link href="https://boardgamegeek.com/geekmarket/product/2624739" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Wed, 25 Aug 2021 11:28:25 +0000" />
+				<price currency="EUR" value="45.00" />
+				<condition value="likenew" />
+				<notes value="Game was never played. The box shows its age but the content is untouched and like new." />
+				<link href="https://boardgamegeek.com/geekmarket/product/2630681" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Mon, 13 Sep 2021 05:52:06 +0000" />
+				<price currency="USD" value="90.00" />
+				<condition value="likenew" />
+				<notes value="As new, never played.&amp;#10;&amp;#10;&amp;#10;FREE SHIPPING TO EUROPE AND NORTH AMERICA !!!&amp;#10;&amp;#10;Any boardgames order from this list starting from:&amp;#10;$250 and above (EU zone)&amp;#10;$360 and above (rest of Europe)&amp;#10;$500 and above (USA and Canada)&amp;#10;will ship FOR FREE, including sturdy package and tracking number !!!&amp;#10;Any other destination country will also get very special shipping prices, almost free, ask for details !!" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2644343" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Tue, 19 Oct 2021 13:17:28 +0000" />
+				<price currency="EUR" value="43.00" />
+				<condition value="verygood" />
+				<notes value="" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2681293" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Fri, 22 Oct 2021 22:19:11 +0000" />
+				<price currency="EUR" value="45.00" />
+				<condition value="likenew" />
+				<notes value="1. Condition | Erhaltungszustand&amp;#10;New. | Neu.&amp;#10;&amp;#10;2. Shipping conditions | Versand&amp;#10;Shipping costs are postage plus 0.50 Euro for packing. | Versand: Portokosten plus 50 Cent f&amp;#195;&amp;#188;r Verpackung.&amp;#10;&amp;#10;3. Payment conditions | Zahlung&amp;#10;Payment can be done by bank transfer (my banking account is in Germany) oder by payment via Paypal (buyers are asked to use the friends &amp; family option, otherwise the buyer has to add the paypal fees). | Zahlung per &amp;#195;&amp;#156;berweisung oder per Paypal (bitte friends &amp; family Option, ansonsten tr&amp;#195;&amp;#164;gt der K&amp;#195;&amp;#164;ufer bzw. die K&amp;#195;&amp;#164;uferin zus&amp;#195;&amp;#164;tzlich die Paypal-Geb&amp;#195;&amp;#188;hr)." />
+				<link href="https://boardgamegeek.com/geekmarket/product/2684172" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sun, 31 Oct 2021 16:32:42 +0000" />
+				<price currency="EUR" value="99.99" />
+				<condition value="likenew" />
+				<notes value="Die Macher - Neuauflage Spielworxx deutsch/englisch - wie neu&amp;#10;Spiel im top Zustand&amp;#10;mit H&amp;#195;&amp;#188;llen gesch&amp;#195;&amp;#188;tzt&amp;#10;&amp;#10;payment through bank transfer or PayPal Friends&amp;#10;shipping within Germany: 7,49&amp;#226;&amp;#130;&amp;#172;&amp;#10;international shipping starting from 16,99 (depending on your location)" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2692240" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sun, 07 Nov 2021 12:47:43 +0000" />
+				<price currency="EUR" value="70.00" />
+				<condition value="new" />
+				<notes value="PayPal-fee (if any) is at expense of the buyer." />
+				<link href="https://boardgamegeek.com/geekmarket/product/2697293" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Mon, 08 Nov 2021 18:28:49 +0000" />
+				<price currency="USD" value="84.99" />
+				<condition value="verygood" />
+				<notes value="Played few times, please check pics for condition. Thanks!" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2698206" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sat, 20 Nov 2021 13:24:12 +0000" />
+				<price currency="EUR" value="40.00" />
+				<condition value="verygood" />
+				<notes value="Versicherter Versand mit DHL.&amp;#10;&amp;#10;Versandkosten entsprechend Gr&amp;#195;&amp;#182;&amp;#195;&amp;#159;e und Gewicht." />
+				<link href="https://boardgamegeek.com/geekmarket/product/2707708" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sun, 28 Nov 2021 07:07:43 +0000" />
+				<price currency="EUR" value="75.00" />
+				<condition value="likenew" />
+				<notes value="Shipping Cost&amp;#10;7&amp;#226;&amp;#130;&amp;#172; inside Austria&amp;#10;16&amp;#226;&amp;#130;&amp;#172; European Union&amp;#10;other Countries please ask&amp;#10;&amp;#10;Payment via SEPA Bank Transfer is also possible" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2714102" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sun, 28 Nov 2021 07:08:24 +0000" />
+				<price currency="EUR" value="40.00" />
+				<condition value="verygood" />
+				<notes value="Shipping Cost&amp;#10;7&amp;#226;&amp;#130;&amp;#172; inside Austria&amp;#10;16&amp;#226;&amp;#130;&amp;#172; European Union&amp;#10;other Countries please ask&amp;#10;&amp;#10;Payment via SEPA Bank Transfer is also possible" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2714104" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Wed, 08 Dec 2021 16:41:32 +0000" />
+				<price currency="GBP" value="35.00" />
+				<condition value="likenew" />
+				<notes value="Like new. Unpunched. Cards sleeved. English translations included. Uk postage &amp;#194;&amp;#163;9." />
+				<link href="https://boardgamegeek.com/geekmarket/product/2722920" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Fri, 10 Dec 2021 03:05:53 +0000" />
+				<price currency="USD" value="90.00" />
+				<condition value="new" />
+				<notes value="" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2724080" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Tue, 21 Dec 2021 19:26:47 +0000" />
+				<price currency="USD" value="120.00" />
+				<condition value="likenew" />
+				<notes value="Brand new in manufacturer's shrinkwrap.  But one moderate bump to a box corner has somewhat crumpled 1-centimeter around that one corner; the crumple has only torn open one tiny little line of the outer box layer.  Photos on request.  From smokeless petless home. &amp;#10;&amp;#10;SHIPPING:&amp;#10;   USA: $15/$18/$21 to zip code starting with 0-2/3-7/8-9.&amp;#10;   MULTIPLE ITEMS: Save big with combined shipping!  Look at my other games for sale; the additional shipping cost would only be about $3 per large game, or $1 per small/card game. &amp;#10;   MASSACHUSETTS: Local buyers may pick up orders of $25 or more in person, in Billerica or Cambridge.&amp;#10;   INTERNATIONAL: International shipping, for a normal-size game, is at least $40!  Only if you understand that, you could ask me for an exact shipping quote before ordering.&amp;#10;   INSURANCE: You may add $1.35 for optional insurance.  (Otherwise, I'll just get Delivery Confirmation, but in the unlikely event that USPS lost or damaged the package, it would unfortunately be your loss.)" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2737747" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Sun, 09 Jan 2022 17:32:16 +0000" />
+				<price currency="USD" value="70.00" />
+				<condition value="likenew" />
+				<notes value="Components in shrink. Box shrink removed; otherwise it's like new. &amp;#10;&amp;#10;***** PLEASE READ BELOW, ESPECIALLY IF YOU ARE A NEW BUYER!!! *****&amp;#10;&amp;#10;* The price listed at the top is only for the item itself. Please be aware that there will be extra shipping costs that you, the buyer, are required to pay. I use PirateShip to find the lowest shipping rates between FedEx, UPS and USPS. These shipping costs will vary, but will typically be about $11-13 for a single, average-sized game, using a medium flat rate box when possible. For smaller games, or for those of you living close to the mid-west region of the country, shipping costs will be lower. Shipping of larger games that do not fit in a medium flat rate box will be based on weight and distance, and can sometimes run $20 or more, especially if you live on the east coast. PLEASE ASK FOR A SHIPPING ESTIMATE BEFORE PURCHASING ANYTHING IF YOU ARE UNSURE! *&amp;#10;&amp;#10;** Please make sure your shipping address in the BGG Marketplace and PayPal is correct because this is where I will ship to. If you want anything extra like additional insurance and/or delivery confirmation, etc., please ask! $50 of insurance is already included with any level of Priority mail, but with retail ground, no insurance is included by default. I will not be held responsible for packages after I have mailed them. **&amp;#10;&amp;#10;*** There will be a $0.75 fee added (in the tax section) to every order to help with packing materials for normal/large-sized games (but usually not for small promos) . ***&amp;#10;&amp;#10;**** I will not ship games internationally. It is no longer worth the hassle and risk. Sorry! ****&amp;#10;&amp;#10;Thank you!" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2752163" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Mon, 10 Jan 2022 23:54:23 +0000" />
+				<price currency="EUR" value="100.00" />
+				<condition value="verygood" />
+				<notes value="Avalon Hill edition" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2753185" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Mon, 17 Jan 2022 19:20:10 +0000" />
+				<price currency="USD" value="67.00" />
+				<condition value="verygood" />
+				<notes value="Juego con poco uso, completo, en alem&amp;#195;&amp;#161;n y con ayudas en ingl&amp;#195;&amp;#169;s.&amp;#10;SOLO VENTA A CHILE.&amp;#10;$55.000 en pesos chilenos, flete gratis. A otras partes de Sudam&amp;#195;&amp;#169;rica, a ratificar con servicio de Courier.&amp;#10;En Chile, pago con transferencia a mi cuenta bancaria." />
+				<link href="https://boardgamegeek.com/geekmarket/product/2759231" title="marketlisting" />
+			</listing>
+			<listing>
+				<listdate value="Fri, 21 Jan 2022 10:02:56 +0000" />
+				<price currency="EUR" value="129.00" />
+				<condition value="verygood" />
+				<notes value="Die Macher gioco da tavolo / Boardgame Limited Kickstarter Edition by Spielworxx&amp;#10;&amp;#10;Designer Karl-Heinz Schmiel&amp;#10;&amp;#10;Shipping worldwide&amp;#10;&amp;#10;Payment&amp;#10;&amp;#10;PayPal - if payment is made with option Sending to a friend or family no extra % is needed; if not 5% to be added as PayPal fees&amp;#10;We prefer the no-cost option by bank transfer via SEPA, IBAN - no extra fee&amp;#10;&amp;#10;Shipping costs will be communicated with buyer at time of purchase.&amp;#10;&amp;#10;For any further questions, feel free to contact us!" />
+				<link href="https://boardgamegeek.com/geekmarket/product/2762404" title="marketlisting" />
+			</listing>
+		</marketplacelistings>
+	</item>
+</items>
