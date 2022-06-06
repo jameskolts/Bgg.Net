@@ -53,11 +53,18 @@
                         <ViewCell>
                             <ViewCell.View>
                                 <Views:CollectionCardView CardColor="Teal"
-                                                          BorderColor="MediumPurple"
-                                                          IconBackgroundColor="MediumPurple"
+                                                          BorderColor="#400080"
+                                                          IconBackgroundColor="#400080"
                                                           IconImageSource="{Binding Image}"
                                                           CardTitle="{Binding Name}"
-                                                          PlayCount="{Binding NumPlays}"/>
+                                                          Designer="{Binding Designers[0]}"
+                                                          Publisher="{Binding Publishers[0]}"
+                                                          YearPublished="{Binding YearPublished}"
+                                                          PlayCount="{Binding NumPlays}"
+                                                          MaxPlayers="{Binding MaxPlayers}"
+                                                          MinPlayers="{Binding MinPlayers}"
+                                                          PlayTime="{Binding PlayTime}"
+                                                          MinAge="{Binding MinAge}"/>
                             </ViewCell.View>
                         </ViewCell>
                     </DataTemplate>

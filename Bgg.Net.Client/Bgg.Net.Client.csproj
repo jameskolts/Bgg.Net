@@ -52,6 +52,8 @@
 	  <None Remove="Resources\Images\bgglogo_3_light.png" />
 	  <None Remove="Resources\Images\filter.png" />
 	  <None Remove="Resources\Images\filterWhite.png" />
+	  <None Remove="Resources\Images\players.png" />
+	  <None Remove="Resources\Images\playersWhite.png" />
 	  <None Remove="Resources\Images\search.png" />
 	  <None Remove="Resources\Images\searchwhite.png" />
 	</ItemGroup>

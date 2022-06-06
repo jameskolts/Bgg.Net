@@ -1,0 +1,59 @@
+﻿using Bgg.Net.Common.Models;
+
+namespace Bgg.Net.Client.Models
+{
+    /// <summary>
+    /// An item to be displayed on the Collection Page
+    /// </summary>
+    public class CollectionPageItem
+    {
+        public long Id { get; set; }
+
+        public string Name { get; set; }
+
+        public int YearPublished { get; set; }
+
+        public string Image { get; set; }
+
+        public int NumPlays { get; set; }
+
+        public int MinPlayers { get; set; }
+
+        public int MaxPlayers { get; set; }
+
+        public int PlayTime { get; set; }
+
+        public int MinAge { get; set; }
+
+        public string Description { get; set; }
+
+        public IList<string> Publishers { get; set; }
+
+        public IList<string> Mechanics { get; set; }
+
+        public IList<string> Designers { get; set; }
+
+        public IList<string> Artists { get; set; }
+
+        public CollectionItemStatus Status { get; set; }
+
+        public CollectionPageItem(CollectionItem item, Thing thing)
+        {
+            Id = thing.Id;
+            YearPublished = thing.YearPublished.Value;
+            Image = thing.Image;
+            NumPlays = item.NumPlays;
+            MinPlayers = thing.MinPlayers.Value;
+            MaxPlayers = thing.MaxPlayers.Value;
+            PlayTime = thing.MaxPlayTime.Value;
+            MinAge = thing.MinAge.Value;
+            Description = thing.Description;
+            Name = item.Name;
+            Publishers = thing.Links?.Where(x => x.Type == "boardgamepublisher")?.Select(x => x.Value)?.ToList();
+            Mechanics = thing.Links?.Where(x => x.Type == "boardgamemechanic")?.Select(x => x.Value)?.ToList();
+            Designers = thing.Links?.Where(x => x.Type == "boardgamedesigner")?.Select(x => x.Value)?.ToList();
+            Artists = thing.Links?.Where(x => x.Type == "boardgameartists")?.Select(x => x.Value)?.ToList();
+            Status = item.Status;
+        }
+    }
+}
