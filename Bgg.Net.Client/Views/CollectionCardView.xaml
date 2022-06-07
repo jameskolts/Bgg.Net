@@ -10,6 +10,7 @@
            HorizontalOptions="Center">
         <VerticalStackLayout WidthRequest="350"
                              Padding="3">
+            <!--Image-->
             <Frame BackgroundColor="{Binding IconBackgroundColor}"
                    BorderColor="{Binding BorderColor}"
                    CornerRadius="40"
@@ -22,6 +23,7 @@
                        Margin="-20"
                        Aspect="AspectFill"/>
             </Frame>
+            <!--Title-->
             <Label 
                 Text="{Binding CardTitle}"
                 FontAttributes="Bold"

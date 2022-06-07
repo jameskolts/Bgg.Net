@@ -1,7 +1,7 @@
-﻿using Bgg.Net.Client.Models;
+﻿using Bgg.Net.Client.Infrastructure.Extensions;
+using Bgg.Net.Client.Models;
 using Bgg.Net.Common.Models;
 using System.Collections.ObjectModel;
-using Bgg.Net.Client.Infrastructure.Extensions;
 
 namespace Bgg.Net.Client.Infrastructure.Helpers
 {
@@ -10,6 +10,7 @@ namespace Bgg.Net.Client.Infrastructure.Helpers
     /// </summary>
     public class CollectionHelper : ICollectionHelper
     {
+        /// <inheritdoc/>
         public ObservableCollection<CollectionPageItem> CoalesceCollectionData(IEnumerable<CollectionItem> items, IEnumerable<Thing> things)
         {
             var collectionPageItems = new List<CollectionPageItem>();

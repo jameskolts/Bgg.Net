@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Views="clr-namespace:Bgg.Net.Client.Views"
-             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              x:Class="Bgg.Net.Client.Pages.Collection"
              Title="Collection">
 
@@ -13,64 +12,59 @@
         <ToolbarItem Text="Export To Email" Order="Secondary" Priority="0"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
+        <ScrollView Margin="20">
+            <StackLayout>
+                <!--Activity Indicator-->
+                <ActivityIndicator x:Name="ActivityIndicator" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" VerticalOptions="Center"/>
 
-        <StackLayout>
-            <!--Activity Indicator-->
-            <ActivityIndicator x:Name="activityIndicator" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" VerticalOptions="Center"/>
-
-            <!--Search Frame-->
-            <Frame x:Name="searchFrame" IsVisible="false">
-                <StackLayout>
-                    <Label Text="Search:" FontSize="Medium"/>
-                    <Entry x:Name="searchBar"
+                <!--Search Frame-->
+                <Frame x:Name="SearchFrame" IsVisible="false">
+                    <StackLayout>
+                        <Label Text="Search:" FontSize="Medium"/>
+                        <Entry x:Name="searchBar"
                        IsVisible="true"
                        Placeholder="Search collection ..."/>
-                </StackLayout>
-            </Frame>
+                    </StackLayout>
+                </Frame>
 
-            <!--Filter Frame-->
-            <Frame x:Name="filterFrame" IsVisible="false">
-                <StackLayout>
-                   
-                    <Label Text="Filters:" FontSize="Medium"/>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Label x:Name="playerCounthFilterLbl" Grid.Row="0" Grid.Column="0" Text="Player Count:" VerticalOptions="Center"/>
-                        <Entry x:Name="playerCountFilterEntry" Grid.Row="0" Grid.Column="1" Keyboard="Numeric" />
-                    </Grid>
-                </StackLayout>
-            </Frame>
+                <!--Filter Frame-->
+                <Frame x:Name="FilterFrame" IsVisible="false">
+                    <StackLayout>
 
-            <!--Collection List-->
-            <ListView x:Name="collectionListView"                      
-                    ItemsSource="{Binding Collection}"
-                    HasUnevenRows="True">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.View>
-                                <Views:CollectionCardView CardColor="Teal"
-                                                          BorderColor="#400080"
-                                                          IconBackgroundColor="#400080"
-                                                          IconImageSource="{Binding Image}"
-                                                          CardTitle="{Binding Name}"
-                                                          Designer="{Binding Designers[0]}"
-                                                          Publisher="{Binding Publishers[0]}"
-                                                          YearPublished="{Binding YearPublished}"
-                                                          PlayCount="{Binding NumPlays}"
-                                                          MaxPlayers="{Binding MaxPlayers}"
-                                                          MinPlayers="{Binding MinPlayers}"
-                                                          PlayTime="{Binding PlayTime}"
-                                                          MinAge="{Binding MinAge}"/>
-                            </ViewCell.View>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-        </StackLayout>
+                        <Label Text="Filters:" FontSize="Medium"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="playerCounthFilterLbl" Grid.Row="0" Grid.Column="0" Text="Player Count:" VerticalOptions="Center"/>
+                            <Entry x:Name="playerCountFilterEntry" Grid.Row="0" Grid.Column="1" Keyboard="Numeric" />
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+                
+                <!--Collection-->
+                <CollectionView x:Name="CollectionView"
+                            ItemsSource="{Binding Collection}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Views:CollectionCardView CardColor="Teal"
+                                                      BorderColor="#400080"
+                                                      IconBackgroundColor="#400080"
+                                                      IconImageSource="{Binding Image}"
+                                                      CardTitle="{Binding Name}"
+                                                      Designer="{Binding Designers[0]}"
+                                                      Publisher="{Binding Publishers[0]}"
+                                                      YearPublished="{Binding YearPublished}"
+                                                      PlayCount="{Binding NumPlays}"
+                                                      MaxPlayers="{Binding MaxPlayers}"
+                                                      MinPlayers="{Binding MinPlayers}"
+                                                      PlayTime="{Binding PlayTime}"
+                                                      MinAge="{Binding MinAge}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
