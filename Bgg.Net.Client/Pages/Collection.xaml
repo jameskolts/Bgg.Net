@@ -65,28 +65,6 @@
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>                    
                 </FlexLayout>
-                
-                <!--Collection-->
-                <!--<CollectionView x:Name="CollectionView"
-                            ItemsSource="{Binding Collection}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Views:CollectionCardView CardColor="Teal"
-                                                      BorderColor="#400080"
-                                                      IconBackgroundColor="#400080"
-                                                      IconImageSource="{Binding Image}"
-                                                      CardTitle="{Binding Name}"
-                                                      Designer="{Binding Designers[0]}"
-                                                      Publisher="{Binding Publishers[0]}"
-                                                      YearPublished="{Binding YearPublished}"
-                                                      PlayCount="{Binding NumPlays}"
-                                                      MaxPlayers="{Binding MaxPlayers}"
-                                                      MinPlayers="{Binding MinPlayers}"
-                                                      PlayTime="{Binding PlayTime}"
-                                                      MinAge="{Binding MinAge}"/>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>-->
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
