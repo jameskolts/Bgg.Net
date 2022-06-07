@@ -7,8 +7,9 @@
            BorderColor="{Binding BorderColor}"
            CornerRadius="10"
            HasShadow="True"
-           HorizontalOptions="Center">
+           Margin="5">
         <VerticalStackLayout WidthRequest="350"
+                             HeightRequest="300"
                              Padding="3">
             <!--Image-->
             <Frame BackgroundColor="{Binding IconBackgroundColor}"
@@ -68,14 +69,14 @@
 
                 <!--PlayTime-->
                 <HorizontalStackLayout Grid.Column="0"
-                                        HorizontalOptions="Start">
+                                       HorizontalOptions="Start">
                     <Label VerticalOptions="Center" FontSize="Small" Text="{Binding PlayTime}"/>
-                    <Image Source="clock.png" HeightRequest="30"/>
+                    <Image Source="clock.png" HeightRequest="30" WidthRequest="30"/>
                 </HorizontalStackLayout>
 
-                <!--PlayerCount-->
-                <HorizontalStackLayout Grid.Column="1" 
-                                       HorizontalOptions="Center">
+                <!--PlayerCount-->                
+                <HorizontalStackLayout Grid.Column="1"
+                                       HorizontalOptions="CenterAndExpand">
                     <Label VerticalOptions="Center"  FontSize="Small">
                         <Label.FormattedText>
                             <FormattedString>
@@ -85,12 +86,11 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Image x:Name="PlayerCountIMG" Source="playerswhite.png" HeightRequest="30"/>
+                    <Image x:Name="PlayerCountIMG" Source="playerswhite.png" HeightRequest="30" WidthRequest="30"/>
                 </HorizontalStackLayout>
 
                 <!--MinAge-->
-                <HorizontalStackLayout Grid.Column="2"
-                                       HorizontalOptions="End">
+                <HorizontalStackLayout Grid.Column="2" HorizontalOptions="End">
                     <Label VerticalOptions="Center" FontSize="Small">
                         <Label.FormattedText>
                             <FormattedString>
@@ -99,9 +99,10 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Image Source="agewhite.png" HeightRequest="30"/>
+                    <Image Source="agewhite.png" HeightRequest="30" WidthRequest="30"/>
                 </HorizontalStackLayout>
             </Grid>
+            
             <!--PlayCount-->
             <Label HorizontalOptions="Center"
                    Margin="0,10,0,0">
