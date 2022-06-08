@@ -17,20 +17,18 @@
                 <!--Activity Indicator-->
                 <ActivityIndicator x:Name="ActivityIndicator" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" VerticalOptions="Center"/>
 
-                <!--Search Frame-->
-                <Frame x:Name="SearchFrame" IsVisible="false">
-                    <StackLayout>
-                        <Label Text="Search:" FontSize="Medium"/>
-                        <Entry x:Name="searchBar"
-                       IsVisible="true"
-                       Placeholder="Search collection ..."/>
-                    </StackLayout>
-                </Frame>
+                <!--Search-->
+                <Views:SearchView x:Name="SearchView"
+                                  PlaceHolder="Search collection..." 
+                                  TextChanged="SearchView_TextChanged"
+                                  Visible="False"
+                                  SearchFrameColor="Teal"
+                                  BorderColor="{StaticResource BggPurple}"
+                                  TextColor="White"/>
 
                 <!--Filter Frame-->
                 <Frame x:Name="FilterFrame" IsVisible="false">
                     <StackLayout>
-
                         <Label Text="Filters:" FontSize="Medium"/>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -43,6 +41,7 @@
                     </StackLayout>
                 </Frame>
 
+                <!-- Collection-->
                 <FlexLayout x:Name="CollectionFlexLayout"
                             BindableLayout.ItemsSource="{Binding Collection}"
                             HorizontalOptions="CenterAndExpand"
@@ -50,8 +49,8 @@
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <Views:CollectionCardView CardColor="Teal"
-                                                      BorderColor="#400080"
-                                                      IconBackgroundColor="#400080"
+                                                      BorderColor="{StaticResource BggPurple}"
+                                                      IconBackgroundColor="{StaticResource BggPurple}"
                                                       IconImageSource="{Binding Image}"
                                                       CardTitle="{Binding Name}"
                                                       Designer="{Binding Designers[0]}"

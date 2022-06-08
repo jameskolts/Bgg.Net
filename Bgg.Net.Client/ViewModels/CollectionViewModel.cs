@@ -72,5 +72,10 @@ namespace Bgg.Net.Client.ViewModels
                 IsBusy = false;
             }
         }
+
+        public void FilterCollection(string name)
+        {
+            //TODO
+        }
     }
 }

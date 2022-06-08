@@ -13,7 +13,7 @@
         Route="dashboard" />
 
     <ShellContent
-        Title="Collection"
+        Title="My Collection"
         ContentTemplate="{DataTemplate Pages:Collection}"
         Route="collection" />
 

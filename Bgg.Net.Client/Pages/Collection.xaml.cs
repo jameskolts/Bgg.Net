@@ -43,13 +43,18 @@ public partial class Collection : ContentPage
 
     protected void SearchBtn_Clicked(object sender, EventArgs e)
     {
-        if (SearchFrame.IsVisible)
+        if (SearchView.Visible)
         {
-            SearchFrame.IsVisible = false;
+            SearchView.Visible = false;
         }
         else
         {
-            SearchFrame.IsVisible = true;
+            SearchView.Visible = true;
         }
+    }
+
+    private void SearchView_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        collectionViewModel.FilterCollection(SearchView.Text);
     }
 }

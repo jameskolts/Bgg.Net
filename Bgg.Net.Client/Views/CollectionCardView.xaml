@@ -9,7 +9,7 @@
            HasShadow="True"
            Margin="5">
         <VerticalStackLayout WidthRequest="350"
-                             HeightRequest="300"
+                             HeightRequest="350"
                              Padding="3">
             <!--Image-->
             <Frame BackgroundColor="{Binding IconBackgroundColor}"
@@ -29,12 +29,14 @@
                 Text="{Binding CardTitle}"
                 FontAttributes="Bold"
                 FontSize="Large"
-                HorizontalTextAlignment="Center" />
+                HorizontalTextAlignment="Center"
+                MinimumHeightRequest="100"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+                
                 <!--Designer-->
                 <Label Grid.Column="0" FontSize="Small" HorizontalOptions="Start">
                     <Label.FormattedText>
@@ -44,6 +46,7 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
+                
                 <!--Publisher-->
                 <Label Grid.Column="1" FontSize="Small" HorizontalOptions="EndAndExpand">
                     <Label.FormattedText>
@@ -55,6 +58,7 @@
                     </Label.FormattedText>
                 </Label>
             </Grid>
+            
             <!--Divider-->
             <BoxView Color="{Binding BorderColor}"
                      HeightRequest="2"
@@ -104,15 +108,23 @@
             </Grid>
             
             <!--PlayCount-->
-            <Label HorizontalOptions="Center"
-                   Margin="0,10,0,0">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Times Played: "/>
-                        <Span Text="{Binding PlayCount}"/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
+            <Frame BackgroundColor="{Binding IconBackgroundColor}"
+                   BorderColor="{Binding BorderColor}"
+                   CornerRadius="10"
+                   HasShadow="True"
+                   Margin="50,20,50,0"
+                   HorizontalOptions="Center">
+                <Label HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="White">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Times Played: "/>
+                            <Span Text="{Binding PlayCount}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Frame>            
         </VerticalStackLayout>
     </Frame>
 </ContentView>
