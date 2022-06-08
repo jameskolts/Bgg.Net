@@ -5,7 +5,6 @@ public partial class SearchView : ContentView
     public SearchView()
     {
         InitializeComponent();
-
         SearchFrame.BindingContext = this;
     }
 
@@ -19,7 +18,7 @@ public partial class SearchView : ContentView
     }
 
     public static readonly BindableProperty SearchFrameColorProperty =
-       BindableProperty.Create(nameof(SearchFrameColor), typeof(Color), typeof(CollectionCardView), Colors.DarkGray);
+       BindableProperty.Create(nameof(SearchFrameColor), typeof(Color), typeof(SearchView), Colors.White);
 
     public Color SearchFrameColor
     {
@@ -28,7 +27,7 @@ public partial class SearchView : ContentView
     }
 
     public static readonly BindableProperty BorderColorProperty =
-       BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(CollectionCardView), Colors.White);
+       BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(SearchView), Colors.White);
 
     public Color BorderColor
     {
@@ -37,16 +36,16 @@ public partial class SearchView : ContentView
     }
 
     public static readonly BindableProperty PlaceholderProperty =
-       BindableProperty.Create(nameof(PlaceholderProperty), typeof(string), typeof(CollectionCardView), string.Empty);
+       BindableProperty.Create(nameof(PlaceholderProperty), typeof(string), typeof(SearchView), string.Empty);
 
-    public string PlaceHolder
+    public string Placeholder
     {
         get => (string)GetValue(PlaceholderProperty);
         set => SetValue(PlaceholderProperty, value);
     }
 
     public static readonly BindableProperty TextColorProperty =
-      BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(CollectionCardView), Colors.Black);
+      BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(SearchView), Colors.Black);
 
     public Color TextColor
     {

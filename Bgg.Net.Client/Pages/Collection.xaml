@@ -19,7 +19,7 @@
 
                 <!--Search-->
                 <Views:SearchView x:Name="SearchView"
-                                  PlaceHolder="Search collection..." 
+                                  Placeholder="Search collection..." 
                                   TextChanged="SearchView_TextChanged"
                                   Visible="False"
                                   SearchFrameColor="Teal"
