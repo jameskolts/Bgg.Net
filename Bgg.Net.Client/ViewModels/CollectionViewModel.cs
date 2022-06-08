@@ -1,4 +1,5 @@
-﻿using Bgg.Net.Client.Infrastructure.Helpers;
+﻿using Bgg.Net.Client.Infrastructure.Extensions;
+using Bgg.Net.Client.Infrastructure.Helpers;
 using Bgg.Net.Client.Models;
 using Bgg.Net.Common.RequestHandlers.Collection;
 using Bgg.Net.Common.RequestHandlers.Things;
@@ -18,6 +19,7 @@ namespace Bgg.Net.Client.ViewModels
         private readonly ICollectionHelper _collectionHelper;
 
         private ObservableCollection<CollectionPageItem> _collection = new();
+        private IEnumerable<CollectionPageItem> _collectionEnumerable;
         private bool _isBusy;
 
         public CollectionViewModel(ILogger logger, ICollectionHandler collectionHandler, IThingHandler thingHandler,
@@ -60,7 +62,8 @@ namespace Bgg.Net.Client.ViewModels
                 var collectionResponse = await _collectionHandler.GetCollectionByUserName(userName);
                 var things = await _thingHandler.GetThingsById(collectionResponse.Item.Items.Select(x => x.Id).ToList());
 
-                Collection = _collectionHelper.CoalesceCollectionData(collectionResponse.Item.Items, things.Item.Things);
+                _collectionEnumerable = _collectionHelper.CoalesceCollectionData(collectionResponse.Item.Items, things.Item.Things);
+                Collection = _collectionEnumerable.ToObservableCollection();
 
             }
             catch (Exception ex)
@@ -73,9 +76,31 @@ namespace Bgg.Net.Client.ViewModels
             }
         }
 
-        public void FilterCollection(string name)
+        public void FilterCollection(string name, string age, string playercount, string time)
         {
-            //TODO
+            IEnumerable<CollectionPageItem> query = _collectionEnumerable;
+
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                query = query.Where(x => x.Name.ToLower().Contains(name));
+            }
+
+            if (int.TryParse(age, out int parsedAge))
+            {
+                query = query.Where(x => x.MinAge >= parsedAge);
+            }
+
+            if (int.TryParse(playercount, out int parsedPlayercount))
+            {
+                query = query.Where(x => x.MinPlayers >= parsedPlayercount);
+            }
+
+            if (int.TryParse(time, out int parsedTime))
+            {
+                query = query.Where(x => x.PlayTime <= parsedTime);
+            }
+
+            Collection = query.ToObservableCollection();
         }
     }
 }

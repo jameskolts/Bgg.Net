@@ -8,6 +8,6 @@ namespace Bgg.Net.Client.ViewModels
         public bool IsBusy { get; set; }
         public ObservableCollection<CollectionPageItem> Collection { get; set; }
         public Task GetCollection(string userName);
-        public void FilterCollection(string name);
+        public void FilterCollection(string name, string age, string playercount, string time);
     }
 }

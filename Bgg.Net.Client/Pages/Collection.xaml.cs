@@ -55,6 +55,6 @@ public partial class Collection : ContentPage
 
     private void SearchView_TextChanged(object sender, TextChangedEventArgs e)
     {
-        collectionViewModel.FilterCollection(SearchView.Text);
+        collectionViewModel.FilterCollection(SearchView.SearchText, SearchView.AgeText, SearchView.PlayerCountText, SearchView.PlayTimeText);
     }
 }

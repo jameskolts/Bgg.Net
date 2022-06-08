@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Bgg.Net.Client.Views.SearchAndFilterView">
+             x:Class="Bgg.Net.Client.Views.SearchAndFilterView"
+             xmlns:Views="clr-namespace:Bgg.Net.Client.Views">
     <StackLayout>
         <Frame x:Name="SearchFrame"
                IsVisible="{Binding Visible}"
@@ -9,10 +10,111 @@
                BorderColor="{Binding BorderColor}"
                CornerRadius="10"
                HasShadow="True"
-               Margin="5">
+               Margin="5"
+               MinimumWidthRequest="350"
+               MaximumWidthRequest="750">
+
             <StackLayout>
-                <Label Text="I'm looking for:" FontSize="Small" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-                <Entry x:Name="SearchBar" />
+                <Label Text="I'm looking for:" 
+                       FontSize="Small" 
+                       FontAttributes="Bold" 
+                       HorizontalTextAlignment="Start" 
+                       TextColor="{Binding TextColor}"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame BackgroundColor="White"
+                           BorderColor="{Binding BorderColor}"
+                           Padding="0">
+                        <SearchBar x:Name="SearchBar"
+                                   Placeholder="{Binding Placeholder}"
+                                   TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                                   PlaceholderColor="LightSlateGray"
+                                   TextChanged="SearchAndEntry_TextChanged"/>
+                    </Frame>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <BoxView Color="{Binding BorderColor}"
+                     HeightRequest="2"
+                     Margin="0,10,0,10"/>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <!-- Todo: Turn this repeated layout into a view-->
+                    <HorizontalStackLayout Grid.Column="0"
+                                           HorizontalOptions="Start">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame BackgroundColor="White"
+                                   BorderColor="{Binding BorderColor}"
+                                   Padding="0">
+                                <Entry x:Name="PlayTimeEntry" 
+                                       Keyboard="Numeric"
+                                       Placeholder="Time"
+                                       TextColor="Black"
+                                       TextChanged="SearchAndEntry_TextChanged"/>
+                            </Frame>
+                        </Grid>
+                        <Image Source="clock.png"
+                                HeightRequest="30"
+                                VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    
+                    <HorizontalStackLayout Grid.Column="1"
+                                           HorizontalOptions="Center">                       
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame BackgroundColor="White"
+                                   BorderColor="{Binding BorderColor}"
+                                   Padding="0">
+                                <Entry x:Name="PlayerCountEntry" 
+                                       Keyboard="Numeric"
+                                       Placeholder="Players"
+                                       TextColor="Black"
+                                       TextChanged="SearchAndEntry_TextChanged"/>
+                            </Frame>
+                        </Grid>
+                        <Image Source="playerswhite.png"
+                               HeightRequest="30"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                   
+                    <HorizontalStackLayout Grid.Column="2"
+                                           HorizontalOptions="End">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame BackgroundColor="White"
+                                   BorderColor="{Binding BorderColor}"
+                                   Padding="0">
+                                <Entry x:Name="AgeEntry" 
+                                       Keyboard="Numeric"
+                                       Placeholder="Age"
+                                       TextColor="Black"
+                                       TextChanged="SearchAndEntry_TextChanged"/>
+                            </Frame>
+                        </Grid>
+                        <Image Source="agewhite.png"
+                                HeightRequest="30"
+                                VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                </Grid>                
             </StackLayout>
         </Frame>
     </StackLayout>

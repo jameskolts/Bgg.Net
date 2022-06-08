@@ -18,13 +18,13 @@
                 <ActivityIndicator x:Name="ActivityIndicator" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" VerticalOptions="Center"/>
 
                 <!--Search-->
-                <Views:SearchView x:Name="SearchView"
-                                  Placeholder="Search collection..." 
-                                  TextChanged="SearchView_TextChanged"
-                                  Visible="False"
-                                  SearchFrameColor="Teal"
-                                  BorderColor="{StaticResource BggPurple}"
-                                  TextColor="White"/>
+                <Views:SearchAndFilterView x:Name="SearchView"
+                                           Placeholder="Search collection..." 
+                                           TextChanged="SearchView_TextChanged"
+                                           Visible="False"
+                                           SearchFrameColor="Teal"
+                                           BorderColor="{StaticResource BggPurple}"
+                                           TextColor="White"/>
 
                 <!--Filter Frame-->
                 <Frame x:Name="FilterFrame" IsVisible="false">

@@ -78,10 +78,10 @@
 	  <MauiXaml Update="Pages\ThingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\SearchAndFilterView.xaml">
+	  <MauiXaml Update="Views\FilterEntryView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\SearchView.xaml">
+	  <MauiXaml Update="Views\SearchAndFilterView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
@@ -104,6 +104,9 @@
 	<ItemGroup>
 	  <Compile Update="Views\CollectionCardView.xaml.cs">
 	    <DependentUpon>CollectionCardView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\SearchAndFilterView.xaml.cs">
+	    <DependentUpon>SearchAndFilterView.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
