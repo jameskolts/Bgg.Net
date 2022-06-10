@@ -17,11 +17,9 @@ namespace Bgg.Net.Client.ViewModels
         private readonly ICollectionHandler _collectionHandler;
         private readonly ICollectionHelper _collectionHelper;
         private readonly IThingHandler _thingHandler;
-
-        private ObservableCollection<CollectionPageItem> _collection = new();
+               
         private IEnumerable<CollectionPageItem> _fullCollection;
-        private bool _isBusy;
-
+       
         public CollectionViewModel(ILogger logger, ICollectionHandler collectionHandler, IThingHandler thingHandler,
             ICollectionHelper collectionHelper)
         {
@@ -31,28 +29,22 @@ namespace Bgg.Net.Client.ViewModels
             _thingHandler = thingHandler;
         }
 
-        /// <summary>
-        /// True if the ViewModel is querying data.
-        /// </summary>
+        private bool _isBusy;
+
         public bool IsBusy
         {
             get => _isBusy;
             set { _isBusy = value; OnPropertyChanged(nameof(IsBusy)); }
         }
 
-        /// <summary>
-        /// The Collection to display.
-        /// </summary>
+        private ObservableCollection<CollectionPageItem> _collection = new();
+
         public ObservableCollection<CollectionPageItem> Collection
         {
             get { return _collection; }
             set { _collection = value; OnPropertyChanged(nameof(Collection)); }
         }
 
-        /// <summary>
-        /// Loads the <see cref="Collection"/> property for the given user.
-        /// </summary>
-        /// <param name="userName">The user to load a collection for.</param>
         public async Task GetCollection(string userName)
         {
             IsBusy = true;
@@ -64,7 +56,6 @@ namespace Bgg.Net.Client.ViewModels
 
                 _fullCollection = _collectionHelper.CoalesceCollectionData(collectionResponse.Item.Items, thingResponse.Item.Things);
                 Collection = _fullCollection.ToObservableCollection();
-
             }
             catch (Exception ex)
             {
@@ -75,17 +66,16 @@ namespace Bgg.Net.Client.ViewModels
                 IsBusy = false;
             }
         }
-
-        //TODO: Make this work
+                
         public void FilterCollection(string name, string age, string playercount, string time)
         {
             IsBusy = true;
 
-            IEnumerable<CollectionPageItem> query = _fullCollection;
+            var query = _fullCollection;
 
             if (!string.IsNullOrWhiteSpace(name))
             {
-                query = query.Where(x => x.Name.ToLower().Contains(name)).ToList();
+                query = query.Where(x => x.Name.ToLower().Contains(name));
             }
 
             if (int.TryParse(age, out int parsedAge))
@@ -95,16 +85,21 @@ namespace Bgg.Net.Client.ViewModels
 
             if (int.TryParse(playercount, out int parsedPlayercount))
             {
-                query = query.Where(x => x.MinPlayers >= parsedPlayercount).ToList();
+                query = query.Where(x => x.MinPlayers >= parsedPlayercount);
             }
 
             if (int.TryParse(time, out int parsedTime))
             {
-                query = query.Where(x => x.PlayTime <= parsedTime).ToList();
+                query = query.Where(x => x.PlayTime <= parsedTime);
             }
 
             IsBusy = false;
             Collection = query.ToObservableCollection();
+        }
+
+        public void ItemTapped(CollectionPageItem item)
+        {
+
         }
     }
 }

@@ -45,6 +45,6 @@ public partial class Collection : ContentPage
 
     private void CollectionItem_Tapped(object sender, EventArgs e)
     {
-        var item = ((TappedEventArgs)e).Parameter as CollectionPageItem;
+        collectionViewModel.ItemTapped((e as TappedEventArgs).Parameter as CollectionPageItem);
     }
 }
