@@ -7,44 +7,35 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="searchwhite.png" Clicked="SearchBtn_Clicked" Order="Primary" Priority="0"/>
-        <ToolbarItem IconImageSource="filterwhite.png" Clicked="FilterBtn_Clicked" Order="Primary" Priority="1"/>
         <ToolbarItem Text="Export To Excel" Order="Secondary" Priority="0"/>
         <ToolbarItem Text="Export To Email" Order="Secondary" Priority="0"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout>
-                <!--Activity Indicator-->
-                <ActivityIndicator x:Name="ActivityIndicator" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" VerticalOptions="Center"/>
+        <StackLayout>
+            <!--Search-->
+            <Views:SearchAndFilterView x:Name="SearchView"
+                                       Placeholder="Search collection..." 
+                                       TextChanged="SearchView_TextChanged"
+                                       Visible="False"
+                                       SearchFrameColor="Teal"
+                                       BorderColor="{StaticResource BggPurple}"
+                                       TextColor="White"
+                                       WidthRequest="{OnPlatform WinUI=700, Default=400}"/>
 
-                <!--Search-->
-                <Views:SearchAndFilterView x:Name="SearchView"
-                                           Placeholder="Search collection..." 
-                                           TextChanged="SearchView_TextChanged"
-                                           Visible="False"
-                                           SearchFrameColor="Teal"
-                                           BorderColor="{StaticResource BggPurple}"
-                                           TextColor="White"/>
+            <!--Activity Indicator-->
+            <ActivityIndicator x:Name="ActivityIndicator" 
+                               IsVisible="{Binding IsBusy}" 
+                               IsRunning="{Binding IsBusy}" 
+                               VerticalOptions="Center"/>
 
-                <!--Filter Frame-->
-                <Frame x:Name="FilterFrame" IsVisible="false">
-                    <StackLayout>
-                        <Label Text="Filters:" FontSize="Medium"/>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label x:Name="playerCounthFilterLbl" Grid.Row="0" Grid.Column="0" Text="Player Count:" VerticalOptions="Center"/>
-                            <Entry x:Name="playerCountFilterEntry" Grid.Row="0" Grid.Column="1" Keyboard="Numeric" />
-                        </Grid>
-                    </StackLayout>
-                </Frame>
-
-                <!-- Collection-->
+            <!--Collection-->
+            <ScrollView VerticalScrollBarVisibility="Always"
+                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="FillAndExpand">
                 <FlexLayout x:Name="CollectionFlexLayout"
                             BindableLayout.ItemsSource="{Binding Collection}"
                             HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="Fill"
                             Wrap="Wrap">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
@@ -60,11 +51,12 @@
                                                       MaxPlayers="{Binding MaxPlayers}"
                                                       MinPlayers="{Binding MinPlayers}"
                                                       PlayTime="{Binding PlayTime}"
-                                                      MinAge="{Binding MinAge}"/>
+                                                      MinAge="{Binding MinAge}"
+                                                      HeightRequest="450"/>
                         </DataTemplate>
-                    </BindableLayout.ItemTemplate>                    
+                    </BindableLayout.ItemTemplate>
                 </FlexLayout>
-            </StackLayout>
-        </ScrollView>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

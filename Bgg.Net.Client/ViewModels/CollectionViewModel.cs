@@ -15,11 +15,11 @@ namespace Bgg.Net.Client.ViewModels
     {
         private readonly ILogger _logger;
         private readonly ICollectionHandler _collectionHandler;
-        private readonly IThingHandler _thingHandler;
         private readonly ICollectionHelper _collectionHelper;
+        private readonly IThingHandler _thingHandler;
 
         private ObservableCollection<CollectionPageItem> _collection = new();
-        private IEnumerable<CollectionPageItem> _collectionEnumerable;
+        private IEnumerable<CollectionPageItem> _fullCollection;
         private bool _isBusy;
 
         public CollectionViewModel(ILogger logger, ICollectionHandler collectionHandler, IThingHandler thingHandler,
@@ -60,10 +60,10 @@ namespace Bgg.Net.Client.ViewModels
             try
             {
                 var collectionResponse = await _collectionHandler.GetCollectionByUserName(userName);
-                var things = await _thingHandler.GetThingsById(collectionResponse.Item.Items.Select(x => x.Id).ToList());
+                var thingResponse = await _thingHandler.GetThingsById(collectionResponse.Item.Items.Select(x => x.Id).ToList());
 
-                _collectionEnumerable = _collectionHelper.CoalesceCollectionData(collectionResponse.Item.Items, things.Item.Things);
-                Collection = _collectionEnumerable.ToObservableCollection();
+                _fullCollection = _collectionHelper.CoalesceCollectionData(collectionResponse.Item.Items, thingResponse.Item.Things);
+                Collection = _fullCollection.ToObservableCollection();
 
             }
             catch (Exception ex)
@@ -76,13 +76,16 @@ namespace Bgg.Net.Client.ViewModels
             }
         }
 
+        //TODO: Make this work
         public void FilterCollection(string name, string age, string playercount, string time)
         {
-            IEnumerable<CollectionPageItem> query = _collectionEnumerable;
+            IsBusy = true;
+
+            IEnumerable<CollectionPageItem> query = _fullCollection;
 
             if (!string.IsNullOrWhiteSpace(name))
             {
-                query = query.Where(x => x.Name.ToLower().Contains(name));
+                query = query.Where(x => x.Name.ToLower().Contains(name)).ToList();
             }
 
             if (int.TryParse(age, out int parsedAge))
@@ -92,14 +95,15 @@ namespace Bgg.Net.Client.ViewModels
 
             if (int.TryParse(playercount, out int parsedPlayercount))
             {
-                query = query.Where(x => x.MinPlayers >= parsedPlayercount);
+                query = query.Where(x => x.MinPlayers >= parsedPlayercount).ToList();
             }
 
             if (int.TryParse(time, out int parsedTime))
             {
-                query = query.Where(x => x.PlayTime <= parsedTime);
+                query = query.Where(x => x.PlayTime <= parsedTime).ToList();
             }
 
+            IsBusy = false;
             Collection = query.ToObservableCollection();
         }
     }
