@@ -39,22 +39,15 @@
                             Wrap="Wrap">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Views:CollectionCardView CardColor="Teal"
+                            <Views:CollectionCardView Item="{Binding .}"
+                                                      CardColor="Teal"
                                                       BorderColor="{StaticResource BggPurple}"
                                                       IconBackgroundColor="{StaticResource BggPurple}"
-                                                      IconImageSource="{Binding Image}"
-                                                      CardTitle="{Binding Name}"
-                                                      Designer="{Binding Designers[0]}"
-                                                      Publisher="{Binding Publishers[0]}"
-                                                      YearPublished="{Binding YearPublished}"
-                                                      PlayCount="{Binding NumPlays}"
-                                                      MaxPlayers="{Binding MaxPlayers}"
-                                                      MinPlayers="{Binding MinPlayers}"
-                                                      PlayTime="{Binding PlayTime}"
-                                                      MinAge="{Binding MinAge}"
-                                                      HeightRequest="450"/>
+                                                      IconImageSource="{Binding Image}"                                                      
+                                                      HeightRequest="450"
+                                                      CardTapped="CollectionItem_Tapped"/>
                         </DataTemplate>
-                    </BindableLayout.ItemTemplate>
+                        </BindableLayout.ItemTemplate>
                 </FlexLayout>
             </ScrollView>
         </StackLayout>

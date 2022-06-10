@@ -1,4 +1,5 @@
 using Bgg.Net.Client.IOC;
+using Bgg.Net.Client.Models;
 using Bgg.Net.Client.ViewModels;
 
 namespace Bgg.Net.Client.Pages;
@@ -40,5 +41,10 @@ public partial class Collection : ContentPage
     private void SearchView_TextChanged(object sender, TextChangedEventArgs e)
     {
         collectionViewModel.FilterCollection(SearchView.SearchText, SearchView.AgeText, SearchView.PlayerCountText, SearchView.PlayTimeText);
+    }
+
+    private void CollectionItem_Tapped(object sender, EventArgs e)
+    {
+        var item = ((TappedEventArgs)e).Parameter as CollectionPageItem;
     }
 }

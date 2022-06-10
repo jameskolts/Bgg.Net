@@ -8,6 +8,10 @@
            CornerRadius="10"
            HasShadow="True"
            Margin="5">
+        <Frame.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Card_Tapped"
+                                  CommandParameter="{Binding Item}"/>
+        </Frame.GestureRecognizers>
         <VerticalStackLayout WidthRequest="350"
                              HeightRequest="350"
                              Padding="3">
@@ -26,7 +30,7 @@
             </Frame>
             <!--Title-->
             <Label 
-                Text="{Binding CardTitle}"
+                Text="{Binding Item.Name}"
                 FontAttributes="Bold"
                 FontSize="Large"
                 HorizontalTextAlignment="Center"
@@ -42,7 +46,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="By "/>
-                            <Span Text="{Binding Designer}"/>
+                            <Span Text="{Binding Item.Designers[0]}"/>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -51,9 +55,9 @@
                 <Label Grid.Column="1" FontSize="Small" HorizontalOptions="EndAndExpand">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="{Binding YearPublished}"/>
+                            <Span Text="{Binding Item.YearPublished}"/>
                             <Span Text=" "/>
-                            <Span Text="{Binding Publisher}"/>
+                            <Span Text="{Binding Item.Publishers[0]}"/>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -74,7 +78,7 @@
                 <!--PlayTime-->
                 <HorizontalStackLayout Grid.Column="0"
                                        HorizontalOptions="Start">
-                    <Label VerticalOptions="Center" FontSize="Small" Text="{Binding PlayTime}"/>
+                    <Label VerticalOptions="Center" FontSize="Small" Text="{Binding Item.PlayTime}"/>
                     <Image Source="clock.png" HeightRequest="30" WidthRequest="30"/>
                 </HorizontalStackLayout>
 
@@ -84,9 +88,9 @@
                     <Label VerticalOptions="Center"  FontSize="Small">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="{Binding MinPlayers}"/>
+                                <Span Text="{Binding Item.MinPlayers}"/>
                                 <Span Text="-"/>
-                                <Span Text="{Binding MaxPlayers}"/>
+                                <Span Text="{Binding Item.MaxPlayers}"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -98,7 +102,7 @@
                     <Label VerticalOptions="Center" FontSize="Small">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="{Binding MinAge}"/>
+                                <Span Text="{Binding Item.MinAge}"/>
                                 <Span Text="+"/>
                             </FormattedString>
                         </Label.FormattedText>
@@ -120,7 +124,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="Times Played: "/>
-                            <Span Text="{Binding PlayCount}"/>
+                            <Span Text="{Binding Item.NumPlays}"/>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
