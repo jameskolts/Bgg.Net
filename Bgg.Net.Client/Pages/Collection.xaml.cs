@@ -15,13 +15,13 @@ public partial class Collection : ContentPage
         InitAsync();
     }
 
-    public void Init()
+    private void Init()
     {
         collectionViewModel = BootStrapper.Resolve<ICollectionViewModel>();
         BindingContext = collectionViewModel;
     }
 
-    public async void InitAsync()
+    private async void InitAsync()
     {
         await collectionViewModel.GetCollection("JusticiarIV");
     }

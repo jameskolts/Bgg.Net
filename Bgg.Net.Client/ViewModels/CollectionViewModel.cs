@@ -1,6 +1,8 @@
 ﻿using Bgg.Net.Client.Infrastructure.Extensions;
 using Bgg.Net.Client.Infrastructure.Helpers;
 using Bgg.Net.Client.Models;
+using Bgg.Net.Client.Pages;
+using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Collection;
 using Bgg.Net.Common.RequestHandlers.Things;
 using Serilog;
@@ -20,6 +22,10 @@ namespace Bgg.Net.Client.ViewModels
                
         private IEnumerable<CollectionPageItem> _fullCollection;
        
+        public CollectionViewModel()
+        {
+        }
+
         public CollectionViewModel(ILogger logger, ICollectionHandler collectionHandler, IThingHandler thingHandler,
             ICollectionHelper collectionHelper)
         {
@@ -52,7 +58,13 @@ namespace Bgg.Net.Client.ViewModels
             try
             {
                 var collectionResponse = await _collectionHandler.GetCollectionByUserName(userName);
-                var thingResponse = await _thingHandler.GetThingsById(collectionResponse.Item.Items.Select(x => x.Id).ToList());
+
+                var thingRequest = new ThingRequest
+                {
+                    Id = collectionResponse.Item.Items.Select(x => x.Id).ToList(),
+                    Stats = true
+                };
+                var thingResponse = await _thingHandler.GetThing(thingRequest);
 
                 _fullCollection = _collectionHelper.CoalesceCollectionData(collectionResponse.Item.Items, thingResponse.Item.Things);
                 Collection = _fullCollection.ToObservableCollection();
@@ -97,9 +109,9 @@ namespace Bgg.Net.Client.ViewModels
             Collection = query.ToObservableCollection();
         }
 
-        public void ItemTapped(CollectionPageItem item)
+        public async void ItemTapped(CollectionPageItem item)
         {
-
+            await Shell.Current.Navigation.PushModalAsync(new CollectionItemDetails(item));
         }
     }
 }

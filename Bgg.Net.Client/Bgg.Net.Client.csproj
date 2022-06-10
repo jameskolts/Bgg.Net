@@ -63,6 +63,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\CollectionItemDetails.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\CollectionCardView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -102,6 +105,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\CollectionItemDetails.xaml.cs">
+	    <DependentUpon>CollectionItemDetails.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\CollectionCardView.xaml.cs">
 	    <DependentUpon>CollectionCardView.xaml</DependentUpon>
 	  </Compile>

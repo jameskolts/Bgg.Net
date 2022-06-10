@@ -1,10 +1,7 @@
 ﻿using Autofac;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;using Serilog;
+using Autofac.Core;
 using Bgg.Net.Common.Infrastructure.IOC;
+using Serilog;
 
 namespace Bgg.Net.Client.IOC
 {
@@ -42,6 +39,14 @@ namespace Bgg.Net.Client.IOC
                 throw new Exception("AutofacRegistrar has not started.");
 
             return _scope.Resolve<T>();
+        }
+
+        public static T Resolve<T>(params Parameter[] parameters)
+        {
+            if (_scope == null)
+                throw new Exception("AutofacRegistrar has not started.");
+
+            return _scope.Resolve<T>(parameters);
         }
     }
 }

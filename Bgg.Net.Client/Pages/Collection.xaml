@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Views="clr-namespace:Bgg.Net.Client.Views"
              x:Class="Bgg.Net.Client.Pages.Collection"
-             Title="Collection">
+             Title="My Collection">
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="searchwhite.png" Clicked="SearchBtn_Clicked" Order="Primary" Priority="0"/>
         <ToolbarItem Text="Export To Excel" Order="Secondary" Priority="0"/>

@@ -15,5 +15,6 @@ public partial class AppShell : Shell
         Routing.RegisterRoute("dashboard", typeof(Dashboard));
         Routing.RegisterRoute("logs", typeof(Logs));
         Routing.RegisterRoute("collection", typeof(Collection));
+        Routing.RegisterRoute("collectionitemdetails", typeof(CollectionItemDetails));
     }
 }

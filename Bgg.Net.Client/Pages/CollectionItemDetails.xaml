@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Bgg.Net.Client.Pages.CollectionItemDetails"
+             xmlns:ViewModels="clr-namespace:Bgg.Net.Client.ViewModels"
+             Title="{Binding Item.Name}">
+    <ContentPage.BindingContext>
+        <ViewModels:CollectionItemDetailsViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+
+        <!--Header Display-->
+        <FlexLayout HorizontalOptions="{OnPlatform WinUI=Start, Default=Center}"
+                    VerticalOptions="Fill"
+                    Wrap="Wrap">
+
+            <!--Image-->
+            <Frame CornerRadius="45"
+                   HeightRequest="300"
+                   WidthRequest="300"
+                   HasShadow="False">
+                <Image Source="{Binding Item.Image}"
+                       HeightRequest="300"
+                       MinimumWidthRequest="300"
+                       Margin="-20"
+                       Aspect="AspectFill"/>
+            </Frame>
+
+            <StackLayout HorizontalOptions="{OnPlatform WinUI=StartAndExpand, Default=Center}">
+                <Label Text="{Binding Item.Name}"
+                       FontSize="{OnPlatform WinUI=Header, Default=Title}"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"/>               
+                <Grid ColumnSpacing="50"
+                      HorizontalOptions="Center">
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--PlayerCount-->
+                    <HorizontalStackLayout Grid.Column="0"
+                                           HorizontalOptions="Start">
+                        <Label VerticalOptions="Center"  FontSize="Small">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Item.MinPlayers}"/>
+                                    <Span Text="-"/>
+                                    <Span Text="{Binding Item.MaxPlayers}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Image x:Name="PlayerCountIMG" 
+                               Source="{AppThemeBinding Light=players.png, Dark=playerswhite.png}" 
+                               HeightRequest="30" WidthRequest="30"/>
+                    </HorizontalStackLayout>
+
+                    <!--Playtime-->
+                    <HorizontalStackLayout Grid.Column="1"
+                                           HorizontalOptions="Center">
+                        <Label VerticalOptions="Center" FontSize="Small" Text="{Binding Item.PlayTime}"/>
+                        <Image Source="clock.png" HeightRequest="30" WidthRequest="30"/>
+                    </HorizontalStackLayout>
+
+                    <!--Age-->
+                    <HorizontalStackLayout Grid.Column="2" 
+                                           HorizontalOptions="End">
+                        <Label VerticalOptions="Center" FontSize="Small">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Item.MinAge}"/>
+                                    <Span Text="+"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Image Source="{AppThemeBinding Light=age.png, Dark=agewhite.png}" HeightRequest="30" WidthRequest="30"/>
+                    </HorizontalStackLayout>
+
+                    <Label Grid.Column="3"
+                           VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Weight: " 
+                                      FontAttributes="Bold"/>
+                                <Span Text="{Binding Item.Statistics.Ratings.AverageWeights.Value, StringFormat='{0:F2}'}"
+                                      TextColor="Orange"
+                                      FontAttributes="Bold"/>                                
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Grid>
+                
+                <!--Publishers-->
+                <!--<ListView BindingContext="{Binding Item.Publishers}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding .}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>-->
+            </StackLayout>
+        </FlexLayout>
+
+        <Label Text="{Binding Item.Description}"
+               TextType="Html"/>
+    </StackLayout>
+</ContentPage>

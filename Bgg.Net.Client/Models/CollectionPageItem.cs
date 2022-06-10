@@ -37,6 +37,8 @@ namespace Bgg.Net.Client.Models
 
         public CollectionItemStatus Status { get; set; }
 
+        public Statistics Statistics { get; set; }
+
         public CollectionPageItem(CollectionItem item, Thing thing)
         {
             Id = thing.Id;
@@ -54,6 +56,7 @@ namespace Bgg.Net.Client.Models
             Designers = thing.Links?.Where(x => x.Type == "boardgamedesigner")?.Select(x => x.Value)?.ToList();
             Artists = thing.Links?.Where(x => x.Type == "boardgameartists")?.Select(x => x.Value)?.ToList();
             Status = item.Status;
+            Statistics = thing.Statistics;
         }
     }
 }
