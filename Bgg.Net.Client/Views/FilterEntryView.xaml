@@ -2,22 +2,22 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Bgg.Net.Client.Views.FilterEntryView">
-    <HorizontalStackLayout x:Name="FilterLayout">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Frame BackgroundColor="White"
-                   BorderColor="{Binding BorderColor}"
-                   Padding="0">
-                <Entry x:Name="FilterEntry" 
-                       Keyboard="Numeric"
-                       Placeholder="{Binding Placeholder}"
-                       TextColor="Black"/>
-            </Frame>
-        </Grid>
-        <Image Source="{Binding Image}"
+    <HorizontalStackLayout x:Name="FilterLayout"
+                           HorizontalOptions="{Binding HorizontalOptions}">
+        <Frame BackgroundColor="White"
+                               BorderColor="{Binding BorderColor}"
+                               Padding="0">
+            <Entry x:Name="FilterEntry" 
+                   Keyboard="Numeric"
+                   Placeholder="{Binding Placeholder}"
+                   TextColor="Black"
+                   TextChanged="FilterEntry_TextChanged"
+                   WidthRequest="55"/>
+        </Frame>
+        <!--This image binding isn't working-->
+        <Image Source="{Binding ImageSource}"
                HeightRequest="30"
+               WidthRequest="30"
                VerticalOptions="Center"/>
     </HorizontalStackLayout>
 </ContentView>
