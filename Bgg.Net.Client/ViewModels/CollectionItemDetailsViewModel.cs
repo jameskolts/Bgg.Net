@@ -1,4 +1,6 @@
-﻿using Bgg.Net.Client.Models;
+﻿using Bgg.Net.Client.Infrastructure.Extensions;
+using Bgg.Net.Client.Models;
+using System.Collections.ObjectModel;
 
 namespace Bgg.Net.Client.ViewModels
 {
@@ -14,5 +16,10 @@ namespace Bgg.Net.Client.ViewModels
         }
     
         public CollectionPageItem Item { get; private set; }
+
+        public long? BggRank
+        {
+            get => Item?.Statistics.Ratings.Ranks.FirstOrDefault(x => x.Name == "boardgame")?.Value;
+        }
     }
 }

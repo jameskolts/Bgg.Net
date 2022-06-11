@@ -27,10 +27,34 @@
             </Frame>
 
             <StackLayout HorizontalOptions="{OnPlatform WinUI=StartAndExpand, Default=Center}">
-                <Label Text="{Binding Item.Name}"
-                       FontSize="{OnPlatform WinUI=Header, Default=Title}"
-                       FontAttributes="Bold"
-                       HorizontalOptions="Center"/>               
+                <!--Title and Ratings-->
+                <HorizontalStackLayout>
+                    <Frame BackgroundColor="{StaticResource BggPurple}"
+                           CornerRadius="5">
+                        <StackLayout>
+                            <Label Text="{Binding Item.Statistics.Ratings.Average.Value, StringFormat='{0:F2}'}"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"/>
+                            <Label Text="Rating"
+                                   FontAttributes="Bold"/>
+                        </StackLayout>
+                    </Frame>
+                    <Label Text="{Binding Item.Name}"
+                           FontSize="{OnPlatform WinUI=Header, Default=Title}"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           Margin="15,0,15,0"/>
+                    <Frame BackgroundColor="{StaticResource BggPurple}"
+                           CornerRadius="5">
+                        <StackLayout>
+                            <Label Text="{Binding BggRank}"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Center"/>
+                            <Label Text="Rank"
+                                   FontAttributes="Bold"/>
+                        </StackLayout>
+                    </Frame>
+                </HorizontalStackLayout>              
                 <Grid ColumnSpacing="50"
                       HorizontalOptions="Center">
                     
@@ -94,13 +118,37 @@
                 </Grid>
                 
                 <!--Publishers-->
-                <!--<ListView BindingContext="{Binding Item.Publishers}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Label Text="{Binding .}"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->
+                <Grid RowSpacing="0"
+                      ColumnSpacing="25"
+                      Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0"
+                           Grid.Row="0"
+                           Text="Publishers: "
+                           FontAttributes="Bold"/>
+                    <Label Grid.Column="0"
+                           Grid.Row="1"
+                           x:Name="PublishersLabel" 
+                           HeightRequest="100"
+                           WidthRequest="200"/>
+                    <Label Grid.Column="1"
+                           Grid.Row="0"
+                           Text="Designers: "
+                           FontAttributes="Bold"/>
+                    <Label Grid.Column="1"
+                           Grid.Row="1"
+                           x:Name="DesignersLabel"
+                           HeightRequest="100"
+                           WidthRequest="200"/>
+                </Grid>
+                
             </StackLayout>
         </FlexLayout>
 

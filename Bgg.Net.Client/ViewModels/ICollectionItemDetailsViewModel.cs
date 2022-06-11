@@ -4,6 +4,7 @@ namespace Bgg.Net.Client.ViewModels
 {
     public interface ICollectionItemDetailsViewModel : IViewModel
     {
-        public CollectionPageItem Item { get; }
+        CollectionPageItem Item { get; }
+        long? BggRank { get; }
     }
 }

@@ -1,12 +1,14 @@
-using Bgg.Net.Client.IOC;
+using Bgg.Net.Client.Infrastructure.IOC;
 using Bgg.Net.Client.Models;
 using Bgg.Net.Client.ViewModels;
+using Serilog;
 
 namespace Bgg.Net.Client.Pages;
 
 public partial class Collection : ContentPage
 {
     public ICollectionViewModel collectionViewModel;
+    private ILogger _logger;
 
     public Collection()
     {
@@ -17,6 +19,7 @@ public partial class Collection : ContentPage
 
     private void Init()
     {
+        _logger = BootStrapper.Resolve<ILogger>();
         collectionViewModel = BootStrapper.Resolve<ICollectionViewModel>();
         BindingContext = collectionViewModel;
     }
@@ -45,6 +48,13 @@ public partial class Collection : ContentPage
 
     private void CollectionItem_Tapped(object sender, EventArgs e)
     {
-        collectionViewModel.ItemTapped((e as TappedEventArgs).Parameter as CollectionPageItem);
+        try
+        {
+            collectionViewModel.ItemTapped((e as TappedEventArgs).Parameter as CollectionPageItem);
+        }
+        catch (Exception ex)
+        {
+            _logger.Error(ex.Message, ex.InnerException);
+        }
     }
 }

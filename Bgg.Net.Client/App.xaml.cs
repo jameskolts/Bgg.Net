@@ -1,4 +1,4 @@
-﻿using Bgg.Net.Client.IOC;
+﻿using Bgg.Net.Client.Infrastructure.IOC;
 
 namespace Bgg.Net.Client;
 

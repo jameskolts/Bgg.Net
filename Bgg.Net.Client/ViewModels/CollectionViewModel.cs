@@ -111,7 +111,7 @@ namespace Bgg.Net.Client.ViewModels
 
         public async void ItemTapped(CollectionPageItem item)
         {
-            await Shell.Current.Navigation.PushModalAsync(new CollectionItemDetails(item));
+            await Application.Current.MainPage.Navigation.PushModalAsync(new CollectionItemDetails(item));
         }
     }
 }

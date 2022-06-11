@@ -3,7 +3,7 @@ using Bgg.Net.Client.Infrastructure.Commands;
 using Bgg.Net.Client.Infrastructure.Helpers;
 using Bgg.Net.Client.ViewModels;
 
-namespace Bgg.Net.Client.IOC
+namespace Bgg.Net.Client.Infrastructure.IOC
 {
     public static class AutofacRegistrar
     {

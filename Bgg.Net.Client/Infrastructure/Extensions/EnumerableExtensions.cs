@@ -8,5 +8,11 @@ namespace Bgg.Net.Client.Infrastructure.Extensions
         {
             return new ObservableCollection<T>(enumerable);
         }
+
+        public static string CreateListLabelText(this IList<string> strings)
+        {
+            return string.Join(", ", strings.Take(3)) +
+                (strings.Count > 3 ? $" +{strings.Count - 3} more" : string.Empty);
+        }
     }
 }

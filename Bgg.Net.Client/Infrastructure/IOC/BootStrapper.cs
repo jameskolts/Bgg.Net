@@ -3,7 +3,7 @@ using Autofac.Core;
 using Bgg.Net.Common.Infrastructure.IOC;
 using Serilog;
 
-namespace Bgg.Net.Client.IOC
+namespace Bgg.Net.Client.Infrastructure.IOC
 {
     public static class BootStrapper
     {
