@@ -7,152 +7,232 @@
     <ContentPage.BindingContext>
         <ViewModels:CollectionItemDetailsViewModel/>
     </ContentPage.BindingContext>
-    <StackLayout>
+    <ScrollView>
 
-        <!--Header Display-->
-        <FlexLayout HorizontalOptions="{OnPlatform WinUI=Start, Default=Center}"
+        <StackLayout>
+
+            <!--Header Display-->
+            <FlexLayout HorizontalOptions="{OnPlatform WinUI=Start, Default=Center}"
                     VerticalOptions="Fill"
                     Wrap="Wrap">
 
-            <!--Image-->
-            <Frame CornerRadius="45"
+                <!--Image-->
+                <Frame CornerRadius="45"
                    HeightRequest="300"
                    WidthRequest="300"
                    HasShadow="False">
-                <Image Source="{Binding Item.Image}"
+                    <Image Source="{Binding Item.Image}"
                        HeightRequest="300"
                        MinimumWidthRequest="300"
                        Margin="-20"
                        Aspect="AspectFill"/>
-            </Frame>
+                </Frame>
 
-            <StackLayout HorizontalOptions="{OnPlatform WinUI=StartAndExpand, Default=Center}">
-                <!--Title and Ratings-->
-                <HorizontalStackLayout>
-                    <Frame BackgroundColor="{StaticResource BggPurple}"
+                <StackLayout x:Name="TitleCardStackLayout"
+                         HorizontalOptions="{OnPlatform WinUI=StartAndExpand, Default=Center}">
+                    <HorizontalStackLayout>
+                        <Frame BackgroundColor="{StaticResource BggPurple}"
                            CornerRadius="5">
-                        <StackLayout>
-                            <Label Text="{Binding Item.Statistics.Ratings.Average.Value, StringFormat='{0:F2}'}"
+                            <StackLayout>
+                                <Label Text="{Binding Item.Statistics.Ratings.Average.Value, StringFormat='{0:F2}'}"
                                FontAttributes="Bold"
                                HorizontalTextAlignment="Center"/>
-                            <Label Text="Rating"
+                                <Label Text="Rating"
                                    FontAttributes="Bold"/>
-                        </StackLayout>
-                    </Frame>
-                    <Label Text="{Binding Item.Name}"
+                            </StackLayout>
+                        </Frame>
+                        <Label Text="{Binding Item.Name}"
                            FontSize="{OnPlatform WinUI=Header, Default=Title}"
                            FontAttributes="Bold"
                            HorizontalOptions="Center"
                            Margin="15,0,15,0"/>
-                    <Frame BackgroundColor="{StaticResource BggPurple}"
+                        <Frame BackgroundColor="{StaticResource BggPurple}"
                            CornerRadius="5">
-                        <StackLayout>
-                            <Label Text="{Binding BggRank}"
+                            <StackLayout>
+                                <Label Text="{Binding BggRank}"
                                    FontAttributes="Bold"
                                    HorizontalTextAlignment="Center"/>
-                            <Label Text="Rank"
+                                <Label Text="Rank"
                                    FontAttributes="Bold"/>
-                        </StackLayout>
-                    </Frame>
-                </HorizontalStackLayout>              
-                <Grid ColumnSpacing="50"
+                            </StackLayout>
+                        </Frame>
+                    </HorizontalStackLayout>
+                    <Grid ColumnSpacing="50"
                       HorizontalOptions="Center">
-                    
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
 
-                    <!--PlayerCount-->
-                    <HorizontalStackLayout Grid.Column="0"
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--PlayerCount-->
+                        <HorizontalStackLayout x:Name="PlayerCountStackLayout"
+                                           Grid.Column="0"
                                            HorizontalOptions="Start">
-                        <Label VerticalOptions="Center"  FontSize="Small">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{Binding Item.MinPlayers}"/>
-                                    <Span Text="-"/>
-                                    <Span Text="{Binding Item.MaxPlayers}"/>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Image x:Name="PlayerCountIMG" 
+                            <Label x:Name="PlayerCountLabel" 
+                            VerticalOptions="Center"  FontSize="Small">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Item.MinPlayers}"/>
+                                        <Span Text="-"/>
+                                        <Span Text="{Binding Item.MaxPlayers}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Image x:Name="PlayerCountIMG" 
                                Source="{AppThemeBinding Light=players.png, Dark=playerswhite.png}" 
                                HeightRequest="30" WidthRequest="30"/>
-                    </HorizontalStackLayout>
+                        </HorizontalStackLayout>
 
-                    <!--Playtime-->
-                    <HorizontalStackLayout Grid.Column="1"
+                        <!--Playtime-->
+                        <HorizontalStackLayout x:Name="PlayTimeStackLayout"
+                                           Grid.Column="1"
                                            HorizontalOptions="Center">
-                        <Label VerticalOptions="Center" FontSize="Small" Text="{Binding Item.PlayTime}"/>
-                        <Image Source="clock.png" HeightRequest="30" WidthRequest="30"/>
-                    </HorizontalStackLayout>
+                            <Label x:Name="PlayTimeLabel"
+                            VerticalOptions="Center" 
+                            FontSize="Small" 
+                            Text="{Binding Item.PlayTime}"/>
+                            <Image x:Name="PlayTimeIMG"
+                               Source="clock.png"
+                               HeightRequest="30" 
+                               WidthRequest="30"/>
+                        </HorizontalStackLayout>
 
-                    <!--Age-->
-                    <HorizontalStackLayout Grid.Column="2" 
+                        <!--Age-->
+                        <HorizontalStackLayout x:Name="AgeStackLayout"
+                                           Grid.Column="2" 
                                            HorizontalOptions="End">
-                        <Label VerticalOptions="Center" FontSize="Small">
+                            <Label x:Name="AgeLabel"
+                               VerticalOptions="Center" 
+                               FontSize="Small">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Item.MinAge}"/>
+                                        <Span Text="+"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Image x:Name="AgeIMG"
+                               Source="{AppThemeBinding Light=age.png, Dark=agewhite.png}"
+                               HeightRequest="30" 
+                               WidthRequest="30"/>
+                        </HorizontalStackLayout>
+
+                        <!--Weight-->
+                        <Label x:Name="WeightLabel"
+                           Grid.Column="3"
+                           VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{Binding Item.MinAge}"/>
-                                    <Span Text="+"/>
+                                    <Span Text="Weight: " 
+                                      FontAttributes="Bold"/>
+                                    <Span Text="{Binding Item.Statistics.Ratings.AverageWeights.Value, StringFormat='{0:F2}'}"
+                                      TextColor="Orange"
+                                      FontAttributes="Bold"/>
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Image Source="{AppThemeBinding Light=age.png, Dark=agewhite.png}" HeightRequest="30" WidthRequest="30"/>
-                    </HorizontalStackLayout>
+                    </Grid>
 
-                    <Label Grid.Column="3"
-                           VerticalOptions="Center">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="Weight: " 
-                                      FontAttributes="Bold"/>
-                                <Span Text="{Binding Item.Statistics.Ratings.AverageWeights.Value, StringFormat='{0:F2}'}"
-                                      TextColor="Orange"
-                                      FontAttributes="Bold"/>                                
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </Grid>
-                
-                <!--Publishers-->
-                <Grid RowSpacing="0"
+                    <Grid RowSpacing="0"
                       ColumnSpacing="25"
                       Margin="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Label Grid.Column="0"
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <!--Publishers-->
+                        <Label Grid.Column="0"
                            Grid.Row="0"
                            Text="Publishers: "
                            FontAttributes="Bold"/>
-                    <Label Grid.Column="0"
+                        <Label Grid.Column="0"
                            Grid.Row="1"
                            x:Name="PublishersLabel" 
-                           HeightRequest="100"
                            WidthRequest="200"/>
-                    <Label Grid.Column="1"
+                        <!--Designers-->
+                        <Label Grid.Column="1"
                            Grid.Row="0"
                            Text="Designers: "
                            FontAttributes="Bold"/>
-                    <Label Grid.Column="1"
+                        <Label Grid.Column="1"
                            Grid.Row="1"
                            x:Name="DesignersLabel"
-                           HeightRequest="100"
                            WidthRequest="200"/>
-                </Grid>
-                
-            </StackLayout>
-        </FlexLayout>
+                        <!--Artists-->
+                        <Label Grid.Column="1"
+                           Grid.Row="2"
+                           Text="Artists: "
+                           FontAttributes="Bold"/>
+                        <Label Grid.Column="1"
+                           Grid.Row="3"
+                           x:Name="ArtistsLabel"
+                           WidthRequest="200"/>
+                    </Grid>
+                </StackLayout>
+            </FlexLayout>
 
-        <Label Text="{Binding Item.Description}"
+
+            <!--Tab Buttons-->
+            <FlexLayout x:Name="TabFlexLayout"
+                    HorizontalOptions="StartAndExpand"
+                    MaximumHeightRequest="90"
+                    Wrap="Wrap">
+
+                <Button Text="Overview"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Clicked="TabButton_Clicked"
+                    CommandParameter="overview"/>
+                <Button Text="My Stats"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Clicked="TabButton_Clicked"
+                    CommandParameter="stats"/>
+                <Button Text="Log Play"
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    Clicked="TabButton_Clicked"
+                    CommandParameter="log"/>
+                <Button Text="Forums"
+                    Grid.Column="3"
+                    Grid.Row="0"
+                    Clicked="TabButton_Clicked"
+                    CommandParameter="forums"/>
+                <Button Text="Images"
+                    Grid.Column="4"
+                    Grid.Row="0"
+                    Clicked="TabButton_Clicked"
+                    CommandParameter="images"/>
+                <Button Text="Videos"
+                    Grid.Column="5"
+                    Grid.Row="0"
+                    Clicked="TabButton_Clicked"
+                    CommandParameter="videos"/>
+                <Button Text="Files"
+                    Grid.Column="6"
+                    Grid.Row="0"
+                    Clicked="TabButton_Clicked"
+                    CommandParameter="files"/>
+                <Button Text="BGG"
+                    Grid.Column="7"
+                    Grid.Row="0"
+                    Clicked="TabButton_Clicked"
+                    CommandParameter="bgg"/>
+            </FlexLayout>
+
+            <Label x:Name="DescriptionLabel"
+               Text="{Binding Item.Description}"
                TextType="Html"/>
-    </StackLayout>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

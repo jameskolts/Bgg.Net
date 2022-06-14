@@ -111,7 +111,8 @@ namespace Bgg.Net.Client.ViewModels
 
         public async void ItemTapped(CollectionPageItem item)
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new CollectionItemDetails(item));
+            //TODO: Navigation not working for all results, CTD
+            await Application.Current.MainPage.Navigation.PushAsync(new CollectionItemDetails(item));
         }
     }
 }

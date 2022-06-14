@@ -54,7 +54,7 @@ namespace Bgg.Net.Client.Models
             Publishers = thing.Links?.Where(x => x.Type == "boardgamepublisher")?.Select(x => x.Value)?.ToList();
             Mechanics = thing.Links?.Where(x => x.Type == "boardgamemechanic")?.Select(x => x.Value)?.ToList();
             Designers = thing.Links?.Where(x => x.Type == "boardgamedesigner")?.Select(x => x.Value)?.ToList();
-            Artists = thing.Links?.Where(x => x.Type == "boardgameartists")?.Select(x => x.Value)?.ToList();
+            Artists = thing.Links?.Where(x => x.Type == "boardgameartist")?.Select(x => x.Value)?.ToList();
             Status = item.Status;
             Statistics = thing.Statistics;
         }

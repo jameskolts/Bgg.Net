@@ -22,5 +22,19 @@ public partial class CollectionItemDetails : ContentPage
 		BindingContext = itemViewModel;
 		PublishersLabel.Text = itemViewModel.Item.Publishers.CreateListLabelText();
 		DesignersLabel.Text = itemViewModel.Item.Designers.CreateListLabelText();
+		ArtistsLabel.Text = itemViewModel.Item.Artists.CreateListLabelText();		
+    }
+
+    private async void TabButton_Clicked(object sender, EventArgs e)
+    {
+		switch ((sender as Button).CommandParameter.ToString())
+        {
+			case "overview":
+                DescriptionLabel.IsVisible = true;
+				break;
+			case "bgg":
+                await Launcher.OpenAsync($"https://boardgamegeek.com/boardgame/{itemViewModel.Item.Id}/");
+                break;
+        }
     }
 }
