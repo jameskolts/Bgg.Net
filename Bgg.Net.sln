@@ -3,17 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32113.165
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bgg.Net.Common.Old", "Bgg.Net.Common\Bgg.Net.Common.Old.csproj", "{1ACDFE88-EBDE-4CD2-A0A3-996448B93537}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bgg.Net.Common.Tests", "Bgg.Net.Common.Tests\Bgg.Net.Common.Tests.csproj", "{258B79F1-C77D-401C-BD0C-B2A8E1E336F4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bgg.Net.Client", "Bgg.Net.Client\Bgg.Net.Client.csproj", "{0C0EC8D2-3F2B-4489-BF45-39849CD17055}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dgi.Api", "Dgi.Api\Dgi.Api.csproj", "{52C7DA4A-F98A-45D4-A4BF-221A0FF06C9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dgi.Api.Tests", "Dgi.Api.Tests\Dgi.Api.Tests.csproj", "{690C9FC6-3B9C-4404-A002-C3431CE4A8E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dgi.Api.Tests", "Dgi.Api.Tests\Dgi.Api.Tests.csproj", "{690C9FC6-3B9C-4404-A002-C3431CE4A8E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bgg.Net.Common", "Bgg.Net.Common.V2\Bgg.Net.Common.csproj", "{D154ED90-7599-45E3-943D-9CFA926EFF92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bgg.Net.Common", "Bgg.Net.Common\Bgg.Net.Common.csproj", "{D154ED90-7599-45E3-943D-9CFA926EFF92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1ACDFE88-EBDE-4CD2-A0A3-996448B93537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1ACDFE88-EBDE-4CD2-A0A3-996448B93537}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1ACDFE88-EBDE-4CD2-A0A3-996448B93537}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1ACDFE88-EBDE-4CD2-A0A3-996448B93537}.Release|Any CPU.Build.0 = Release|Any CPU
 		{258B79F1-C77D-401C-BD0C-B2A8E1E336F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{258B79F1-C77D-401C-BD0C-B2A8E1E336F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{258B79F1-C77D-401C-BD0C-B2A8E1E336F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
