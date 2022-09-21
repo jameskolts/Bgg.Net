@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bgg.Net.Common\Bgg.Net.Common.csproj" />
+    <ProjectReference Include="..\Bgg.Net.Common\Bgg.Net.Common.Old.csproj" />
   </ItemGroup>
 
 </Project>

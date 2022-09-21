@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		
+		<Version>1.2.0</Version>
+		<Authors>James Kolts</Authors>
+		<Description>A lightweight library to aide in the consuming of the board game geek XML API 2</Description>
+		<Product>Bgg.Net</Product>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Autofac" Version="6.4.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Serilog" Version="2.11.0" />
+		<PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
+	</ItemGroup>
+
+</Project>

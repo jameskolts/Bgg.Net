@@ -51,7 +51,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bgg.Net.Common\Bgg.Net.Common.csproj" />
+    <ProjectReference Include="..\Bgg.Net.Common.V2\Bgg.Net.Common.csproj" />
   </ItemGroup>
 
 </Project>

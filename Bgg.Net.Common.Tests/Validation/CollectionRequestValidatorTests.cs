@@ -29,7 +29,7 @@ namespace Bgg.Net.Common.Tests.Validation
             //Act
             var result = _validator.Validate(request);
 
-            //assert    
+            //Assert    
             result.IsValid.Should().BeFalse();
             result.Errors.Count.Should().Be(1);
             result.Errors.Should().Contain("Missing required element for CollectionRequest: userName");
