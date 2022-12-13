@@ -9,7 +9,7 @@ namespace Bgg.Net.Common.Infrastructure.Http
     public class BggClient : IHttpClient, IDisposable
     {
         readonly HttpClient httpClient;
-        private bool disposed;
+        private bool disposed = false;
 
         /// <summary>
         /// Constructs a new instance of the BggClient with a default path.
@@ -54,20 +54,23 @@ namespace Bgg.Net.Common.Infrastructure.Http
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposed)
+            if (disposed)
             {
-                if (disposing)
-                {
-                    httpClient.Dispose();
-                }
-
-                disposed = true;
+                return;
             }
+
+            if (disposing)
+            {
+                httpClient.Dispose();
+            }
+
+            disposed = true;
+
         }
 
         public void Dispose()
         {
-            Dispose(disposing: true);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
     }

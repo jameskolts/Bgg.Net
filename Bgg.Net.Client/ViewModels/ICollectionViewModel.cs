@@ -11,12 +11,6 @@ namespace Bgg.Net.Client.ViewModels
         bool IsBusy { get; set; }
 
         /// <summary>
-        /// Handles Tapped Gesture event for an item.
-        /// </summary>
-        /// <param name="item">The item that was tapped.</param>
-        void ItemTapped(CollectionPageItem item);
-
-        /// <summary>
         /// The collection of items.
         /// </summary>
         ObservableCollection<CollectionPageItem> Collection { get; set; }

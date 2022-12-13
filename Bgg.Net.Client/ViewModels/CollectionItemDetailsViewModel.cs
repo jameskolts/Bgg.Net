@@ -1,11 +1,12 @@
-﻿using Bgg.Net.Client.Infrastructure.Extensions;
-using Bgg.Net.Client.Models;
-using System.Collections.ObjectModel;
+﻿using Bgg.Net.Client.Models;
+using Microsoft.VisualStudio.PlatformUI;
 
 namespace Bgg.Net.Client.ViewModels
 {
     public class CollectionItemDetailsViewModel : ViewModelBase, ICollectionItemDetailsViewModel
     {
+        public CollectionPageItem Item { get; private set; }
+
         public CollectionItemDetailsViewModel()
         {
         }
@@ -14,12 +15,10 @@ namespace Bgg.Net.Client.ViewModels
         {
             Item = item;
         }
-    
-        public CollectionPageItem Item { get; private set; }
 
         public long? BggRank
         {
-            get => Item?.Statistics.Ratings.Ranks.FirstOrDefault(x => x.Name == "boardgame")?.Value;
+            get => Item?.Statistics.Ratings.Ranks.FirstOrDefault(x => x.Name == "boardgame")?.Value ?? -1;
         }
     }
 }

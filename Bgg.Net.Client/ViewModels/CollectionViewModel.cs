@@ -47,7 +47,7 @@ namespace Bgg.Net.Client.ViewModels
 
         public ObservableCollection<CollectionPageItem> Collection
         {
-            get { return _collection; }
+            get => _collection; 
             set { _collection = value; OnPropertyChanged(nameof(Collection)); }
         }
 
@@ -107,12 +107,6 @@ namespace Bgg.Net.Client.ViewModels
 
             IsBusy = false;
             Collection = query.ToObservableCollection();
-        }
-
-        public async void ItemTapped(CollectionPageItem item)
-        {
-            //TODO: Navigation not working for all results, CTD
-            await Application.Current.MainPage.Navigation.PushAsync(new CollectionItemDetails(item));
         }
     }
 }

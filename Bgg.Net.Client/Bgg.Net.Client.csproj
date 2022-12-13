@@ -87,13 +87,13 @@
 
 	<ItemGroup>
 	  <Folder Include="Infrastructure\Drawables\" />
-	  <Folder Include="Models\" />
 	  <Folder Include="Platforms\Android\Resources\drawable\" />
 	  <Folder Include="Platforms\Android\Resources\mipmapp\" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <PackageReference Include="Bgg.Net.Common" Version="1.2.0" />
+	  <PackageReference Include="Microsoft.VisualStudio.Utilities" Version="17.4.33103.184" />
 	  <PackageReference Include="Syncfusion.Maui.Charts" Version="20.1.58-preview" />
 	  <PackageReference Include="Syncfusion.Maui.Core" Version="20.1.58-preview" />
 	  <PackageReference Include="Syncfusion.Maui.Gauges" Version="20.1.58-preview" />

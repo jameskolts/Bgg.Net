@@ -46,11 +46,13 @@ public partial class Collection : ContentPage
         collectionViewModel.FilterCollection(SearchView.SearchText, SearchView.AgeText, SearchView.PlayerCountText, SearchView.PlayTimeText);
     }
 
-    private void CollectionItem_Tapped(object sender, EventArgs e)
+    private async void CollectionItem_Tapped(object sender, EventArgs e)
     {
         try
         {
-            collectionViewModel.ItemTapped((e as TappedEventArgs).Parameter as CollectionPageItem);
+            var collectionItem = (e as TappedEventArgs).Parameter as CollectionPageItem;
+            var itemPage = new CollectionItemDetails(collectionItem);
+            await Navigation.PushAsync(itemPage);//_ = Application.Current.MainPage.Navigation.PushAsync(itemPage);
         }
         catch (Exception ex)
         {
