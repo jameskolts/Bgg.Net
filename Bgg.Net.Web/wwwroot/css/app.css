@@ -1,5 +1,30 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
+.centered {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.color-white {
+    color: white;
+}
+
+.color-black {
+    color: black;
+}
+
+.color-purple {
+    color: #400080;
+}
+
+.text-inline {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/*  Pre generated code below*/
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
