@@ -18,7 +18,7 @@ using SearchHandler = Bgg.Net.Common.RequestHandlers.Search.SearchHandler;
 
 namespace Bgg.Net.Common.Infrastructure.IOC
 {
-
+    [Obsolete("This will be removed in a future release.  Use ClassFactory to register IoC instead.")]
     public static class AutofacRegistrar
     {
         public static IContainer BuildContainer()
