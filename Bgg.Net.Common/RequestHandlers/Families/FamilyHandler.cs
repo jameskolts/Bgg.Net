@@ -5,7 +5,7 @@ using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
 using Bgg.Net.Common.Validation;
-using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace Bgg.Net.Common.RequestHandlers.Families
 {
@@ -27,7 +27,7 @@ namespace Bgg.Net.Common.RequestHandlers.Families
         /// <inheritdoc/>
         public async Task<BggResult<FamilyList>> GetFamilyById(long id)
         {
-            _logger.Information("GetFamilyById : {id}", id);
+            _logger.LogInformation("GetFamilyById : {id}", id);
 
             var request = new FamilyRequest
             {
@@ -40,7 +40,7 @@ namespace Bgg.Net.Common.RequestHandlers.Families
         /// <inheritdoc/>
         public async Task<BggResult<FamilyList>> GetFamilyByIds(List<long> ids)
         {
-            _logger.Information("GetFamilyByIds : {id}", ids);
+            _logger.LogInformation("GetFamilyByIds : {id}", ids);
 
             var request = new FamilyRequest
             {
@@ -53,7 +53,7 @@ namespace Bgg.Net.Common.RequestHandlers.Families
         /// <inheritdoc/>
         public async Task<BggResult<FamilyList>> GetFamilyByIdsAndType(List<long> ids, List<FamilyType> types)
         {
-            _logger.Information("GetFamilyByIdsAndType : {id}, {types}", ids, types);
+            _logger.LogInformation("GetFamilyByIdsAndType : {id}, {types}", ids, types);
 
             var request = new FamilyRequest
             {

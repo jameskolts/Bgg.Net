@@ -10,5 +10,23 @@ namespace Bgg.Net.Web.Infrastructure.IOC
 
             return builder;
         }
+
+        public static IServiceCollection ConfigureLogging(this IServiceCollection services)
+        {
+            //var levelSwitch = new LoggingLevelSwitch();
+
+            //Log.Logger = new LoggerConfiguration()
+            //    .MinimumLevel.ControlledBy(levelSwitch)
+            //    .Enrich.WithProperty("InstanceId", Guid.NewGuid().ToString("n"))
+            //    .WriteTo.Console()
+            //    .CreateLogger();
+
+            services.AddSingleton(sp => sp.GetRequiredService<ILoggerFactory>().CreateLogger("DefaultLogger"));
+
+            services.AddLogging(builder =>
+                builder.SetMinimumLevel(LogLevel.Trace));
+
+            return services;
+        }
     }
 }

@@ -4,7 +4,7 @@ using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Validation;
 using Moq;
-using Serilog;
+using Microsoft.Extensions.Logging;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;

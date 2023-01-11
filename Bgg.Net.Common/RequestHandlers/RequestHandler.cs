@@ -5,7 +5,7 @@ using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Validation;
-using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace Bgg.Net.Common.RequestHandlers
 {
@@ -50,7 +50,7 @@ namespace Bgg.Net.Common.RequestHandlers
             {
                 var errorString = $"Error during deserialization. {exception.Message}";
                 bggResult.Errors.Add(errorString);
-                _logger.Error(exception, errorString);
+                _logger.LogError(exception, errorString);
             }
 
             bggResult.IsSuccessful = httpResponse.IsSuccessStatusCode && !bggResult.Errors.Any();
@@ -69,7 +69,7 @@ namespace Bgg.Net.Common.RequestHandlers
         protected async Task<BggResult<T>> GetResourceFromRequestObject<T>(string resourceName, BggRequest request)
             where T : BggBase
         {
-            _logger.Information("Get" + resourceName.UpperFirstChar() + " : {request}", request);
+            _logger.LogInformation("Get" + resourceName.UpperFirstChar() + " : {request}", request);
 
             var validator = _requestValidatorFactory.CreateRequestValidator(resourceName);
             var validationResult = validator.Validate(request);
@@ -84,7 +84,7 @@ namespace Bgg.Net.Common.RequestHandlers
             }
 
             var query = _queryBuilder.BuildQuery(resourceName, request);
-            _logger.Information("Performing query: " + query);
+            _logger.LogInformation("Performing query: " + query);
 
             var httpResponseMessage = await _httpClient.GetAsync(query);
 

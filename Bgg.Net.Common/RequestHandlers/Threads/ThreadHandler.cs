@@ -3,7 +3,7 @@ using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Validation;
-using Serilog;
+using Microsoft.Extensions.Logging;
 using Thread = Bgg.Net.Common.Models.Thread;
 
 namespace Bgg.Net.Common.RequestHandlers.Threads
@@ -27,7 +27,7 @@ namespace Bgg.Net.Common.RequestHandlers.Threads
         /// <inheritdoc/>
         public async Task<BggResult<Thread>> GetThreadById(int id)
         {
-            _logger.Information("GetThreadById : {id}", id);
+            _logger.LogInformation("GetThreadById : {id}", id);
 
             var request = new ThreadRequest(id);
 

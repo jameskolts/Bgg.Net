@@ -5,7 +5,7 @@ using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
 using Bgg.Net.Common.Validation;
-using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace Bgg.Net.Common.RequestHandlers.Guilds
 {
@@ -28,7 +28,7 @@ namespace Bgg.Net.Common.RequestHandlers.Guilds
         /// <inheritdoc/>
         public async Task<BggResult<Guild>> GetGuildById(long id)
         {
-            _logger.Information("GetGuildById : {id}", id);
+            _logger.LogInformation("GetGuildById : {id}", id);
 
             var request = new GuildRequest
             {
@@ -41,7 +41,7 @@ namespace Bgg.Net.Common.RequestHandlers.Guilds
         /// <inheritdoc/>
         public async Task<BggResult<Guild>> GetGuildByIdWithMembers(long id, SortType sortType = SortType.UserName, int page = 1)
         {
-            _logger.Information("GetGuildByIdWithMembers : {id}, {sortType}, {page}", id, sortType, page);
+            _logger.LogInformation("GetGuildByIdWithMembers : {id}, {sortType}, {page}", id, sortType, page);
 
             var request = new GuildRequest
             {

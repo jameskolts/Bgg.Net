@@ -5,7 +5,7 @@ using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
 using Bgg.Net.Common.Validation;
-using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace Bgg.Net.Common.RequestHandlers.Search
 {
@@ -28,7 +28,7 @@ namespace Bgg.Net.Common.RequestHandlers.Search
         /// <inheritdoc/>
         public async Task<BggResult<SearchResultList>> SearchByQuery(string query)
         {
-            _logger.Information("SearchByQuery : {query}", query);
+            _logger.LogInformation("SearchByQuery : {query}", query);
 
             var request = new SearchRequest(query);
 
@@ -38,7 +38,7 @@ namespace Bgg.Net.Common.RequestHandlers.Search
         /// <inheritdoc/>
         public async Task<BggResult<SearchResultList>> SearchByQueryAndType(string query, List<SearchType> type)
         {
-            _logger.Information("SearchByQueryAndType : {query}, {type}", query, type);
+            _logger.LogInformation("SearchByQueryAndType : {query}, {type}", query, type);
 
             var request = new SearchRequest(query)
             {
@@ -51,7 +51,7 @@ namespace Bgg.Net.Common.RequestHandlers.Search
         /// <inheritdoc/>
         public async Task<BggResult<SearchResultList>> SearchByQueryExact(string query)
         {
-            _logger.Information("SearchByQueryExact : {query}", query);
+            _logger.LogInformation("SearchByQueryExact : {query}", query);
 
             var request = new SearchRequest(query)
             {

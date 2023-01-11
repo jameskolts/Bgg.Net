@@ -5,7 +5,7 @@ using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
 using Bgg.Net.Common.Validation;
-using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace Bgg.Net.Common.RequestHandlers.Forums
 {
@@ -34,7 +34,7 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
         /// <inheritdoc/>
         public async Task<BggResult<ForumList>> GetForumListByIdAndType(long id, ItemType type)
         {
-            _logger.Information("GetForumListByIdAndType : {id}, {type}", id, type);
+            _logger.LogInformation("GetForumListByIdAndType : {id}, {type}", id, type);
 
             var request = new ForumListRequest
             {

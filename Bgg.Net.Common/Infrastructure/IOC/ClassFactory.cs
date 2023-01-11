@@ -23,7 +23,7 @@ namespace Bgg.Net.Common.Infrastructure.IOC
             services.AddTransient<ICollectionClient, CollectionClient>().AsSelf();
             services.AddTransient<IBggDeserializer, BggDeserializer>().AsSelf();
             services.AddTransient<IQueryBuilder, QueryBuilder>().AsSelf();
-            services.AddTransient<IRequestValidatorFactory>().AsSelf();
+            services.AddTransient<IRequestValidatorFactory, RequestValidatorFactory>().AsSelf();
             services.AddTransient<IThingHandler, ThingHandler>().AsSelf();
             services.AddTransient<IFamilyHandler, FamilyHandler>().AsSelf();
             services.AddTransient<IForumHandler, ForumHandler>().AsSelf();
@@ -33,6 +33,7 @@ namespace Bgg.Net.Common.Infrastructure.IOC
             services.AddTransient<ICollectionHandler, CollectionHandler>().AsSelf();
             services.AddTransient<IHotItemsHandler, HotItemHandler>().AsSelf();
             services.AddTransient<ISearchHandler, SearchHandler>().AsSelf();
+            services.AddTransient<IForumListHandler, ForumListHandler>().AsSelf();
 
             return services;
         }

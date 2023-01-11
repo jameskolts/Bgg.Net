@@ -5,7 +5,7 @@ using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
 using Bgg.Net.Common.Validation;
-using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace Bgg.Net.Common.RequestHandlers.HotItems
 {
@@ -28,7 +28,7 @@ namespace Bgg.Net.Common.RequestHandlers.HotItems
         /// <inheritdoc/>
         public async Task<BggResult<HotItemList>> GetHotItemsByType(HotItemType type)
         {
-            _logger.Information("GetHotItemsByType : {type}", type);
+            _logger.LogInformation("GetHotItemsByType : {type}", type);
 
             var request = new HotItemRequest(type);
             return await GetResourceFromRequestObject<HotItemList>("hot", request);

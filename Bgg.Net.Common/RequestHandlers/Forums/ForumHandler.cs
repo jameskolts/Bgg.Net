@@ -4,7 +4,7 @@ using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Validation;
-using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace Bgg.Net.Common.RequestHandlers.Forums
 {
@@ -29,7 +29,7 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
 
         public async Task<BggResult<Forum>> GetForumById(long id)
         {
-            _logger.Information("GetForumById : {id}", id);
+            _logger.LogInformation("GetForumById : {id}", id);
 
             var request = new ForumRequest
             {
@@ -41,7 +41,7 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
 
         public async Task<BggResult<Forum>> GetForumByIdAndPage(long id, uint page)
         {
-            _logger.Information("GetForumByIdAndPage : {id}, {page}", id, page);
+            _logger.LogInformation("GetForumByIdAndPage : {id}, {page}", id, page);
 
             var request = new ForumRequest
             {

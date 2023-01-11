@@ -1,6 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure.Exceptions;
 using Bgg.Net.Common.Models;
-using Serilog;
+using Microsoft.Extensions.Logging;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -35,7 +35,7 @@ namespace Bgg.Net.Common.Infrastructure.Xml
             }
             catch (Exception e)
             {
-                _logger.Error(e, "Error during deserialization.");
+                _logger.LogError(e, "Error during deserialization.");
                 throw new XmlDeserializationException(e.Message, e.InnerException);
             }
         }

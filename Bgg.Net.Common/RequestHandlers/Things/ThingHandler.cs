@@ -4,7 +4,7 @@ using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Validation;
-using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace Bgg.Net.Common.RequestHandlers.Things
 {
@@ -27,7 +27,7 @@ namespace Bgg.Net.Common.RequestHandlers.Things
         /// <inheritdoc/>
         public async Task<BggResult<ThingList>> GetThingById(long id)
         {
-            _logger.Information("GetThingById : {id}", id);
+            _logger.LogInformation("GetThingById : {id}", id);
 
             var request = new ThingRequest
             {
@@ -40,7 +40,7 @@ namespace Bgg.Net.Common.RequestHandlers.Things
         /// <inheritdoc/>
         public async Task<BggResult<ThingList>> GetThingsById(List<long> ids)
         {
-            _logger.Information("GetThingById : {id}", ids);
+            _logger.LogInformation("GetThingById : {id}", ids);
 
             var request = new ThingRequest
             {

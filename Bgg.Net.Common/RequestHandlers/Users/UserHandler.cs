@@ -4,7 +4,7 @@ using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Validation;
-using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace Bgg.Net.Common.RequestHandlers.Users
 {
@@ -27,7 +27,7 @@ namespace Bgg.Net.Common.RequestHandlers.Users
         /// <inheritdoc/>
         public async Task<BggResult<User>> GetUserByName(string name)
         {
-            _logger.Information("GetUserByName : {name}", name);
+            _logger.LogInformation("GetUserByName : {name}", name);
 
             var request = new UserRequest(name);
 

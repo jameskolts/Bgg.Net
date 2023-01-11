@@ -5,7 +5,7 @@ using Bgg.Net.Common.Tests.TestFiles;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Serilog;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 

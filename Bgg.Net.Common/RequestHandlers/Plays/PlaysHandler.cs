@@ -5,7 +5,7 @@ using Bgg.Net.Common.Models;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
 using Bgg.Net.Common.Validation;
-using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace Bgg.Net.Common.RequestHandlers.Plays
 {
@@ -27,7 +27,7 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
 
         public async Task<BggResult<PlayList>> GetPlaysByIdAndType(long id, ItemType type)
         {
-            _logger.Information("GetPlaysByIdAndType : {id}, {type}", id, type);
+            _logger.LogInformation("GetPlaysByIdAndType : {id}, {type}", id, type);
 
             var request = new PlaysRequest
             {
@@ -41,7 +41,7 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
         /// <inheritdoc/>
         public async Task<BggResult<PlayList>> GetPlaysByUserName(string userName)
         {
-            _logger.Information("GetPlaysByUserName : {userName}", userName);
+            _logger.LogInformation("GetPlaysByUserName : {userName}", userName);
 
             var request = new PlaysRequest
             {
@@ -54,7 +54,7 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
         /// <inheritdoc/>
         public async Task<BggResult<PlayList>> GetPlaysByUserNameAndDate(string userName, DateOnly start, DateOnly end)
         {
-            _logger.Information("GetPlaysByUserNameAndDate : {userName}, {start}, {end}", userName, start, end);
+            _logger.LogInformation("GetPlaysByUserNameAndDate : {userName}, {start}, {end}", userName, start, end);
 
             var request = new PlaysRequest
             {
@@ -69,7 +69,7 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
         /// <inheritdoc/>
         public async Task<BggResult<PlayList>> GetPlaysByUserNameAndType(string userName, ItemType type, PlaysSubType? subType = null)
         {
-            _logger.Information("GetPlaysByUserNameAndType : {userName}, {type}, {subType}", userName, type, subType);
+            _logger.LogInformation("GetPlaysByUserNameAndType : {userName}, {type}, {subType}", userName, type, subType);
 
             var request = new PlaysRequest
             {

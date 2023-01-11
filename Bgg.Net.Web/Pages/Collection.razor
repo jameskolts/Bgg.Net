@@ -1,0 +1,22 @@
+﻿@using Bgg.Net.Common.RequestHandlers.Collection
+@using Bgg.Net.Common.RequestHandlers.Things
+@inject ICollectionHandler _collectionHandler
+@inject IThingHandler _thingHandler
+@page "/collection"
+
+<h3>Collection</h3>
+
+<button @onclick="GetCollection">Get Collection</button>
+
+<label>Number of Items: @CollectionItem?.Items.Count()</label>
+
+@code {
+    private Bgg.Net.Common.Models.Collection? CollectionItem { get; set; }
+
+    private async Task GetCollection()
+    {
+        var result = await _collectionHandler.GetCollectionByUserName("JusticiarIV");
+
+        CollectionItem = result.Item;
+    }
+}

@@ -5,18 +5,16 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 		
-		<Version>1.3.0</Version>
+		<Version>1.4.0</Version>
 		<Authors>James Kolts</Authors>
 		<Description>A lightweight library to aide in the consuming of the board game geek XML API 2</Description>
 		<Product>Bgg.Net</Product>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Autofac" Version="6.5.0" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-		<PackageReference Include="Serilog" Version="2.12.0" />
-		<PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
 	</ItemGroup>
 
 </Project>

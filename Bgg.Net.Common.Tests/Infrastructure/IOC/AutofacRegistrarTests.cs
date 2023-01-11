@@ -12,6 +12,8 @@ using Bgg.Net.Common.RequestHandlers.Things;
 using Bgg.Net.Common.RequestHandlers.Users;
 using Bgg.Net.Common.Validation;
 using FluentAssertions;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bgg.Net.Common.Tests.Infrastructure.IOC
@@ -19,29 +21,31 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
     [TestClass]
     public class AutofacRegistrarTests
     {
-        private IContainer? container;
-        private ILifetimeScope? scope;
+        private ServiceProvider? provider;
 
         [TestInitialize]
         public void Init()
         {
-            container = AutofacRegistrar.BuildContainer();
-            scope = container.BeginLifetimeScope();
+            var services = new ServiceCollection();
+            services.RegisterBggCommon();
+            services.AddSingleton(sp => sp.GetRequiredService<ILoggerFactory>().CreateLogger("DefaultLogger"));
+            services.AddLogging(x => x.SetMinimumLevel(LogLevel.Debug).AddConsole());
+
+            provider = services.BuildServiceProvider();
         }
 
         [TestCleanup]
         public void Cleanup()
         {
-            scope?.Dispose();
-            container?.Dispose();
+            provider?.Dispose();
         }
 
         [TestMethod]
         public void BggClient_Resolve()
         {
             // Arrange/Act
-            var objFromInterface = scope?.Resolve<IHttpClient>();
-            var objFromClass = scope?.Resolve<BggClient>();
+            var objFromInterface = provider?.GetService<IHttpClient>();
+            var objFromClass = provider?.GetService<BggClient>();
 
             //Assert
             objFromInterface.Should().NotBeNull();
@@ -57,8 +61,8 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
         public void ThingHandler_Resolve()
         {
             // Arrange/Act
-            var objFromInterface = scope?.Resolve<IThingHandler>();
-            var objFromClass = scope?.Resolve<ThingHandler>();
+            var objFromInterface = provider?.GetService<IThingHandler>();
+            var objFromClass = provider?.GetService<ThingHandler>();
 
             //Assert
             objFromInterface.Should().NotBeNull();
@@ -74,8 +78,8 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
         public void FamilyHandler_Resolve()
         {
             // Arrange/Act
-            var objFromInterface = scope?.Resolve<IFamilyHandler>();
-            var objFromClass = scope?.Resolve<FamilyHandler>();
+            var objFromInterface = provider?.GetService<IFamilyHandler>();
+            var objFromClass = provider?.GetService<FamilyHandler>();
 
             //Assert
             objFromInterface.Should().NotBeNull();
@@ -91,8 +95,8 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
         public void ForumListHandler_Resolve()
         {
             // Arrange/Act
-            var objFromInterface = scope?.Resolve<IForumListHandler>();
-            var objFromClass = scope?.Resolve<ForumListHandler>();
+            var objFromInterface = provider?.GetService<IForumListHandler>();
+            var objFromClass = provider?.GetService<ForumListHandler>();
 
             //Assert
             objFromInterface.Should().NotBeNull();
@@ -108,8 +112,8 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
         public void ForumHandler_Resolve()
         {
             // Arrange/Act
-            var objFromInterface = scope?.Resolve<IForumHandler>();
-            var objFromClass = scope?.Resolve<ForumHandler>();
+            var objFromInterface = provider?.GetService<IForumHandler>();
+            var objFromClass = provider?.GetService<ForumHandler>();
 
             //Assert
             objFromInterface.Should().NotBeNull();
@@ -125,8 +129,8 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
         public void GuildHandler_Resolve()
         {
             // Arrange/Act
-            var objFromInterface = scope?.Resolve<IGuildHandler>();
-            var objFromClass = scope?.Resolve<GuildHandler>();
+            var objFromInterface = provider?.GetService<IGuildHandler>();
+            var objFromClass = provider?.GetService<GuildHandler>();
 
             //Assert
             objFromInterface.Should().NotBeNull();
@@ -142,8 +146,8 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
         public void UserHandler_Resolve()
         {
             // Arrange/Act
-            var objFromInterface = scope?.Resolve<IUserHandler>();
-            var objFromClass = scope?.Resolve<UserHandler>();
+            var objFromInterface = provider?.GetService<IUserHandler>();
+            var objFromClass = provider?.GetService<UserHandler>();
 
             //Assert
             objFromInterface.Should().NotBeNull();
@@ -159,8 +163,8 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
         public void CollectionClient_Resolve()
         {
             // Arrange/Act
-            var objFromInterface = scope?.Resolve<ICollectionClient>();
-            var objFromClass = scope?.Resolve<CollectionClient>();
+            var objFromInterface = provider?.GetService<ICollectionClient>();
+            var objFromClass = provider?.GetService<CollectionClient>();
 
             //Assert
             objFromInterface.Should().NotBeNull();
@@ -176,8 +180,8 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
         public void CollectionHandler_Resolve()
         {
             // Arrange/Act
-            var objFromInterface = scope?.Resolve<ICollectionHandler>();
-            var objFromClass = scope?.Resolve<CollectionHandler>();
+            var objFromInterface = provider?.GetService<ICollectionHandler>();
+            var objFromClass = provider?.GetService<CollectionHandler>();
 
             //Assert
             objFromInterface.Should().NotBeNull();
@@ -193,8 +197,8 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
         public void HotItemHandler_Resolve()
         {
             // Arrange/Act
-            var objFromInterface = scope?.Resolve<IHotItemsHandler>();
-            var objFromClass = scope?.Resolve<HotItemHandler>();
+            var objFromInterface = provider?.GetService<IHotItemsHandler>();
+            var objFromClass = provider?.GetService<HotItemHandler>();
 
             //Assert
             objFromInterface.Should().NotBeNull();
@@ -210,8 +214,8 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
         public void SearchHandler_Resolve()
         {
             // Arrange/Act
-            var objFromInterface = scope?.Resolve<ISearchHandler>();
-            var objFromClass = scope?.Resolve<SearchHandler>();
+            var objFromInterface = provider?.GetService<ISearchHandler>();
+            var objFromClass = provider?.GetService<SearchHandler>();
 
             //Assert
             objFromInterface.Should().NotBeNull();
@@ -227,8 +231,8 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
         public void RequestValidatorFactory_Resolve()
         {
             // Arrange/Act
-            var objFromInterface = scope?.Resolve<IRequestValidatorFactory>();
-            var objFromClass = scope?.Resolve<RequestValidatorFactory>();
+            var objFromInterface = provider?.GetService<IRequestValidatorFactory>();
+            var objFromClass = provider?.GetService<RequestValidatorFactory>();
 
             //Assert
             objFromInterface.Should().NotBeNull();
@@ -244,8 +248,8 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
         public void QueryBuilder_Resolve()
         {
             // Arrange/Act
-            var objFromInterface = scope?.Resolve<IQueryBuilder>();
-            var objFromClass = scope?.Resolve<QueryBuilder>();
+            var objFromInterface = provider?.GetService<IQueryBuilder>();
+            var objFromClass = provider?.GetService<QueryBuilder>();
 
             //Assert
             objFromInterface.Should().NotBeNull();

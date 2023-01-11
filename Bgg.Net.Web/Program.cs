@@ -1,4 +1,3 @@
-using Autofac;
 using Bgg.Net.Common.Infrastructure.IOC;
 using Bgg.Net.Web;
 using Bgg.Net.Web.Infrastructure.IOC;
@@ -14,8 +13,9 @@ public class Program
         builder.RootComponents.Add<HeadOutlet>("head::after");
 
         builder.RegisterWebComponents();
+        builder.Services.RegisterBggCommon();
+        builder.Services.ConfigureLogging();
 
-        //TODO: Generate new common package with Microsoft IOC and register here.
         await builder.Build().RunAsync();
     }
 }
