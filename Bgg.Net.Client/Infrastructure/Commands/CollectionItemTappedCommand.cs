@@ -2,35 +2,35 @@
 
 namespace Bgg.Net.Client.Infrastructure.Commands
 {
-    public class CollectionItemTappedCommand : ICollectionItemTapped
-    {
-        //public event EventHandler CanExecuteChanged;
-        //public bool CanExecute(object parameter)
-        //{
-        //    throw new NotImplementedException();
+    //public class CollectionItemTappedCommand : ICollectionItemTapped
+    //{
+    //    //public event EventHandler CanExecuteChanged;
+    //    //public bool CanExecute(object parameter)
+    //    //{
+    //    //    throw new NotImplementedException();
 
-        //    if (parameter is CollectionPageItem)
-        //    {
-        //        return true;
-        //    }
+    //    //    if (parameter is CollectionPageItem)
+    //    //    {
+    //    //        return true;
+    //    //    }
 
-        //    return false;
-        //}
+    //    //    return false;
+    //    //}
 
-        //public void Execute(object parameter)
-        //{
-        //    throw new NotImplementedException();
-        //}
-        public event EventHandler CanExecuteChanged;
+    //    //public void Execute(object parameter)
+    //    //{
+    //    //    throw new NotImplementedException();
+    //    //}
+    //    public event EventHandler CanExecuteChanged;
 
-        public bool CanExecute(object parameter)
-        {
-            throw new NotImplementedException();
-        }
+    //    public bool CanExecute(object parameter)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
 
-        public void Execute(object parameter)
-        {
-            throw new NotImplementedException();
-        }
-    }
+    //    public void Execute(object parameter)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
 }

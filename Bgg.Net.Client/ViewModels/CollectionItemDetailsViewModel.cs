@@ -1,5 +1,4 @@
 ﻿using Bgg.Net.Client.Models;
-using Microsoft.VisualStudio.PlatformUI;
 
 namespace Bgg.Net.Client.ViewModels
 {

@@ -11,7 +11,7 @@ namespace Bgg.Net.Client.Infrastructure.IOC
         {
             builder.RegisterType<CollectionHelper>().As<ICollectionHelper>().AsSelf();
             builder.RegisterType<CollectionViewModel>().As<ICollectionViewModel>().AsSelf();
-            builder.RegisterType<CollectionItemTappedCommand>().As<ICollectionItemTapped>().AsSelf();
+            //builder.RegisterType<CollectionItemTappedCommand>().As<ICollectionItemTapped>().AsSelf();
             builder.RegisterType<CollectionItemDetailsViewModel>().As<ICollectionItemDetailsViewModel>().AsSelf();
 
             return builder;
