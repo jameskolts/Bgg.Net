@@ -15,14 +15,48 @@ else
     <div class="container corners-rounded" style="background-color: teal; color:white;">
 
         <div class="row">
-            <div class="col-md" style="margin-left:-10px">
-                <img src="@Item.Image" class="corners-rounded" height="300" width="300" />
+            <div class="col-md">
+                <img src="@Item.Image" class="corners-rounded" style="width:100%" />
             </div>
             <div class="col-md-9">
                 <CollectionItemDetailHeaderComponent Item="@Item" />
             </div>
         </div>
 
-        @HttpUtility.HtmlDecode(Item.Description)
+        
+        <Tabs RenderMode="TabsRenderMode.LazyLoad" SelectedTab="@SelectedTab" SelectedTabChanged="@OnSelectedTabChanged">
+            <Items>
+                <Tab Name="overview">Overview</Tab>
+                <Tab Name="insights">Insights</Tab>
+                <Tab Name="log">Log Play</Tab>
+                <Tab Name="forums">Forums</Tab>
+                <Tab Name="images">Images</Tab>
+                <Tab Name="videos">Videos</Tab>
+                <Tab Name="files">Files</Tab>
+            </Items>
+            <Content>
+                <TabPanel Name="overview">
+                    @HttpUtility.HtmlDecode(Item.Description)
+                </TabPanel>
+                <TabPanel Name="insights">
+                    Content for insights.
+                </TabPanel>
+                <TabPanel Name="log">
+                    Content for Log Play.
+                </TabPanel>
+                <TabPanel Name="forums">
+                    Content for Forums.
+                </TabPanel>
+                <TabPanel Name="images">
+                    Content for Images.
+                </TabPanel>
+                <TabPanel Name="videos">
+                    Content for Videos.
+                </TabPanel>
+                <TabPanel Name="files">
+                    Content for Files.
+                </TabPanel>
+            </Content>
+        </Tabs>
     </div>
 }

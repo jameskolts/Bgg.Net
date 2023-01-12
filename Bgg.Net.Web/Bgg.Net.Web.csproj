@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="Bgg.Net.Common" Version="1.4.0" />
+    <PackageReference Include="Blazorise.Bootstrap" Version="1.1.5" />
+    <PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.1.5" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.9" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.9" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />

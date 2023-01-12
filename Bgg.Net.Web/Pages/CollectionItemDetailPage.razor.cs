@@ -12,7 +12,16 @@ namespace Bgg.Net.Web.Pages
 
         public CollectionPageItem? Item { get; set; }
 
+        private string SelectedTab { get; set; } = "overview";
+
         protected override async Task OnInitializedAsync()
+        {
+            Item = await CreateCollectionPageItem();
+
+            await base.OnInitializedAsync();
+        }
+
+        private async Task<CollectionPageItem> CreateCollectionPageItem()
         {
             var itemId = long.Parse(ItemId);
             var thingRequest = new ThingRequest
@@ -26,10 +35,13 @@ namespace Bgg.Net.Web.Pages
             var thing = thingResponse.Item.Things.FirstOrDefault();
             var collectionItem = _appState.Collection?.Items.FirstOrDefault(x => x.Id == itemId);
 
-            Item = new CollectionPageItem(collectionItem, thing);
-
-            await base.OnInitializedAsync();
+            return new CollectionPageItem(collectionItem, thing);
         }
 
+        private Task OnSelectedTabChanged(string name)
+        {
+            selectedTab = name;
+            return Task.CompletedTask;
+        }
     }
 }

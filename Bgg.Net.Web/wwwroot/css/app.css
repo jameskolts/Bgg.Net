@@ -28,6 +28,10 @@
     border-radius: 25px;
 }
 
+.img-responsive {
+    width: 100%;
+}
+
 /*  Pre generated code below*/
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
