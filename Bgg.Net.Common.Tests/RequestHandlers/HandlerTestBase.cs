@@ -20,7 +20,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers
         protected Mock<IBggDeserializer> _deserializerMock { get; set; }
         protected Mock<ILogger> _loggerMock { get; set; }
         protected Mock<IRequestValidatorFactory> _validatorFactory { get; set; }
-        protected Mock<QueryBuilder> _queryBuilder { get; set; } = new Mock<QueryBuilder>() { CallBase = true };
+        protected Mock<QueryBuilder> _queryBuilder { get; set; }
 
         public HandlerTestBase()
         {
@@ -28,6 +28,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers
             _deserializerMock = new Mock<IBggDeserializer>();
             _loggerMock = new Mock<ILogger>();
             _validatorFactory = new Mock<IRequestValidatorFactory>();
+            _queryBuilder = new Mock<QueryBuilder>() {  CallBase = true };
         }
 
         public void MockHttpClientGet(string content, HttpStatusCode statusCode)
