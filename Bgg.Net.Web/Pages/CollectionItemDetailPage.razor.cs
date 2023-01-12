@@ -40,7 +40,7 @@ namespace Bgg.Net.Web.Pages
 
         private Task OnSelectedTabChanged(string name)
         {
-            selectedTab = name;
+            SelectedTab = name;
             return Task.CompletedTask;
         }
     }
