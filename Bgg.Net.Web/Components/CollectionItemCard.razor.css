@@ -1,0 +1,13 @@
+﻿.card {
+    width: 20rem;
+    background-color: #400080;
+    color: white;
+}
+
+.corners-rounded-180 {
+    border-radius: 180px;
+}
+
+p {
+    font-size: small;
+}

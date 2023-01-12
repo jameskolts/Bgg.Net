@@ -24,6 +24,10 @@
     overflow: hidden;
 }
 
+.corners-rounded {
+    border-radius: 25px;
+}
+
 /*  Pre generated code below*/
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;

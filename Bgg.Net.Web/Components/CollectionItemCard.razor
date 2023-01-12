@@ -1,0 +1,71 @@
+﻿<a href="/" class="card corners-rounded m-3" style="text-decoration: none;">
+@*<div class="card corners-rounded m-3">*@
+
+    @if (Item == null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else
+    {
+        <img class="card-img-top corners-rounded-180" src="@Item.Image" alt="@Item.Name" height="300" />
+        <div class="card-body">
+
+            <h4 class="card-title text-center fw-bold">@Item.Name</h4>
+
+            <div class="container" id="producergrid">
+                <div class="row">
+                    <div class="col-sm text-center">
+                        <p>By @Item.Designers?.FirstOrDefault()</p>
+                    </div>
+                    <div class="col-sm text-center">
+                        <p>@Item.YearPublished @Item.Publishers?.FirstOrDefault()</p>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="col-sm text-center">
+                        <p>
+                            @Item.PlayTime
+                            <img src="/clock.png" height="25" width="25" />
+                        </p>
+                    </div>
+                    <div class="col-sm text-center">
+                        @if (Item.MinPlayers == Item.MaxPlayers)
+                        {
+                            <p>
+                                @Item.MinPlayers
+                                <img src="/playerswhite.png" height="25" width="25" />
+                            </p>
+                        }
+                        else
+                        {
+                            <p>
+                                @Item.MinPlayers - @Item.MaxPlayers
+                                <img src="/playerswhite.png" height="25" width="25" />
+                            </p>
+                        }
+                    </div>
+                    <div class="col-sm text-center">
+                        <p>
+                            @Item.MinAge+
+                            <img src="/agewhite.png" heighit="25" width="25" />
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm text-sm-start">
+                        <p>Rating: @Math.Round(Item.Statistics.Ratings.Average.Value, 2)</p>
+                    </div>
+                    <div class="col-sm text-sm-end">
+                        <p>Times Played: @Item.NumPlays</p>
+                    </div>
+                </div>
+            </div
+
+        </div>
+    }
+@*</div>*@
+</a>

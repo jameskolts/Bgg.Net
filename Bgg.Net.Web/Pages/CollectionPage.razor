@@ -1,27 +1,28 @@
 ﻿@using Bgg.Net.Common.RequestHandlers.Collection
 @using Bgg.Net.Common.RequestHandlers.Things
+@using Bgg.Net.Web.Components;
 @inject ICollectionHandler _collectionHandler
 @inject IThingHandler _thingHandler
 @page "/collection"
 
 <h3>Collection</h3>
 
-<button @onclick="GetCollection">Get Collection</button>
+<label>Number of Items: @Collection?.Count</label>
 
-<label>Number of Items: @Collection?.Items.Count()</label>
 
-@{
-    @if (Collection != null)
-    {
-        @foreach (var item in Collection?.Items)
-        {
-            <div class="card" style="width: 18rem;">
-
-                <img class="card-img-top" src="@item.Image" alt="@item.Name" />
-                <div class="card-body">
-                    <h5 class="card-title">@item.Name</h5>
-                </div>
-            </div>
-        }
-    }
+@if (Collection == null)
+{
+    <p><em>Loading...</em></p>
 }
+else
+{
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Collection)
+            {
+                <CollectionItemCard Item="@item"/>
+            }
+        </div>
+    </div>
+}
+
