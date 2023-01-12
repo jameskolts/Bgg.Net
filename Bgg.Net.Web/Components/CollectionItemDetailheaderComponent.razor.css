@@ -1,0 +1,9 @@
+﻿.accent {
+    background-color: #400080;
+    color: white;
+    font-size: small;
+}
+
+.corners-rounded {
+    border-radius: 10px;
+}

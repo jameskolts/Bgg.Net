@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+﻿using Bgg.Net.Web.Models;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 namespace Bgg.Net.Web.Infrastructure.IOC
 {
@@ -7,6 +8,7 @@ namespace Bgg.Net.Web.Infrastructure.IOC
         public static WebAssemblyHostBuilder RegisterWebComponents(this WebAssemblyHostBuilder builder)
         {
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddScoped<AppState>();
 
             return builder;
         }

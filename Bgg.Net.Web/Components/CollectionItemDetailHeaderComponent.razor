@@ -1,0 +1,99 @@
+﻿@if (Item != null)
+{
+        <div class="row accent corners-rounded">
+            <div class="col-sm">
+                <p class="text-center align-middle mt-3">
+                    @Math.Round(Item.Statistics.Ratings.Average.Value, 2)
+                    <br />
+                    <span class="fw-bold">Rating</span>
+                </p>
+            </div>
+
+            <div class="col-lg">
+                <h3 class="text-center align-middle">@Item.Name</h3>
+            </div>
+
+            <div class="col-sm">
+                <p class="text-center align-middle mt-3">
+                    @Math.Round(Convert.ToDecimal(Item.Statistics.Ratings.Ranks.FirstOrDefault(x => x.Name == "boardgame")?.Value), 2)
+                    <br />
+                    <span class="fw-bold">Rank</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-sm text-center">
+                <p>
+                    @Item.PlayTime
+                    <img src="/clock.png" height="25" width="25" />
+                </p>
+            </div>
+            <div class="col-sm text-center">
+                @if (Item.MinPlayers == Item.MaxPlayers)
+                {
+                    <p>
+                        @Item.MinPlayers
+                        <img src="/playerswhite.png" height="25" width="25" />
+                    </p>
+                }
+                else
+                {
+                    <p>
+                        @Item.MinPlayers - @Item.MaxPlayers
+                        <img src="/playerswhite.png" height="25" width="25" />
+                    </p>
+                }
+            </div>
+            <div class="col-sm text-center">
+                <p>
+                    @Item.MinAge+
+                    <img src="/agewhite.png" height="25" width="25" />
+                </p>
+            </div>
+
+            <div class="col-sm text-center">
+                <p>
+                    @Math.Round(Item.Statistics.Ratings.AverageWeights.Value, 2)
+                    <img src="/weight-hanging-solid.png" height="25" width="25" />
+                </p>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-md">
+                <h5 class="fw-bold mb-0">Publishers:</h5>
+                @string.Join(", ", Item.Publishers.Take(3))
+                @if (Item.Publishers.Count > 3)
+                {
+                    <ToolTipComponent Text="@string.Join(", ", Item.Publishers.Skip(3))">
+                        @CreateToolTipText(Item.Publishers.Skip(3))
+                    </ToolTipComponent>
+                }
+            </div>
+
+            <div class="col-md">
+                <h5 class="fw-bold mb-0">Designers:</h5>
+                @string.Join(", ", Item.Designers.Take(3))
+                @if (Item.Designers.Count > 3)
+                {
+                    <ToolTipComponent Text="@string.Join(", ", Item.Designers.Skip(3))">
+                        @CreateToolTipText(Item.Designers.Skip(3))
+                    </ToolTipComponent>
+                }
+            </div>
+
+            <div class="col-md">
+                <h5 class="fw-bold mb-0">Artists:</h5>
+                @string.Join(", ", Item.Artists.Take(3))
+                @if (Item.Artists.Count > 3)
+                {
+                    <ToolTipComponent Text="@string.Join(", ", Item.Artists.Skip(3))">
+                        @CreateToolTipText(Item.Artists.Skip(3))
+                    </ToolTipComponent>
+                }
+            </div>
+        </div>
+}

@@ -41,7 +41,6 @@ namespace Bgg.Net.Web.Models
 
         public CollectionPageItem(CollectionItem item, Thing thing)
         {
-
             Id = thing.Id;
             YearPublished = thing.YearPublished.Value;
             Image = thing.Image;

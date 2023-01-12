@@ -1,12 +1,10 @@
-﻿<a href="/" class="card corners-rounded m-3" style="text-decoration: none;">
-@*<div class="card corners-rounded m-3">*@
-
-    @if (Item == null)
-    {
-        <p><em>Loading...</em></p>
-    }
-    else
-    {
+﻿@if (Item == null)
+{
+    <LoadingComponent/>
+}
+else
+{
+    <a href="/collection/item/@Item.Id"  class="card corners-rounded m-3" style="text-decoration: none;">
         <img class="card-img-top corners-rounded-180" src="@Item.Image" alt="@Item.Name" height="300" />
         <div class="card-body">
 
@@ -50,7 +48,7 @@
                     <div class="col-sm text-center">
                         <p>
                             @Item.MinAge+
-                            <img src="/agewhite.png" heighit="25" width="25" />
+                            <img src="/agewhite.png" height="25" width="25" />
                         </p>
                     </div>
                 </div>
@@ -63,9 +61,8 @@
                         <p>Times Played: @Item.NumPlays</p>
                     </div>
                 </div>
-            </div
+            </div>
 
         </div>
-    }
-@*</div>*@
-</a>
+    </a>
+}

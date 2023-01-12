@@ -1,8 +1,8 @@
 ﻿@using Bgg.Net.Common.RequestHandlers.Collection
 @using Bgg.Net.Common.RequestHandlers.Things
-@using Bgg.Net.Web.Components;
 @inject ICollectionHandler _collectionHandler
 @inject IThingHandler _thingHandler
+@inject AppState _appState
 @page "/collection"
 
 <h3>Collection</h3>
@@ -12,7 +12,7 @@
 
 @if (Collection == null)
 {
-    <p><em>Loading...</em></p>
+    <LoadingComponent/>
 }
 else
 {

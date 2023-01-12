@@ -52,13 +52,7 @@ public partial class Collection : ContentPage
         {
             var collectionItem = (e as TappedEventArgs).Parameter as CollectionPageItem;
             var itemPage = new CollectionItemDetails(collectionItem);
-            await Shell.Current.GoToAsync("collectionitemdetails", 
-                new Dictionary<string, object>
-                {
-                    { "Item", collectionItem }
-                });
-            //Navigation.PushAsync(itemPage);
-            //Application.Current.MainPage = itemPage;
+            await Navigation.PushAsync(itemPage);
         }
         catch (Exception ex)
         {

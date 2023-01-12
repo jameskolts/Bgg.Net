@@ -1,0 +1,28 @@
+﻿@using Bgg.Net.Common.RequestHandlers.Things;
+@using System.Web;
+@page "/collection/item/{ItemId}"
+@inject AppState _appState
+@inject ThingHandler _thingHandler
+
+<h3>CollectionItemDetailPage</h3>
+
+@if (Item == null)
+{
+    <LoadingComponent />
+}
+else
+{
+    <div class="container corners-rounded" style="background-color: teal; color:white;">
+
+        <div class="row">
+            <div class="col-md" style="margin-left:-10px">
+                <img src="@Item.Image" class="corners-rounded" height="300" width="300" />
+            </div>
+            <div class="col-md-9">
+                <CollectionItemDetailHeaderComponent Item="@Item" />
+            </div>
+        </div>
+
+        @HttpUtility.HtmlDecode(Item.Description)
+    </div>
+}

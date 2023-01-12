@@ -19,17 +19,21 @@ namespace Bgg.Net.Web.Pages
 
         private async Task<List<CollectionPageItem>> GetCollection(string userName)
         {
-            var collectionResponse = await _collectionHandler.GetCollectionByUserName("JusticiarIV");
+            if (_appState.Collection == null)
+            {
+                var collectionResponse = await _collectionHandler.GetCollectionByUserName(userName);
+                _appState.Collection = collectionResponse.Item;
+            }
 
             var thingRequest = new ThingRequest
             {
-                Id = collectionResponse.Item.Items.Select(x => x.Id).ToList(),
+                Id = _appState.Collection.Items.Select(x => x.Id).ToList(),
                 Stats = true
             };
 
             var thingResponse = await _thingHandler.GetThing(thingRequest);
 
-            return CollectionHelper.CoalesceCollectionData(collectionResponse.Item.Items, thingResponse.Item.Things);
+            return CollectionHelper.CoalesceCollectionData(_appState.Collection.Items, thingResponse.Item.Things);
         }
     }
 }
