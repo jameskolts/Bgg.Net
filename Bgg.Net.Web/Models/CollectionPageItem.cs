@@ -11,6 +11,8 @@ namespace Bgg.Net.Web.Models
 
         public string Name { get; set; }
 
+        public string Type { get; set; }
+
         public int YearPublished { get; set; }
 
         public string Image { get; set; }
@@ -40,7 +42,7 @@ namespace Bgg.Net.Web.Models
         public Statistics Statistics { get; set; }
 
         public CollectionPageItem(CollectionItem item, Thing thing)
-        {
+        {            
             Id = thing.Id;
             YearPublished = thing.YearPublished.Value;
             Image = thing.Image;
@@ -57,6 +59,7 @@ namespace Bgg.Net.Web.Models
             Artists = thing.Links?.Where(x => x.Type == "boardgameartist")?.Select(x => x.Value)?.ToList();
             Status = item.Status;
             Statistics = thing.Statistics;
+            Type = thing.Type;
         }
     }
 }

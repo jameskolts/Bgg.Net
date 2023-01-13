@@ -3,8 +3,9 @@
 @page "/collection/item/{ItemId}"
 @inject AppState _appState
 @inject ThingHandler _thingHandler
+@inject ILogger _logger
 
-<h3>CollectionItemDetailPage</h3>
+<PageTitle>Collection</PageTitle>
 
 @if (Item == null)
 {
@@ -19,7 +20,7 @@ else
                 <img src="@Item.Image" class="corners-rounded" style="width:100%" />
             </div>
             <div class="col-md-9">
-                <CollectionItemDetailHeaderComponent Item="@Item" />
+                <ItemDetailHeaderComponent Item="@Item" />
             </div>
         </div>
 
@@ -45,7 +46,7 @@ else
                     Content for Log Play.
                 </TabPanel>
                 <TabPanel Name="forums">
-                    Content for Forums.
+                    <ForumComponent Id="@Item.Id" Type="@Item.Type" />
                 </TabPanel>
                 <TabPanel Name="images">
                     Content for Images.

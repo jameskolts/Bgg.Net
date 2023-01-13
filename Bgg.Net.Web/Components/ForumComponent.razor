@@ -1,0 +1,15 @@
+﻿@using Bgg.Net.Common.RequestHandlers.Forums
+@inject ForumListHandler _forumListHandler
+@inject ForumHandler _forumHandler
+
+@if (ForumList == null)
+{
+    <LoadingComponent />
+}
+else
+{
+    @foreach (var forum in ForumList.Forums)
+    {
+        <p>Forum: @forum.Title Description @forum.Description</p>
+    }
+}

@@ -9,9 +9,7 @@ namespace Bgg.Net.Web.Pages
     {
         [Parameter]
         public string? ItemId { get; set; }
-
         public CollectionPageItem? Item { get; set; }
-
         private string SelectedTab { get; set; } = "overview";
 
         protected override async Task OnInitializedAsync()
@@ -21,9 +19,14 @@ namespace Bgg.Net.Web.Pages
             await base.OnInitializedAsync();
         }
 
-        private async Task<CollectionPageItem> CreateCollectionPageItem()
+        private async Task<CollectionPageItem?> CreateCollectionPageItem()
         {
-            var itemId = long.Parse(ItemId);
+            if (!long.TryParse(ItemId, out long itemId))
+            {
+                _logger.LogError("Item Id could not be parse. {ItemId}", ItemId);
+                return null;
+            }
+
             var thingRequest = new ThingRequest
             {
                 Id = new() { itemId },
@@ -31,7 +34,6 @@ namespace Bgg.Net.Web.Pages
             };
 
             var thingResponse = await _thingHandler.GetThing(thingRequest);
-
             var thing = thingResponse.Item.Things.FirstOrDefault();
             var collectionItem = _appState.Collection?.Items.FirstOrDefault(x => x.Id == itemId);
 

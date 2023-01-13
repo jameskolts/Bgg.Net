@@ -69,7 +69,7 @@ namespace Bgg.Net.Common.RequestHandlers
         protected async Task<BggResult<T>> GetResourceFromRequestObject<T>(string resourceName, BggRequest request)
             where T : BggBase
         {
-            _logger.LogInformation("Get" + resourceName.UpperFirstChar() + " : {request}", request);
+            _logger.LogInformation("Get {resource}: {request}", resourceName.UpperFirstChar(), request);
 
             var validator = _requestValidatorFactory.CreateRequestValidator(resourceName);
             var validationResult = validator.Validate(request);
@@ -84,7 +84,7 @@ namespace Bgg.Net.Common.RequestHandlers
             }
 
             var query = _queryBuilder.BuildQuery(resourceName, request);
-            _logger.LogInformation("Performing query: " + query);
+            _logger.LogInformation("Performing query: {query}", query);
 
             var httpResponseMessage = await _httpClient.GetAsync(query);
 

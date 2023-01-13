@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Bgg.Net.Web.Components
 {
-    public partial class CollectionItemDetailHeaderComponent
+    public partial class ItemDetailHeaderComponent
     {
         [Parameter]
         public CollectionPageItem? Item { get; set; }
