@@ -6,6 +6,7 @@ using Bgg.Net.Common.RequestHandlers.Families;
 using Bgg.Net.Common.RequestHandlers.Forums;
 using Bgg.Net.Common.RequestHandlers.Guilds;
 using Bgg.Net.Common.RequestHandlers.HotItems;
+using Bgg.Net.Common.RequestHandlers.Plays;
 using Bgg.Net.Common.RequestHandlers.Search;
 using Bgg.Net.Common.RequestHandlers.Things;
 using Bgg.Net.Common.RequestHandlers.Threads;
@@ -34,6 +35,7 @@ namespace Bgg.Net.Common.Infrastructure.IOC
             services.AddTransient<IHotItemsHandler, HotItemHandler>().AsSelf();
             services.AddTransient<ISearchHandler, SearchHandler>().AsSelf();
             services.AddTransient<IForumListHandler, ForumListHandler>().AsSelf();
+            services.AddTransient<IPlaysHandler, PlaysHandler>().AsSelf();
 
             return services;
         }
