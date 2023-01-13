@@ -30,7 +30,7 @@ namespace Bgg.Net.Common.RequestHandlers.HotItems
         {
             _logger.LogInformation("GetHotItemsByType : {type}", type);
 
-            var request = new HotItemRequest(type);
+            var request = new HotItemRequest(type.ToString());
             return await GetResourceFromRequestObject<HotItemList>("hot", request);
         }
     }

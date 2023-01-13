@@ -20,9 +20,9 @@ namespace Bgg.Net.Common.Models.Requests
         public bool? Members { get; set; }
 
         /// <summary>
-        /// Specifies how to sort the members list.
+        /// Specifies the <see cref="SortType"/> of the members list.
         /// </summary>
-        public SortType? Sort { get; set; }
+        public string Sort { get; set; }
 
         /// <summary>
         /// The page of the members list to return.

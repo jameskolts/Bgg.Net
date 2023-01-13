@@ -1,4 +1,5 @@
 ﻿using Bgg.Net.Common.Models.Requests;
+using Bgg.Net.Common.Types;
 
 namespace Bgg.Net.Common.Validation
 {
@@ -12,6 +13,11 @@ namespace Bgg.Net.Common.Validation
             if (forumListRequest.Id == default)
             {
                 validationResult.Errors.Add($"Missing required element for ForumListRequest: id");
+            }
+
+            if (!Enum.TryParse(forumListRequest.Type, true, out ItemType itemType))
+            {
+                validationResult.Errors.Add("Type was missing or invalid.");
             }
 
             validationResult.IsValid = !validationResult.Errors.Any();

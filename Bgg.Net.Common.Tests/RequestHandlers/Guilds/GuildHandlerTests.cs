@@ -27,7 +27,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Guilds
                 Id = 2005,
                 Members = true,
                 Page = 2,
-                Sort = SortType.UserName
+                Sort = "username"
             };
 
             MockValidatorFactory(new GuildRequestValidator());

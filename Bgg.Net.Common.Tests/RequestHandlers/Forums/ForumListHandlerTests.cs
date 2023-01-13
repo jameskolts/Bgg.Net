@@ -47,6 +47,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
             var request = new ForumListRequest
             {
                 Id = 100,
+                Type = "thing"
             };
 
             MockValidatorFactory(new ForumListRequestValidator());

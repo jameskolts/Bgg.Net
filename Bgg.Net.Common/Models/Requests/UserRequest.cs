@@ -34,9 +34,9 @@ namespace Bgg.Net.Common.Models.Requests
         public bool? Top { get; set; }
 
         /// <summary>
-        /// Controls the domain for the users hot 10 and top 10 lists. The DOMAIN default is boardgame.
+        /// Controls the domain for the users hot 10 and top 10 lists. The <see cref="DomainType"/> default is boardgame.
         /// </summary>
-        public DomainType? Domain { get; set; }
+        public string Domain { get; set; }
 
         /// <summary>
         /// Specifies the page of buddy and guild results to return. 

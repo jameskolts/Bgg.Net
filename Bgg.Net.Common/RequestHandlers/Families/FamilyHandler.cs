@@ -58,7 +58,7 @@ namespace Bgg.Net.Common.RequestHandlers.Families
             var request = new FamilyRequest
             {
                 Id = ids,
-                Type = types
+                Type = types.Select(x => x.ToString()).ToList()
             };
 
             return await GetResourceFromRequestObject<FamilyList>("family", request); ;

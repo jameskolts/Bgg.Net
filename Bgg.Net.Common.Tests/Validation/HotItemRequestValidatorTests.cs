@@ -19,7 +19,7 @@ namespace Bgg.Net.Common.Tests.Validation
         public void Request_Valid()
         {
             //Arrange
-            var request = new HotItemRequest(Types.HotItemType.Rpg);
+            var request = new HotItemRequest("rpg");
 
             //Act
             var result = _validator.Validate(request);

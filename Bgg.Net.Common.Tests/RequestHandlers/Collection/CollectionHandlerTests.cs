@@ -51,8 +51,8 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Collection
             {
                 UserName = "user",
                 Version = false,
-                Subtype = CollectionSubType.BoardGame,
-                ExcludeSubtype = CollectionSubType.VideoGame,
+                Subtype = "boardgame",
+                ExcludeSubtype = "videogame",
                 Id = new List<long>
                 {
                     1, 2, 3

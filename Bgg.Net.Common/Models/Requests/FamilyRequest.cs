@@ -14,8 +14,8 @@ namespace Bgg.Net.Common.Models.Requests
         public List<long> Id { get; set; } = new List<long>();
 
         /// <summary>
-        /// Filters the query results by family, regardless of id.
+        /// Filters the query results by <see cref="FamilyType"/>, regardless of id.
         /// </summary>
-        public List<FamilyType> Type { get; set; } = new List<FamilyType>();
+        public List<string> Type { get; set; } = new List<string>();
     }
 }

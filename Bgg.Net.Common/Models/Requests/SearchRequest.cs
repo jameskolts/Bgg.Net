@@ -14,10 +14,10 @@ namespace Bgg.Net.Common.Models.Requests
         public string Query { get; set; }
 
         /// <summary>
-        /// Return all items that match Query of type TYPE. 
+        /// Return all items that match Query of type <see cref="SearchType"/>. 
         /// You can return multiple types
         /// </summary>
-        public List<SearchType> Type { get; set; } = new List<SearchType>();
+        public List<string> Type { get; set; } = new List<string>();
 
         /// <summary>
         /// Limit results to items that match the Query exactly

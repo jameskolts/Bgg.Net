@@ -11,11 +11,11 @@ namespace Bgg.Net.Common.Models.Requests
     public class HotItemRequest : BggRequest
     {
         /// <summary>
-        /// The type of hot items to retrieve.
+        /// The <see cref="HotItemType"/> of hot items to retrieve.
         /// </summary>
-        public HotItemType Type { get; set; }
+        public string Type { get; set; }
 
-        public HotItemRequest(HotItemType type)
+        public HotItemRequest(string type)
         {
             Type = type;
         }

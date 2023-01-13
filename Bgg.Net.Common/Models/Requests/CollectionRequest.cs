@@ -28,14 +28,14 @@ namespace Bgg.Net.Common.Models.Requests
         public bool? Version { get; set; }
 
         /// <summary>
-        /// Specifies which collection you want to retrieve.
+        /// Specifies which collection <see cref="CollectionSubType"/> you want to retrieve.
         /// </summary>
-        public CollectionSubType? Subtype { get; set; }
+        public string Subtype { get; set; }
 
         /// <summary>
-        /// Specifies which subtype you want to exclude from the results.
+        /// Specifies which <seealso cref="CollectionSubType"/ you want to exclude from the results.
         /// </summary>
-        public CollectionSubType? ExcludeSubtype { get; set; }
+        public string ExcludeSubtype { get; set; }
 
         /// <summary>
         /// Filter collection to specifically listed item(s). NNN may be a comma-delimited list of item ids.

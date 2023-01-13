@@ -32,7 +32,7 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
             var request = new PlaysRequest
             {
                 Id = id,
-                Type = type
+                Type = type.ToString()
             };
 
             return await GetResourceFromRequestObject<PlayList>("plays", request);
@@ -74,8 +74,8 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
             var request = new PlaysRequest
             {
                 UserName = userName,
-                Type = type,
-                SubType = subType
+                Type = type.ToString(),
+                SubType = subType?.ToString()
             };
 
             return await GetResourceFromRequestObject<PlayList>("plays", request);

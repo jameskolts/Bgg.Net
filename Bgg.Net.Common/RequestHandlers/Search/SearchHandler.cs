@@ -42,7 +42,7 @@ namespace Bgg.Net.Common.RequestHandlers.Search
 
             var request = new SearchRequest(query)
             {
-                Type = type
+                Type = type.Select(x => x.ToString()).ToList()
             };
 
             return await GetResourceFromRequestObject<SearchResultList>("search", request);

@@ -47,7 +47,7 @@ namespace Bgg.Net.Common.RequestHandlers.Guilds
             {
                 Id = id,
                 Members = true,
-                Sort = sortType,
+                Sort = sortType.ToString(),
                 Page = page
             };
 

@@ -26,7 +26,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Search
             var request = new SearchRequest("ark nova")
             {
                 Exact = true,
-                Type = new List<SearchType> { SearchType.BoardGame, SearchType.BoardGameExpansion }
+                Type = new List<string> { "boardgame", "boardgameexpansion" }
             };
 
             MockValidatorFactory(new SearchRequestValidator());

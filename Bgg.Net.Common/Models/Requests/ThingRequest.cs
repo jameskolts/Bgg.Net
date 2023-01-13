@@ -16,9 +16,9 @@ namespace Bgg.Net.Common.Models.Requests
         public List<long> Id { get; set; } = new List<long>();
 
         /// <summary>
-        /// Specifies that,the results are filtered by the THINGTYPE(s) regardless of id.
+        /// Specifies that the results are filtered by the <see cref="ThingType"/>(s) regardless of id.
         /// </summary>
-        public List<ThingType> Type { get; set; } = null;
+        public List<string> Type { get; set; } = null;
 
         /// <summary>
         /// Returns version info for the item if true.

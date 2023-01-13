@@ -39,7 +39,7 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
             var request = new ForumListRequest
             {
                 Id = id,
-                Type = type
+                Type = type.ToString()
             };
 
             return await GetResourceFromRequestObject<ForumList>("forumlist", request);

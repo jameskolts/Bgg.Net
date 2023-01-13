@@ -60,7 +60,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.HotItems
         public async Task GetHot_Success()
         {
             //Arrange
-            var request = new HotItemRequest(HotItemType.BoardGame);
+            var request = new HotItemRequest("boardgame");
 
             MockValidatorFactory(new HotItemRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.HotXml), HttpStatusCode.OK);

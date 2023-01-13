@@ -70,7 +70,7 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
             var request = new CollectionRequest
             {
                 UserName = userName,
-                Subtype = subtype
+                Subtype = subtype.ToString()
             };
 
             return await GetResourceFromRequestObject<Models.Collection>("collection", request);

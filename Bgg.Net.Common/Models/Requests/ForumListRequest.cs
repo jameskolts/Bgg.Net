@@ -15,6 +15,9 @@ namespace Bgg.Net.Common.Models.Requests
         /// </summary>
         public long Id { get; set; }
 
-        public ItemType Type { get; set; }
+        /// <summary>
+        /// Specifies the <see cref="ItemType"/> of the item.
+        /// </summary>
+        public string Type { get; set; }
     }
 }

@@ -22,9 +22,9 @@ namespace Bgg.Net.Common.Models.Requests
         public long? Id { get; set; }
 
         /// <summary>
-        /// Type of the item you want to request play information for.
+        /// The <see cref="ItemType"/> you want to request play information for.
         /// </summary>
-        public ItemType? Type { get; set; }
+        public string Type { get; set; }
 
         /// <summary>
         /// Returns only plays of the specified date or later.
@@ -37,9 +37,9 @@ namespace Bgg.Net.Common.Models.Requests
         public DateOnly? MaxDate { get; set; }
 
         /// <summary>
-        /// Limits play results to the specified type.
+        /// Limits play results to the specified <see cref="PlaysSubType"/>.
         /// </summary>
-        public PlaysSubType? SubType { get; set; }
+        public string SubType { get; set; }
 
         /// <summary>
         /// The page of information to request. Page size is 100 records.

@@ -69,7 +69,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Users
             //Arrange
             var request = new UserRequest("userName")
             {
-                Domain = DomainType.BoardGame,
+                Domain = "boardgame",
                 Buddies = true,
                 Guilds = true,
                 Hot = false,
