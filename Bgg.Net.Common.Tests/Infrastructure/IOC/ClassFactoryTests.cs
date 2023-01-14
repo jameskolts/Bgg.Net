@@ -19,7 +19,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Bgg.Net.Common.Tests.Infrastructure.IOC
 {
     [TestClass]
-    public class AutofacRegistrarTests
+    public class ClassFactoryTests
     {
         private ServiceProvider? provider;
 

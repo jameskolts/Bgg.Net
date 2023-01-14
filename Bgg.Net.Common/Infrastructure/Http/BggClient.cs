@@ -22,6 +22,18 @@ namespace Bgg.Net.Common.Infrastructure.Http
             };
         }
 
+        /// <summary>
+        /// Construcs a new instance of the BggClient with the given base address.
+        /// </summary>
+        /// <param name="baseAddress"></param>
+        public BggClient(string baseAddress)
+        {
+            httpClient = new HttpClient
+            {
+                BaseAddress = new Uri(baseAddress)
+            };
+        }
+
         /// <inheritdoc cref="HttpClient.DeleteAsync(string)"/>
         public virtual Task<HttpResponseMessage> DeleteAsync(string url)
         {
