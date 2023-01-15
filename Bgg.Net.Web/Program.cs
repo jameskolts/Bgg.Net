@@ -1,6 +1,7 @@
 using Bgg.Net.Common.Infrastructure.IOC;
 using Bgg.Net.Web;
 using Bgg.Net.Web.Infrastructure.IOC;
+using Dgi.Client;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -14,6 +15,7 @@ public class Program
 
         builder.RegisterWebComponents();
         builder.Services.RegisterBggCommon();
+        builder.Services.RegisterDgiClients();
         builder.Services.ConfigureLogging();
 
         await builder.Build().RunAsync();

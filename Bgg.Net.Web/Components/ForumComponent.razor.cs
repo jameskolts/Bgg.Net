@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
-using Bgg.Net.Common.Types;
-using Bgg.Net.Common.Models;
+﻿using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Models.Requests;
+using Microsoft.AspNetCore.Components;
 
 namespace Bgg.Net.Web.Components
 {
@@ -22,12 +22,17 @@ namespace Bgg.Net.Web.Components
 
         private async Task<ForumList> GetForumList()
         {
-            if (!Enum.TryParse(Type, out ItemType itemType))
+            //Todo: Best way to set type?  
+            // Item type is "boardgame" but this request is looking for "thing" for board games from bgg.
+            var forumListRequest = new ForumListRequest
             {
-                itemType = ItemType.Thing;
-            }
+                Id = Id,
+                Type = "thing"
+            };
 
-            return (await _forumListHandler.GetForumListByIdAndType(Id, itemType)).Item;
+            var item = (await _bggClient.GetForumList(forumListRequest)).Item;
+
+            return item;
         }
     }
 }
