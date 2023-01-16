@@ -11,19 +11,12 @@ namespace Bgg.Net.Web.Components
         [Parameter]
         public string Type { get; set; } = string.Empty;
 
-        public ForumList? ForumList { get; set; }
-        public Forum? Forum { get; set; } = null;
+        private ForumList? ForumList;
+        private ForumComponent? _forumComponent = new();
 
         protected override async Task OnInitializedAsync()
         {
             ForumList = await GetForumList();
-
-            var initialForumId = ForumList.Forums
-                .Where(x => x.Title == "General")
-                .Select(x => x.Id)
-                .FirstOrDefault();
-            await LoadForum(initialForumId);
-
             await base.OnInitializedAsync();
         }
 
@@ -40,24 +33,22 @@ namespace Bgg.Net.Web.Components
             return (await _bggClient.GetForumList(forumListRequest)).Item;
         }
 
-        private async Task LoadForum(long forumId)
+        private async Task UpdateForumComponent(long forumId)
         {
-            var forumRequest = new ForumRequest
-            {
-                Id = forumId
-            };
-
-            Forum = (await _bggClient.GetForum(forumRequest)).Item;
+            await _forumComponent!.LoadForum(forumId);
         }
 
-
-        private string GetDaysApart(DateTime start, DateTime end)
+        private void LoadInitialForum()
         {
-            var daysApart = (start - end).Days;
+            var initialForumId = ForumList?.Forums
+                .Where(x => x.Title == "General")
+                .Select(x => x.Id)
+                .FirstOrDefault();
 
-            var daysApartString = $"{daysApart} day";
-            daysApartString += daysApart > 1 ? "s ago" : " ago";
-            return daysApartString;
+            if (initialForumId.HasValue)
+            {
+                _forumComponent?.LoadForum(initialForumId.Value);
+            }
         }
     }
 }
