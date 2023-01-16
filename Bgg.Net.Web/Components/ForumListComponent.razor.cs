@@ -10,8 +10,8 @@ namespace Bgg.Net.Web.Components
         public long Id { get; set; }
         [Parameter]
         public string Type { get; set; } = string.Empty;
+        public ForumList? ForumList { get; set; }
 
-        private ForumList? ForumList;
         private ForumComponent? _forumComponent = new();
 
         protected override async Task OnInitializedAsync()
