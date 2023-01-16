@@ -24,6 +24,6 @@ namespace Bgg.Net.Common.Models
         /// The detailed results of this poll.
         /// </summary>
         [XmlElement("result")]
-        public List<PollResult> Result { get; set; } = new List<PollResult>();
+        public List<PollResult> Result { get; set; } = new();
     }
 }

@@ -30,6 +30,6 @@ namespace Bgg.Net.Common.Models
         /// The comments included in this page.
         /// </summary>
         [XmlElement("comment")]
-        public List<Comment> Comment { get; set; } = new List<Comment>();
+        public List<Comment> Comment { get; set; } = new();
     }
 }

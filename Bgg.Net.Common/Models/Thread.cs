@@ -44,7 +44,7 @@ namespace Bgg.Net.Common.Models
         /// </summary>
         [XmlArray("articles")]
         [XmlArrayItem("article")]
-        public List<Article> Articles { get; set; } = new List<Article>();
+        public List<Article> Articles { get; set; } = new();
 
 
     }

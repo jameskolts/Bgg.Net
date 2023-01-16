@@ -25,6 +25,6 @@ namespace Bgg.Net.Common.Models
         /// The items that are top.
         /// </summary>
         [XmlElement("item")]
-        public List<UserRankedItem> Item { get; set; }
+        public List<UserRankedItem> Item { get; set; } = new();
     }
 }

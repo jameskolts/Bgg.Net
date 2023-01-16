@@ -32,6 +32,18 @@
     width: 100%;
 }
 
+.undecorated {
+    text-decoration: none;
+}
+
+.text-small {
+    font-size: small;
+}
+
+.text-extra-small {
+    font-size: x-small;
+}
+
 /*  Pre generated code below*/
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;

@@ -36,7 +36,7 @@ namespace Bgg.Net.Common.Models
         /// The names of the family.
         /// </summary>
         [XmlElement("name")]
-        public List<BggName> Name { get; set; } = new List<BggName>();
+        public List<BggName> Name { get; set; } = new();
 
         /// <summary>
         /// The text description of the family.
@@ -48,7 +48,7 @@ namespace Bgg.Net.Common.Models
         /// Links to all the items in this family.
         /// </summary>
         [XmlElement("link")]
-        public List<FamilyLink> Links { get; set; } = new List<FamilyLink>();
+        public List<FamilyLink> Links { get; set; } = new();
 
         /// <summary>
         /// The type of this family.

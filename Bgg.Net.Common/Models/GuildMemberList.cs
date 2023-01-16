@@ -27,6 +27,6 @@ namespace Bgg.Net.Common.Models
         public int Page { get; set; }
 
         [XmlElement("member")]
-        public List<GuildMember> Member = new List<GuildMember>();
+        public List<GuildMember> Member = new();
     }
 }

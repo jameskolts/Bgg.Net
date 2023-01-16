@@ -13,6 +13,6 @@ namespace Bgg.Net.Common.Models
     public class ThingList : BggBase
     {
         [XmlElement("item")]
-        public List<Thing> Things { get; set; } = new List<Thing>();
+        public List<Thing> Things { get; set; } = new();
     }
 }

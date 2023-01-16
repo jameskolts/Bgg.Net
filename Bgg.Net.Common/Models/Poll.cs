@@ -36,6 +36,6 @@ namespace Bgg.Net.Common.Models
         /// The results of this poll.
         /// </summary>
         [XmlElement("results")]
-        public List<PollResultList> Results { get; set; } = new List<PollResultList>();
+        public List<PollResultList> Results { get; set; } = new();
     }
 }

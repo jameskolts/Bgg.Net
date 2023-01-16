@@ -13,6 +13,6 @@ namespace Bgg.Net.Common.Models
     public class FamilyList : BggBase
     {
         [XmlElement("item")]
-        public List<Family> Families { get; set; } = new List<Family>();
+        public List<Family> Families { get; set; } = new();
     }
 }

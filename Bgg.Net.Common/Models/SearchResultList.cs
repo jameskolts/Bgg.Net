@@ -19,6 +19,6 @@ namespace Bgg.Net.Common.Models
         public int Total { get; set; }
 
         [XmlElement("item")]
-        public List<SearchResult> Item { get; set; } = new List<SearchResult>();
+        public List<SearchResult> Item { get; set; } = new();
     }
 }

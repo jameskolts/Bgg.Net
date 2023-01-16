@@ -28,6 +28,6 @@ namespace Bgg.Net.Common.Models
         /// The list of guilds returned in this page.
         /// </summary>
         [XmlElement("guild")]
-        public List<UserItem> Guild { get; set; } = new List<UserItem>();
+        public List<UserItem> Guild { get; set; } = new();
     }
 }

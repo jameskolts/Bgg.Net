@@ -18,5 +18,12 @@ namespace Bgg.Net.Common.Models.Requests
         /// The page of the thread list to return.  
         /// </summary>
         public uint? Page { get; set; }
+
+        public ForumRequest() { }
+
+        public ForumRequest(long id)
+        {
+            Id = id;
+        }
     }
 }

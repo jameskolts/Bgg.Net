@@ -27,7 +27,7 @@ namespace Bgg.Net.Common.Models
         public string ReleaseDate { get; set; }
 
         [XmlElement("link")]
-        public List<Link> Links { get; set; } = new List<Link>();
+        public List<Link> Links { get; set; } = new();
 
         [XmlElement("name")]
         public List<BggName> Name { get; set; }

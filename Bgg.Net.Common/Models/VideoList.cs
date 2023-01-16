@@ -24,6 +24,6 @@ namespace Bgg.Net.Common.Models
         /// The list of videos.
         /// </summary>
         [XmlElement("video")]
-        public List<Video> Video { get; set; } = new List<Video>();
+        public List<Video> Video { get; set; } = new();
     }
 }

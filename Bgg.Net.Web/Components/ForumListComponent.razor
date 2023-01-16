@@ -1,0 +1,58 @@
+﻿@using Bgg.Net.Common.RequestHandlers.Forums
+@using Dgi.Client.Clients
+@inject ForumListHandler _forumListHandler
+@inject ForumHandler _forumHandler
+@inject BggClient _bggClient;
+
+@if (ForumList == null)
+{
+    <LoadingComponent />
+}
+else
+{
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-sm-2">
+                @foreach (var forum in ForumList.Forums)
+                {
+                    <div class="border-bottom">
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <a href="javascript:void(0);" onclick="@LoadForum(forum.Id)">@forum.Title </a>
+                            </div>
+                            <div class="col-sm">
+                                <p class="float-end" style="font-size:x-small">@forum.NumThreads</p>
+                            </div>
+                            <div class="col-sm">
+                                <img src="/Images/arrow-right-solid.png" width="15" height="20" class="float-end" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col">
+                @*<ForumComponent @ref="_forumComponent" />*@
+                @if (Forum != null)
+                {
+                    foreach (var thread in Forum.Threads.OrderByDescending(x => DateTime.Parse(x.LastPostDate)))
+                    {
+                        <div class="row mb-3 thread" style="border-radius:45px">
+                            <div class="ms-3 my-2">
+                                <p class="text-extra-small text-end me-5">@DateTime.Parse(thread.PostDate)</p>
+                                <p>@thread.Subject</p>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        By: <span class="fst-italic">@thread.Author</span>
+                                    </div>
+                                    <div class="text-extra-small col-sm text-end">
+                                        Last Post: <span class="fst-italic me-5">@GetDaysApart(DateTime.Now, DateTime.Parse(thread.LastPostDate))</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+}

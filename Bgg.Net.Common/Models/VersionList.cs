@@ -12,6 +12,6 @@ namespace Bgg.Net.Common.Models
     public class VersionList
     {
         [XmlElement("item")]
-        public List<Version> Versions { get; set; }
+        public List<Version> Versions { get; set; } = new();
     }
 }

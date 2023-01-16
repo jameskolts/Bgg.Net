@@ -19,6 +19,6 @@ namespace Bgg.Net.Common.Models
         /// The Hot Items.
         /// </summary>
         [XmlElement("item")]
-        public List<HotItem> Item { get; set; } = new List<HotItem>();
+        public List<HotItem> Item { get; set; } = new();
     }
 }

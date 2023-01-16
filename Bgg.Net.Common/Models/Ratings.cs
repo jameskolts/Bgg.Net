@@ -37,7 +37,7 @@ namespace Bgg.Net.Common.Models
         /// </summary>
         [XmlArray("ranks")]
         [XmlArrayItem("rank")]
-        public List<Rank> Ranks { get; set; } = new List<Rank>();
+        public List<Rank> Ranks { get; set; } = new();
 
         /// <summary>
         /// The Standard Deviation of the ratings.

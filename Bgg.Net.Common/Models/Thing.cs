@@ -47,7 +47,7 @@ namespace Bgg.Net.Common.Models
         /// Any applicable names for the thing.
         /// </summary>
         [XmlElement("name")]
-        public List<BggName> Name { get; set; } = new List<BggName>();
+        public List<BggName> Name { get; set; } = new();
 
         /// <summary>
         /// A description of the thing.
@@ -101,20 +101,20 @@ namespace Bgg.Net.Common.Models
         /// Any associated links of the thing.
         /// </summary>
         [XmlElement("link")]
-        public List<Link> Links { get; set; } = new List<Link>();
+        public List<Link> Links { get; set; } = new();
 
         /// <summary>
         /// Any additional versions of the thing.
         /// </summary>
         [XmlArray("versions")]
         [XmlArrayItem("item")]
-        public List<Version> Versions { get; set; } = new List<Version>();
+        public List<Version> Versions { get; set; } = new();
 
         /// <summary>
         /// A list of all the polls associated with a thing.
         /// </summary>
         [XmlElement("poll")]
-        public List<Poll> Poll { get; set; } = new List<Poll>();
+        public List<Poll> Poll { get; set; } = new();
 
         /// <summary>
         /// User comments regarding the thing.
@@ -127,7 +127,7 @@ namespace Bgg.Net.Common.Models
         /// </summary>
         [XmlArray("marketplacelistings")]
         [XmlArrayItem("listing")]
-        public List<Listing> MarketplaceListing { get; set; } = new List<Listing>();
+        public List<Listing> MarketplaceListing { get; set; } = new();
 
         /// <summary>
         /// The videos associated with the thing.

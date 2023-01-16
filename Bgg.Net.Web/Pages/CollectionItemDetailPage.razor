@@ -1,5 +1,6 @@
 ﻿@using Bgg.Net.Common.RequestHandlers.Things;
 @using System.Web;
+@using Blazorise;
 @page "/collection/item/{ItemId}"
 @inject AppState _appState
 @inject ThingHandler _thingHandler
@@ -46,7 +47,7 @@ else
                     Content for Log Play.
                 </TabPanel>
                 <TabPanel Name="forums">
-                    <ForumComponent Id="@Item.Id" Type="@Item.Type" />
+                    <ForumListComponent Id="@Item.Id" Type="@Item.Type" />
                 </TabPanel>
                 <TabPanel Name="images">
                     Content for Images.

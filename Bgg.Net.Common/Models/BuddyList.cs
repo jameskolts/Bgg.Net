@@ -31,6 +31,6 @@ namespace Bgg.Net.Common.Models
         /// The list of buddy results for this page.
         /// </summary>
         [XmlElement("buddy")]
-        public List<UserItem> Buddy { get; set; } = new List<UserItem>();
+        public List<UserItem> Buddy { get; set; } = new();
     }
 }
