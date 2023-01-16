@@ -28,8 +28,6 @@ namespace Bgg.Net.Common.RequestHandlers.Search
         /// <inheritdoc/>
         public async Task<BggResult<SearchResultList>> SearchByQuery(string query)
         {
-            _logger.LogInformation("SearchByQuery : {query}", query);
-
             var request = new SearchRequest(query);
 
             return await GetResourceFromRequestObject<SearchResultList>("search", request);
@@ -38,8 +36,6 @@ namespace Bgg.Net.Common.RequestHandlers.Search
         /// <inheritdoc/>
         public async Task<BggResult<SearchResultList>> SearchByQueryAndType(string query, List<SearchType> type)
         {
-            _logger.LogInformation("SearchByQueryAndType : {query}, {type}", query, type);
-
             var request = new SearchRequest(query)
             {
                 Type = type.Select(x => x.ToString()).ToList()
@@ -51,8 +47,6 @@ namespace Bgg.Net.Common.RequestHandlers.Search
         /// <inheritdoc/>
         public async Task<BggResult<SearchResultList>> SearchByQueryExact(string query)
         {
-            _logger.LogInformation("SearchByQueryExact : {query}", query);
-
             var request = new SearchRequest(query)
             {
                 Exact = true

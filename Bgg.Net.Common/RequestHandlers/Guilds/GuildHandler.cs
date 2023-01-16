@@ -28,8 +28,6 @@ namespace Bgg.Net.Common.RequestHandlers.Guilds
         /// <inheritdoc/>
         public async Task<BggResult<Guild>> GetGuildById(long id)
         {
-            _logger.LogInformation("GetGuildById : {id}", id);
-
             var request = new GuildRequest
             {
                 Id = id
@@ -41,8 +39,6 @@ namespace Bgg.Net.Common.RequestHandlers.Guilds
         /// <inheritdoc/>
         public async Task<BggResult<Guild>> GetGuildByIdWithMembers(long id, SortType sortType = SortType.UserName, int page = 1)
         {
-            _logger.LogInformation("GetGuildByIdWithMembers : {id}, {sortType}, {page}", id, sortType, page);
-
             var request = new GuildRequest
             {
                 Id = id,

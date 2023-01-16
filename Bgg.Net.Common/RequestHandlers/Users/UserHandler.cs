@@ -27,8 +27,6 @@ namespace Bgg.Net.Common.RequestHandlers.Users
         /// <inheritdoc/>
         public async Task<BggResult<User>> GetUserByName(string name)
         {
-            _logger.LogInformation("GetUserByName : {name}", name);
-
             var request = new UserRequest(name);
 
             return await GetResourceFromRequestObject<User>("user", request);

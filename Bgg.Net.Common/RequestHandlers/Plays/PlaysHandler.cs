@@ -27,8 +27,6 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
 
         public async Task<BggResult<PlayList>> GetPlaysByIdAndType(long id, ItemType type)
         {
-            _logger.LogInformation("GetPlaysByIdAndType : {id}, {type}", id, type);
-
             var request = new PlaysRequest
             {
                 Id = id,
@@ -41,8 +39,6 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
         /// <inheritdoc/>
         public async Task<BggResult<PlayList>> GetPlaysByUserName(string userName)
         {
-            _logger.LogInformation("GetPlaysByUserName : {userName}", userName);
-
             var request = new PlaysRequest
             {
                 UserName = userName,
@@ -54,8 +50,6 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
         /// <inheritdoc/>
         public async Task<BggResult<PlayList>> GetPlaysByUserNameAndDate(string userName, DateOnly start, DateOnly end)
         {
-            _logger.LogInformation("GetPlaysByUserNameAndDate : {userName}, {start}, {end}", userName, start, end);
-
             var request = new PlaysRequest
             {
                 UserName = userName,
@@ -69,8 +63,6 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
         /// <inheritdoc/>
         public async Task<BggResult<PlayList>> GetPlaysByUserNameAndType(string userName, ItemType type, PlaysSubType? subType = null)
         {
-            _logger.LogInformation("GetPlaysByUserNameAndType : {userName}, {type}, {subType}", userName, type, subType);
-
             var request = new PlaysRequest
             {
                 UserName = userName,

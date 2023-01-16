@@ -28,9 +28,8 @@ namespace Bgg.Net.Common.RequestHandlers.HotItems
         /// <inheritdoc/>
         public async Task<BggResult<HotItemList>> GetHotItemsByType(HotItemType type)
         {
-            _logger.LogInformation("GetHotItemsByType : {type}", type);
-
             var request = new HotItemRequest(type.ToString());
+
             return await GetResourceFromRequestObject<HotItemList>("hot", request);
         }
     }

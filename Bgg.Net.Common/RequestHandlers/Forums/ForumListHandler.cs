@@ -34,8 +34,6 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
         /// <inheritdoc/>
         public async Task<BggResult<ForumList>> GetForumListByIdAndType(long id, ItemType type)
         {
-            _logger.LogInformation("GetForumListByIdAndType : {id}, {type}", id, type);
-
             var request = new ForumListRequest
             {
                 Id = id,

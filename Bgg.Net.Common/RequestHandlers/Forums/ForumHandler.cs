@@ -29,8 +29,6 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
 
         public async Task<BggResult<Forum>> GetForumById(long id)
         {
-            _logger.LogInformation("GetForumById : {id}", id);
-
             var request = new ForumRequest
             {
                 Id = id
@@ -41,8 +39,6 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
 
         public async Task<BggResult<Forum>> GetForumByIdAndPage(long id, uint page)
         {
-            _logger.LogInformation("GetForumByIdAndPage : {id}, {page}", id, page);
-
             var request = new ForumRequest
             {
                 Id = id,

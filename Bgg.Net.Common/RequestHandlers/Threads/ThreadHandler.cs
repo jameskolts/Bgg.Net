@@ -27,8 +27,6 @@ namespace Bgg.Net.Common.RequestHandlers.Threads
         /// <inheritdoc/>
         public async Task<BggResult<Thread>> GetThreadById(int id)
         {
-            _logger.LogInformation("GetThreadById : {id}", id);
-
             var request = new ThreadRequest(id);
 
             return await GetResourceFromRequestObject<Thread>("thread", request);

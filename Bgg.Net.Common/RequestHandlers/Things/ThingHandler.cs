@@ -27,8 +27,6 @@ namespace Bgg.Net.Common.RequestHandlers.Things
         /// <inheritdoc/>
         public async Task<BggResult<ThingList>> GetThingById(long id)
         {
-            _logger.LogInformation("GetThingById : {id}", id);
-
             var request = new ThingRequest
             {
                 Id = new List<long> { id }
@@ -40,8 +38,6 @@ namespace Bgg.Net.Common.RequestHandlers.Things
         /// <inheritdoc/>
         public async Task<BggResult<ThingList>> GetThingsById(List<long> ids)
         {
-            _logger.LogInformation("GetThingById : {id}", ids);
-
             var request = new ThingRequest
             {
                 Id = ids

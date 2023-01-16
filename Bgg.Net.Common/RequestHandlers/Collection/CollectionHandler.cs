@@ -21,8 +21,6 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         /// <inheritdoc/>
         public async Task<BggResult<Models.Collection>> GetBriefCollectionByUserName(string userName)
         {
-            _logger.LogInformation("GetBriefCollectionByUserName : {userName}", userName);
-
             var request = new CollectionRequest
             {
                 UserName = userName,
@@ -41,8 +39,6 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         /// <inheritdoc/>
         public async Task<BggResult<Models.Collection>> GetCollectionByUserName(string userName)
         {
-            _logger.LogInformation("GetCollectionByUserName : {userName}", userName);
-
             var request = new CollectionRequest(userName);
 
             return await GetResourceFromRequestObject<Models.Collection>("collection", request);
@@ -51,8 +47,6 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         /// <inheritdoc/>
         public async Task<BggResult<Models.Collection>> GetCollectionByUserNameAndId(string userName, List<long> ids)
         {
-            _logger.LogInformation("GetCollectionByUserNameAndId : {userName}, {ids}", userName, ids);
-
             var request = new CollectionRequest
             {
                 UserName = userName,
@@ -65,8 +59,6 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         /// <inheritdoc/>
         public async Task<BggResult<Models.Collection>> GetCollectionByUserNameAndSubtype(string userName, CollectionSubType subtype)
         {
-            _logger.LogInformation("GetCollectionByUserNameAndType : {userName}, {type}", userName, subtype);
-
             var request = new CollectionRequest
             {
                 UserName = userName,
@@ -79,8 +71,6 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         /// <inheritdoc/>
         public async Task<BggResult<Models.Collection>> GetCollectionStatsByUserName(string userName)
         {
-            _logger.LogInformation("GetCollectionStatsByUserName : {userName}", userName);
-
             var request = new CollectionRequest
             {
                 UserName = userName,
@@ -93,8 +83,6 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         /// <inheritdoc/>
         public async Task<BggResult<Models.Collection>> GetPlayedCollectionByUserName(string userName)
         {
-            _logger.LogInformation("GetPlayedCollectionByUserName : {userName}", userName);
-
             var request = new CollectionRequest
             {
                 UserName = userName,
@@ -107,8 +95,6 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         /// <inheritdoc/>
         public async Task<BggResult<Models.Collection>> GetWishListCollectionByUserName(string userName)
         {
-            _logger.LogInformation("GetWishListCollectionByUserName : {userName}", userName);
-
             var request = new CollectionRequest
             {
                 UserName = userName,
