@@ -2,7 +2,7 @@
 using Bgg.Net.Common.Models.Requests;
 using Microsoft.AspNetCore.Components;
 
-namespace Bgg.Net.Web.Components
+namespace Bgg.Net.Web.UserInterface.Components
 {
     public partial class ForumListComponent
     {

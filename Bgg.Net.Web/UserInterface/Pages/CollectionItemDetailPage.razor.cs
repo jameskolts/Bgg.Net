@@ -1,9 +1,8 @@
 ﻿using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Web.Models;
 using Microsoft.AspNetCore.Components;
-using System.Net.NetworkInformation;
 
-namespace Bgg.Net.Web.Pages
+namespace Bgg.Net.Web.UserInterface.Pages
 {
     public partial class CollectionItemDetailPage
     {

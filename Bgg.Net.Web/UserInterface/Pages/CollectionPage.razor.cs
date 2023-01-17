@@ -2,7 +2,7 @@
 using Bgg.Net.Web.Infrastructure.Helpers;
 using Bgg.Net.Web.Models;
 
-namespace Bgg.Net.Web.Pages
+namespace Bgg.Net.Web.UserInterface.Pages
 {
     public partial class CollectionPage
     {

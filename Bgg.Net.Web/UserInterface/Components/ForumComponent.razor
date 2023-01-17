@@ -11,7 +11,7 @@
 else
 {
     <div class="container">
-        @if (showForum)
+        @if (showForums)
         {
             foreach (var thread in Forum.Threads.OrderByDescending(x => DateTime.Parse(x.LastPostDate)))
             {

@@ -42,7 +42,7 @@ namespace Bgg.Net.Web.Models
         public Statistics Statistics { get; set; }
 
         public CollectionPageItem(CollectionItem item, Thing thing)
-        {            
+        {
             Id = thing.Id;
             YearPublished = thing.YearPublished.Value;
             Image = thing.Image;

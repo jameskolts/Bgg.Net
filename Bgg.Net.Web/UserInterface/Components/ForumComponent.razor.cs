@@ -3,7 +3,7 @@ using Bgg.Net.Common.Models.Requests;
 using Microsoft.AspNetCore.Components;
 using Thread = Bgg.Net.Common.Models.Thread;
 
-namespace Bgg.Net.Web.Components
+namespace Bgg.Net.Web.UserInterface.Components
 {
     public partial class ForumComponent
     {
@@ -13,13 +13,9 @@ namespace Bgg.Net.Web.Components
         public Forum? Forum { get; set; }
         public Thread? Thread { get; set; }
 
-        private ThreadComponent? _threadComponent = new();
         private bool isLoading = false;
-        private bool showForum = true;
+        private bool showForums = true;
         private bool showThreads = false;
-
-        private bool isTrue = true;
-        private bool isFalse = false;
 
         public async Task LoadForum(long forumId)
         {
@@ -33,7 +29,7 @@ namespace Bgg.Net.Web.Components
             Forum = (await _bggClient.GetForum(forumRequest)).Item;
 
             isLoading = false;
-            showForum = true;
+            showForums = true;
             showThreads = false;
             StateHasChanged();
         }
@@ -60,11 +56,11 @@ namespace Bgg.Net.Web.Components
             }
 
             isLoading = false;
-            showForum = false;
+            showForums = false;
             showThreads = true;
         }
 
-        private string GetDaysApart(DateTime start, DateTime end)
+        private static string GetDaysApart(DateTime start, DateTime end)
         {
             var daysApart = (start - end).Days;
 

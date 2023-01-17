@@ -1,0 +1,25 @@
+﻿@using Dgi.Client.Clients;
+@using System.Web;
+@inject BggClient _bggClient;
+
+<h3>ThreadComponent</h3>
+
+@if (Thread != null)
+{
+    @foreach (var article in Thread.Articles)
+    {
+        <div class="card">
+            <div class="row">
+                <div class="col">
+                    <h5>@article.Username</h5>
+                </div>
+                <div />
+            </div>
+        </div>
+                        
+        <div class="row">
+            @HttpUtility.HtmlDecode(article.Body);
+        </div>
+        <hr />
+    }
+}
