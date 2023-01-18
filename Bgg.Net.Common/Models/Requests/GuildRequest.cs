@@ -28,5 +28,15 @@ namespace Bgg.Net.Common.Models.Requests
         /// The page of the members list to return.
         /// </summary>
         public int? Page { get; set; }
+
+        public GuildRequest()
+        {
+
+        }
+
+        public GuildRequest(long id)
+        {
+            Id = id;
+        }
     }
 }

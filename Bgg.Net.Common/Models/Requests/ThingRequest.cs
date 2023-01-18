@@ -54,5 +54,15 @@ namespace Bgg.Net.Common.Models.Requests
         /// Controls the page of data to see for historical info, comments, and ratings data. 
         /// </summary>
         public int? Page { get; set; }
+
+        public ThingRequest()
+        {
+
+        }
+
+        public ThingRequest(long id)
+        {
+            Id = new List<long> { id };
+        }
     }
 }

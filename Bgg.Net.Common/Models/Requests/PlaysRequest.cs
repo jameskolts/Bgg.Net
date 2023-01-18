@@ -45,5 +45,15 @@ namespace Bgg.Net.Common.Models.Requests
         /// The page of information to request. Page size is 100 records.
         /// </summary>
         public int? Page { get; set; }
+
+        public PlaysRequest()
+        {
+
+        }
+
+        public PlaysRequest(string userName)
+        {
+            UserName = UserName;
+        }
     }
 }

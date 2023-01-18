@@ -19,5 +19,16 @@ namespace Bgg.Net.Common.Models.Requests
         /// Specifies the <see cref="ItemType"/> of the item.
         /// </summary>
         public string Type { get; set; }
+
+        public ForumListRequest()
+        {
+
+        }
+
+        public ForumListRequest(long id, string type)
+        {
+            Id = id;
+            Type = type;
+        }
     }
 }
