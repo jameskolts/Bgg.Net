@@ -40,16 +40,14 @@ namespace Bgg.Net.Common.Tests.RequestHandlers
             };
 
             _httpClientMock.Setup(x => x.GetAsync(It.IsAny<string>()))
-                .Returns(Task.FromResult(responseMessage));
+                .ReturnsAsync(responseMessage);
         }
 
         public void MockBggDeserializer<T>(T? obj = null)
             where T : BggBase
         {
-#pragma warning disable CS8604 // Possible null reference argument.
             _deserializerMock.Setup(x => x.Deserialize<T>(It.IsAny<string>()))
-                .Returns(obj);
-#pragma warning restore CS8604 // Possible null reference argument.           
+                .Returns(obj);       
         }
 
         public void MockValidatorFactory(IRequestValidator validator)
