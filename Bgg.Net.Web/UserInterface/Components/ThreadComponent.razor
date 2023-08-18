@@ -1,24 +1,25 @@
 ﻿@using Dgi.Client.Clients;
 @using System.Web;
 @inject BggClient _bggClient;
-
-<h3>ThreadComponent</h3>
+@inject IJSRuntime jsRuntime;
 
 @if (Thread != null)
 {
     @foreach (var article in Thread.Articles)
     {
-        <div class="card">
-            <div class="row">
-                <div class="col">
-                    <h5>@article.Username</h5>
-                </div>
-                <div />
+        <div class="row comment-header corners-rounded">
+            <div class="col">
+                <!-- TODO: Make Username a  Url to profile-->
+                <h5 class="my-auto">@article.Username</h5>
             </div>
+            <div class="col">
+                <p class="my-auto float-end">@FormatPostDate(article.PostDate)</p>
+            </div>
+            <div />
         </div>
-                        
+
         <div class="row">
-            @HttpUtility.HtmlDecode(article.Body);
+            @RenderMessageBody(article.Body)
         </div>
         <hr />
     }

@@ -35,13 +35,6 @@ else
         @if (showThreads && Thread != null)
         {
             <ThreadComponent Thread="@Thread" />
-            @*foreach (var article in Thread.Articles)
-            {
-                <div class="row">
-                    @HttpUtility.HtmlDecode(article.Body);
-                </div>
-                <hr/>
-            }*@
         }
     </div>
 }

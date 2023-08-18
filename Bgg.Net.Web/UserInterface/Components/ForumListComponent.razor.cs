@@ -12,7 +12,7 @@ namespace Bgg.Net.Web.UserInterface.Components
         public string Type { get; set; } = string.Empty;
         public ForumList? ForumList { get; set; }
 
-        private ForumComponent? _forumComponent = new();
+        private ForumComponent _forumComponent = new();
 
         protected override async Task OnInitializedAsync()
         {
@@ -35,7 +35,7 @@ namespace Bgg.Net.Web.UserInterface.Components
 
         private async Task UpdateForumComponent(long forumId)
         {
-            await _forumComponent!.LoadForum(forumId);
+            await _forumComponent.LoadForum(forumId);
         }
 
         private void LoadInitialForum()

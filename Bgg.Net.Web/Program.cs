@@ -1,9 +1,10 @@
 using Bgg.Net.Common.Infrastructure.IOC;
-using Bgg.Net.Web;
 using Bgg.Net.Web.Infrastructure.IOC;
 using Dgi.Client;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+
+namespace Bgg.Net.Web;
 
 public class Program
 {
