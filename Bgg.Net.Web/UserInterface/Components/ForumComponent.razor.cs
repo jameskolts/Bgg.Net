@@ -1,7 +1,7 @@
-﻿using Bgg.Net.Common.Models;
+﻿using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Models.Requests;
 using Microsoft.AspNetCore.Components;
-using Thread = Bgg.Net.Common.Models.Thread;
+using Thread = Bgg.Net.Common.Models.Bgg.Thread;
 
 namespace Bgg.Net.Web.UserInterface.Components
 {

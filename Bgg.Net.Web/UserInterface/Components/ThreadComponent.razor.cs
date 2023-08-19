@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using Thread = Bgg.Net.Common.Models.Thread;
+using Thread = Bgg.Net.Common.Models.Bgg.Thread;
 
 namespace Bgg.Net.Web.UserInterface.Components
 {
@@ -12,17 +12,18 @@ namespace Bgg.Net.Web.UserInterface.Components
         protected override async void OnAfterRender(bool firstRender)
         {
             if (firstRender)
-            {
+            {//TODO: this adding the class but not applying the formatting;
                 await jsRuntime.InvokeVoidAsync("methods.formatQuotes");
             }
 
             base.OnAfterRender(firstRender);
         }
 
+        //TODO: formatting is off here
         private static RenderFragment RenderMessageBody(string message)
         {
-            var fragment = new RenderFragment(x => 
-                { 
+            var fragment = new RenderFragment(x =>
+                {
                     x.AddMarkupContent(0, message);
                 });
 

@@ -1,4 +1,4 @@
-﻿using Bgg.Net.Common.Models;
+﻿using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Web.Models;
 
 namespace Bgg.Net.Web.Infrastructure.Helpers

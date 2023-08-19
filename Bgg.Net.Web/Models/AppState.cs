@@ -1,4 +1,4 @@
-﻿using Bgg.Net.Common.Models;
+﻿using Bgg.Net.Common.Models.Bgg;
 
 namespace Bgg.Net.Web.Models
 {
