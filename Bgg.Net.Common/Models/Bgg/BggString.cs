@@ -4,7 +4,7 @@ using System.Xml;
 using System.Xml.Serialization;
 
 
-namespace Bgg.Net.Common.Models
+namespace Bgg.Net.Common.Models.Bgg
 {
     [Serializable()]
     [DesignerCategory("code")]

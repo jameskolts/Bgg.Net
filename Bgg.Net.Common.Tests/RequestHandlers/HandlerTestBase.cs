@@ -1,7 +1,7 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
-using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Validation;
 using Microsoft.Extensions.Logging;
 using Moq;

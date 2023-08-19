@@ -1,5 +1,4 @@
-﻿using Bgg.Net.Common.Models;
-using Bgg.Net.Common.Models.Bgg;
+﻿using Bgg.Net.Common.Models.Bgg;
 
 namespace Bgg.Net.Common.Types
 {

@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Bgg.Net.Common.Models
+namespace Bgg.Net.Common.Models.Bgg
 {
     /// <summary>
     /// Represents a collection from the BGG Xml API2.

@@ -19,7 +19,7 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<Models.Collection>> GetBriefCollectionByUserName(string userName)
+        public async Task<BggResult<Models.Bgg.Collection>> GetBriefCollectionByUserName(string userName)
         {
             var request = new CollectionRequest
             {
@@ -27,25 +27,25 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
                 Brief = true
             };
 
-            return await GetResourceFromRequestObject<Models.Collection>("collection", request);
+            return await GetResourceFromRequestObject<Models.Bgg.Collection>("collection", request);
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<Models.Collection>> GetCollection(CollectionRequest request)
+        public async Task<BggResult<Models.Bgg.Collection>> GetCollection(CollectionRequest request)
         {
-            return await GetResourceFromRequestObject<Models.Collection>("collection", request);
+            return await GetResourceFromRequestObject<Models.Bgg.Collection>("collection", request);
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<Models.Collection>> GetCollectionByUserName(string userName)
+        public async Task<BggResult<Models.Bgg.Collection>> GetCollectionByUserName(string userName)
         {
             var request = new CollectionRequest(userName);
 
-            return await GetResourceFromRequestObject<Models.Collection>("collection", request);
+            return await GetResourceFromRequestObject<Models.Bgg.Collection>("collection", request);
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<Models.Collection>> GetCollectionByUserNameAndId(string userName, List<long> ids)
+        public async Task<BggResult<Models.Bgg.Collection>> GetCollectionByUserNameAndId(string userName, List<long> ids)
         {
             var request = new CollectionRequest
             {
@@ -53,11 +53,11 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
                 Id = ids
             };
 
-            return await GetResourceFromRequestObject<Models.Collection>("collection", request);
+            return await GetResourceFromRequestObject<Models.Bgg.Collection>("collection", request);
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<Models.Collection>> GetCollectionByUserNameAndSubtype(string userName, CollectionSubType subtype)
+        public async Task<BggResult<Models.Bgg.Collection>> GetCollectionByUserNameAndSubtype(string userName, CollectionSubType subtype)
         {
             var request = new CollectionRequest
             {
@@ -65,11 +65,11 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
                 Subtype = subtype.ToString()
             };
 
-            return await GetResourceFromRequestObject<Models.Collection>("collection", request);
+            return await GetResourceFromRequestObject<Models.Bgg.Collection>("collection", request);
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<Models.Collection>> GetCollectionStatsByUserName(string userName)
+        public async Task<BggResult<Models.Bgg.Collection>> GetCollectionStatsByUserName(string userName)
         {
             var request = new CollectionRequest
             {
@@ -77,11 +77,11 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
                 Stats = true
             };
 
-            return await GetResourceFromRequestObject<Models.Collection>("collection", request);
+            return await GetResourceFromRequestObject<Models.Bgg.Collection>("collection", request);
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<Models.Collection>> GetPlayedCollectionByUserName(string userName)
+        public async Task<BggResult<Models.Bgg.Collection>> GetPlayedCollectionByUserName(string userName)
         {
             var request = new CollectionRequest
             {
@@ -89,11 +89,11 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
                 Played = true
             };
 
-            return await GetResourceFromRequestObject<Models.Collection>("collection", request);
+            return await GetResourceFromRequestObject<Models.Bgg.Collection>("collection", request);
         }
 
         /// <inheritdoc/>
-        public async Task<BggResult<Models.Collection>> GetWishListCollectionByUserName(string userName)
+        public async Task<BggResult<Models.Bgg.Collection>> GetWishListCollectionByUserName(string userName)
         {
             var request = new CollectionRequest
             {
@@ -101,7 +101,7 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
                 WishList = true
             };
 
-            return await GetResourceFromRequestObject<Models.Collection>("collection", request);
+            return await GetResourceFromRequestObject<Models.Bgg.Collection>("collection", request);
         }
     }
 }

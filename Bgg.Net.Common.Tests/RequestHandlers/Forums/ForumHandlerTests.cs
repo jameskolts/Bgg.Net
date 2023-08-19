@@ -1,5 +1,4 @@
-﻿using Bgg.Net.Common.Models;
-using Bgg.Net.Common.Models.Requests;
+﻿using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Forums;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
 using Bgg.Net.Common.Tests.TestFiles;

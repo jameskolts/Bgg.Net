@@ -1,10 +1,9 @@
-﻿using Bgg.Net.Common.Models.Bgg;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Bgg.Net.Common.Models
+namespace Bgg.Net.Common.Models.Bgg
 {
     /// <summary>
     /// Represents a guild in the BGG Xml API 2.
