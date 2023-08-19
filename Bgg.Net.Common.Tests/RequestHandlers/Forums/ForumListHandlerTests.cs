@@ -32,7 +32,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
             var result = await _handler.GetForumListByIdAndType(100, ItemType.Thing);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("forumlist?id=100&type=thing"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/forumlist?id=100&type=thing"), Times.Once);
             result.Should().NotBeNull();
             result.IsSuccessful.Should().BeTrue();
             result.Errors.Should().BeNullOrEmpty();
@@ -60,7 +60,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
             var result = await _handler.GetForumList(request);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("forumlist?id=100&type=thing"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/forumlist?id=100&type=thing"), Times.Once);
             result.Should().NotBeNull();
             result.IsSuccessful.Should().BeTrue();
             result.Errors.Should().BeNullOrEmpty();

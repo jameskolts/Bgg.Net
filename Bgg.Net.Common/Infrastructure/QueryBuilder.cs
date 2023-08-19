@@ -16,7 +16,7 @@ namespace Bgg.Net.Common.Infrastructure
             var type = request.GetType();
             var properties = type.GetProperties();
 
-            stringBuilder.Append($"{resourceName}?");
+            stringBuilder.Append($"{Constants.XmlApi2Route}/{resourceName}?");
 
             foreach (var prop in properties)
             {

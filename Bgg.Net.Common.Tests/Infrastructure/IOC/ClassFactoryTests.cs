@@ -1,5 +1,4 @@
-﻿using Autofac;
-using Bgg.Net.Common.Infrastructure;
+﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.IOC;
 using Bgg.Net.Common.RequestHandlers.Collection;

@@ -42,7 +42,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
             var result = await _handler.GetFamily(request);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("family?id=1"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/family?id=1"), Times.Once);
             result.Should().NotBeNull();
             result.Item.Should().NotBeNull();
             result.Item.Families.Count.Should().Be(2);
@@ -68,7 +68,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
             var result = await _handler.GetFamilyById(1);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("family?id=1"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/family?id=1"), Times.Once);
             result.Should().NotBeNull();
             result.Item.Should().NotBeNull();
             result.Item.Families.Count.Should().Be(2);
@@ -94,7 +94,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
             var result = await _handler.GetFamilyByIds(new List<long> { 1, 2, 3 });
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("family?id=1,2,3"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/family?id=1,2,3"), Times.Once);
             result.Should().NotBeNull();
             result.Item.Should().NotBeNull();
             result.Item.Families.Count.Should().Be(2);
@@ -120,7 +120,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
             var result = await _handler.GetFamilyByIdsAndType(new List<long> { 1, 2, 3 }, new List<FamilyType> { FamilyType.RpgPeriodical });
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("family?id=1,2,3&type=rpgperiodical"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/family?id=1,2,3&type=rpgperiodical"), Times.Once);
             result.Should().NotBeNull();
             result.Item.Should().NotBeNull();
             result.Item.Families.Count.Should().Be(2);

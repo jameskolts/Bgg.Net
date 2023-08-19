@@ -1,4 +1,4 @@
-﻿using Bgg.Net.Common.Models;
+﻿using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Threads;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
@@ -39,7 +39,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Threads
             var result = await _handler.GetThread(request);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("thread?id=100&minarticleid=1&minarticledate=2020-01-01 00:00:00&count=1"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/thread?id=100&minarticleid=1&minarticledate=2020-01-01 00:00:00&count=1"), Times.Once);
             result.Should().NotBeNull();
             result.IsSuccessful.Should().BeTrue();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
@@ -60,8 +60,8 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Threads
             //Act
             var result = await _handler.GetThreadById(100);
 
-            //Asserrt
-            _httpClientMock.Verify(x => x.GetAsync("thread?id=100"), Times.Once);
+            //Assert
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/thread?id=100"), Times.Once);
             result.Should().NotBeNull();
             result.IsSuccessful.Should().BeTrue();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);

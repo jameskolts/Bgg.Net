@@ -1,4 +1,4 @@
-﻿using Bgg.Net.Common.Models;
+﻿using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Plays;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
@@ -49,7 +49,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
             var result = await _handler.GetPlays(request);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("plays?username=user&mindate=2020-01-12"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/plays?username=user&mindate=2020-01-12"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -79,7 +79,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
             var result = await _handler.GetPlaysByUserName("user");
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("plays?username=user"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/plays?username=user"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -109,7 +109,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
             var result = await _handler.GetPlaysByUserNameAndDate("user", new DateOnly(2010, 01, 01), new DateOnly(2020, 05, 28));
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("plays?username=user&mindate=2010-01-01&maxdate=2020-05-28"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/plays?username=user&mindate=2010-01-01&maxdate=2020-05-28"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -139,7 +139,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
             var result = await _handler.GetPlaysByUserNameAndType("user", ItemType.Thing, PlaysSubType.BoardGame);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("plays?username=user&type=thing&subtype=boardgame"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/plays?username=user&type=thing&subtype=boardgame"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -169,7 +169,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
             var result = await _handler.GetPlaysByUserNameAndType("user", ItemType.Thing);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("plays?username=user&type=thing"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/plays?username=user&type=thing"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -199,7 +199,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
             var result = await _handler.GetPlaysByIdAndType(2500, ItemType.Thing);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("plays?id=2500&type=thing"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/plays?id=2500&type=thing"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();

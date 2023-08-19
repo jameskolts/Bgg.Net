@@ -47,7 +47,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.HotItems
             var result = await _handler.GetHotItemsByType(HotItemType.BoardGame);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("hot?type=boardgame"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/hot?type=boardgame"), Times.Once);
             result.Should().NotBeNull();
             result.Errors.Should().BeNullOrEmpty();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
@@ -86,7 +86,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.HotItems
             var result = await _handler.GetHotItems(request);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("hot?type=boardgame"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/hot?type=boardgame"), Times.Once);
             result.Should().NotBeNull();
             result.Errors.Should().BeNullOrEmpty();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);

@@ -1,6 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Models.Requests;
-using Thread = Bgg.Net.Common.Models.Thread;
+using Thread = Bgg.Net.Common.Models.Bgg.Thread;
 
 namespace Bgg.Net.Common.RequestHandlers.Threads
 {

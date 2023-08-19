@@ -1,4 +1,4 @@
-﻿using Bgg.Net.Common.Models;
+﻿using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Things;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
@@ -78,7 +78,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
             var result = await _handler.GetThing(request);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("thing?id=1,2,3&stats=1"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/thing?id=1,2,3&stats=1"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -109,7 +109,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
             var result = await _handler.GetThingById(1);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("thing?id=1"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/thing?id=1"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
@@ -140,7 +140,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
             var result = await _handler.GetThingsById(new List<long> { 1, 2, 3 });
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("thing?id=1,2,3"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/thing?id=1,2,3"), Times.Once);
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();

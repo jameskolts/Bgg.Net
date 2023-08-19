@@ -31,7 +31,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
             var result = await _handler.GetForumById(100);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("forum?id=100"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/forum?id=100"), Times.Once);
             result.Should().NotBeNull();
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
@@ -53,7 +53,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
             var result = await _handler.GetForumByIdAndPage(100, 2);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("forum?id=100&page=2"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/forum?id=100&page=2"), Times.Once);
             result.Should().NotBeNull();
             result.Should().NotBeNull();
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
@@ -80,7 +80,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
             var result = await _handler.GetForum(request);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("forum?id=100"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/forum?id=100"), Times.Once);
             result.Should().NotBeNull();
             result.IsSuccessful.Should().BeTrue();
             result.Errors.Should().BeNullOrEmpty();

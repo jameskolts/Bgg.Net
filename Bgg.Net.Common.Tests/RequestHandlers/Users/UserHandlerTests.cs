@@ -1,10 +1,9 @@
 ﻿using Bgg.Net.Common.Infrastructure.Xml;
-using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Users;
 using Bgg.Net.Common.Tests.Infrastructure.Xml;
 using Bgg.Net.Common.Tests.TestFiles;
-using Bgg.Net.Common.Types;
 using Bgg.Net.Common.Validation;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -33,7 +32,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Users
             var result = await _handler.GetUserByName("inigoMontoya");
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("user?name=inigomontoya"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/user?name=inigomontoya"), Times.Once);
             result.Should().NotBeNull();
             result.IsSuccessful.Should().BeTrue();
             result.Item.Should().NotBeNull();
@@ -88,7 +87,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Users
             var result = await _handler.GetUser(request);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("user?name=username&buddies=1&guilds=1&hot=0&top=1&domain=boardgame&page=2"));
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/user?name=username&buddies=1&guilds=1&hot=0&top=1&domain=boardgame&page=2"));
             result.Should().NotBeNull();
             result.IsSuccessful.Should().BeTrue();
             result.Errors.Should().BeNullOrEmpty();

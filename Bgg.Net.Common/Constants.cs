@@ -5,8 +5,8 @@ namespace Bgg.Net.Common
     [ExcludeFromCodeCoverage]
     public class Constants
     {
-        public const string BGG_PATH = "https://www.boardgamegeek.com/xmlapi2/";
-        public const string RPGGEEK_PATH = "https://www.rpggeek.com/xmlapi2/";
-        public const string VIDEOGAMEGEEK_PATH = "https://www.videogamegeek.com/xmlapi2/";
+        public const string BggBaseUrl = "https://www.boardgamegeek.com/";
+        public const string XmlApi2Route = "xmlapi2";
+        public const string BggLoginRoute = "login/api/v1";
     }
 }

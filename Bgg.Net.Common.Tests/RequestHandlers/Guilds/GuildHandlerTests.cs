@@ -39,7 +39,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Guilds
             var result = await _handler.GetGuild(request);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("guild?id=2005&members=1&sort=username&page=2"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/guild?id=2005&members=1&sort=username&page=2"), Times.Once);
             result.Should().NotBeNull();
             result.Item.Id.Should().Be(100);
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
@@ -60,7 +60,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Guilds
             var result = await _handler.GetGuildById(100);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("guild?id=100"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/guild?id=100"), Times.Once);
             result.Should().NotBeNull();
             result.Item.Id.Should().Be(100);
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
@@ -81,7 +81,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Guilds
             var result = await _handler.GetGuildByIdWithMembers(100);
 
             //Assert
-            _httpClientMock.Verify(x => x.GetAsync("guild?id=100&members=1&sort=username&page=1"), Times.Once);
+            _httpClientMock.Verify(x => x.GetAsync($"{Constants.XmlApi2Route}/guild?id=100&members=1&sort=username&page=1"), Times.Once);
             result.Should().NotBeNull();
             result.Item.Id.Should().Be(100);
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);

@@ -8,7 +8,7 @@ namespace Bgg.Net.Common.Infrastructure
     public interface IQueryBuilder
     {
         /// <summary>
-        /// Builds a query string for the BGG API.
+        /// Builds a query string for the BGG Xml Api 2.
         /// </summary>
         /// <param name="resourceName">The name of the resource being queried.</param>
         /// <param name="request">The request to build the query with.</param>

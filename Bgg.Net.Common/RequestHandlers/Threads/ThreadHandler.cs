@@ -4,7 +4,7 @@ using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Validation;
 using Microsoft.Extensions.Logging;
-using Thread = Bgg.Net.Common.Models.Thread;
+using Thread = Bgg.Net.Common.Models.Bgg.Thread;
 
 namespace Bgg.Net.Common.RequestHandlers.Threads
 {

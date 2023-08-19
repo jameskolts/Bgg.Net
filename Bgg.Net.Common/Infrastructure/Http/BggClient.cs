@@ -18,12 +18,12 @@ namespace Bgg.Net.Common.Infrastructure.Http
         {
             httpClient = new HttpClient
             {
-                BaseAddress = new Uri(Constants.BGG_PATH)
+                BaseAddress = new Uri(Constants.BggBaseUrl)
             };
         }
 
         /// <summary>
-        /// Construcs a new instance of the BggClient with the given base address.
+        /// Constructs a new instance of the BggClient with the given base address.
         /// </summary>
         /// <param name="baseAddress"></param>
         public BggClient(string baseAddress)

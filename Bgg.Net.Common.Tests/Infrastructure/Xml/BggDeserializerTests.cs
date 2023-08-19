@@ -1,11 +1,12 @@
 ﻿using Bgg.Net.Common.Infrastructure.Exceptions;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models;
+using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Tests.TestFiles;
 using FluentAssertions;
+using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 
