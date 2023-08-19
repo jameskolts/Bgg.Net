@@ -5,7 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 		
-		<Version>1.5.3</Version>
+		<Version>2.0.0</Version>
 		<Authors>James Kolts</Authors>
 		<Description>A lightweight library to aide in the consuming of the board game geek XML API 2</Description>
 		<Product>Bgg.Net</Product>
