@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Bgg.Net.Common.RequestHandlers.Login
 {
-    public class BggLoginHandler
+    public class BggLoginHandler : IBggLoginHandler
     {
         private readonly IHttpClient _httpClient;
 
