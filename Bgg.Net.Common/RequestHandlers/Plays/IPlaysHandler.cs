@@ -1,6 +1,7 @@
 ﻿using Bgg.Net.Common.Infrastructure;
 using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Models.Requests;
+using Bgg.Net.Common.Models.Responses;
 using Bgg.Net.Common.Types;
 
 namespace Bgg.Net.Common.RequestHandlers.Plays
@@ -49,5 +50,13 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
         /// <param name="type">A <see cref="BggResult{T}"/> where T is a <see cref="Guild"/>.</param>
         /// <returns></returns>
         Task<BggResult<PlayList>> GetPlaysByIdAndType(long id, ItemType type);
+
+        /// <summary>
+        /// Logs a play for the given user.
+        /// </summary>
+        /// <param name="loginCookie">The user to log the play for.  Must be logged in with an active cookie.</param>
+        /// <param name="request">The request to log.</param>
+        /// <returns>A <see cref="BggPlayLogResponse"/> for the log.</returns>
+        Task<BggResult<BggPlayLogResponse>> LogPlay(BggLoginCookie loginCookie, LogPlayRequest request);
     }
 }

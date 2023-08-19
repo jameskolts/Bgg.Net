@@ -38,6 +38,7 @@ namespace Bgg.Net.Common.Infrastructure.IOC
             services.AddTransient<IForumListHandler, ForumListHandler>().AsSelf();
             services.AddTransient<IPlaysHandler, PlaysHandler>().AsSelf();
             services.AddTransient<IBggLoginHandler, BggLoginHandler>().AsSelf();
+            services.AddTransient<IPlayRequestValidator, PlayRequestValidator>().AsSelf();
 
             return services;
         }

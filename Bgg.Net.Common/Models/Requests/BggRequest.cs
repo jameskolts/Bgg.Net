@@ -3,7 +3,7 @@
 namespace Bgg.Net.Common.Models.Requests
 {
     /// <summary>
-    /// The base clase for BggRequests.
+    /// The base clase for BggRequests to the XmlApi2.
     /// </summary>
     public class BggRequest
     {

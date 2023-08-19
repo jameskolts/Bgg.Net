@@ -2,7 +2,7 @@
 
 namespace Bgg.Net.Common.Validation
 {
-    public class PlayRequestValidator : IRequestValidator
+    public class PlayRequestValidator : IPlayRequestValidator
     {
         public ValidationResult Validate(BggRequest request)
         {
@@ -20,6 +20,15 @@ namespace Bgg.Net.Common.Validation
             }
 
             validationResult.IsValid = !validationResult.Errors.Any();
+
+            return validationResult;
+        }
+
+        public ValidationResult Validate(LogPlayRequest request)
+        {
+            var validationResult = new ValidationResult();
+
+
 
             return validationResult;
         }

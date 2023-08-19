@@ -436,7 +436,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
             result.Play[0].Players[0].Color.Should().Be("Wolverine aggression*");
             result.Play[0].Players[0].Score.Should().Be("25");
             result.Play[0].Players[0].New.Should().BeFalse();
-            result.Play[0].Players[0].Rating.Should().Be("0");
+            result.Play[0].Players[0].Rating.Should().Be(0);
             result.Play[0].Players[0].Win.Should().BeTrue();
         }
 

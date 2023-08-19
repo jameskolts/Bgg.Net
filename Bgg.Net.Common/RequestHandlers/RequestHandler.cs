@@ -4,8 +4,11 @@ using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Models.Requests;
+using Bgg.Net.Common.Models.Responses;
 using Bgg.Net.Common.Validation;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace Bgg.Net.Common.RequestHandlers
 {
@@ -46,17 +49,47 @@ namespace Bgg.Net.Common.RequestHandlers
                 var responseString = await httpResponse.Content.ReadAsStringAsync();
                 bggResult.Item = _bggDeserializer.Deserialize<T>(responseString);
             }
-            catch (Exception exception)
+            catch (Exception e)
             {
-                var errorString = $"Error during deserialization. {exception.Message}";
-                bggResult.Errors.Add(errorString);
-                _logger.LogError(exception, errorString);
+                _logger.LogError("An error occurred during deserialization. {message} {stacktrace}", e.Message, e.StackTrace);
+                bggResult.Errors.Add($"An error occurred during deserialization. {e.Message} {e.StackTrace}");
             }
 
             bggResult.IsSuccessful = httpResponse.IsSuccessStatusCode && !bggResult.Errors.Any();
             bggResult.HttpResponseCode = httpResponse.StatusCode;
 
             return bggResult;
+        }
+
+        /// <summary>
+        /// Gets a resource from the given Url using POST.
+        /// Will deserialize the httpRespone objects content to populate the result.
+        /// </summary>
+        /// <typeparam name="T">The type to deserialize to.</typeparam>
+        /// <param name="url">The url to send the request to.</param>
+        /// <param name="stringContent">The content to post to the url.</param>
+        /// <returns>The <see cref="BggResult{T}"/> populated from the httpResponse</returns>
+        protected async Task<BggResult<T>> PostRequest<T>(string url, StringContent stringContent)
+            where T : class
+        {
+            var result = new BggResult<T>();
+            var httpResponse = await _httpClient.PostAsync(url, stringContent);
+
+            //TODO: think about refactoring this so that BuildBggResult can work for both json and xml apis
+            try
+            {
+                result.Item = JsonConvert.DeserializeObject<T>(await httpResponse.Content.ReadAsStringAsync());
+            }
+            catch (Exception e)
+            {
+                _logger.LogError("An error occurred during deserialization. {message} {stacktrace}", e.Message, e.StackTrace);
+                result.Errors.Add($"An error occurred during deserialization. {e.Message} {e.StackTrace}");
+            }
+
+            result.IsSuccessful = httpResponse.IsSuccessStatusCode && !result.Errors.Any();
+            result.HttpResponseCode = httpResponse.StatusCode;
+
+            return result;
         }
 
         /// <summary>

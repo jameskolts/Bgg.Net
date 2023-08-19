@@ -7,7 +7,7 @@ namespace Bgg.Net.Common.Infrastructure
 {
     [ExcludeFromCodeCoverage]
     public class BggResult<T>
-        where T : BggBase
+        where T : class
     {
         public T Item { get; set; }
 

@@ -1,70 +1,45 @@
-﻿namespace Bgg.Net.Common.Models.Responses
+﻿using System.Net.Http.Headers;
+
+namespace Bgg.Net.Common.Models.Responses
 {
     /// <summary>
     /// Represents a login response from the Bgg Api.
     /// </summary>
-    public class BggLoginResponse
+    public class BggLoginCookie
     {
-        public string UserName
+        public string UserName { get; set; }
+
+        public string Password { get; set; }
+
+        public string SessionId { get; set; }
+
+        public BggLoginCookie(HttpResponseHeaders responseHeaders)
         {
-            get
+            if (responseHeaders.TryGetValues("set-cookie", out var values))
             {
-                if (RawValues.TryGetValue("bggusername", out string value))
+
+                foreach (var value in values)
                 {
-                    return value;
+                    var splitValue = value.Split('=');
+
+                    if (value.StartsWith("bggusername") && !splitValue[1].StartsWith("deleted"))
+                    {
+                        UserName = value.Split(';').First();
+                    }
+                    else if (value.StartsWith("bggpassword") && !splitValue[1].StartsWith("deleted"))
+                    {
+                        Password = value.Split(';').First();
+                    }
+                    else if (value.StartsWith("SessionID"))
+                    {
+                        SessionId = value.Split(';').First();
+                    }
                 }
-
-                return null;
             }
-        }
-
-        public string Password
-        {
-            get
+            else
             {
-                if (RawValues.TryGetValue("bggpassword", out string value))
-                {
-                    return value;
-                }
-
-                return null;
+                throw new ArgumentException("Response header did not contain valid cookies");
             }
-        }
-
-        public string SessionId
-        {
-            get
-            {
-                if (RawValues.TryGetValue("SessionID", out string value))
-                {
-                    return value;
-                }
-
-                return null;
-            }
-        }
-
-        public DateTime? Expiration
-        {
-            get
-            {
-                if (RawValues.TryGetValue("expires", out string value))
-                {
-                    return DateTime.Parse(value);
-                }
-
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// The raw response values as key value pairs.
-        /// </summary>
-        public Dictionary<string, string> RawValues { get; private set; }
-
-        public BggLoginResponse(Dictionary<string, string> values)
-        {
-            RawValues = values;
         }
     }
 }

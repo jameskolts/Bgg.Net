@@ -8,5 +8,6 @@ namespace Bgg.Net.Common
         public const string BggBaseUrl = "https://www.boardgamegeek.com/";
         public const string XmlApi2Route = "xmlapi2";
         public const string BggLoginRoute = "login/api/v1";
+        public const string BggLogPlayRoute = "geekplay.php";
     }
 }
