@@ -1,63 +1,63 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
 
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="TestFiles\BoardGameXml.xml" />
-    <None Remove="TestFiles\CollectionXml.xml" />
-    <None Remove="TestFiles\FamilyXml.xml" />
-    <None Remove="TestFiles\ForumListXml.xml" />
-    <None Remove="TestFiles\ForumXml.xml" />
-    <None Remove="TestFiles\GuildXml.xml" />
-    <None Remove="TestFiles\HotXml.xml" />
-    <None Remove="TestFiles\MultipleItemXml.xml" />
-    <None Remove="TestFiles\PlaysXml.xml" />
-    <None Remove="TestFiles\SearchXml.xml" />
-    <None Remove="TestFiles\ThreadXml.xml" />
-    <None Remove="TestFiles\UserXml.xml" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="TestFiles\BoardGameXml.xml" />
+		<None Remove="TestFiles\CollectionXml.xml" />
+		<None Remove="TestFiles\FamilyXml.xml" />
+		<None Remove="TestFiles\ForumListXml.xml" />
+		<None Remove="TestFiles\ForumXml.xml" />
+		<None Remove="TestFiles\GuildXml.xml" />
+		<None Remove="TestFiles\HotXml.xml" />
+		<None Remove="TestFiles\MultipleItemXml.xml" />
+		<None Remove="TestFiles\PlaysXml.xml" />
+		<None Remove="TestFiles\SearchXml.xml" />
+		<None Remove="TestFiles\ThreadXml.xml" />
+		<None Remove="TestFiles\UserXml.xml" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="TestFiles\BoardGameXml.xml" />
-    <EmbeddedResource Include="TestFiles\CollectionXml.xml" />
-    <EmbeddedResource Include="TestFiles\FamilyXml.xml" />
-    <EmbeddedResource Include="TestFiles\ForumListXml.xml" />
-    <EmbeddedResource Include="TestFiles\ForumXml.xml" />
-    <EmbeddedResource Include="TestFiles\GuildXml.xml" />
-    <EmbeddedResource Include="TestFiles\HotXml.xml" />
-    <EmbeddedResource Include="TestFiles\MultipleItemXml.xml" />
-    <EmbeddedResource Include="TestFiles\PlaysXml.xml" />
-    <EmbeddedResource Include="TestFiles\SearchXml.xml" />
-    <EmbeddedResource Include="TestFiles\ThreadXml.xml" />
-    <EmbeddedResource Include="TestFiles\UserXml.xml" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="TestFiles\BoardGameXml.xml" />
+		<EmbeddedResource Include="TestFiles\CollectionXml.xml" />
+		<EmbeddedResource Include="TestFiles\FamilyXml.xml" />
+		<EmbeddedResource Include="TestFiles\ForumListXml.xml" />
+		<EmbeddedResource Include="TestFiles\ForumXml.xml" />
+		<EmbeddedResource Include="TestFiles\GuildXml.xml" />
+		<EmbeddedResource Include="TestFiles\HotXml.xml" />
+		<EmbeddedResource Include="TestFiles\MultipleItemXml.xml" />
+		<EmbeddedResource Include="TestFiles\PlaysXml.xml" />
+		<EmbeddedResource Include="TestFiles\SearchXml.xml" />
+		<EmbeddedResource Include="TestFiles\ThreadXml.xml" />
+		<EmbeddedResource Include="TestFiles\UserXml.xml" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\.editorconfig" Link=".editorconfig" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Autofac" Version="6.5.0" />
-    <PackageReference Include="FluentAssertions" Version="6.8.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
-    <PackageReference Include="Moq" Version="4.18.3" />
-    <PackageReference Include="MSTest.TestAdapter" Version="3.0.0" />
-    <PackageReference Include="MSTest.TestFramework" Version="3.0.0" />
-    <PackageReference Include="coverlet.collector" Version="3.2.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="FluentAssertions" Version="6.8.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
+		<PackageReference Include="Moq" Version="4.18.3" />
+		<PackageReference Include="MSTest.TestAdapter" Version="3.0.0" />
+		<PackageReference Include="MSTest.TestFramework" Version="3.0.0" />
+		<PackageReference Include="coverlet.collector" Version="3.2.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Bgg.Net.Common\Bgg.Net.Common.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Bgg.Net.Common\Bgg.Net.Common.csproj" />
+	</ItemGroup>
 
 </Project>

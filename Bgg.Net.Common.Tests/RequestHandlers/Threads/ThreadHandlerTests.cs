@@ -1,15 +1,10 @@
-﻿using Bgg.Net.Common.Models.Bgg;
-using Bgg.Net.Common.Models.Requests;
+﻿using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Threads;
 using Bgg.Net.Common.Tests.Infrastructure.Deserialization;
 using Bgg.Net.Common.Tests.TestFiles;
 using Bgg.Net.Common.Validation;
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System;
 using System.Net;
-using System.Threading.Tasks;
+using Thread = Bgg.Net.Common.Models.Bgg.Thread;
 
 namespace Bgg.Net.Common.Tests.RequestHandlers.Threads
 {

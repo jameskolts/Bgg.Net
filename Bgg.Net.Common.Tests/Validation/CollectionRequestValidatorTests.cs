@@ -1,7 +1,5 @@
 ﻿using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Validation;
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
 namespace Bgg.Net.Common.Tests.Validation

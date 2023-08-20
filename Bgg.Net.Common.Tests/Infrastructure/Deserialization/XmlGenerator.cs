@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace Bgg.Net.Common.Tests.Infrastructure.Deserialization
 {

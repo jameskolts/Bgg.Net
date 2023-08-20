@@ -2,12 +2,8 @@
 using Bgg.Net.Common.Infrastructure.Exceptions;
 using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Tests.TestFiles;
-using FluentAssertions;
 using Microsoft.Extensions.Logging;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System;
-using System.Linq;
+using Thread = Bgg.Net.Common.Models.Bgg.Thread;
 
 namespace Bgg.Net.Common.Tests.Infrastructure.Deserialization
 {

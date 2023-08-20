@@ -4,10 +4,7 @@ using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Types;
 using Bgg.Net.Common.Validation;
 using Microsoft.Extensions.Logging;
-using Moq;
-using System;
 using System.Net;
-using System.Net.Http;
 
 namespace Bgg.Net.Common.Tests.RequestHandlers
 {
@@ -54,7 +51,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers
             };
 
             _httpClientMock.Setup(x => x.PostAsync(It.IsAny<string>(), It.IsAny<HttpContent>()))
-                .ReturnsAsync(responseMessage);                
+                .ReturnsAsync(responseMessage);
         }
 
         public void MockDeserializer<T>(T? obj = null)

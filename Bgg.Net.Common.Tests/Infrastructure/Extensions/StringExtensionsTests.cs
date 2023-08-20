@@ -1,6 +1,4 @@
 ﻿using Bgg.Net.Common.Infrastructure.Extensions;
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bgg.Net.Common.Tests.Infrastructure.Extensions
 {

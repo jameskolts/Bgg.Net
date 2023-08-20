@@ -10,10 +10,8 @@ using Bgg.Net.Common.RequestHandlers.Search;
 using Bgg.Net.Common.RequestHandlers.Things;
 using Bgg.Net.Common.RequestHandlers.Users;
 using Bgg.Net.Common.Validation;
-using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bgg.Net.Common.Tests.Infrastructure.IOC
 {

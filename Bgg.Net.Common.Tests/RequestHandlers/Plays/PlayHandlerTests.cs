@@ -6,15 +6,8 @@ using Bgg.Net.Common.Tests.Infrastructure.Deserialization;
 using Bgg.Net.Common.Tests.TestFiles;
 using Bgg.Net.Common.Types;
 using Bgg.Net.Common.Validation;
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
 {
@@ -217,7 +210,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
             {
                 ObjectId = 1,
             };
-            
+
             var mockCookie = new BggLoginCookie
             {
                 Password = "password",

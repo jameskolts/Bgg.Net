@@ -1,12 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure.Exceptions;
 using Bgg.Net.Common.Infrastructure.Http;
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System;
 using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace Bgg.Net.Common.Tests.Infrastructure.Http
 {
