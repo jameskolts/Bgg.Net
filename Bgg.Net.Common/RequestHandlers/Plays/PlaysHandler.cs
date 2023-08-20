@@ -1,7 +1,7 @@
 ﻿using Bgg.Net.Common.Infrastructure;
+using Bgg.Net.Common.Infrastructure.Deserialization;
 using Bgg.Net.Common.Infrastructure.Extensions;
 using Bgg.Net.Common.Infrastructure.Http;
-using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Models.Responses;
@@ -21,8 +21,8 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
     {
         private readonly IPlayRequestValidator _validator;
 
-        public PlaysHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder/*, IPlayRequestValidator validator*/)
-            : base(deserializer, logger, httpClient, validatorFactory, queryBuilder)
+        public PlaysHandler(IDeserializerFactory deserializerFactory, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder/*, IPlayRequestValidator validator*/)
+            : base(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder)
         {
             //_validator = validator;
         }
@@ -84,23 +84,11 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
         /// <inheritdoc/>
         public async Task<BggResult<BggPlayLogResponse>> LogPlay(BggLoginCookie loginCookie, LogPlayRequest request)
         {
-            //TODO: implement validation
-            //var validationResult = _validator.Validate(request);
-
-            //if (!validationResult.IsValid)
-            //{
-            //    return new BggResult<BggPlayLogResponse>
-            //    {
-
-            //        IsSuccessful = false,
-            //        Errors = validationResult.Errors
-            //    };
-            //}
-
             var stringContent = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, MediaTypeNames.Application.Json)
                 .AddLoginCookie(loginCookie);
 
-            return await PostRequest<BggPlayLogResponse>(Constants.BggLogPlayRoute, stringContent);
+            var httpResponse = await _httpClient.PostAsync(Constants.BggLogPlayRoute, stringContent);
+            return await BuildBggResult<BggPlayLogResponse>(httpResponse);
         }
     }
 }

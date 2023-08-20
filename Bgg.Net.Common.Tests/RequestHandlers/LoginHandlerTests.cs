@@ -1,6 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure;
+using Bgg.Net.Common.Infrastructure.Deserialization;
 using Bgg.Net.Common.Infrastructure.Http;
-using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.RequestHandlers.Login;
 using Bgg.Net.Common.RequestHandlers.Plays;
 using Bgg.Net.Common.Validation;
@@ -22,7 +22,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers
             var handler = new BggLoginHandler(new BggClient(), Mock.Of<ILogger<BggLoginHandler>>());
             var cookie = await handler.Login("JusticiarIV", "Godzilla");
 
-            var playHandler = new PlaysHandler(Mock.Of<IBggDeserializer>(), Mock.Of<ILogger>(), new BggClient(), Mock.Of<IRequestValidatorFactory>(), Mock.Of<IQueryBuilder>());
+            var playHandler = new PlaysHandler(Mock.Of<IDeserializerFactory>(), Mock.Of<ILogger>(), new BggClient(), Mock.Of<IRequestValidatorFactory>(), Mock.Of<IQueryBuilder>());
             var logplayResult = await playHandler.LogPlay(cookie, new Models.Requests.LogPlayRequest
             {
                 Ajax = 1,

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 
-namespace Bgg.Net.Common.Tests.Infrastructure.Xml
+namespace Bgg.Net.Common.Tests.Infrastructure.Deserialization
 {
     /// <summary>
     /// Test Class to aid in generating of XmlStrings and parsing them to XmlElements.
@@ -19,11 +19,7 @@ namespace Bgg.Net.Common.Tests.Infrastructure.Xml
 
         private static Stream GetEmbeddedResourceStream(string resourceName)
         {
-            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);
-
-            if (stream == null)
-                throw new Exception("Unable to get Resource Stream");
-
+            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName) ?? throw new Exception("Unable to get Resource Stream");
             return stream;
         }
     }

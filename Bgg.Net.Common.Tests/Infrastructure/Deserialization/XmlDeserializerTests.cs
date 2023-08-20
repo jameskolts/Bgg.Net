@@ -1,5 +1,5 @@
-﻿using Bgg.Net.Common.Infrastructure.Exceptions;
-using Bgg.Net.Common.Infrastructure.Xml;
+﻿using Bgg.Net.Common.Infrastructure.Deserialization;
+using Bgg.Net.Common.Infrastructure.Exceptions;
 using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Tests.TestFiles;
 using FluentAssertions;
@@ -9,16 +9,16 @@ using Moq;
 using System;
 using System.Linq;
 
-namespace Bgg.Net.Common.Tests.Infrastructure.Xml
+namespace Bgg.Net.Common.Tests.Infrastructure.Deserialization
 {
     [TestClass]
-    public class BggDeserializerTests
+    public class XmlDeserializerTests
     {
-        private readonly IBggDeserializer _deserializer;
+        private readonly IDeserializer _deserializer;
 
-        public BggDeserializerTests()
+        public XmlDeserializerTests()
         {
-            _deserializer = new BggDeserializer(Mock.Of<ILogger>());
+            _deserializer = new XmlDeserializer(Mock.Of<ILogger<XmlDeserializer>>());
         }
 
         [TestMethod]

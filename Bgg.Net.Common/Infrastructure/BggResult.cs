@@ -1,5 +1,4 @@
-﻿using Bgg.Net.Common.Models.Bgg;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
 

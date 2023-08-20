@@ -1,7 +1,7 @@
 ﻿using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Things;
-using Bgg.Net.Common.Tests.Infrastructure.Xml;
+using Bgg.Net.Common.Tests.Infrastructure.Deserialization;
 using Bgg.Net.Common.Tests.TestFiles;
 using Bgg.Net.Common.Validation;
 using FluentAssertions;
@@ -31,7 +31,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
 
             MockValidatorFactory(new ThingRequestValidator());
 
-            _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new ThingHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetThing(request);
@@ -61,7 +61,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
 
             MockValidatorFactory(new ThingRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.BoardGameXml), HttpStatusCode.OK);
-            MockBggDeserializer(
+            MockDeserializerFactory(
                new ThingList
                {
                    Things = new List<Thing>
@@ -72,7 +72,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
                    }
                });
 
-            _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new ThingHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetThing(request);
@@ -94,7 +94,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
             //Arrange           
             MockValidatorFactory(new ThingRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.BoardGameXml), HttpStatusCode.OK);
-            MockBggDeserializer(
+            MockDeserializerFactory(
                 new ThingList
                 {
                     Things = new List<Thing>
@@ -103,7 +103,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
                     }
                 });
 
-            _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new ThingHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetThingById(1);
@@ -123,7 +123,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
             //Arrange
             MockValidatorFactory(new ThingRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.BoardGameXml), HttpStatusCode.OK);
-            MockBggDeserializer(
+            MockDeserializerFactory(
                 new ThingList
                 {
                     Things = new List<Thing>
@@ -134,7 +134,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
                     }
                 });
 
-            _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new ThingHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetThingsById(new List<long> { 1, 2, 3 });
@@ -159,7 +159,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Things
             _deserializerMock.Setup(x => x.Deserialize<ThingList>(It.IsAny<string>()))
                 .Throws(new Exception("exception"));
 
-            _handler = new ThingHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new ThingHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetThingById(1);

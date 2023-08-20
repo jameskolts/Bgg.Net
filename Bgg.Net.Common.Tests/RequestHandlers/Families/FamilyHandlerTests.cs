@@ -1,11 +1,13 @@
-﻿using Bgg.Net.Common.Models.Bgg;
+﻿using Bgg.Net.Common.Infrastructure.Deserialization;
+using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Families;
-using Bgg.Net.Common.Tests.Infrastructure.Xml;
+using Bgg.Net.Common.Tests.Infrastructure.Deserialization;
 using Bgg.Net.Common.Tests.TestFiles;
 using Bgg.Net.Common.Types;
 using Bgg.Net.Common.Validation;
 using FluentAssertions;
+using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
@@ -30,13 +32,18 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
 
             MockValidatorFactory(new FamilyRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.FamilyXml), HttpStatusCode.OK);
-            MockBggDeserializer(
+            MockDeserializerFactory(
                 new FamilyList
                 {
                     Families = new List<Family> { new Family(), new Family() }
                 });
+            MockDeserializer(new FamilyList
+            {
+                Families = new List<Family> { new Family(), new Family() }
+            });
+            MockDeserializerFactory(new XmlDeserializer(Mock.Of<ILogger<XmlDeserializer>>()));
 
-            _handler = new FamilyHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new FamilyHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetFamily(request);
@@ -56,13 +63,13 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
             //Arrange
             MockValidatorFactory(new FamilyRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.FamilyXml), HttpStatusCode.OK);
-            MockBggDeserializer(
+            MockDeserializerFactory(
                 new FamilyList
                 {
                     Families = new List<Family> { new Family(), new Family() }
                 });
 
-            _handler = new FamilyHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new FamilyHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetFamilyById(1);
@@ -82,13 +89,13 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
             //Arrange
             MockValidatorFactory(new FamilyRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.FamilyXml), HttpStatusCode.OK);
-            MockBggDeserializer(
+            MockDeserializerFactory(
                 new FamilyList
                 {
                     Families = new List<Family> { new Family(), new Family() }
                 });
 
-            _handler = new FamilyHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new FamilyHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetFamilyByIds(new List<long> { 1, 2, 3 });
@@ -108,13 +115,13 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Families
             //Arrange
             MockValidatorFactory(new FamilyRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.FamilyXml), HttpStatusCode.OK);
-            MockBggDeserializer(
+            MockDeserializerFactory(
                 new FamilyList
                 {
                     Families = new List<Family> { new Family(), new Family() }
                 });
 
-            _handler = new FamilyHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new FamilyHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetFamilyByIdsAndType(new List<long> { 1, 2, 3 }, new List<FamilyType> { FamilyType.RpgPeriodical });

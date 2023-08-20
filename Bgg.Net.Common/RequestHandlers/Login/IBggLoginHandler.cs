@@ -1,7 +1,7 @@
 ﻿using Bgg.Net.Common.Models.Responses;
 
 namespace Bgg.Net.Common.RequestHandlers.Login
-{ 
+{
     public interface IBggLoginHandler
     {
         /// <summary>

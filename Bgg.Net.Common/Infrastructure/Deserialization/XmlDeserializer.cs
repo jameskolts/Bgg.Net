@@ -1,32 +1,30 @@
 ﻿using Bgg.Net.Common.Infrastructure.Exceptions;
-using Bgg.Net.Common.Models.Bgg;
 using Microsoft.Extensions.Logging;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Bgg.Net.Common.Infrastructure.Xml
+namespace Bgg.Net.Common.Infrastructure.Deserialization
 {
-    public class BggDeserializer : IBggDeserializer
+    public class XmlDeserializer : IDeserializer
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<XmlDeserializer> _logger;
 
-        public BggDeserializer(ILogger logger)
+        public XmlDeserializer(ILogger<XmlDeserializer> logger)
         {
             _logger = logger;
         }
 
-        /// <inheritdoc/>
-        public T Deserialize<T>(string xml)
-            where T : BggBase
+        public T Deserialize<T>(string textContent)
+            where T : class
         {
-            if (string.IsNullOrWhiteSpace(xml))
+            if (string.IsNullOrWhiteSpace(textContent))
             {
                 return null;
             }
 
             try
             {
-                using var stringReader = new StringReader(xml);
+                using var stringReader = new StringReader(textContent);
 
                 var serializer = new XmlSerializer(typeof(T));
                 var xmlReader = new XmlTextReader(stringReader);

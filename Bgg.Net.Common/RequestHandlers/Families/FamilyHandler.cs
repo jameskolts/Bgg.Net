@@ -1,6 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure;
+using Bgg.Net.Common.Infrastructure.Deserialization;
 using Bgg.Net.Common.Infrastructure.Http;
-using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Types;
@@ -14,8 +14,8 @@ namespace Bgg.Net.Common.RequestHandlers.Families
     /// </summary>
     public class FamilyHandler : RequestHandler, IFamilyHandler
     {
-        public FamilyHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient client, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
-            : base(deserializer, logger, client, validatorFactory, queryBuilder)
+        public FamilyHandler(IDeserializerFactory deserializerFactory, ILogger logger, IHttpClient client, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
+            : base(deserializerFactory, logger, client, validatorFactory, queryBuilder)
         {
         }
 

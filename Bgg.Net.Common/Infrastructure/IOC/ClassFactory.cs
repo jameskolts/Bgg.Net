@@ -1,6 +1,6 @@
-﻿using Bgg.Net.Common.Infrastructure.Extensions;
+﻿using Bgg.Net.Common.Infrastructure.Deserialization;
+using Bgg.Net.Common.Infrastructure.Extensions;
 using Bgg.Net.Common.Infrastructure.Http;
-using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.RequestHandlers.Collection;
 using Bgg.Net.Common.RequestHandlers.Families;
 using Bgg.Net.Common.RequestHandlers.Forums;
@@ -23,7 +23,6 @@ namespace Bgg.Net.Common.Infrastructure.IOC
         {
             services.AddTransient<IHttpClient, BggClient>().AsSelf();
             services.AddTransient<ICollectionClient, CollectionClient>().AsSelf();
-            services.AddTransient<IBggDeserializer, BggDeserializer>().AsSelf();
             services.AddTransient<IQueryBuilder, QueryBuilder>().AsSelf();
             services.AddTransient<IRequestValidatorFactory, RequestValidatorFactory>().AsSelf();
             services.AddTransient<IThingHandler, ThingHandler>().AsSelf();
@@ -39,6 +38,9 @@ namespace Bgg.Net.Common.Infrastructure.IOC
             services.AddTransient<IPlaysHandler, PlaysHandler>().AsSelf();
             services.AddTransient<IBggLoginHandler, BggLoginHandler>().AsSelf();
             services.AddTransient<IPlayRequestValidator, PlayRequestValidator>().AsSelf();
+            services.AddTransient<IDeserializerFactory, DeserializerFactory>().AsSelf();
+            services.AddTransient<IDeserializer, JsonDeserializer>().AsSelf();
+            services.AddTransient<IDeserializer, XmlDeserializer>().AsSelf();
 
             return services;
         }

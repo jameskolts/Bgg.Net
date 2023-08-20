@@ -11,7 +11,7 @@ namespace Bgg.Net.Common.Infrastructure.Extensions
         /// <param name="cookie">The cookie to add.</param>
         /// <returns>The <see cref="StringContent"/> with the header properly formatted.</returns>
         /// <exception cref="ArgumentNullException"/>
-        public static StringContent AddLoginCookie(this StringContent content, BggLoginCookie cookie) 
+        public static StringContent AddLoginCookie(this StringContent content, BggLoginCookie cookie)
         {
             if (content == null)
             {

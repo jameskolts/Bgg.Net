@@ -1,7 +1,7 @@
 ﻿using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.RequestHandlers.Forums;
-using Bgg.Net.Common.Tests.Infrastructure.Xml;
+using Bgg.Net.Common.Tests.Infrastructure.Deserialization;
 using Bgg.Net.Common.Tests.TestFiles;
 using Bgg.Net.Common.Types;
 using Bgg.Net.Common.Validation;
@@ -24,9 +24,9 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
             //Arrange
             MockValidatorFactory(new ForumListRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ForumListXml), HttpStatusCode.OK);
-            MockBggDeserializer(new ForumList { Id = 100 });
+            MockDeserializerFactory(new ForumList { Id = 100 });
 
-            _handler = new ForumListHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new ForumListHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetForumListByIdAndType(100, ItemType.Thing);
@@ -52,9 +52,9 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
 
             MockValidatorFactory(new ForumListRequestValidator());
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ForumListXml), HttpStatusCode.OK);
-            MockBggDeserializer(new ForumList { Id = 100 });
+            MockDeserializerFactory(new ForumList { Id = 100 });
 
-            _handler = new ForumListHandler(_deserializerMock.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new ForumListHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetForumList(request);

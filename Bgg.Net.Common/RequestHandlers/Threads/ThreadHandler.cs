@@ -1,6 +1,6 @@
 ﻿using Bgg.Net.Common.Infrastructure;
+using Bgg.Net.Common.Infrastructure.Deserialization;
 using Bgg.Net.Common.Infrastructure.Http;
-using Bgg.Net.Common.Infrastructure.Xml;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Validation;
 using Microsoft.Extensions.Logging;
@@ -13,8 +13,8 @@ namespace Bgg.Net.Common.RequestHandlers.Threads
     /// </summary>
     public class ThreadHandler : RequestHandler, IThreadHandler
     {
-        public ThreadHandler(IBggDeserializer deserializer, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
-            : base(deserializer, logger, httpClient, validatorFactory, queryBuilder)
+        public ThreadHandler(IDeserializerFactory deserializerFactory, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
+            : base(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder)
         {
         }
 
