@@ -1,4 +1,5 @@
 ﻿using Bgg.Net.Common.Models.Requests;
+using System.ComponentModel.DataAnnotations;
 
 namespace Bgg.Net.Common.Validation
 {
@@ -27,15 +28,13 @@ namespace Bgg.Net.Common.Validation
         public ValidationResult Validate(LogPlayRequest request)
         {
             var validationResult = new ValidationResult();
+            var dataAnnotationValidationResults = new List<System.ComponentModel.DataAnnotations.ValidationResult>();
 
-            if (request.ObjectId == default)
-            {
-                validationResult.Errors.Add("ObjectId was not set.");
-            }
+            var dataAnnotationsAreValid =  Validator.TryValidateObject(request, new ValidationContext(request), dataAnnotationValidationResults, true);
 
-            if (request.Ajax == default)
+            if (!dataAnnotationsAreValid)
             {
-                validationResult.Errors.Add("Ajax was not set.");
+                validationResult.Errors.AddRange(dataAnnotationValidationResults.Select(x => x.ErrorMessage));
             }
 
             //TODO: Examine if there are other valid types.

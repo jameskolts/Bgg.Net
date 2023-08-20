@@ -1,4 +1,5 @@
-﻿using Bgg.Net.Common.Models.Bgg;
+﻿using Bgg.Net.Common.Infrastructure.Attributes;
+using Bgg.Net.Common.Models.Bgg;
 using Newtonsoft.Json;
 
 namespace Bgg.Net.Common.Models.Requests
@@ -6,6 +7,7 @@ namespace Bgg.Net.Common.Models.Requests
     public class LogPlayRequest : LogRequest
     {
         [JsonProperty("objectid")]
+        [RequireNonDefault(ErrorMessage = "ObjectId was not set.")]
         public long ObjectId { get; set; }
 
         [JsonProperty("playdate")]
@@ -15,21 +17,27 @@ namespace Bgg.Net.Common.Models.Requests
         public DateTime Date { get; set; }
 
         [JsonProperty("location")]
-        public string Location { get; set; }
+        public string? Location { get; set; }
 
         /// <summary>
         /// Duration in minutes.
         /// </summary>
         [JsonProperty("length")]
-        public int Length { get; set; }
+        public int? Length { get; set; }
 
         [JsonProperty("incomplete")]
-        public bool Incomplete { get; set; }
+        public bool? Incomplete { get; set; }
 
         [JsonProperty("comments")]
-        public string Comments { get; set; }
+        public string? Comments { get; set; }
 
         [JsonProperty("players")]
-        public List<Player> Players { get; set; }
+        public List<Player> Players { get; set; } = new();
+
+        public LogPlayRequest()
+        {
+            ObjectType = "thing";
+            Action = "save";
+        }
     }
 }

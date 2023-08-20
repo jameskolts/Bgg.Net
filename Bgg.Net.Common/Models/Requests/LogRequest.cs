@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Bgg.Net.Common.Infrastructure.Attributes;
+using Newtonsoft.Json;
 
 namespace Bgg.Net.Common.Models.Requests
 {
@@ -8,6 +9,7 @@ namespace Bgg.Net.Common.Models.Requests
     public abstract class LogRequest
     {
         [JsonProperty("ajax")]
+        [RequireNonDefault(ErrorMessage = "Ajax was not set.")]
         public int Ajax { get; set; }
 
         [JsonProperty("objecttype")]
