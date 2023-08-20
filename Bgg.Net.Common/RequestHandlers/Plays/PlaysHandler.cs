@@ -19,12 +19,10 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
     /// </summary>
     public class PlaysHandler : RequestHandler, IPlaysHandler
     {
-        private readonly IPlayRequestValidator _validator;
 
-        public PlaysHandler(IDeserializerFactory deserializerFactory, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder/*, IPlayRequestValidator validator*/)
+        public PlaysHandler(IDeserializerFactory deserializerFactory, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
             : base(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder)
         {
-            //_validator = validator;
         }
 
         /// <inheritdoc/>
@@ -84,6 +82,19 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
         /// <inheritdoc/>
         public async Task<BggResult<BggPlayLogResponse>> LogPlay(BggLoginCookie loginCookie, LogPlayRequest request)
         {
+            var validator = _requestValidatorFactory.CreateRequestValidator("plays") as IPlayRequestValidator;
+
+            var validationResult = validator.Validate(request);
+
+            if (!validationResult.IsValid)
+            {
+                return new BggResult<BggPlayLogResponse>
+                {
+                    IsSuccessful = false,
+                    Errors = validationResult.Errors
+                };
+            }
+
             var stringContent = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, MediaTypeNames.Application.Json)
                 .AddLoginCookie(loginCookie);
 

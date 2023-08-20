@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Bgg.Net.Common.Models.Requests
 {
+    [ExcludeFromCodeCoverage]
     public class BggLoginRequest
     {
         [JsonProperty("credentials")]

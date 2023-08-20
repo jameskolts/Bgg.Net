@@ -10,6 +10,7 @@ namespace Bgg.Net.Common.RequestHandlers.Login
         /// <param name="username">The user to log in.</param>
         /// <param name="password">the password of the user.</param>
         /// <returns>A <see cref="BggLoginCookie"/> that contains the cookie information that should be used for requests that require log in.</returns>
+        /// <exception cref="ArgumentNullException"/>
         Task<BggLoginCookie> Login(string username, string password);
     }
 }

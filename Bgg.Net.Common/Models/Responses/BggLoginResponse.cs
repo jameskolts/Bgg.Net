@@ -13,6 +13,10 @@ namespace Bgg.Net.Common.Models.Responses
 
         public string SessionId { get; set; }
 
+        public DateTime? Expires { get; set; }
+
+        public BggLoginCookie() { }
+
         public BggLoginCookie(HttpResponseHeaders responseHeaders)
         {
             if (responseHeaders.TryGetValues("set-cookie", out var values))

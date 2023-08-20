@@ -50,5 +50,87 @@ namespace Bgg.Net.Common.Tests.Validation
             result.IsValid.Should().BeFalse();
             result.Errors.Should().Contain("Only one of 'username' or 'id' is allowed for PlaysRequest");
         }
+
+        [TestMethod]
+        public void Validate_LogPlayRequest_DefaultObjectId()
+        {
+            //Arrange
+            var request = new LogPlayRequest
+            {
+                Ajax = 1,
+                ObjectType = "thing",
+                Action = "save"
+            };
+
+            //Act
+            var result = _validator.Validate(request);
+
+            //Assert
+            result.IsValid.Should().BeFalse();
+            result.Errors.Count.Should().Be(1);
+            result.Errors.Should().Contain("ObjectId was not set.");
+        }
+
+        [TestMethod]
+        public void Validate_LogPlayRequest_DefaultAjaxId()
+        {
+            //Arrange
+            var request = new LogPlayRequest
+            {
+                ObjectId = 500,
+                ObjectType = "thing",
+                Action = "save"
+            };
+
+            //Act
+            var result = _validator.Validate(request);
+
+            //Assert
+            result.IsValid.Should().BeFalse();
+            result.Errors.Count.Should().Be(1);
+            result.Errors.Should().Contain("Ajax was not set.");
+        }
+
+        [TestMethod]
+        public void Validate_LogPlayRequest_InvalidType()
+        {
+            //Arrange
+            var request = new LogPlayRequest
+            {
+                ObjectId = 500,
+                Ajax = 1,
+                ObjectType = "forum",
+                Action = "save"
+            };
+
+            //Act
+            var result = _validator.Validate(request);
+
+            //Assert
+            result.IsValid.Should().BeFalse();
+            result.Errors.Count.Should().Be(1);
+            result.Errors.Should().Contain("Invalid type: forum.");
+        }
+
+        [TestMethod]
+        public void Validate_LogPlayRequest_InvalidAction()
+        {
+            //Arrange
+            var request = new LogPlayRequest
+            {
+                ObjectId = 500,
+                Ajax = 1,
+                ObjectType = "thing",
+                Action = "delete"
+            };
+
+            //Act
+            var result = _validator.Validate(request);
+
+            //Assert
+            result.IsValid.Should().BeFalse();
+            result.Errors.Count.Should().Be(1);
+            result.Errors.Should().Contain("Invalid action: delete.");
+        }
     }
 }

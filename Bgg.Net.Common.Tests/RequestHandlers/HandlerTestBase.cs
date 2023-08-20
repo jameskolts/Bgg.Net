@@ -45,6 +45,18 @@ namespace Bgg.Net.Common.Tests.RequestHandlers
                 .ReturnsAsync(responseMessage);
         }
 
+        public void MockHttpClientPost(string content, HttpStatusCode statusCode)
+        {
+            var responseMessage = new HttpResponseMessage
+            {
+                StatusCode = statusCode,
+                Content = new StringContent(content)
+            };
+
+            _httpClientMock.Setup(x => x.PostAsync(It.IsAny<string>(), It.IsAny<HttpContent>()))
+                .ReturnsAsync(responseMessage);                
+        }
+
         public void MockDeserializer<T>(T? obj = null)
             where T : class
         {

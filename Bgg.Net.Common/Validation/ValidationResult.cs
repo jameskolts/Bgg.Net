@@ -11,5 +11,12 @@
         /// Contains messages for any validation errors that occurred.
         /// </summary>
         public List<string> Errors { get; set; } = new List<string>();
+
+        public ValidationResult() { }
+
+        public ValidationResult(bool isValid) 
+        {
+            IsValid = isValid;
+        }
     }
 }

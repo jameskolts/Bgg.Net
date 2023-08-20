@@ -8,7 +8,7 @@ namespace Bgg.Net.Common.Models.Requests
     public abstract class LogRequest
     {
         [JsonProperty("ajax")]
-        public int Ajax { get; set; } = 1;
+        public int Ajax { get; set; }
 
         [JsonProperty("objecttype")]
         public string ObjectType { get; set; }

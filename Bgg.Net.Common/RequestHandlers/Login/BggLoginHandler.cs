@@ -19,6 +19,16 @@ namespace Bgg.Net.Common.RequestHandlers.Login
 
         public async Task<BggLoginCookie> Login(string username, string password)
         {
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                throw new ArgumentNullException(nameof(username));
+            }
+
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                throw new ArgumentNullException(nameof(password));
+            }
+
             var loginRequest = new BggLoginRequest(username, password);
             var requestContent = new StringContent(loginRequest.ToString(), Encoding.UTF8, "application/json");
 

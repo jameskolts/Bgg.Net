@@ -1,5 +1,6 @@
 ﻿using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Models.Requests;
+using Bgg.Net.Common.Models.Responses;
 using Bgg.Net.Common.RequestHandlers.Plays;
 using Bgg.Net.Common.Tests.Infrastructure.Deserialization;
 using Bgg.Net.Common.Tests.TestFiles;
@@ -8,9 +9,11 @@ using Bgg.Net.Common.Validation;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
@@ -204,6 +207,48 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
             result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
             result.Errors.Should().BeNullOrEmpty();
             result.Item.Play.Count.Should().Be(3);
+        }
+
+        [TestMethod]
+        public async Task LogPlay_Success()
+        {
+            //Arrange
+            var request = new LogPlayRequest
+            {
+                ObjectId = 1,
+            };
+            
+            var mockCookie = new BggLoginCookie
+            {
+                Password = "password",
+                UserName = "username",
+                SessionId = "session",
+            };
+
+            var mockResponse = new BggPlayLogResponse { PlayId = 100, NumPlays = 1, Html = "html" };
+            var validatorMock = new Mock<IPlayRequestValidator>();
+            validatorMock.Setup(x => x.Validate(It.IsAny<LogPlayRequest>()))
+                .Returns(new ValidationResult(true));
+            MockValidatorFactory(validatorMock.Object);
+            MockHttpClientPost(JsonConvert.SerializeObject(mockResponse), HttpStatusCode.OK);
+            MockDeserializerFactory(mockResponse);
+
+            _handler = new PlaysHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+
+            //Act
+            var result = await _handler.LogPlay(mockCookie, request);
+
+            //Assert
+            result.Should().NotBeNull();
+            result.IsSuccessful.Should().BeTrue();
+            result.HttpResponseCode.Should().Be(HttpStatusCode.OK);
+            result.Item.PlayId.Should().Be(100);
+            result.Item.NumPlays.Should().Be(1);
+            result.Item.Html.Should().Be("html");
+
+            validatorMock.Verify(x => x.Validate(It.IsAny<LogPlayRequest>()), Times.Once);
+            _httpClientMock.Verify(x => x.PostAsync(It.Is<string>(x => x == Constants.BggLogPlayRoute), It.IsAny<HttpContent>()), Times.Once);
+            _deserializerMock.Verify(x => x.Deserialize<BggPlayLogResponse>(It.IsAny<string>()), Times.Once);
         }
     }
 }
