@@ -396,3 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/Bgg.Net.Common.IntegrationTests/appsettings.test.json
