@@ -24,9 +24,9 @@ namespace Bgg.Net.Common.IntegrationTests.RequestHandlers.Login
 
             //Assert
             result.Should().NotBeNull();
-            result.UserName.Should().Be($"bggusername={username}");
-            result.Password.Should().NotBeNullOrWhiteSpace();
-            result.SessionId.Should().NotBeNullOrWhiteSpace();
+            result.Item.UserName.Should().Be($"bggusername={username}");
+            result.Item.Password.Should().NotBeNullOrWhiteSpace();
+            result.Item.SessionId.Should().NotBeNullOrWhiteSpace();
         }
     }
 }

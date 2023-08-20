@@ -1,4 +1,5 @@
-﻿using Bgg.Net.Common.Infrastructure.Http;
+﻿using Bgg.Net.Common.Infrastructure;
+using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Models.Responses;
 using Microsoft.Extensions.Logging;
@@ -17,7 +18,7 @@ namespace Bgg.Net.Common.RequestHandlers.Login
             _logger = logger;
         }
 
-        public async Task<BggLoginCookie> Login(string username, string password)
+        public async Task<BggResult<BggLoginCookie>> Login(string username, string password)
         {
             if (string.IsNullOrWhiteSpace(username))
             {
@@ -37,10 +38,19 @@ namespace Bgg.Net.Common.RequestHandlers.Login
             if (!response.IsSuccessStatusCode)
             {
                 _logger.LogError("BggLoginHandler: Response did not indicate success");
-                return null;
+                return new BggResult<BggLoginCookie>
+                {
+                    IsSuccessful = false,
+                    HttpResponseCode = response.StatusCode
+                };
             }
 
-            return new BggLoginCookie(response.Headers);
+            return new BggResult<BggLoginCookie>
+            {
+                IsSuccessful = true,
+                HttpResponseCode = response.StatusCode,
+                Item = new BggLoginCookie(response.Headers)
+            };
         }
     }
 }
