@@ -1,4 +1,5 @@
 ﻿using Bgg.Net.Common.Infrastructure;
+using Bgg.Net.Common.Infrastructure.Deserialization;
 using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.Infrastructure.IOC;
 using Bgg.Net.Common.RequestHandlers.Collection;
@@ -256,6 +257,23 @@ namespace Bgg.Net.Common.Tests.Infrastructure.IOC
             objFromClass.Should().NotBeNull();
             objFromClass.Should().BeAssignableTo<QueryBuilder>();
             objFromClass?.GetType().Name.Should().Be("QueryBuilder");
+        }
+
+        [TestMethod]
+        public void DeserializerFactory_Resolve()
+        {
+            // Arrange/Act
+            var objFromInterface = provider?.GetService<IDeserializerFactory>();
+            var objFromClass = provider?.GetService<DeserializerFactory>();
+
+            //Assert
+            objFromInterface.Should().NotBeNull();
+            objFromInterface.Should().BeAssignableTo<DeserializerFactory>();
+            objFromInterface?.GetType().Name.Should().Be("DeserializerFactory");
+
+            objFromClass.Should().NotBeNull();
+            objFromClass.Should().BeAssignableTo<DeserializerFactory>();
+            objFromClass?.GetType().Name.Should().Be("DeserializerFactory");
         }
     }
 }
