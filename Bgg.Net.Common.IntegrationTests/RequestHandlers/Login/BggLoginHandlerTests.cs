@@ -1,13 +1,14 @@
 ﻿using Bgg.Net.Common.Infrastructure.Http;
 using Bgg.Net.Common.RequestHandlers.Login;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace Bgg.Net.Common.IntegrationTests.RequestHandlers.Login
 {
     [TestClass]
-    public class BggLoginHandlerTests
+    public class BggLoginHandlerTests : HandlerTestBase
     {
-        private BggLoginHandler? _handler;
+        private IBggLoginHandler? _handler;
 
         [TestMethod]
         public async Task BggLoginHandler_LogsIn()
@@ -17,16 +18,16 @@ namespace Bgg.Net.Common.IntegrationTests.RequestHandlers.Login
             var username = config["testUser:credentials:username"];
             var password = config["testUser:credentials:password"];
 
-            _handler = new BggLoginHandler(new BggClient(), Mock.Of<ILogger<BggLoginHandler>>());
+            _handler = _serviceProvider.GetRequiredService<IBggLoginHandler>();
 
             //Act
             var result = await _handler.Login(username, password);
 
             //Assert
             result.Should().NotBeNull();
-            result.Item.UserName.Should().Be($"bggusername={username}");
-            result.Item.Password.Should().NotBeNullOrWhiteSpace();
-            result.Item.SessionId.Should().NotBeNullOrWhiteSpace();
+            result.Item.UserNameCookie.Should().Be($"bggusername={username}");
+            result.Item.PasswordCookie.Should().NotBeNullOrWhiteSpace();
+            result.Item.SessionIdCookie.Should().NotBeNullOrWhiteSpace();
         }
     }
 }
