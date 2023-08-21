@@ -15,12 +15,12 @@ namespace Bgg.Net.Common.RequestHandlers
     public abstract class RequestHandler
     {
         protected readonly IDeserializerFactory _deserializerFactory;
-        protected readonly ILogger _logger;
+        protected readonly ILogger<RequestHandler> _logger;
         protected readonly IHttpClient _httpClient;
         protected readonly IRequestValidatorFactory _requestValidatorFactory;
         protected readonly IQueryBuilder _queryBuilder;
 
-        public RequestHandler(IDeserializerFactory deserializerFactory, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
+        public RequestHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
         {
             _deserializerFactory = deserializerFactory;
             _logger = logger;

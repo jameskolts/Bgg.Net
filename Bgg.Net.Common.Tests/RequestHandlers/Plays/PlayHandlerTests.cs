@@ -1,11 +1,13 @@
 ﻿using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Models.Requests;
 using Bgg.Net.Common.Models.Responses;
+using Bgg.Net.Common.RequestHandlers;
 using Bgg.Net.Common.RequestHandlers.Plays;
 using Bgg.Net.Common.Tests.Infrastructure.Deserialization;
 using Bgg.Net.Common.Tests.TestFiles;
 using Bgg.Net.Common.Types;
 using Bgg.Net.Common.Validation;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.Net;
 
@@ -39,7 +41,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                     }
                 });
 
-            _handler = new PlaysHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new PlaysHandler(_deserializerFactory.Object, Mock.Of<ILogger<RequestHandler>>(), _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetPlays(request);
@@ -69,7 +71,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                    }
                });
 
-            _handler = new PlaysHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new PlaysHandler(_deserializerFactory.Object, Mock.Of<ILogger<RequestHandler>>(), _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetPlaysByUserName("user");
@@ -99,7 +101,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                    }
                });
 
-            _handler = new PlaysHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new PlaysHandler(_deserializerFactory.Object, Mock.Of<ILogger<RequestHandler>>(), _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetPlaysByUserNameAndDate("user", new DateOnly(2010, 01, 01), new DateOnly(2020, 05, 28));
@@ -129,7 +131,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                    }
                });
 
-            _handler = new PlaysHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new PlaysHandler(_deserializerFactory.Object, Mock.Of<ILogger<RequestHandler>>(), _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetPlaysByUserNameAndType("user", ItemType.Thing, PlaysSubType.BoardGame);
@@ -159,7 +161,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                    }
                });
 
-            _handler = new PlaysHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new PlaysHandler(_deserializerFactory.Object, Mock.Of<ILogger<RequestHandler>>(), _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetPlaysByUserNameAndType("user", ItemType.Thing);
@@ -189,7 +191,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
                    }
                });
 
-            _handler = new PlaysHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new PlaysHandler(_deserializerFactory.Object, Mock.Of<ILogger<RequestHandler>>(), _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetPlaysByIdAndType(2500, ItemType.Thing);
@@ -226,7 +228,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
             MockHttpClientPost(JsonConvert.SerializeObject(mockResponse), HttpStatusCode.OK);
             MockDeserializerFactory(mockResponse);
 
-            _handler = new PlaysHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new PlaysHandler(_deserializerFactory.Object, Mock.Of<ILogger<RequestHandler>>(), _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.LogPlay(mockCookie, request);

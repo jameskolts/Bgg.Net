@@ -14,7 +14,7 @@ namespace Bgg.Net.Common.RequestHandlers.Families
     /// </summary>
     public class FamilyHandler : RequestHandler, IFamilyHandler
     {
-        public FamilyHandler(IDeserializerFactory deserializerFactory, ILogger logger, IHttpClient client, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
+        public FamilyHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient client, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
             : base(deserializerFactory, logger, client, validatorFactory, queryBuilder)
         {
         }

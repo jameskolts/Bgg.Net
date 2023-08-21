@@ -13,7 +13,7 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
     /// </summary>
     public class CollectionHandler : RequestHandler, ICollectionHandler
     {
-        public CollectionHandler(IDeserializerFactory deserializerFactory, ILogger logger, ICollectionClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
+        public CollectionHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, ICollectionClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
             : base(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder)
         {
         }

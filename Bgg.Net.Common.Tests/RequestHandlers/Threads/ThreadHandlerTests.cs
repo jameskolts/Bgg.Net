@@ -1,8 +1,10 @@
 ﻿using Bgg.Net.Common.Models.Requests;
+using Bgg.Net.Common.RequestHandlers;
 using Bgg.Net.Common.RequestHandlers.Threads;
 using Bgg.Net.Common.Tests.Infrastructure.Deserialization;
 using Bgg.Net.Common.Tests.TestFiles;
 using Bgg.Net.Common.Validation;
+using Microsoft.Extensions.Logging;
 using System.Net;
 using Thread = Bgg.Net.Common.Models.Bgg.Thread;
 
@@ -28,7 +30,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Threads
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ThreadXml), HttpStatusCode.OK);
             MockDeserializerFactory(new Thread { Id = 100 });
 
-            _handler = new ThreadHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new ThreadHandler(_deserializerFactory.Object, Mock.Of<ILogger<RequestHandler>>(), _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetThread(request);
@@ -50,7 +52,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Threads
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ThreadXml), HttpStatusCode.OK);
             MockDeserializerFactory(new Thread { Id = 100 });
 
-            _handler = new ThreadHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new ThreadHandler(_deserializerFactory.Object, Mock.Of<ILogger<RequestHandler>>(), _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetThreadById(100);

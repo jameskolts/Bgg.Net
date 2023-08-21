@@ -20,7 +20,7 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
     public class PlaysHandler : RequestHandler, IPlaysHandler
     {
 
-        public PlaysHandler(IDeserializerFactory deserializerFactory, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
+        public PlaysHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
             : base(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder)
         {
         }

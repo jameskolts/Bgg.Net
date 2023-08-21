@@ -14,7 +14,7 @@ namespace Bgg.Net.Common.RequestHandlers.HotItems
     /// </summary>
     public class HotItemHandler : RequestHandler, IHotItemsHandler
     {
-        public HotItemHandler(IDeserializerFactory deserializerFactory, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
+        public HotItemHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
             : base(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder)
         {
         }

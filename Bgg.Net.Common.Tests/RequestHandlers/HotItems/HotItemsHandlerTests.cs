@@ -1,10 +1,12 @@
 ﻿using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Models.Requests;
+using Bgg.Net.Common.RequestHandlers;
 using Bgg.Net.Common.RequestHandlers.HotItems;
 using Bgg.Net.Common.Tests.Infrastructure.Deserialization;
 using Bgg.Net.Common.Tests.TestFiles;
 using Bgg.Net.Common.Types;
 using Bgg.Net.Common.Validation;
+using Microsoft.Extensions.Logging;
 using System.Net;
 
 namespace Bgg.Net.Common.Tests.RequestHandlers.HotItems
@@ -36,7 +38,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.HotItems
                     }
                 });
 
-            _handler = new HotItemHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new HotItemHandler(_deserializerFactory.Object, Mock.Of<ILogger<RequestHandler>>(), _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetHotItemsByType(HotItemType.BoardGame);
@@ -75,7 +77,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.HotItems
                     }
                 });
 
-            _handler = new HotItemHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new HotItemHandler(_deserializerFactory.Object, Mock.Of<ILogger<RequestHandler>>(), _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetHotItems(request);

@@ -1,9 +1,11 @@
 ﻿using Bgg.Net.Common.Models.Bgg;
 using Bgg.Net.Common.Models.Requests;
+using Bgg.Net.Common.RequestHandlers;
 using Bgg.Net.Common.RequestHandlers.Forums;
 using Bgg.Net.Common.Tests.Infrastructure.Deserialization;
 using Bgg.Net.Common.Tests.TestFiles;
 using Bgg.Net.Common.Validation;
+using Microsoft.Extensions.Logging;
 using System.Net;
 
 namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
@@ -21,7 +23,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ForumXml), HttpStatusCode.OK);
             MockDeserializerFactory(new Forum { Id = 100 });
 
-            _handler = new ForumHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new ForumHandler(_deserializerFactory.Object, Mock.Of<ILogger<RequestHandler>>(), _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetForumById(100);
@@ -43,7 +45,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ForumXml), HttpStatusCode.OK);
             MockDeserializerFactory(new Forum { Id = 100 });
 
-            _handler = new ForumHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new ForumHandler(_deserializerFactory.Object, Mock.Of<ILogger<RequestHandler>>(), _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetForumByIdAndPage(100, 2);
@@ -70,7 +72,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Forums
             MockHttpClientGet(XmlGenerator.GenerateResourceXml(EmbeddedResource.ForumXml), HttpStatusCode.OK);
             MockDeserializerFactory(new Forum { Id = 100 });
 
-            _handler = new ForumHandler(_deserializerFactory.Object, _loggerMock.Object, _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
+            _handler = new ForumHandler(_deserializerFactory.Object, Mock.Of<ILogger<RequestHandler>>(), _httpClientMock.Object, _validatorFactory.Object, _queryBuilder.Object);
 
             //Act
             var result = await _handler.GetForum(request);

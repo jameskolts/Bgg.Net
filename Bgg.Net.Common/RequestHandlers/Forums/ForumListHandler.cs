@@ -20,7 +20,7 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
         /// <param name="httpClient">The httpClient.</param>
         /// <param name="logger">The logger.</param>
         /// <param name="deserializer">The deserializer.</param>
-        public ForumListHandler(IDeserializerFactory deserializerFactory, ILogger logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
+        public ForumListHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
             : base(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder)
         {
         }
