@@ -9,6 +9,8 @@ namespace Bgg.Net.Common.Models.Requests
         [JsonProperty("credentials")]
         public Credentials Credentials { get; set; }
 
+        public BggLoginRequest() { }
+
         public BggLoginRequest(string username, string password)
         {
             Credentials = new(username, password);
