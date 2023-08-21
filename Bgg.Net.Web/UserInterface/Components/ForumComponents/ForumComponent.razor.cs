@@ -3,7 +3,7 @@ using Bgg.Net.Common.Models.Requests;
 using Microsoft.AspNetCore.Components;
 using Thread = Bgg.Net.Common.Models.Bgg.Thread;
 
-namespace Bgg.Net.Web.UserInterface.Components
+namespace Bgg.Net.Web.UserInterface.Components.ForumComponents
 {
     public partial class ForumComponent
     {
@@ -26,7 +26,7 @@ namespace Bgg.Net.Web.UserInterface.Components
                 Id = forumId
             };
 
-            Forum = (await _bggClient.GetForum(forumRequest)).Item;
+            Forum = (await _forumClient.GetForum(forumRequest)).Item;
 
             isLoading = false;
             showForums = true;
@@ -48,7 +48,7 @@ namespace Bgg.Net.Web.UserInterface.Components
         {
             isLoading = true;
 
-            var threadResult = await _bggClient.GetThread(new ThreadRequest(threadId));
+            var threadResult = await _threadClient.GetThread(new ThreadRequest(threadId));
 
             if (threadResult.IsSuccessful)
             {

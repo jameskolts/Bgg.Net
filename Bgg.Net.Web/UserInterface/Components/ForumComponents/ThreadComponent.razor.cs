@@ -2,7 +2,7 @@
 using Microsoft.JSInterop;
 using Thread = Bgg.Net.Common.Models.Bgg.Thread;
 
-namespace Bgg.Net.Web.UserInterface.Components
+namespace Bgg.Net.Web.UserInterface.Components.ForumComponents
 {
     public partial class ThreadComponent
     {

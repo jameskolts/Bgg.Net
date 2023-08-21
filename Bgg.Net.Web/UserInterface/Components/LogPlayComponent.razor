@@ -1,0 +1,43 @@
+﻿@using Bgg.Net.Common.RequestHandlers.Plays;
+@using Bgg.Net.Common.Models.Requests;
+@using Dgi.Client.Clients.Bgg;
+@using Bgg.Net.Web.Services;
+@inject IPlaysClient _playsClient;
+@inject ILogger<LogPlayComponent> _logger;
+@inject IBggLoginCookieService _bggLoginService;
+
+LogPlayComponent
+
+<EditForm Model="@LogPlayRequest" OnValidSubmit="@LogPlay">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    @*<InputNumber hidden="hidden" @bind-Value="LogPlayRequest.ObjectId" />
+    <InputNumber hidden="hidden" @bind-Value="LogPlayRequest.Ajax" />*@
+    <div class="form-floating col-md-3 mx-auto">
+        <div>
+            <label for="playDateInput" class="text-small">When did you play?</label>
+            <InputDate @bind-Value="LogPlayRequest.PlayDate" id="playDateInput" class="form-control" />
+        </div>
+        <div>
+            <label for="quantityInput" class="text-small">How many times did you play? </label>
+            <InputNumber @bind-Value="LogPlayRequest.Quantity" id="quantityInput" class="form-control" />
+        </div>
+        <div>
+            <label for="locationInput" class="text-small">Where did you play?</label>
+            <InputText @bind-Value="LogPlayRequest.Location" id="locationInput" class="form-control" />
+        </div>
+        <div>
+            <label for="lengthInput" class="text-small">How long did you play (in minutes)?</label>
+            <InputNumber @bind-Value="LogPlayRequest.Length" id="lengthInput" class="form-control" />
+        </div>
+        <div>
+            <label for="completeInput" class="text-small">Did you complete the game?</label>
+            <InputCheckbox @bind-Value="Complete" id="completeInput" />
+        </div>
+        <div>
+            <label for="commentsInput" class="text-small">Comments</label>
+            <InputTextArea @bind-Value="LogPlayRequest.Comments" id="commentsInput" class="form-control" />
+        </div>
+        <button type="submit">Log It</button>
+    </div>
+</EditForm>

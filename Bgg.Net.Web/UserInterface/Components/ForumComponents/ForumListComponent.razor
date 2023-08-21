@@ -1,6 +1,6 @@
-﻿@using Bgg.Net.Common.RequestHandlers.Forums
-@using Dgi.Client.Clients
-@inject BggClient _bggClient;
+﻿@using Bgg.Net.Common.RequestHandlers.Forums;
+@using Dgi.Client.Clients.Bgg;
+@inject IForumClient _forumClient;
 
 @if (ForumList == null)
 {

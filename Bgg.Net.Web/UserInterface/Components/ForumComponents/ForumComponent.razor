@@ -1,8 +1,9 @@
 ﻿@using Bgg.Net.Common.Models.Bgg;
 @using Bgg.Net.Common.Models.Requests;
-@using Dgi.Client.Clients;
+@using Dgi.Client.Clients.Bgg;
 @using System.Web;
-@inject BggClient _bggClient;
+@inject IForumClient _forumClient;
+@inject IThreadClient _threadClient;
 
 @if (Forum == null || isLoading)
 {

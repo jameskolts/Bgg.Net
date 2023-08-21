@@ -2,7 +2,7 @@
 using Bgg.Net.Common.Models.Requests;
 using Microsoft.AspNetCore.Components;
 
-namespace Bgg.Net.Web.UserInterface.Components
+namespace Bgg.Net.Web.UserInterface.Components.ForumComponents
 {
     public partial class ForumListComponent
     {
@@ -30,7 +30,7 @@ namespace Bgg.Net.Web.UserInterface.Components
                 Type = "thing"
             };
 
-            return (await _bggClient.GetForumList(forumListRequest)).Item;
+            return (await _forumClient.GetForumList(forumListRequest)).Item;
         }
 
         private async Task UpdateForumComponent(long forumId)
