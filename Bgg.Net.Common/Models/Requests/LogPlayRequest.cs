@@ -38,6 +38,7 @@ namespace Bgg.Net.Common.Models.Requests
         {
             ObjectType = "thing";
             Action = "save";
+            Ajax = 1;
         }
 
         public LogPlayRequest(long objectId)
@@ -45,6 +46,7 @@ namespace Bgg.Net.Common.Models.Requests
             ObjectId = objectId;
             ObjectType = "thing";
             Action = "save";
+            Ajax = 1;
         }
     }
 }
