@@ -1,7 +1,5 @@
-﻿using Bgg.Net.Common.Infrastructure.Http;
-using Bgg.Net.Common.RequestHandlers.Login;
+﻿using Bgg.Net.Common.RequestHandlers.Login;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace Bgg.Net.Common.IntegrationTests.RequestHandlers.Login
 {
