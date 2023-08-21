@@ -23,7 +23,7 @@ namespace Bgg.Net.Common.Infrastructure.Extensions
                 throw new ArgumentNullException(nameof(cookie));
             }
 
-            content.Headers.Add("cookie", string.Join("; ", cookie.UserName, cookie.Password, cookie.SessionId));
+            content.Headers.Add("cookie", string.Join("; ", cookie.UserNameCookie, cookie.PasswordCookie, cookie.SessionIdCookie));
 
             return content;
         }

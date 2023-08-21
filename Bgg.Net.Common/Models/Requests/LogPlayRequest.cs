@@ -17,7 +17,7 @@ namespace Bgg.Net.Common.Models.Requests
         public DateTime Date { get; set; }
 
         [JsonProperty("location")]
-        public string? Location { get; set; }
+        public string Location { get; set; }
 
         /// <summary>
         /// Duration in minutes.
@@ -29,13 +29,20 @@ namespace Bgg.Net.Common.Models.Requests
         public bool? Incomplete { get; set; }
 
         [JsonProperty("comments")]
-        public string? Comments { get; set; }
+        public string Comments { get; set; }
 
         [JsonProperty("players")]
         public List<Player> Players { get; set; } = new();
 
         public LogPlayRequest()
         {
+            ObjectType = "thing";
+            Action = "save";
+        }
+
+        public LogPlayRequest(long objectId)
+        {
+            ObjectId = objectId;
             ObjectType = "thing";
             Action = "save";
         }

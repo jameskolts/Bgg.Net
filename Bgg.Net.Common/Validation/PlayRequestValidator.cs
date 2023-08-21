@@ -49,6 +49,8 @@ namespace Bgg.Net.Common.Validation
                 validationResult.Errors.Add($"Invalid action: {request.Action}.");
             }
 
+            validationResult.IsValid = !validationResult.Errors.Any();
+
             return validationResult;
         }
     }

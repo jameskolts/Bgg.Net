@@ -9,9 +9,11 @@ namespace Bgg.Net.Common.Models.Responses
     {
         public string UserName { get; set; }
 
-        public string Password { get; set; }
+        public string UserNameCookie { get; set; }
 
-        public string SessionId { get; set; }
+        public string PasswordCookie { get; set; }
+
+        public string SessionIdCookie { get; set; }
 
         public DateTime? Expires { get; set; }
 
@@ -28,15 +30,18 @@ namespace Bgg.Net.Common.Models.Responses
 
                     if (value.StartsWith("bggusername") && !splitValue[1].StartsWith("deleted"))
                     {
-                        UserName = value.Split(';').First();
+                        var keyValuePairs = value.Split(';');
+                        UserNameCookie = keyValuePairs.First();
+                        UserName = UserNameCookie.Split('=')[1];
+                        Expires = DateTime.Parse(keyValuePairs[1].Split('=')[1]);
                     }
                     else if (value.StartsWith("bggpassword") && !splitValue[1].StartsWith("deleted"))
                     {
-                        Password = value.Split(';').First();
+                        PasswordCookie = value.Split(';').First();
                     }
                     else if (value.StartsWith("SessionID"))
                     {
-                        SessionId = value.Split(';').First();
+                        SessionIdCookie = value.Split(';').First();
                     }
                 }
             }
