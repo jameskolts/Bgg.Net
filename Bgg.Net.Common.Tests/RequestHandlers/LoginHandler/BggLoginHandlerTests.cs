@@ -8,7 +8,7 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.LoginHandler
     [TestClass]
     public class BggLoginHandlerTests : HandlerTestBase
     {
-        private BggLoginHandler _handler;
+        private BggLoginHandler? _handler;
 
         [DataTestMethod]
         [DataRow("", "password")]

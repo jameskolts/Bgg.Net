@@ -76,7 +76,8 @@ namespace Bgg.Net.Common.Tests.Validation
             {
                 ObjectId = 500,
                 ObjectType = "thing",
-                Action = "save"
+                Action = "save",
+                Ajax = default
             };
 
             //Act

@@ -213,9 +213,9 @@ namespace Bgg.Net.Common.Tests.RequestHandlers.Plays
 
             var mockCookie = new BggLoginCookie
             {
-                Password = "password",
-                UserName = "username",
-                SessionId = "session",
+                PasswordCookie = "password",
+                UserNameCookie = "username",
+                SessionIdCookie = "session",
             };
 
             var mockResponse = new BggPlayLogResponse { PlayId = 100, NumPlays = 1, Html = "html" };
