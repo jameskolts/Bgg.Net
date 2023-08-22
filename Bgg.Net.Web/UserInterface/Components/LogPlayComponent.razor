@@ -2,18 +2,15 @@
 @using Bgg.Net.Common.Models.Requests;
 @using Dgi.Client.Clients.Bgg;
 @using Bgg.Net.Web.Services;
+@using Blazorise;
 @inject IPlaysClient _playsClient;
 @inject ILogger<LogPlayComponent> _logger;
 @inject IBggLoginCookieService _bggLoginService;
 
-LogPlayComponent
-
 <EditForm Model="@LogPlayRequest" OnValidSubmit="@LogPlay">
     <DataAnnotationsValidator />
-    <ValidationSummary />
-    @*<InputNumber hidden="hidden" @bind-Value="LogPlayRequest.ObjectId" />
-    <InputNumber hidden="hidden" @bind-Value="LogPlayRequest.Ajax" />*@
-    <div class="form-floating col-md-3 mx-auto">
+    <Blazorise.ValidationSummary />
+    <div class="form-floating col-md-5 mx-auto pb-3">
         <div>
             <label for="playDateInput" class="text-small">When did you play?</label>
             <InputDate @bind-Value="LogPlayRequest.PlayDate" id="playDateInput" class="form-control" />
@@ -21,6 +18,32 @@ LogPlayComponent
         <div>
             <label for="quantityInput" class="text-small">How many times did you play? </label>
             <InputNumber @bind-Value="LogPlayRequest.Quantity" id="quantityInput" class="form-control" />
+        </div>
+        <div class="mt-3" style="">
+            <label for="playerDetailAccordion" class="text-small">Player Details</label>
+            <Accordion id="playerDetailAccordion">
+                <Collapse Visible="@collapsePlayers">
+                    <CollapseHeader style="background-color:white">
+                        <AccordionToggle class="text-small" @onclick="AccordionToggle"><h5>@expandText</h5></AccordionToggle>
+                    </CollapseHeader>
+                    <CollapseBody style="background-color:teal">
+                        @foreach (var item in LogPlayRequest.Players.Select((Value, Index) => new { Index, Value }))
+                        {
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">Add Player:  </div>
+
+                                    <div class="col-sm-1">
+                                        <Button Color="Blazorise.Color.Danger" @onclick="() => RemovePlayer(item.Index)">X</Button>
+                                    </div>
+                                </div>
+                                <PlayerDetailComponent Player="@item.Value" />
+                            </div>
+                        }
+                        <Button Color="Color.Secondary" @onclick="AddPlayer">Add Player</Button>
+                    </CollapseBody>
+                </Collapse>
+            </Accordion>
         </div>
         <div>
             <label for="locationInput" class="text-small">Where did you play?</label>
@@ -38,6 +61,8 @@ LogPlayComponent
             <label for="commentsInput" class="text-small">Comments</label>
             <InputTextArea @bind-Value="LogPlayRequest.Comments" id="commentsInput" class="form-control" />
         </div>
-        <button type="submit">Log It</button>
+        <div class="mt-3 text-center">
+            <button type="submit" class="btn btn-primary mx-auto">Log It</button>
+        </div>
     </div>
 </EditForm>

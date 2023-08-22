@@ -1,4 +1,5 @@
 ﻿using Bgg.Net.Common.Models.Requests;
+using Bgg.Net.Common.Models.Bgg;
 using Microsoft.AspNetCore.Components;
 
 namespace Bgg.Net.Web.UserInterface.Components
@@ -17,6 +18,9 @@ namespace Bgg.Net.Web.UserInterface.Components
             set => LogPlayRequest.Incomplete = !value; 
         }
 
+        private bool collapsePlayers = false;
+        private string expandText = "+";
+
         public LogPlayComponent()
         {
             LogPlayRequest = new LogPlayRequest(ObjectId);
@@ -28,6 +32,7 @@ namespace Bgg.Net.Web.UserInterface.Components
             var result = await _playsClient.LogPlay(loginCookie, LogPlayRequest);
         }
 
+
         public override Task SetParametersAsync(ParameterView parameters)
         {
             parameters.SetParameterProperties(this);
@@ -38,6 +43,35 @@ namespace Bgg.Net.Web.UserInterface.Components
             }
 
             return base.SetParametersAsync(parameters);
+        }
+
+        public void AccordionToggle()
+        {
+            if (collapsePlayers)
+            {
+                collapsePlayers = false;
+                expandText = "+";
+            }
+            else
+            {
+                collapsePlayers = true;
+                expandText = "-";
+            }
+
+            if (!LogPlayRequest.Players.Any())
+            {
+                LogPlayRequest.Players.Add(new Player());
+            }
+        }
+
+        public void AddPlayer()
+        {
+            LogPlayRequest.Players.Add(new Player());
+        }
+
+        public void RemovePlayer(int index)
+        {
+            LogPlayRequest.Players.RemoveAt(index);
         }
 
         protected override void OnInitialized()

@@ -1,0 +1,36 @@
+﻿<div class="col mx-auto">
+    <div>
+        <label for="playerNameInput" class="text-small">Name</label>
+        <InputText @bind-Value="Player.Name" id="playerNameInput" class="form-control" />
+    </div>
+    <div>
+        <label for="userNameInput" class="text-small">UserName</label>
+        <InputText @bind-Value="Player.UserName" id="userNameInput" class="form-control" />
+    </div>
+    <div>
+        <label for="colorInput" class="text-small">Team/Color</label>
+        <InputText @bind-Value="Player.Color" id="colorInput" class="form-control" />
+    </div>
+    <div>
+        <label for="startingPositionInput" class="text-small">Team/Color</label>
+        <InputText @bind-Value="Player.StartPosition" id="startingPositionInput" class="form-control" />
+    </div>
+    <div>
+        <label for="scoreInput" class="text-small">Score</label>
+        <InputText @bind-Value="Player.Score" id="scoreInput" class="form-control" />
+    </div>
+    <div>
+        <label for="ratingInput" class="text-small">Rating</label>
+        <InputNumber @bind-Value="Player.Rating" id="ratingInput" class="form-control" />
+    </div>
+    <div class="row mx-auto">
+        <div class="col">
+            <label for="newInput" class="text-small">New</label>
+            <InputCheckbox @bind-Value="Player.New" id="newInput" />
+        </div>
+        <div class="col">
+            <label for="winInput" class="text-small">Win</label>
+            <InputCheckbox @bind-Value="Player.Win" id="winInput" />
+        </div>
+    </div>
+</div>
