@@ -67,6 +67,6 @@ namespace Bgg.Net.Common.Models.Bgg
         /// </summary>
         [XmlArray("players")]
         [XmlArrayItem("player")]
-        public List<Player> Players { get; set; }
+        public List<Player> Players { get; set; } = new();
     }
 }

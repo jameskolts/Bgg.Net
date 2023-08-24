@@ -1,0 +1,102 @@
+﻿@using Dgi.Client.Clients.Bgg;
+@using Blazorise;
+@using Blazorise.DataGrid
+@using Bgg.Net.Web.Services;
+@using Bgg.Net.Common.Models.Requests;
+@inject IPlaysClient _playsClient;
+@inject IBggLoginCookieService _bggLoginService;
+
+
+<div class="container">
+
+    <Alert Color="@alertColor" @bind-Visible="@displayAlert">
+        <div class="row">
+            <div class="col col-sm">
+                <AlertMessage>@alertMessage</AlertMessage>
+            </div>
+            <div class="col col-sm-1 float-end">
+                <CloseButton />
+            </div>
+        </div>
+    </Alert>
+
+    <div class="row">
+        <div class="col">
+            @if (PlayViews.Any())
+            {
+                <DataGrid TItem="LogHistoryViewItem" Data="@PlayViews" Responsive>
+                    <DataGridColumns>
+                        <DataGridCommandColumn />
+                        <DataGridColumn Field="@nameof(LogHistoryViewItem.PlayDate)" Caption="Play Date" />
+                        <DataGridColumn Field="@nameof(LogHistoryViewItem.Winner)" Caption="Winner" />
+                    </DataGridColumns>
+                    <DetailRowTemplate >
+                        Some Details --TODO Implement Details template
+                    </DetailRowTemplate>
+                </DataGrid>
+            }
+        </div>
+        <div class="col">
+            @*<LogPlayComponent ObjectId="@GameId" />*@
+            <EditForm Model="@LogPlayRequest" OnValidSubmit="@LogPlay">
+                <DataAnnotationsValidator />
+                <Blazorise.ValidationSummary />
+                <div class="form-floating col-md-5 mx-auto pb-3">
+                    <div>
+                        <label for="playDateInput">When did you play?</label>
+                        <InputDate @bind-Value="LogPlayRequest.PlayDate" id="playDateInput" class="form-control" />
+                    </div>
+                    <div>
+                        <label for="quantityInput">How many times did you play? </label>
+                        <InputNumber @bind-Value="LogPlayRequest.Quantity" id="quantityInput" class="form-control" />
+                    </div>
+                    <div class="mt-3" style="">
+                        <label for="playerDetailAccordion">Player Details</label>
+                        <Accordion id="playerDetailAccordion">
+                            <Collapse Visible="@collapsePlayers">
+                                <CollapseHeader style="background-color:white">
+                                    <AccordionToggle @onclick="AccordionToggle"><h5>@expandText</h5></AccordionToggle>
+                                </CollapseHeader>
+                                <CollapseBody style="background-color:teal">
+                                    @foreach (var item in LogPlayRequest.Players.Select((Value, Index) => new { Index, Value }))
+                                    {
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col">Add Player:  </div>
+
+                                                <div class="col-sm-1">
+                                                    <Button Color="Blazorise.Color.Danger" @onclick="() => RemovePlayer(item.Index)">X</Button>
+                                                </div>
+                                            </div>
+                                            <PlayerDetailComponent Player="@item.Value" />
+                                        </div>
+                                    }
+                                    <Button Color="Color.Secondary" @onclick="AddPlayer">Add Player</Button>
+                                </CollapseBody>
+                            </Collapse>
+                        </Accordion>
+                    </div>
+                    <div>
+                        <label for="locationInput">Where did you play?</label>
+                        <InputText @bind-Value="LogPlayRequest.Location" id="locationInput" class="form-control" />
+                    </div>
+                    <div>
+                        <label for="lengthInput">How long did you play (in minutes)?</label>
+                        <InputNumber @bind-Value="LogPlayRequest.Length" id="lengthInput" class="form-control" />
+                    </div>
+                    <div>
+                        <label for="completeInput">Did you complete the game?</label>
+                        <InputCheckbox @bind-Value="Complete" id="completeInput" />
+                    </div>
+                    <div>
+                        <label for="commentsInput">Comments</label>
+                        <InputTextArea @bind-Value="LogPlayRequest.Comments" id="commentsInput" class="form-control" />
+                    </div>
+                    <div class="mt-3 text-center">
+                        <button type="submit" class="btn btn-primary mx-auto">Log It</button>
+                    </div>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>

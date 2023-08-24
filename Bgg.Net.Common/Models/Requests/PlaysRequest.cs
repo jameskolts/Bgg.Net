@@ -46,14 +46,11 @@ namespace Bgg.Net.Common.Models.Requests
         /// </summary>
         public int? Page { get; set; }
 
-        public PlaysRequest()
-        {
-
-        }
+        public PlaysRequest() { }
 
         public PlaysRequest(string userName)
         {
-            UserName = UserName;
+            UserName = userName;
         }
     }
 }
