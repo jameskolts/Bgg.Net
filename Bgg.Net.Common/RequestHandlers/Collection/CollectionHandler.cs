@@ -11,12 +11,9 @@ namespace Bgg.Net.Common.RequestHandlers.Collection
     /// <summary>
     /// Handles Collection requests to the Bgg API.
     /// </summary>
-    public class CollectionHandler : RequestHandler, ICollectionHandler
+    public class CollectionHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, ICollectionClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder) 
+        : RequestHandler(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder), ICollectionHandler
     {
-        public CollectionHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, ICollectionClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
-            : base(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder)
-        {
-        }
 
         /// <inheritdoc/>
         public async Task<BggResult<Models.Bgg.Collection>> GetBriefCollectionByUserName(string userName)

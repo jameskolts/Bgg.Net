@@ -11,12 +11,8 @@ namespace Bgg.Net.Common.RequestHandlers.Threads
     /// <summary>
     /// Handles Thread requests to the BGG API
     /// </summary>
-    public class ThreadHandler : RequestHandler, IThreadHandler
+    public class ThreadHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder) : RequestHandler(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder), IThreadHandler
     {
-        public ThreadHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
-            : base(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder)
-        {
-        }
 
         /// <inheritdoc/>
         public async Task<BggResult<Thread>> GetThread(ThreadRequest request)

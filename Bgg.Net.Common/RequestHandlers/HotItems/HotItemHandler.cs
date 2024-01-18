@@ -12,12 +12,9 @@ namespace Bgg.Net.Common.RequestHandlers.HotItems
     /// <summary>
     /// Hanndles HotItem queries to the BGG API.
     /// </summary>
-    public class HotItemHandler : RequestHandler, IHotItemsHandler
+    public class HotItemHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
+        : RequestHandler(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder), IHotItemsHandler
     {
-        public HotItemHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
-            : base(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder)
-        {
-        }
 
         /// <inheritdoc/>
         public async Task<BggResult<HotItemList>> GetHotItems(HotItemRequest request)

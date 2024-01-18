@@ -11,12 +11,9 @@ namespace Bgg.Net.Common.RequestHandlers.Things
     /// <summary>
     /// Handles Thing requests to the BGG API.
     /// </summary>
-    public class ThingHandler : RequestHandler, IThingHandler
+    public class ThingHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
+        : RequestHandler(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder), IThingHandler
     {
-        public ThingHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
-            : base(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder)
-        {
-        }
 
         /// <inheritdoc/>
         public async Task<BggResult<ThingList>> GetThing(ThingRequest request)

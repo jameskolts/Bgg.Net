@@ -11,12 +11,9 @@ namespace Bgg.Net.Common.RequestHandlers.Users
     /// <summary>
     /// Handles User requests to the BGG API.
     /// </summary>
-    public class UserHandler : RequestHandler, IUserHandler
+    public class UserHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
+        : RequestHandler(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder), IUserHandler
     {
-        public UserHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
-            : base(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder)
-        {
-        }
 
         /// <inheritdoc/>
         public async Task<BggResult<User>> GetUser(UserRequest request)

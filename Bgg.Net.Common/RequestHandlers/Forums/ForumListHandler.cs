@@ -12,18 +12,15 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
     /// <summary>
     /// Handles ForumList requests to the BGG API.
     /// </summary>
-    public class ForumListHandler : RequestHandler, IForumListHandler
+    /// <remarks>
+    /// Creates an instance of <see cref="ForumListHandler"/>.
+    /// </remarks>
+    /// <param name="httpClient">The httpClient.</param>
+    /// <param name="logger">The logger.</param>
+    /// <param name="deserializer">The deserializer.</param>
+    public class ForumListHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder) 
+        : RequestHandler(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder), IForumListHandler
     {
-        /// <summary>s
-        /// Creates an instance of <see cref="ForumListHandler"/>.
-        /// </summary>
-        /// <param name="httpClient">The httpClient.</param>
-        /// <param name="logger">The logger.</param>
-        /// <param name="deserializer">The deserializer.</param>
-        public ForumListHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
-            : base(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder)
-        {
-        }
 
         /// <inheritdoc/>
         public async Task<BggResult<ForumList>> GetForumList(ForumListRequest request)

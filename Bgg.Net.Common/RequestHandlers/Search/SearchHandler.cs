@@ -12,12 +12,9 @@ namespace Bgg.Net.Common.RequestHandlers.Search
     /// <summary>
     /// Handles search requests to the BGG API.
     /// </summary>
-    public class SearchHandler : RequestHandler, ISearchHandler
+    public class SearchHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder) 
+        : RequestHandler(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder), ISearchHandler
     {
-        public SearchHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
-            : base(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder)
-        {
-        }
 
         /// <inheritdoc/>
         public async Task<BggResult<SearchResultList>> Search(SearchRequest request)

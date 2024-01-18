@@ -12,13 +12,8 @@ namespace Bgg.Net.Common.RequestHandlers.Families
     /// <summary>
     /// Handles Family requests to the BGG API.
     /// </summary>
-    public class FamilyHandler : RequestHandler, IFamilyHandler
+    public class FamilyHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient client, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder) : RequestHandler(deserializerFactory, logger, client, validatorFactory, queryBuilder), IFamilyHandler
     {
-        public FamilyHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient client, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
-            : base(deserializerFactory, logger, client, validatorFactory, queryBuilder)
-        {
-        }
-
         public async Task<BggResult<FamilyList>> GetFamily(FamilyRequest request)
         {
             return await GetResourceFromRequestObject<FamilyList>("family", request);

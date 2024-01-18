@@ -12,12 +12,9 @@ namespace Bgg.Net.Common.RequestHandlers.Guilds
     /// <summary>
     /// Handles guild requests to the Bgg API.
     /// </summary>
-    public class GuildHandler : RequestHandler, IGuildHandler
+    public class GuildHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder) 
+        : RequestHandler(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder), IGuildHandler
     {
-        public GuildHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
-            : base(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder)
-        {
-        }
 
         /// <inheritdoc/>
         public async Task<BggResult<Guild>> GetGuild(GuildRequest request)

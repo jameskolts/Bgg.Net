@@ -7,16 +7,10 @@ using System.Text;
 
 namespace Bgg.Net.Common.RequestHandlers.Login
 {
-    public class BggLoginHandler : IBggLoginHandler
+    public class BggLoginHandler(IHttpClient httpClient, ILogger<BggLoginHandler> logger) : IBggLoginHandler
     {
-        private readonly IHttpClient _httpClient;
-        private readonly ILogger<BggLoginHandler> _logger;
-
-        public BggLoginHandler(IHttpClient httpClient, ILogger<BggLoginHandler> logger)
-        {
-            _httpClient = httpClient;
-            _logger = logger;
-        }
+        private readonly IHttpClient _httpClient = httpClient;
+        private readonly ILogger<BggLoginHandler> _logger = logger;
 
         public async Task<BggResult<BggLoginCookie>> Login(string username, string password)
         {

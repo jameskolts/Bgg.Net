@@ -17,13 +17,9 @@ namespace Bgg.Net.Common.RequestHandlers.Plays
     /// <summary>
     /// Handles plays requests to the Bgg API.
     /// </summary>
-    public class PlaysHandler : RequestHandler, IPlaysHandler
+    public class PlaysHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder) 
+        : RequestHandler(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder), IPlaysHandler
     {
-
-        public PlaysHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
-            : base(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder)
-        {
-        }
 
         /// <inheritdoc/>
         public async Task<BggResult<PlayList>> GetPlays(PlaysRequest request)

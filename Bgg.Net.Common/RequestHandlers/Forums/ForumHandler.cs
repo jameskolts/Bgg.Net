@@ -8,18 +8,14 @@ using Microsoft.Extensions.Logging;
 
 namespace Bgg.Net.Common.RequestHandlers.Forums
 {
-    public class ForumHandler : RequestHandler, IForumHandler
+    /// <summary>
+    /// Creates an instance of <see cref="ForumHandler"/>.
+    /// </summary>
+    /// <param name="httpClient">The httpClient.</param>
+    /// <param name="logger">The logger.</param>
+    /// <param name="deserializer">The deserializer.</param>
+    public class ForumHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder) : RequestHandler(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder), IForumHandler
     {
-        /// <summary>
-        /// Creates an instance of <see cref="ForumHandler"/>.
-        /// </summary>
-        /// <param name="httpClient">The httpClient.</param>
-        /// <param name="logger">The logger.</param>
-        /// <param name="deserializer">The deserializer.</param>
-        public ForumHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder)
-            : base(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder)
-        {
-        }
 
         /// <inheritdoc/>
         public async Task<BggResult<Forum>> GetForum(ForumRequest request)
