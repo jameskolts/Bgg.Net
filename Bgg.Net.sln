@@ -14,10 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bgg.Net.Common.IntegrationTests", "Bgg.Net.Common.IntegrationTests\Bgg.Net.Common.IntegrationTests.csproj", "{C01D8C52-69C6-4B30-A15F-4FA8C739FDC5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bgg.Net.Web", "Bgg.Net.Web\Bgg.Net.Web\Bgg.Net.Web.csproj", "{64736AFB-0914-4BC5-8594-5AF7682F3C6F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bgg.Net.Web.Client", "Bgg.Net.Web\Bgg.Net.Web.Client\Bgg.Net.Web.Client.csproj", "{FE1E32F6-777E-4290-AB69-4440EDE94CE9}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,14 +32,6 @@ Global
 		{C01D8C52-69C6-4B30-A15F-4FA8C739FDC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C01D8C52-69C6-4B30-A15F-4FA8C739FDC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C01D8C52-69C6-4B30-A15F-4FA8C739FDC5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{64736AFB-0914-4BC5-8594-5AF7682F3C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64736AFB-0914-4BC5-8594-5AF7682F3C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64736AFB-0914-4BC5-8594-5AF7682F3C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64736AFB-0914-4BC5-8594-5AF7682F3C6F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FE1E32F6-777E-4290-AB69-4440EDE94CE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE1E32F6-777E-4290-AB69-4440EDE94CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE1E32F6-777E-4290-AB69-4440EDE94CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE1E32F6-777E-4290-AB69-4440EDE94CE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
