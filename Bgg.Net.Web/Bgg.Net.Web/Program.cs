@@ -1,9 +1,18 @@
+using Bgg.Net.Common.Infrastructure.IOC;
 using Bgg.Net.Web.Components;
+using Bgg.Net.Web.Infrastructure.IOC;
+using Dgi.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
-builder.Services.AddRazorComponents()
+builder.RegisterWebComponents();
+builder.Services
+    .RegisterBggCommon()
+    .RegisterDgiClients()
+    .ConfigureLogging()
+    .AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
 var app = builder.Build();

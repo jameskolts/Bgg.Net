@@ -14,7 +14,8 @@ namespace Bgg.Net.Common.RequestHandlers.Forums
     /// <param name="httpClient">The httpClient.</param>
     /// <param name="logger">The logger.</param>
     /// <param name="deserializer">The deserializer.</param>
-    public class ForumHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder) : RequestHandler(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder), IForumHandler
+    public class ForumHandler(IDeserializerFactory deserializerFactory, ILogger<RequestHandler> logger, IHttpClient httpClient, IRequestValidatorFactory validatorFactory, IQueryBuilder queryBuilder) 
+        : RequestHandler(deserializerFactory, logger, httpClient, validatorFactory, queryBuilder), IForumHandler
     {
 
         /// <inheritdoc/>
