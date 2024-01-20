@@ -1,0 +1,70 @@
+﻿@using Bgg.Net.Common.RequestHandlers.Things;
+@using System.Web;
+@using Blazorise;
+@using Bgg.Net.Web.Client.Components.PageComponents.ForumComponents;
+@using Bgg.Net.Web.Client.Components.PageComponents.LogComponents;
+@using Bgg.Net.Web.Client.Models;
+@using Bgg.Net.Web.Client.Components;
+@using Bgg.Net.Web.Client.Components.PageComponents;
+@using Bgg.Net.Web.Client.Components.PageComponents.Collection;
+@page "/collection/item/{ItemId}"
+@inject AppState _appState
+@inject ThingHandler _thingHandler
+@inject ILogger _logger
+
+<PageTitle>Collection</PageTitle>
+
+@if (Item == null)
+{
+    <LoadingComponent />
+}
+else
+{
+    <div class="container corners-rounded" style="background-color: teal; color:white;">
+
+        <div class="row">
+            <div class="col-md">
+                <img src="@Item.Image" class="corners-rounded" style="width:100%" />
+            </div>
+            <div class="col-md-9">
+                <ItemDetailHeaderComponent Item="@Item" />
+            </div>
+        </div>
+
+        
+        <Tabs RenderMode="TabsRenderMode.LazyLoad" SelectedTab="@SelectedTab" SelectedTabChanged="@OnSelectedTabChanged">
+            <Items>
+                <Tab Name="overview">Overview</Tab>
+                <Tab Name="insights">Insights</Tab>
+                <Tab Name="log">Log Play</Tab>
+                <Tab Name="forums">Forums</Tab>
+                <Tab Name="images">Images</Tab>
+                <Tab Name="videos">Videos</Tab>
+                <Tab Name="files">Files</Tab>
+            </Items>
+            <Content>
+                <TabPanel Name="overview">
+                    @HttpUtility.HtmlDecode(Item.Description)
+                </TabPanel>
+                <TabPanel Name="insights">
+                    Content for insights.
+                </TabPanel>
+                <TabPanel Name="log">
+                    <LogTabComponent GameId="Item.Id"/>
+                </TabPanel>
+                <TabPanel Name="forums">
+                    <ForumListComponent Id="Item.Id" Type="Item.Type" />
+                </TabPanel>
+                <TabPanel Name="images">
+                    Content for Images.
+                </TabPanel>
+                <TabPanel Name="videos">
+                    Content for Videos.
+                </TabPanel>
+                <TabPanel Name="files">
+                    Content for Files.
+                </TabPanel>
+            </Content>
+        </Tabs>
+    </div>
+}

@@ -1,0 +1,36 @@
+﻿@using Bgg.Net.Common.RequestHandlers.Forums;
+@using Dgi.Client.Clients.Bgg;
+@inject IForumClient _forumClient;
+
+@if (ForumList == null)
+{
+    <LoadingComponent />
+}
+else
+{
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-sm-2">
+                @foreach (var forum in ForumList.Forums)
+                {
+                    <div class="border-bottom">
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <a href="javascript:void(0);" @onclick="async () => await UpdateForumComponent(forum.Id)">@forum.Title </a>
+                            </div>
+                            <div class="col-sm">
+                                <p class="float-end" style="font-size:x-small">@forum.NumThreads</p>
+                            </div>
+                            <div class="col-sm">
+                                <img src="/Images/arrow-right-solid.png" width="15" height="20" class="float-end" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col">
+                <ForumComponent @ref="_forumComponent" FirstRenderAction=@LoadInitialForum />
+            </div>
+        </div>
+    </div>
+}

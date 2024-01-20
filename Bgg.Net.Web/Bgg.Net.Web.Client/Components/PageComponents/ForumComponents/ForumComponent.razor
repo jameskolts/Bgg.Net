@@ -1,0 +1,41 @@
+﻿@using Bgg.Net.Common.Models.Bgg;
+@using Bgg.Net.Common.Models.Requests;
+@using Dgi.Client.Clients.Bgg;
+@using System.Web;
+@inject IForumClient _forumClient;
+@inject IThreadClient _threadClient;
+
+@if (Forum == null || isLoading)
+{
+    <LoadingComponent />
+}
+else
+{
+    <div class="container">
+        @if (showForums)
+        {
+            foreach (var thread in Forum.Threads.OrderByDescending(x => DateTime.Parse(x.LastPostDate)))
+            {
+                <div class="row mb-3 thread" style="border-radius:45px" @onclick="async () => await LoadThreads(thread.Id)">
+                    <div class="ms-3 my-2">
+                        <p class="text-extra-small text-end me-5">@DateTime.Parse(thread.PostDate)</p>
+                        <p>@thread.Subject</p>
+                        <div class="row">
+                            <div class="col-sm">
+                                By: <span class="fst-italic">@thread.Author</span>
+                            </div>
+                            <div class="text-extra-small col-sm text-end">
+                                Last Post: <span class="fst-italic me-5">@GetDaysApart(DateTime.Now, DateTime.Parse(thread.LastPostDate))</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+        @if (showThreads && Thread != null)
+        {
+            <ThreadComponent Thread="@Thread" />
+        }
+    </div>
+}

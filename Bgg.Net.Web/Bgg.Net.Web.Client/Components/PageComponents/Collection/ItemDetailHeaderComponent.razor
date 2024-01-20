@@ -26,7 +26,7 @@
             <div class="col-sm text-center">
                 <p>
                     @Item.PlayTime
-                    <img src="/clock.png" height="25" width="25" />
+                    <img src="/Images/clock.png" height="25" width="25" />
                 </p>
             </div>
             <div class="col-sm text-center">
@@ -34,28 +34,28 @@
                 {
                     <p>
                         @Item.MinPlayers
-                        <img src="/playerswhite.png" height="25" width="25" />
+                    <img src="/Images/playerswhite.png" height="25" width="25" />
                     </p>
                 }
                 else
                 {
                     <p>
                         @Item.MinPlayers - @Item.MaxPlayers
-                        <img src="/playerswhite.png" height="25" width="25" />
+                        <img src="/Images/playerswhite.png" height="25" width="25" />
                     </p>
                 }
             </div>
             <div class="col-sm text-center">
                 <p>
                     @Item.MinAge+
-                    <img src="/agewhite.png" height="25" width="25" />
+                <img src="/Images/agewhite.png" height="25" width="25" />
                 </p>
             </div>
 
             <div class="col-sm text-center">
                 <p>
                     @Math.Round(Item.Statistics.Ratings.AverageWeights.Value, 2)
-                    <img src="/weight-hanging-solid.png" height="25" width="25" />
+                    <img src="/Images/weight-hanging-solid.png" height="25" width="25" />
                 </p>
             </div>
         </div>

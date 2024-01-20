@@ -1,0 +1,10 @@
+﻿.thread-quotes {
+    color: red;
+    background-color: red;
+    background: red;
+}
+
+.comment-header {
+    outline: 1px solid black;
+    background-color: #400080;
+}
